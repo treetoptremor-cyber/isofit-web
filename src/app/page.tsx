@@ -64,7 +64,7 @@ function IsoLogo({ size = 34 }: { size?: number }) {
       width={size}
       height={size}
       priority
-      className="shrink-0 mix-blend-multiply"
+      className="shrink-0"
     />
   );
 }
@@ -74,8 +74,8 @@ function LogoLockup() {
     <div className="flex items-center gap-2.5">
       <IsoLogo size={34} />
       <div className="leading-none">
-        <p className="font-display text-xl font-bold tracking-tight text-[#4A90E2]">ISOfit</p>
-        <p className="mt-1 font-mono text-[9px] uppercase tracking-[0.2em] text-[#7a7066]">Atlas MFC</p>
+        <p className="font-display text-xl font-bold leading-none tracking-tight text-[#4A90E2]">ISOfit</p>
+        <p className="mt-px font-mono text-[9px] uppercase leading-none tracking-[0.2em] text-[#7a7066]">Atlas MFC</p>
       </div>
     </div>
   );
@@ -178,13 +178,9 @@ function IOSStatusBar() {
   );
 }
 
-function PhoneShell({ children, tint = "rgba(180,88,58,0.15)" }: { children: React.ReactNode; tint?: string }) {
+function PhoneShell({ children }: { children: React.ReactNode }) {
   return (
     <div className="relative mx-auto w-full max-w-[360px]">
-      <div className="absolute -bottom-10 -left-5 -right-5 -top-7 overflow-hidden rounded-[36px] shadow-[0_0_0_1px_rgba(42,36,32,0.07)]">
-        <ChalkGridBG opacity={0.5} />
-        <div className="absolute inset-0" style={{ background: `radial-gradient(120% 80% at 50% 8%, ${tint}, transparent 60%)` }} />
-      </div>
       <div className="relative overflow-hidden rounded-[46px] bg-[#f3efe6] shadow-[0_40px_80px_rgba(0,0,0,0.18),0_0_0_1px_rgba(0,0,0,0.12)]">
         <div className="absolute left-1/2 top-2.5 z-50 h-[34px] w-[112px] -translate-x-1/2 rounded-full bg-black" />
         <div className="absolute inset-x-0 top-0 z-40">
@@ -427,7 +423,17 @@ export default function Page() {
   const [openFaq, setOpenFaq] = useState<number>(0);
 
   return (
-    <main className="bg-[#f3efe6] text-[#2a2420]">
+    <main className="relative text-[#2a2420]">
+      <div
+        aria-hidden
+        className="pointer-events-none fixed inset-0 -z-10"
+        style={{
+          WebkitMaskImage: "radial-gradient(ellipse at center, #000 38%, transparent 82%)",
+          maskImage: "radial-gradient(ellipse at center, #000 38%, transparent 82%)",
+        }}
+      >
+        <ChalkGridBG opacity={0.4} />
+      </div>
       <header className="sticky top-0 z-40 border-b border-[#2a2420]/15 bg-[#f3efe6]/85 backdrop-blur">
         <div className="mx-auto flex h-[68px] w-full max-w-[1180px] items-center justify-between px-5 md:px-8">
           <LogoLockup />
@@ -437,7 +443,7 @@ export default function Page() {
             <Link href="#coach">The coach</Link>
             <Link href="#faq">FAQ</Link>
           </nav>
-          <Link href="#waitlist" className="rounded-xl bg-[#2a2420] px-4 py-2 font-display text-[13px] font-semibold text-white">Join the Waitlist</Link>
+          <Link href="#waitlist" className="rounded-xl bg-[#67835a] px-4 py-2 font-display text-[13px] font-semibold text-white transition-colors hover:bg-[#5a7350]">Join the Waitlist</Link>
         </div>
       </header>
 
@@ -445,7 +451,7 @@ export default function Page() {
         <div className="pt-4">
           <div className="mb-7 inline-flex items-center gap-2 rounded-full border border-[#2a2420]/15 px-4 py-2 font-mono text-[10px] uppercase tracking-[0.2em] text-[#4a423b]">
             <span className="h-1.5 w-1.5 rounded-full bg-[#4A90E2]" />
-            ISOfit · workout tracker · iOS
+            ISOfit · workout tracker · made for iOS
           </div>
           <h1 className="font-display text-[clamp(46px,6vw,76px)] font-extrabold leading-[0.98] tracking-[-0.03em] text-[#2a2420]">
             Your workouts, working <span className="text-[#4A90E2]">for you.</span>
@@ -467,7 +473,7 @@ export default function Page() {
 
       <section id="features" className="border-y border-[#2a2420]/15 bg-[#fbf9f3]">
         <div className="mx-auto w-full max-w-[1180px] px-5 py-16 md:px-8">
-          <h2 className="mb-10 max-w-[520px] font-display text-3xl font-semibold leading-tight tracking-[-0.015em] md:text-4xl">One tracker, eight ways to stay honest.</h2>
+          <h2 className="mb-10 max-w-[520px] font-display text-3xl font-semibold leading-tight tracking-[-0.015em] md:text-4xl">One iOS app, numerous paths to your next PR.</h2>
           <div className="grid gap-x-8 gap-y-8 sm:grid-cols-2 lg:grid-cols-4">
             {FEATURES.map((f) => (
               <article key={f.title} className="space-y-3">
@@ -485,7 +491,7 @@ export default function Page() {
       <section id="how" className="mx-auto grid w-full max-w-[1180px] items-center gap-12 px-5 py-20 md:grid-cols-2 md:px-8">
         <div>
           <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#3f5a32]">01 · Tracking &amp; consistency</p>
-          <h2 className="mt-4 font-display text-[clamp(32px,4vw,46px)] font-bold leading-tight tracking-[-0.02em]">Log it in seconds. Keep it for life.</h2>
+          <h2 className="mt-4 font-display text-[clamp(32px,4vw,46px)] font-bold leading-tight tracking-[-0.02em]">Log in seconds. Reference for life.</h2>
           <ul className="mt-6 space-y-4 text-[#4a423b]">
             <li><strong className="font-semibold text-[#2a2420]">Log every workout</strong> — so that the habit sticks and the data accumulates.</li>
             <li><strong className="font-semibold text-[#2a2420]">Voice, text, or autofill</strong> — so no session goes unrecorded.</li>
@@ -526,7 +532,7 @@ export default function Page() {
       <section id="coach" className="mx-auto grid w-full max-w-[1180px] items-center gap-12 px-5 py-20 md:grid-cols-2 md:px-8">
         <div>
           <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#b4583a]">03 · Personalized programming</p>
-          <h2 className="mt-4 font-display text-[clamp(32px,4vw,46px)] font-bold leading-tight tracking-[-0.02em]">Coaching built on your last 30 days.</h2>
+          <h2 className="mt-4 font-display text-[clamp(32px,4vw,46px)] font-bold leading-tight tracking-[-0.02em]">Coaching built from your day to day.</h2>
           <p className="mt-6 text-[#4a423b]">Atlas operates across specialized domains and adapts your plan to frequency, recovery, and progression logic.</p>
         </div>
         <div>
@@ -575,12 +581,10 @@ export default function Page() {
         <div className="mx-auto flex w-full max-w-[1180px] flex-wrap items-center justify-between gap-5 px-5 py-10 md:px-8">
           <LogoLockup />
           <div className="flex flex-wrap gap-6 font-mono text-[10px] uppercase tracking-[0.2em] text-[#7a7066]">
-            <a href="#">Privacy</a>
-            <a href="#">Your data</a>
+            <a href="https://isofit.app/privacy">Privacy Policy</a>
             <a href="#">Contact</a>
-            <a href="#">iOS</a>
           </div>
-          <p className="text-right font-mono text-[10px] uppercase tracking-[0.2em] text-[#7a7066]">© 2026 ISOfit · Thoughtfully created in Queens, NY</p>
+          <p className="text-right font-mono text-[10px] uppercase tracking-[0.2em] text-[#7a7066]">© 2026 ISOfit · humbly designed in queens, NY</p>
         </div>
       </footer>
     </main>
