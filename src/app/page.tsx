@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, type FormEvent } from "react";
 
 type Feature = {
   icon: "stopwatch" | "camera" | "brain" | "chart" | "body" | "calendar" | "program" | "mic";
@@ -46,6 +46,8 @@ const FAQS = [
   ["When does ISOfit launch?", "Target launch is summer 2026."],
 ] as const;
 
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 function IsoMark({ size = 28 }: { size?: number }) {
   return (
     <svg width={size} height={size} viewBox="0 0 120 120" aria-hidden="true">
@@ -81,47 +83,185 @@ function LogoLockup() {
   );
 }
 
-function WaitlistForm({ dark = false, compact = false }: { dark?: boolean; compact?: boolean }) {
+function WaitlistForm({
+  dark = false,
+  compact = false,
+  formId,
+}: {
+  dark?: boolean;
+  compact?: boolean;
+  formId?: string;
+}) {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
-  const [done, setDone] = useState(false);
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error" | "duplicate">("idle");
+  const [message, setMessage] = useState("");
 
-  if (done) {
-    return (
-      <div className={`${compact ? "max-w-[460px]" : "max-w-[520px]"} rounded-2xl border px-5 py-4 ${dark ? "border-white/20 bg-white/10 text-[#f3efe6]" : "border-[#2a2420]/15 bg-white"}`}>
-        <p className="font-display font-semibold">You&apos;re on the list.</p>
-        <p className={`text-sm ${dark ? "text-[#f3efe6]/75" : "text-[#4a423b]"}`}>We&apos;ll send one email when ISOfit opens. That&apos;s it.</p>
-      </div>
-    );
-  }
+  const resetStatusIfNeeded = () => {
+    if (status !== "idle" && status !== "loading") {
+      setStatus("idle");
+      setMessage("");
+    }
+  };
+
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const trimmedFirstName = firstName.trim();
+    const trimmedLastName = lastName.trim();
+    const trimmedEmail = email.trim().toLowerCase();
+
+    if (!trimmedFirstName || !trimmedLastName || !trimmedEmail) {
+      return;
+    }
+
+    if (!EMAIL_REGEX.test(trimmedEmail)) {
+      setStatus("error");
+      setMessage("Please enter a valid email address.");
+      return;
+    }
+
+    setStatus("loading");
+    setMessage("");
+
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const referrer = params.get("ref") || params.get("utm_source") || null;
+
+      const response = await fetch("/api/waitlist", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          first_name: trimmedFirstName,
+          last_name: trimmedLastName,
+          email: trimmedEmail,
+          referrer,
+          source: "landing_page",
+        }),
+      });
+
+      const payload = (await response.json().catch(() => null)) as
+        | { message?: string; error?: string }
+        | null;
+
+      if (response.status === 201) {
+        setStatus("success");
+        setMessage(payload?.message ?? "Successfully joined the waitlist!");
+        setFirstName("");
+        setLastName("");
+        setEmail("");
+        return;
+      }
+
+      if (response.status === 200) {
+        setStatus("duplicate");
+        setMessage(payload?.message ?? "You're already on the list!");
+        return;
+      }
+
+      setStatus("error");
+      setMessage(payload?.error ?? "Something went wrong. Please try again.");
+    } catch {
+      setStatus("error");
+      setMessage("Network error. Please try again.");
+    }
+  };
 
   return (
     <form
-      onSubmit={(e) => {
-        e.preventDefault();
-        if (email.trim()) setDone(true);
-      }}
-      className={compact ? "max-w-[460px]" : "max-w-[520px]"}
+      id={formId}
+      onSubmit={handleSubmit}
+      className={`${compact ? "max-w-[460px]" : "max-w-[520px]"} scroll-mt-28`}
     >
-      <div className="flex flex-wrap items-center gap-2 rounded-2xl border border-[#2a2420]/10 bg-white p-2 shadow-[0_12px_30px_rgba(42,36,32,0.1)]">
+      <div className={`space-y-2 rounded-2xl border p-2 ${dark ? "border-white/20 bg-white/10" : "border-[#2a2420]/10 bg-white"} shadow-[0_12px_30px_rgba(42,36,32,0.1)]`}>
+        <div className="flex flex-wrap gap-2">
+          <input
+            type="text"
+            required
+            value={firstName}
+            onChange={(event) => {
+              setFirstName(event.target.value);
+              resetStatusIfNeeded();
+            }}
+            disabled={status === "loading"}
+            placeholder="First name"
+            className={`h-12 min-w-[140px] flex-1 rounded-xl border px-3 outline-none transition-colors disabled:opacity-60 ${
+              dark
+                ? "border-[#243140] bg-[#1A2430] text-[#E6EDF3] placeholder:text-[#6B7C8F] focus:border-[#6B8AFD]"
+                : "border-[#2a2420]/10 bg-white text-[#2a2420] placeholder:text-[#7a7066] focus:border-[#4A90E2]"
+            }`}
+          />
+          <input
+            type="text"
+            required
+            value={lastName}
+            onChange={(event) => {
+              setLastName(event.target.value);
+              resetStatusIfNeeded();
+            }}
+            disabled={status === "loading"}
+            placeholder="Last name"
+            className={`h-12 min-w-[140px] flex-1 rounded-xl border px-3 outline-none transition-colors disabled:opacity-60 ${
+              dark
+                ? "border-[#243140] bg-[#1A2430] text-[#E6EDF3] placeholder:text-[#6B7C8F] focus:border-[#6B8AFD]"
+                : "border-[#2a2420]/10 bg-white text-[#2a2420] placeholder:text-[#7a7066] focus:border-[#4A90E2]"
+            }`}
+          />
+        </div>
+        <div className="flex flex-wrap items-center gap-2">
         <input
           type="email"
           required
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={(event) => {
+            setEmail(event.target.value);
+            resetStatusIfNeeded();
+          }}
+          disabled={status === "loading"}
           placeholder="you@email.com"
-          className="h-12 min-w-[180px] flex-1 rounded-xl px-3 text-[#2a2420] outline-none"
+          className={`h-12 min-w-[180px] flex-1 rounded-xl border px-3 outline-none transition-colors disabled:opacity-60 ${
+            dark
+              ? "border-[#243140] bg-[#1A2430] text-[#E6EDF3] placeholder:text-[#6B7C8F] focus:border-[#6B8AFD]"
+              : "border-[#2a2420]/10 bg-white text-[#2a2420] placeholder:text-[#7a7066] focus:border-[#4A90E2]"
+          }`}
         />
-        <button className="flex h-12 items-center gap-2 rounded-xl bg-[#4A90E2] px-5 font-display text-[15px] font-semibold text-white shadow-[0_6px_16px_rgba(74,144,226,0.33)] transition-colors hover:bg-[#3f80cf]">
-          Get Early Access
+        <button
+          type="submit"
+          disabled={status === "loading" || !firstName.trim() || !lastName.trim() || !email.trim()}
+          className={`flex h-12 items-center gap-2 rounded-xl px-5 font-display text-[15px] font-semibold text-white transition-colors ${
+            status === "loading" || !firstName.trim() || !lastName.trim() || !email.trim()
+              ? "cursor-not-allowed bg-[#6B7C8F]"
+              : `${dark ? "bg-[#6B8AFD] hover:bg-[#5A7BF0]" : "bg-[#4A90E2] hover:bg-[#3f80cf]"} shadow-[0_6px_16px_rgba(74,144,226,0.33)]`
+          }`}
+        >
+          {status === "loading" ? "Joining..." : "Get Early Access"}
           <svg width="16" height="13" viewBox="0 0 16 13" fill="none" aria-hidden="true">
             <path d="M1 6.5h13M9 1l5 5.5L9 12" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </button>
       </div>
+      </div>
       <p className={`mt-3 flex items-center gap-2 text-sm ${dark ? "text-[#f3efe6]/70" : "text-[#7a7066]"}`}>
         <span className="inline-block h-[5px] w-[5px] rounded-full bg-[#3f5a32]" />
         Be first in. No spam, just a heads-up when we launch.
       </p>
+      {(status === "success" || status === "duplicate" || status === "error") && (
+        <p
+          className={`mt-2 text-sm ${
+            status === "success"
+              ? "text-[#3DDC97]"
+              : status === "duplicate"
+                ? dark
+                  ? "text-[#9CB2FF]"
+                  : "text-[#4A90E2]"
+                : "text-[#F5A524]"
+          }`}
+          aria-live="polite"
+        >
+          {message}
+        </p>
+      )}
     </form>
   );
 }
@@ -443,7 +583,7 @@ export default function Page() {
             <Link href="#coach">The coach</Link>
             <Link href="#faq">FAQ</Link>
           </nav>
-          <Link href="#waitlist" className="rounded-xl bg-[#67835a] px-4 py-2 font-display text-[13px] font-semibold text-white transition-colors hover:bg-[#5a7350]">Join the Waitlist</Link>
+          <Link href="#waitlist-form" className="rounded-xl bg-[#67835a] px-4 py-2 font-display text-[13px] font-semibold text-white transition-colors hover:bg-[#5a7350]">Join the Waitlist</Link>
         </div>
       </header>
 
@@ -460,7 +600,7 @@ export default function Page() {
             Log every session in seconds with the cleanest workout tracker on iOS — then let <strong className="font-semibold text-[#b4583a]">Atlas mfc</strong>, your machine fitness coach, turn your training history into real coaching.
           </p>
           <div id="waitlist" className="mt-8">
-            <WaitlistForm />
+            <WaitlistForm formId="waitlist-form" />
           </div>
         </div>
         <div>
