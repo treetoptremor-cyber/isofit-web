@@ -53,14 +53,14 @@ export default async function PrivacyPage() {
             li: ({ ...props }) => <li className="leading-7" {...props} />,
             blockquote: ({ ...props }) => (
               <blockquote
-                className="my-6 rounded-r-xl border-l-4 border-[#4A90E2] bg-[#4A90E2]/5 px-5 py-3 text-[15px] italic text-[#4a423b]"
+                className="my-6 rounded-r-xl border-l-4 border-[#69A5F0] bg-[#69A5F0]/5 px-5 py-3 text-[15px] italic text-[#4a423b]"
                 {...props}
               />
             ),
             hr: ({ ...props }) => <hr className="my-10 border-[#2a2420]/10" {...props} />,
             a: ({ ...props }) => (
               <a
-                className="font-medium text-[#2d6cb8] underline decoration-[#4A90E2]/40 underline-offset-2 hover:text-[#4A90E2]"
+                className="font-medium text-[#2d6cb8] underline decoration-[#69A5F0]/40 underline-offset-2 hover:text-[#69A5F0]"
                 {...props}
               />
             ),

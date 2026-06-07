@@ -12,48 +12,24 @@ type Feature = {
 };
 
 const FEATURES: Feature[] = [
-  { icon: "stopwatch", color: "#4A90E2", title: "Quick Logger", copy: "Log any workout in seconds. Manual, voice, or tap-and-go." },
+  { icon: "stopwatch", color: "#69A5F0", title: "Quick Logger", copy: "Log any workout in seconds. Manual, voice, or tap-and-go." },
   { icon: "camera", color: "#b4583a", title: "Form Check", copy: "Film a lift. Get instant, actionable corrections from Atlas." },
   { icon: "brain", color: "#b4583a", title: "Atlas mfc", copy: "A coach that reads your data — not a chatbot with opinions." },
-  { icon: "chart", color: "#4A90E2", title: "Progression", copy: "Track volume, PRs, and overload across every muscle group." },
+  { icon: "chart", color: "#69A5F0", title: "Progression", copy: "Track volume, PRs, and overload across every muscle group." },
   { icon: "body", color: "#3f5a32", title: "Body Graph", copy: "See what you're training — and what you're missing." },
   { icon: "calendar", color: "#3f5a32", title: "Streaks", copy: "Show up. Log it. Watch consistency compound into results." },
   { icon: "program", color: "#b4583a", title: "Periodization", copy: "Training plans shaped by your history, and personalized templates for ease and consistency." },
-  { icon: "mic", color: "#4A90E2", title: "Voice Log", copy: "Say what you did. Atlas structures it for you." },
+  { icon: "mic", color: "#69A5F0", title: "Voice Log", copy: "Say what you did. Atlas structures it for you." },
 ];
-
-const FAQS = [
-  [
-    "Is ISOfit free?",
-    "Yes. The free tier gives you unlimited workout logging, $ISO earning, and read-only access to The Bonfire community feed. Atlas MFC, voice logging, and premium rewards are pay-per-use from your $ISO balance.",
-  ],
-  [
-    "How is Atlas MFC different from other AI fitness apps?",
-    "Atlas isn't a generic chatbot. It operates across specialized training domains and bases responses on your actual workout history.",
-  ],
-  [
-    "Do I need a wearable?",
-    "No. Log by voice, text, or autofill in-app. Wearable sync is optional.",
-  ],
-  [
-    "How does the form check work?",
-    "Record a lift and send video/photo to Atlas. It identifies movement and returns 1–3 specific corrections in plain language.",
-  ],
-  [
-    "Is my training data private?",
-    "Yes. Workouts, conversations, and body metrics are protected with strict per-user access controls.",
-  ],
-  ["When does ISOfit launch?", "Target launch is summer 2026."],
-] as const;
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 function IsoMark({ size = 28 }: { size?: number }) {
   return (
     <svg width={size} height={size} viewBox="0 0 120 120" aria-hidden="true">
-      <path d="M60 12 L108 36 L60 60 L12 36 Z" fill="#4A90E2" />
+      <path d="M60 12 L108 36 L60 60 L12 36 Z" fill="#69A5F0" />
       <path d="M12 36 L60 60 L60 108 L12 84 Z" fill="#2d6cb8" />
-      <path d="M108 36 L60 60 L60 108 L108 84 Z" fill="#4A90E2" opacity="0.85" />
+      <path d="M108 36 L60 60 L60 108 L108 84 Z" fill="#69A5F0" opacity="0.85" />
     </svg>
   );
 }
@@ -76,7 +52,7 @@ function LogoLockup() {
     <div className="flex items-center gap-2.5">
       <IsoLogo size={34} />
       <div className="leading-none">
-        <p className="font-display text-xl font-bold leading-none tracking-tight text-[#4A90E2]">ISOfit</p>
+        <p className="font-display text-xl font-bold leading-none tracking-tight text-[#69A5F0]">ISOfit</p>
         <p className="mt-px font-mono text-[9px] uppercase leading-none tracking-[0.2em] text-[#7a7066]">Atlas MFC</p>
       </div>
     </div>
@@ -168,6 +144,9 @@ function WaitlistForm({
     }
   };
 
+  const hasRequiredFields = !!firstName.trim() && !!lastName.trim() && !!email.trim();
+  const isDisabled = status === "loading" || !hasRequiredFields;
+
   return (
     <form
       id={formId}
@@ -189,7 +168,7 @@ function WaitlistForm({
             className={`h-12 min-w-[140px] flex-1 rounded-xl border px-3 outline-none transition-colors disabled:opacity-60 ${
               dark
                 ? "border-[#243140] bg-[#1A2430] text-[#E6EDF3] placeholder:text-[#6B7C8F] focus:border-[#6B8AFD]"
-                : "border-[#2a2420]/10 bg-white text-[#2a2420] placeholder:text-[#7a7066] focus:border-[#4A90E2]"
+                : "border-[#2a2420]/10 bg-white text-[#2a2420] placeholder:text-[#7a7066] focus:border-[#69A5F0]"
             }`}
           />
           <input
@@ -205,7 +184,7 @@ function WaitlistForm({
             className={`h-12 min-w-[140px] flex-1 rounded-xl border px-3 outline-none transition-colors disabled:opacity-60 ${
               dark
                 ? "border-[#243140] bg-[#1A2430] text-[#E6EDF3] placeholder:text-[#6B7C8F] focus:border-[#6B8AFD]"
-                : "border-[#2a2420]/10 bg-white text-[#2a2420] placeholder:text-[#7a7066] focus:border-[#4A90E2]"
+                : "border-[#2a2420]/10 bg-white text-[#2a2420] placeholder:text-[#7a7066] focus:border-[#69A5F0]"
             }`}
           />
         </div>
@@ -223,16 +202,16 @@ function WaitlistForm({
           className={`h-12 min-w-[180px] flex-1 rounded-xl border px-3 outline-none transition-colors disabled:opacity-60 ${
             dark
               ? "border-[#243140] bg-[#1A2430] text-[#E6EDF3] placeholder:text-[#6B7C8F] focus:border-[#6B8AFD]"
-              : "border-[#2a2420]/10 bg-white text-[#2a2420] placeholder:text-[#7a7066] focus:border-[#4A90E2]"
+              : "border-[#2a2420]/10 bg-white text-[#2a2420] placeholder:text-[#7a7066] focus:border-[#69A5F0]"
           }`}
         />
         <button
           type="submit"
-          disabled={status === "loading" || !firstName.trim() || !lastName.trim() || !email.trim()}
+          disabled={isDisabled}
           className={`flex h-12 items-center gap-2 rounded-xl px-5 font-display text-[15px] font-semibold text-white transition-colors ${
-            status === "loading" || !firstName.trim() || !lastName.trim() || !email.trim()
-              ? "cursor-not-allowed bg-[#6B7C8F]"
-              : `${dark ? "bg-[#6B8AFD] hover:bg-[#5A7BF0]" : "bg-[#4A90E2] hover:bg-[#3f80cf]"} shadow-[0_6px_16px_rgba(74,144,226,0.33)]`
+            hasRequiredFields
+              ? "bg-[#67835a] hover:bg-[#5a7350] shadow-[0_6px_16px_rgba(103,131,90,0.33)]"
+              : "cursor-not-allowed bg-[#69A5F0] shadow-[0_6px_16px_rgba(105,165,240,0.33)]"
           }`}
         >
           {status === "loading" ? "Joining..." : "Get Early Access"}
@@ -254,7 +233,7 @@ function WaitlistForm({
               : status === "duplicate"
                 ? dark
                   ? "text-[#9CB2FF]"
-                  : "text-[#4A90E2]"
+                  : "text-[#69A5F0]"
                 : "text-[#F5A524]"
           }`}
           aria-live="polite"
@@ -277,8 +256,8 @@ function ChalkGridBG({ opacity = 1 }: { opacity?: number }) {
     >
       <defs>
         <pattern id="isoGridMinor" width={minor} height={minor} patternUnits="userSpaceOnUse">
-          <line x1="0" y1={minor} x2={minor} y2={minor} stroke="#4A90E2" strokeWidth="1" opacity="0.5" />
-          <line x1={minor} y1="0" x2={minor} y2={minor} stroke="#4A90E2" strokeWidth="1" opacity="0.5" />
+          <line x1="0" y1={minor} x2={minor} y2={minor} stroke="#69A5F0" strokeWidth="1" opacity="0.5" />
+          <line x1={minor} y1="0" x2={minor} y2={minor} stroke="#69A5F0" strokeWidth="1" opacity="0.5" />
         </pattern>
         <pattern id="isoGridMajor" width={minor * 5} height={minor * 5} patternUnits="userSpaceOnUse">
           <line x1="0" y1={minor * 5} x2={minor * 5} y2={minor * 5} stroke="#2d6cb8" strokeWidth="1.5" opacity="0.8" />
@@ -560,8 +539,6 @@ function ContextNote() {
 }
 
 export default function Page() {
-  const [openFaq, setOpenFaq] = useState<number>(0);
-
   return (
     <main className="relative text-[#2a2420]">
       <div
@@ -579,9 +556,9 @@ export default function Page() {
           <LogoLockup />
           <nav className="hidden items-center gap-8 font-mono text-[10px] uppercase tracking-[0.2em] text-[#4a423b] md:flex">
             <Link href="#features">Features</Link>
-            <Link href="#how">How it works</Link>
             <Link href="#coach">The coach</Link>
-            <Link href="#faq">FAQ</Link>
+            <Link href="/faq">FAQ</Link>
+            <Link href="/info">Info</Link>
           </nav>
           <Link href="#waitlist-form" className="rounded-xl bg-[#67835a] px-4 py-2 font-display text-[13px] font-semibold text-white transition-colors hover:bg-[#5a7350]">Join the Waitlist</Link>
         </div>
@@ -590,11 +567,11 @@ export default function Page() {
       <section className="mx-auto grid w-full max-w-[1180px] items-center gap-12 px-5 py-16 md:grid-cols-2 md:px-8">
         <div className="pt-4">
           <div className="mb-7 inline-flex items-center gap-2 rounded-full border border-[#2a2420]/15 px-4 py-2 font-mono text-[10px] uppercase tracking-[0.2em] text-[#4a423b]">
-            <span className="h-1.5 w-1.5 rounded-full bg-[#4A90E2]" />
+            <span className="h-1.5 w-1.5 rounded-full bg-[#69A5F0]" />
             ISOfit · workout tracker · made for iOS
           </div>
           <h1 className="font-display text-[clamp(46px,6vw,76px)] font-extrabold leading-[0.98] tracking-[-0.03em] text-[#2a2420]">
-            Your workouts, working <span className="text-[#4A90E2]">for you.</span>
+            Your workouts, working <span className="text-[#69A5F0]">for you.</span>
           </h1>
           <p className="mt-6 max-w-[480px] text-lg leading-relaxed text-[#4a423b]">
             Log every session in seconds with the cleanest workout tracker on iOS — then let <strong className="font-semibold text-[#b4583a]">Atlas mfc</strong>, your machine fitness coach, turn your training history into real coaching.
@@ -628,47 +605,6 @@ export default function Page() {
         </div>
       </section>
 
-      <section id="how" className="mx-auto grid w-full max-w-[1180px] items-center gap-12 px-5 py-20 md:grid-cols-2 md:px-8">
-        <div>
-          <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#3f5a32]">01 · Tracking &amp; consistency</p>
-          <h2 className="mt-4 font-display text-[clamp(32px,4vw,46px)] font-bold leading-tight tracking-[-0.02em]">Log in seconds. Reference for life.</h2>
-          <ul className="mt-6 space-y-4 text-[#4a423b]">
-            <li><strong className="font-semibold text-[#2a2420]">Log every workout</strong> — so that the habit sticks and the data accumulates.</li>
-            <li><strong className="font-semibold text-[#2a2420]">Voice, text, or autofill</strong> — so no session goes unrecorded.</li>
-            <li><strong className="font-semibold text-[#2a2420]">Automatic streak tracking</strong> — so showing up becomes your metric.</li>
-          </ul>
-        </div>
-        <div className="rounded-3xl border border-[#2a2420]/10 bg-white p-6 shadow-[0_22px_50px_rgba(42,36,32,0.1)]">
-          <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#7a7066]">Consistency · this month</p>
-          <div className="mt-4 grid grid-cols-7 gap-1.5">
-            {Array.from({ length: 35 }).map((_, i) => (
-              <div key={i} className={`aspect-square rounded ${i % 6 === 0 ? "bg-[#ece6d9]" : "bg-[#3f5a32]/80"}`} />
-            ))}
-          </div>
-          <div className="mt-5 flex gap-8 border-t border-[#2a2420]/10 pt-4">
-            <div><p className="font-display text-3xl font-bold">23</p><p className="font-mono text-xs uppercase tracking-[0.2em] text-[#7a7066]">day streak</p></div>
-            <div><p className="font-display text-3xl font-bold">28</p><p className="font-mono text-xs uppercase tracking-[0.2em] text-[#7a7066]">sessions</p></div>
-          </div>
-        </div>
-      </section>
-
-      <section className="border-y border-[#2a2420]/15 bg-[#fbf9f3]">
-        <div className="mx-auto grid w-full max-w-[1180px] items-center gap-12 px-5 py-20 md:grid-cols-2 md:px-8">
-          <div className="order-2 md:order-1">
-            <FormCard />
-          </div>
-          <div className="order-1 md:order-2">
-            <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#4A90E2]">02 · Form analysis &amp; progression</p>
-            <h2 className="mt-4 font-display text-[clamp(32px,4vw,46px)] font-bold leading-tight tracking-[-0.02em]">Fix the rep before it becomes a pattern.</h2>
-            <ul className="mt-6 space-y-4 text-[#4a423b]">
-              <li><strong className="font-semibold text-[#2a2420]">Point your camera at any lift</strong> — Atlas returns 1–3 corrections in plain language.</li>
-              <li><strong className="font-semibold text-[#2a2420]">Track volume and overload</strong> — plateaus show in data before the mirror.</li>
-              <li><strong className="font-semibold text-[#2a2420]">Use an interactive body graph</strong> — imbalances get caught, not guessed.</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
       <section id="coach" className="mx-auto grid w-full max-w-[1180px] items-center gap-12 px-5 py-20 md:grid-cols-2 md:px-8">
         <div>
           <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#b4583a]">03 · Personalized programming</p>
@@ -683,31 +619,16 @@ export default function Page() {
         </div>
       </section>
 
-      <section id="faq" className="mx-auto w-full max-w-[1180px] px-5 py-20 md:px-8">
-        <h2 className="mb-8 font-display text-[clamp(32px,4vw,46px)] font-bold leading-tight tracking-[-0.02em]">Questions, answered plainly.</h2>
-        <div className="border-y border-[#2a2420]/15">
-          {FAQS.map(([q, a], i) => (
-            <div key={q} className="border-t border-[#2a2420]/10 first:border-t-0">
-              <button className="flex w-full items-center justify-between gap-5 py-5 text-left" onClick={() => setOpenFaq(openFaq === i ? -1 : i)}>
-                <span className="font-display text-lg font-semibold">{q}</span>
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-[#2a2420]/15 text-[#4a423b]">{openFaq === i ? "−" : "+"}</span>
-              </button>
-              {openFaq === i && <p className="max-w-[620px] pb-5 text-[#4a423b]">{a}</p>}
-            </div>
-          ))}
-        </div>
-      </section>
-
       <section className="mx-auto w-full max-w-[1180px] px-5 pb-20 md:px-8">
         <div className="relative overflow-hidden rounded-3xl bg-[#2a2420] p-10 md:p-14">
           <div className="absolute inset-0 opacity-40">
             <ChalkGridBG opacity={0.32} />
           </div>
-          <div className="absolute inset-0" style={{ background: "radial-gradient(90% 120% at 100% 0%, rgba(74,144,226,0.2), transparent 55%)" }} />
+          <div className="absolute inset-0" style={{ background: "radial-gradient(90% 120% at 100% 0%, rgba(105,165,240,0.2), transparent 55%)" }} />
           <div className="relative max-w-[620px]">
             <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#f3efe6]/60">Join the waitlist</p>
             <h2 className="mt-4 font-display text-[clamp(34px,5vw,56px)] font-extrabold leading-[0.98] tracking-[-0.03em] text-[#f3efe6]">
-              Start training with a <span className="text-[#4A90E2]">new coach</span> who understands the data.
+              Start training with a <span className="text-[#69A5F0]">new coach</span> who understands the data.
             </h2>
             <p className="mt-4 max-w-[500px] text-[#f3efe6]/75">ISOfit is launching summer 2026. Be first in — no spam, just a heads-up when we launch.</p>
             <div className="mt-8">
@@ -722,53 +643,12 @@ export default function Page() {
           <LogoLockup />
           <div className="flex flex-wrap gap-6 font-mono text-[10px] uppercase tracking-[0.2em] text-[#7a7066]">
             <a href="https://isofit.app/privacy">Privacy Policy</a>
-            <a href="#">Contact</a>
+            <Link href="/faq">FAQ</Link>
+            <Link href="/info">Info</Link>
           </div>
           <p className="text-right font-mono text-[10px] uppercase tracking-[0.2em] text-[#7a7066]">© 2026 ISOfit · humbly designed in queens, NY</p>
         </div>
       </footer>
     </main>
-  );
-}
-
-function FormCard() {
-  const muscles = [
-    ["Chest", 82, "#4A90E2"],
-    ["Back", 64, "#4A90E2"],
-    ["Quads", 91, "#4A90E2"],
-    ["Shoulders", 38, "#b4583a"],
-    ["Hamstrings", 29, "#b4583a"],
-  ] as const;
-
-  return (
-    <div className="space-y-4 rounded-3xl border border-[#2a2420]/10 bg-white p-5">
-      <div className="aspect-[4/3] rounded-2xl bg-[repeating-linear-gradient(135deg,#ece6d9,#ece6d9_11px,#f3efe6_11px,#f3efe6_22px)] p-4">
-        <div className="inline-flex items-center gap-2 rounded-full bg-[#2a2420]/90 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-[#f3efe6]">
-          <span className="h-1.5 w-1.5 rounded-full bg-[#b4583a]" />
-          analysing · barbell row
-        </div>
-      </div>
-      <div className="rounded-2xl border border-[#2a2420]/10 p-4">
-        <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#b4583a]">3 corrections from Atlas</p>
-        <ul className="mt-3 space-y-2 text-sm">
-          <li>Brace your core before the pull, not during.</li>
-          <li>Lead with the elbows — keep wrists neutral.</li>
-          <li>Slow the lower; you&apos;re dropping the last third.</li>
-        </ul>
-        <div className="mt-4 border-t border-[#2a2420]/10 pt-4">
-          <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#7a7066]">Weekly volume · by group</p>
-          <div className="mt-2 space-y-2">
-            {muscles.map(([name, value, color]) => (
-              <div key={name} className="flex items-center gap-3">
-                <span className="w-24 text-xs text-[#4a423b]">{name}</span>
-                <div className="h-2 flex-1 rounded-full bg-[#ece6d9]">
-                  <div className="h-2 rounded-full" style={{ width: `${value}%`, background: color, opacity: color === "#b4583a" ? 0.7 : 1 }} />
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </div>
   );
 }
