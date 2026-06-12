@@ -557,10 +557,21 @@ export default function Page() {
           <nav className="hidden items-center gap-8 font-mono text-[10px] uppercase tracking-[0.2em] text-[#4a423b] md:flex">
             <Link href="#features">Features</Link>
             <Link href="#coach">The coach</Link>
+            <Link href="https://isofit.app/log">Workout Log</Link>
             <Link href="/faq">FAQ</Link>
             <Link href="/info">Info</Link>
           </nav>
-          <Link href="#waitlist-form" className="rounded-xl bg-[#67835a] px-4 py-2 font-display text-[13px] font-semibold text-white transition-colors hover:bg-[#5a7350]">Join the Waitlist</Link>
+          <div className="flex items-center gap-2">
+            <Link href="#waitlist-form" className="rounded-xl bg-[#67835a] px-4 py-2 font-display text-[13px] font-semibold text-white transition-colors hover:bg-[#5a7350]">
+              Join the Waitlist
+            </Link>
+            <Link
+              href="https://isofit.app/login"
+              className="rounded-xl border border-[#2a2420]/20 bg-white px-4 py-2 font-display text-[13px] font-semibold text-[#2a2420] transition-colors hover:bg-[#f8f5ee]"
+            >
+              Login
+            </Link>
+          </div>
         </div>
       </header>
 
