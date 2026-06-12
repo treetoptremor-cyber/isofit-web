@@ -1,7 +1,7 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { updateSession } from "@/lib/supabase/middleware";
 
-const PROTECTED_PATHS = ["/log", "/billing"];
+const PROTECTED_PATHS = ["/billing"];
 
 function isProtectedPath(pathname: string) {
   return PROTECTED_PATHS.some(
@@ -22,5 +22,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/log", "/billing/:path*"],
+  matcher: ["/billing/:path*"],
 };

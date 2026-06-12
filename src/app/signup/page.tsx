@@ -5,9 +5,11 @@ import { useRouter } from "next/navigation";
 import { type FormEvent, useState } from "react";
 import { AuthShell } from "@/components/pwa/auth-shell";
 import { createClient } from "@/lib/supabase/client";
+import { clearSyncedWorkouts, getStoredWorkouts, markWorkoutSynced } from "@/lib/workout-storage";
 
 export default function SignupPage() {
   const router = useRouter();
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -30,7 +32,7 @@ export default function SignupPage() {
       return;
     }
 
-    const { error } = await supabase.auth.signUp({
+    const { data, error } = await supabase.auth.signUp({
       email: email.trim(),
       password,
       options: {
@@ -41,13 +43,54 @@ export default function SignupPage() {
       },
     });
 
-    setIsSubmitting(false);
-
     if (error) {
+      setIsSubmitting(false);
       setErrorMessage(error.message);
       return;
     }
 
+    let accessToken = data.session?.access_token ?? null;
+
+    if (!accessToken) {
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+      accessToken = session?.access_token ?? null;
+    }
+
+    if (accessToken && supabaseUrl) {
+      const unsyncedWorkouts = getStoredWorkouts().filter((workout) => !workout.synced);
+
+      await Promise.all(
+        unsyncedWorkouts.map(async (workout) => {
+          try {
+            const response = await fetch(`${supabaseUrl}/functions/v1/submit-workout-log-pwa`, {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${accessToken}`,
+              },
+              body: JSON.stringify({
+                workout_type: workout.workout_type,
+                exercises: workout.exercises,
+                notes: workout.notes,
+                log_date: workout.log_date,
+              }),
+            });
+
+            if (response.ok) {
+              markWorkoutSynced(workout.id);
+            }
+          } catch {
+            // Continue syncing the remaining workouts.
+          }
+        }),
+      );
+
+      clearSyncedWorkouts();
+    }
+
+    setIsSubmitting(false);
     router.push("/log");
     router.refresh();
   }
