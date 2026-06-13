@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import localFont from "next/font/local";
 import { useState, type FormEvent } from "react";
 
 type Feature = {
@@ -55,6 +56,17 @@ const VALUE_PROPS = [
     tone: "light",
   },
 ] as const;
+
+const heroFont = localFont({
+  src: [
+    { path: "./fonts/Unbounded-Regular.ttf", weight: "400", style: "normal" },
+    { path: "./fonts/Unbounded-Medium.ttf", weight: "500", style: "normal" },
+    { path: "./fonts/Unbounded-Bold.ttf", weight: "700", style: "normal" },
+    { path: "./fonts/Unbounded-Black.ttf", weight: "800", style: "normal" },
+  ],
+  variable: "--font-hero",
+  display: "swap",
+});
 
 function IsoMark({ size = 28 }: { size?: number }) {
   return (
@@ -473,6 +485,16 @@ function ChatScreen() {
           </div>
         </div>
       </div>
+      <div className="pointer-events-none absolute inset-0 z-[60]">
+        <Image
+          src="/mockups/body-graph-phone.png"
+          alt="Body graph screen preview"
+          fill
+          sizes="(max-width: 768px) 90vw, 360px"
+          className="object-cover object-center scale-[1.12]"
+          priority
+        />
+      </div>
     </div>
   );
 }
@@ -508,7 +530,7 @@ export default function Page() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <main className="relative text-[#2a2420]">
+    <main className={`${heroFont.variable} relative text-[#2a2420]`}>
       <div
         aria-hidden
         className="pointer-events-none fixed inset-0 -z-10"
@@ -600,38 +622,39 @@ export default function Page() {
         </div>
       </header>
 
-      <section className="mx-auto flex min-h-[calc(100svh-72px)] w-full max-w-[1180px] flex-col justify-center px-4 pb-4 pt-8 sm:px-5 md:min-h-0 md:px-8 md:pt-12">
-        <div className="inline-flex items-center gap-2 rounded-full border border-[#2a2420]/15 px-4 py-2 font-mono text-[10px] uppercase tracking-[0.2em] text-[#4a423b]">
-          <span className="h-1.5 w-1.5 rounded-full bg-[#69A5F0]" />
-          ISOfit · workout tracker · made for iOS
+      <section className="mx-auto grid w-full max-w-[1180px] items-center gap-8 px-4 pb-4 pt-8 sm:px-5 md:grid-cols-2 md:gap-12 md:px-8 md:pt-12">
+        <div className="order-1 md:order-2">
+          <PhoneShell>
+            <ChatScreen />
+          </PhoneShell>
+          <ContextNote />
         </div>
-        <h1 className="mt-6 max-w-[920px] font-display text-[clamp(2.2rem,10vw,4.6rem)] font-extrabold leading-[0.98] tracking-[-0.03em] text-[#2a2420]">
-          You already know how to train. You just <span className="text-[#69A5F0]">stop.</span>
-        </h1>
-        <p className="mt-5 max-w-[980px] text-base leading-relaxed text-[#4a423b] sm:text-lg">
-          We care about the one variable that matters: whether or not you showed up. We designed a clean workout logger, a personal pocket fitness coach that knows your stats, a rewards currency that compounds with your consistency, and a community where proof of work speaks loudest.
-        </p>
-        <div className="mt-6 flex w-full max-w-[460px] flex-col gap-2.5 sm:flex-row">
-          <Link
-            href="#waitlist-form"
-            className="inline-flex h-12 items-center justify-center rounded-xl bg-[#67835a] px-5 font-display text-sm font-semibold text-white transition-colors hover:bg-[#5a7350]"
-          >
-            Join the Waitlist
-          </Link>
-          <Link
-            href="/log"
-            className="inline-flex h-12 items-center justify-center rounded-xl border border-[#2a2420]/15 bg-white px-5 font-display text-sm font-semibold text-[#2a2420] transition-colors hover:bg-[#f8f5ee]"
-          >
-            Open Workout Log
-          </Link>
+        <div className="order-2 md:order-1">
+          <div className="inline-flex items-center gap-2 rounded-full border border-[#2a2420]/15 px-4 py-2 font-mono text-[10px] uppercase tracking-[0.2em] text-[#4a423b]">
+            <span className="h-1.5 w-1.5 rounded-full bg-[#69A5F0]" />
+            ISOfit · workout tracker · made for iOS
+          </div>
+          <h1 className="mt-6 max-w-[920px] font-[var(--font-hero)] text-[clamp(2.2rem,10vw,4.6rem)] font-extrabold leading-[0.98] tracking-[-0.03em] text-[#2a2420]">
+            You already know how to train. You just <span className="text-[#69A5F0]">stop.</span>
+          </h1>
+          <p className="mt-5 max-w-[980px] text-base leading-relaxed text-[#4a423b] sm:text-lg">
+            We care about the one variable that matters: whether or not you showed up. We designed a clean workout logger, a personal pocket fitness coach that knows your stats, a rewards currency that compounds with your consistency, and a community where proof of work speaks loudest.
+          </p>
+          <div className="mt-6 flex w-full max-w-[460px] flex-col gap-2.5 sm:flex-row">
+            <Link
+              href="#waitlist-form"
+              className="inline-flex h-12 items-center justify-center rounded-xl bg-[#67835a] px-5 font-display text-sm font-semibold text-white transition-colors hover:bg-[#5a7350]"
+            >
+              Join the Waitlist
+            </Link>
+            <Link
+              href="/log"
+              className="inline-flex h-12 items-center justify-center rounded-xl border border-[#2a2420]/15 bg-white px-5 font-display text-sm font-semibold text-[#2a2420] transition-colors hover:bg-[#f8f5ee]"
+            >
+              Open Workout Log
+            </Link>
+          </div>
         </div>
-      </section>
-
-      <section className="mx-auto w-full max-w-[1180px] px-4 py-4 sm:px-5 md:px-8">
-        <PhoneShell>
-          <ChatScreen />
-        </PhoneShell>
-        <ContextNote />
       </section>
 
       <section id="waitlist" className="mx-auto w-full max-w-[1180px] px-4 py-8 sm:px-5 md:px-8 md:py-12">
