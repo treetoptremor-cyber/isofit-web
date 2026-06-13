@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import localFont from "next/font/local";
 import { useState, type FormEvent } from "react";
 
 type Feature = {
@@ -56,27 +55,6 @@ const VALUE_PROPS = [
     tone: "light",
   },
 ] as const;
-
-const heroFont = localFont({
-  src: [
-    { path: "./fonts/Unbounded-Regular.ttf", weight: "400", style: "normal" },
-    { path: "./fonts/Unbounded-Medium.ttf", weight: "500", style: "normal" },
-    { path: "./fonts/Unbounded-Bold.ttf", weight: "700", style: "normal" },
-    { path: "./fonts/Unbounded-Black.ttf", weight: "800", style: "normal" },
-  ],
-  variable: "--font-hero",
-  display: "swap",
-});
-
-function IsoMark({ size = 28 }: { size?: number }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 120 120" aria-hidden="true">
-      <path d="M60 12 L108 36 L60 60 L12 36 Z" fill="#69A5F0" />
-      <path d="M12 36 L60 60 L60 108 L12 84 Z" fill="#2d6cb8" />
-      <path d="M108 36 L60 60 L60 108 L108 84 Z" fill="#69A5F0" opacity="0.85" />
-    </svg>
-  );
-}
 
 function IsoLogo({ size = 34 }: { size?: number }) {
   return (
@@ -315,190 +293,6 @@ function ChalkGridBG({ opacity = 1 }: { opacity?: number }) {
   );
 }
 
-function IOSStatusBar() {
-  return (
-    <div className="relative z-10 flex items-center justify-between px-7 pb-1 pt-3.5">
-      <span className="text-[15px] font-semibold tracking-tight text-black">9:41</span>
-      <div className="flex items-center gap-1.5 text-black">
-        <svg width="18" height="11" viewBox="0 0 18 11" fill="currentColor" aria-hidden="true">
-          <rect x="0" y="7" width="3" height="4" rx="0.6" />
-          <rect x="5" y="5" width="3" height="6" rx="0.6" />
-          <rect x="10" y="2.5" width="3" height="8.5" rx="0.6" />
-          <rect x="15" y="0" width="3" height="11" rx="0.6" />
-        </svg>
-        <svg width="16" height="11" viewBox="0 0 16 11" fill="currentColor" aria-hidden="true">
-          <path d="M8 2.6c2.1 0 4 .8 5.4 2.2l1.1-1.1C13 2.1 10.6 1 8 1S3 2.1 1.5 3.7l1.1 1.1C4 3.4 5.9 2.6 8 2.6z" />
-          <path d="M8 6c1.1 0 2.1.4 2.8 1.2l1.1-1.1C10.8 5 9.5 4.4 8 4.4S5.2 5 4.1 6.1l1.1 1.1C5.9 6.4 6.9 6 8 6z" />
-          <circle cx="8" cy="9.4" r="1.4" />
-        </svg>
-        <svg width="26" height="12" viewBox="0 0 26 12" fill="none" aria-hidden="true">
-          <rect x="0.5" y="0.5" width="22" height="11" rx="3" stroke="currentColor" strokeOpacity="0.35" />
-          <rect x="2" y="2" width="19" height="8" rx="1.8" fill="currentColor" />
-          <path d="M24 4v4c.8-.3 1.4-1 1.4-2S24.8 4.3 24 4z" fill="currentColor" fillOpacity="0.4" />
-        </svg>
-      </div>
-    </div>
-  );
-}
-
-function PhoneShell({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="relative mx-auto w-full max-w-[340px] sm:max-w-[360px]">
-      <div className="relative overflow-hidden rounded-[46px] bg-[#f3efe6] shadow-[0_40px_80px_rgba(0,0,0,0.18),0_0_0_1px_rgba(0,0,0,0.12)]">
-        <div className="absolute left-1/2 top-2.5 z-50 h-[34px] w-[112px] -translate-x-1/2 rounded-full bg-black" />
-        <div className="absolute inset-x-0 top-0 z-40">
-          <IOSStatusBar />
-        </div>
-        {children}
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-50 flex justify-center pb-2">
-          <div className="h-[5px] w-[120px] rounded-full bg-black/25" />
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function PhoneChrome() {
-  return (
-    <div className="flex items-center justify-between px-4 pb-2 pt-3 sm:px-5">
-      <button className="flex h-9 w-9 items-center justify-center rounded-full bg-[#f3efe6]/90 shadow-[0_0_0_1px_rgba(42,36,32,0.08)]" aria-label="Menu">
-        <svg width="16" height="4" viewBox="0 0 16 4" fill="#4a423b" aria-hidden="true">
-          <circle cx="2" cy="2" r="1.6" />
-          <circle cx="8" cy="2" r="1.6" />
-          <circle cx="14" cy="2" r="1.6" />
-        </svg>
-      </button>
-      <div className="flex items-center gap-1.5 rounded-full bg-[#f3efe6]/90 px-3 py-1.5 shadow-[0_0_0_1px_rgba(42,36,32,0.08)]">
-        <IsoMark size={13} />
-        <span className="font-mono text-[9px] uppercase tracking-[0.18em] text-[#4a423b]">ISOfit · Atlas</span>
-      </div>
-      <button className="flex h-9 w-9 items-center justify-center rounded-full bg-[#f3efe6]/90 shadow-[0_0_0_1px_rgba(42,36,32,0.08)]" aria-label="Settings">
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-          <circle cx="7" cy="7" r="5" stroke="#4a423b" strokeWidth="1.5" />
-          <circle cx="7" cy="7" r="1.4" fill="#4a423b" />
-        </svg>
-      </button>
-    </div>
-  );
-}
-
-function SuggestIcon({ kind, color }: { kind: "moon" | "run" | "calendar"; color: string }) {
-  const s = { stroke: color, strokeWidth: 1.6, fill: "none", strokeLinecap: "round" as const, strokeLinejoin: "round" as const };
-  switch (kind) {
-    case "moon":
-      return (
-        <svg width="20" height="20" viewBox="0 0 22 22" aria-hidden="true">
-          <path d="M18 13A7 7 0 1 1 9 4c-.3 1-.4 2 0 3 .4 1.2 1.3 2.1 2.5 2.6 1.2.5 2.5.5 3.7 0 .8-.3 1.4-.8 1.8-1.5.5 1.6.5 3.3 0 4.9z" {...s} />
-        </svg>
-      );
-    case "run":
-      return (
-        <svg width="20" height="20" viewBox="0 0 22 22" aria-hidden="true">
-          <circle cx="14" cy="4.5" r="1.8" {...s} />
-          <path d="M7 20l3-5-3-3 3-4 4 2 4-1M5 10l2-2 4-1" {...s} />
-        </svg>
-      );
-    case "calendar":
-      return (
-        <svg width="20" height="20" viewBox="0 0 22 22" aria-hidden="true">
-          <rect x="3" y="5" width="16" height="14" rx="2" {...s} />
-          <path d="M3 9h16M7 3v4M15 3v4" {...s} />
-        </svg>
-      );
-  }
-}
-
-const CHAT_CARDS = [
-  { kicker: "Recovery", q: "How did I sleep last night, really?", meta: "62 bpm rhhr · 7h 12m", tone: "paper", icon: "moon" },
-  { kicker: "Today", q: "What should I do with my legs today?", meta: "Strain 9.4 · Recovery 71%", tone: "clay", icon: "run" },
-  { kicker: "Plan", q: "Build me a week around my half-marathon.", meta: "Race in 42 days", tone: "paper", icon: "calendar" },
-] as const;
-
-function SuggestCard({ kicker, q, meta, tone, icon }: (typeof CHAT_CARDS)[number]) {
-  const dark = tone === "clay";
-  return (
-    <div className={`flex items-start gap-3.5 rounded-[18px] px-4 py-3.5 ${dark ? "bg-[#b4583a]" : "bg-[#f3efe6]/90 shadow-[0_0_0_1px_rgba(42,36,32,0.08)]"}`}>
-      <div className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl ${dark ? "bg-white/15" : "bg-[#ece6d9]"}`}>
-        <SuggestIcon kind={icon} color={dark ? "#f3efe6" : "#4a423b"} />
-      </div>
-      <div className="min-w-0 flex-1">
-        <p className={`font-mono text-[9px] uppercase tracking-[0.18em] ${dark ? "text-[#f3efe6]/70" : "text-[#b4583a]"}`}>{kicker}</p>
-        <p className={`mt-1.5 font-display text-[15px] font-medium leading-tight ${dark ? "text-[#f3efe6]" : "text-[#2a2420]"}`}>{q}</p>
-        <p className={`mt-2 font-mono text-[8px] uppercase tracking-[0.18em] ${dark ? "text-[#f3efe6]/55" : "text-[#7a7066]"}`}>{meta}</p>
-      </div>
-      <svg width="9" height="15" viewBox="0 0 9 15" fill="none" className="mt-1 shrink-0" aria-hidden="true">
-        <path d="M1.5 1.5l6 6-6 6" stroke={dark ? "rgba(243,239,230,0.55)" : "#7a7066"} strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
-    </div>
-  );
-}
-
-function ChatScreen() {
-  return (
-    <div className="relative min-h-[640px]">
-      <ChalkGridBG />
-      <div className="relative flex min-h-[640px] flex-col pt-[52px]">
-        <PhoneChrome />
-        <div className="px-6 pt-3">
-          <p className="font-mono text-[9.5px] uppercase tracking-[0.18em] text-[#7a7066]">Tue · 06:12 · 54°f</p>
-          <h3 className="mt-3 font-display text-[32px] font-bold leading-none tracking-[-0.02em] text-[#2a2420]">
-            Good morning,
-            <br />
-            <span className="text-[#b4583a]">Morgan.</span>
-          </h3>
-          <p className="mt-3 max-w-[280px] text-[13.5px] leading-snug text-[#4a423b]">
-            You recovered at <b className="font-semibold text-[#2a2420]">71%</b> — the best week you&apos;ve had in three. Ask me anything.
-          </p>
-        </div>
-        <div className="flex items-center justify-between px-6 pb-2 pt-5">
-          <span className="font-mono text-[9.5px] uppercase tracking-[0.18em] text-[#7a7066]">Ask Atlas</span>
-          <span className="flex items-center gap-1.5 font-mono text-[9px] uppercase tracking-[0.18em] text-[#7a7066]">
-            Shuffle
-            <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true">
-              <path d="M1 3.5h7l-2-2M10 7.5H3l2 2" stroke="#7a7066" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </span>
-        </div>
-        <div className="flex flex-col gap-2.5 px-5">
-          {CHAT_CARDS.map((c) => (
-            <SuggestCard key={c.q} {...c} />
-          ))}
-        </div>
-        <div className="h-6" />
-        <div
-          className="sticky bottom-0 mt-auto px-4 pb-7 pt-6"
-          style={{ background: "linear-gradient(180deg, rgba(243,239,230,0) 0%, rgba(243,239,230,0.9) 38%, #f3efe6 70%)" }}
-        >
-          <div className="flex items-center gap-2 rounded-[24px] bg-white py-2 pl-5 pr-2 shadow-[0_10px_30px_rgba(42,36,32,0.12),0_0_0_1px_rgba(42,36,32,0.08)] ring-2 ring-[#3f5a32]/40">
-            <span className="flex-1 text-[14px] text-[#7a7066]">Ask Atlas anything…</span>
-            <button className="flex h-9 w-9 items-center justify-center rounded-full bg-[#ece6d9]" aria-label="Voice input">
-              <svg width="12" height="18" viewBox="0 0 12 18" fill="none" aria-hidden="true">
-                <rect x="3" y="1" width="6" height="11" rx="3" fill="#4a423b" />
-                <path d="M1 9c0 2.8 2.2 5 5 5s5-2.2 5-5M6 14v3" stroke="#4a423b" strokeWidth="1.6" strokeLinecap="round" />
-              </svg>
-            </button>
-            <button className="flex h-9 w-9 items-center justify-center rounded-full bg-[#b4583a]" aria-label="Send">
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                <path d="M7 13V3M3 7l4-4 4 4" stroke="#f3efe6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </button>
-          </div>
-        </div>
-      </div>
-      <div className="pointer-events-none absolute inset-0 z-[60]">
-        <Image
-          src="/mockups/body-graph-phone.png"
-          alt="Body graph screen preview"
-          fill
-          sizes="(max-width: 768px) 90vw, 360px"
-          className="object-cover object-center scale-[1.12]"
-          priority
-        />
-      </div>
-    </div>
-  );
-}
-
 function FeatureIcon({ kind, color }: { kind: Feature["icon"]; color: string }) {
   const s = { stroke: color, strokeWidth: 1.7, fill: "none", strokeLinecap: "round" as const, strokeLinejoin: "round" as const };
   const p = { width: 24, height: 24, viewBox: "0 0 28 28", "aria-hidden": true } as const;
@@ -522,15 +316,11 @@ function FeatureIcon({ kind, color }: { kind: Feature["icon"]; color: string }) 
   }
 }
 
-function ContextNote() {
-  return <p className="mt-8 text-center font-mono text-[8.5px] uppercase tracking-[0.18em] text-[#7a7066] sm:mt-14">Images are for context only</p>;
-}
-
 export default function Page() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <main className={`${heroFont.variable} relative text-[#2a2420]`}>
+    <main className="relative text-[#2a2420]">
       <div
         aria-hidden
         className="pointer-events-none fixed inset-0 -z-10"
@@ -541,7 +331,7 @@ export default function Page() {
       >
         <ChalkGridBG opacity={0.4} />
       </div>
-      <header className="sticky top-0 z-40 border-b border-[#2a2420]/15 bg-[#f3efe6]/85 backdrop-blur">
+      <header className="sticky top-0 z-[120] border-b border-[#2a2420]/15 bg-[#f3efe6]/85 backdrop-blur">
         <div className="mx-auto flex w-full max-w-[1180px] items-center justify-between gap-4 px-4 py-3 sm:px-5 md:px-8">
           <div className="shrink-0">
             <LogoLockup />
@@ -623,18 +413,25 @@ export default function Page() {
       </header>
 
       <section className="mx-auto grid w-full max-w-[1180px] items-center gap-8 px-4 pb-4 pt-8 sm:px-5 md:grid-cols-2 md:gap-12 md:px-8 md:pt-12">
-        <div className="order-1 md:order-2">
-          <PhoneShell>
-            <ChatScreen />
-          </PhoneShell>
-          <ContextNote />
+        <div className="order-2 md:order-2">
+          <div className="mx-auto w-full max-w-[430px] md:max-w-[560px]">
+            <Image
+              src="/mockups/body-graph-phone.png"
+              alt="ISOfit body graph phone mockup"
+              width={576}
+              height={1024}
+              preload
+              sizes="(max-width: 768px) 86vw, (max-width: 1200px) 42vw, 520px"
+              className="h-auto w-full"
+            />
+          </div>
         </div>
-        <div className="order-2 md:order-1">
+        <div className="order-1 md:order-1">
           <div className="inline-flex items-center gap-2 rounded-full border border-[#2a2420]/15 px-4 py-2 font-mono text-[10px] uppercase tracking-[0.2em] text-[#4a423b]">
             <span className="h-1.5 w-1.5 rounded-full bg-[#69A5F0]" />
             ISOfit · workout tracker · made for iOS
           </div>
-          <h1 className="mt-6 max-w-[920px] font-[var(--font-hero)] text-[clamp(2.2rem,10vw,4.6rem)] font-extrabold leading-[0.98] tracking-[-0.03em] text-[#2a2420]">
+          <h1 className="mt-6 max-w-[920px] font-display text-[clamp(2.2rem,10vw,4.6rem)] font-extrabold leading-[0.98] tracking-[-0.03em] text-[#2a2420]">
             You already know how to train. You just <span className="text-[#69A5F0]">stop.</span>
           </h1>
           <p className="mt-5 max-w-[980px] text-base leading-relaxed text-[#4a423b] sm:text-lg">
