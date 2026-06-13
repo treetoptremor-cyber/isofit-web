@@ -37,10 +37,10 @@ const FAQS = [
 
 export default function FaqPage() {
   return (
-    <main className="min-h-screen bg-[#f3efe6] px-5 py-14 text-[#2a2420] md:px-8">
+    <main className="min-h-screen bg-[#f3efe6] px-4 py-8 text-[#2a2420] sm:px-5 md:px-8 md:py-12">
       <div className="mx-auto w-full max-w-[920px]">
-        <div className="mb-8 flex items-center justify-between gap-4">
-          <h1 className="font-display text-[clamp(34px,5vw,52px)] font-bold tracking-[-0.02em]">
+        <div className="mb-6 flex flex-col items-start gap-3 sm:mb-8 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
+          <h1 className="font-display text-[clamp(2rem,9vw,3.25rem)] font-bold tracking-[-0.02em]">
             FAQ
           </h1>
           <Link
@@ -53,8 +53,8 @@ export default function FaqPage() {
 
         <div className="rounded-3xl border border-[#2a2420]/10 bg-white shadow-[0_20px_45px_rgba(42,36,32,0.08)]">
           {FAQS.map((item) => (
-            <section key={item.question} className="border-b border-[#2a2420]/10 p-6 last:border-b-0">
-              <h2 className="font-display text-xl font-semibold">{item.question}</h2>
+            <section key={item.question} className="border-b border-[#2a2420]/10 p-5 last:border-b-0 sm:p-6">
+              <h2 className="font-display text-lg font-semibold sm:text-xl">{item.question}</h2>
               <p className="mt-2 text-[15px] leading-7 text-[#4a423b]">{item.answer}</p>
             </section>
           ))}

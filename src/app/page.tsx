@@ -24,6 +24,38 @@ const FEATURES: Feature[] = [
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+const PRIMARY_NAV_LINKS = [
+  { href: "#features", label: "Features" },
+  { href: "#coach", label: "The coach" },
+  { href: "/log", label: "Workout Log" },
+  { href: "/faq", label: "FAQ" },
+  { href: "/info", label: "Info" },
+] as const;
+
+const VALUE_PROPS = [
+  {
+    id: "coach",
+    title: "Atlas MFC - Machine Fitness Coach",
+    copy:
+      "Nine specialized training domains: from strength, cardio, and hypertrophy, to combat sports and recovery. A machine fitness coach that remembers you and adapts to your goals.",
+    tone: "light",
+  },
+  {
+    id: "iso",
+    title: "$ISO - Earned, Never Given",
+    copy:
+      "There is no way to buy $ISO. The only way in is consistency: log your training, hold your streak, watch it compound. Then spend it on things that matter to you.",
+    tone: "dark",
+  },
+  {
+    id: "bonfire",
+    title: "The Bonfire - Where Good Form Gets Famous",
+    copy:
+      "Share your workouts, your PRs, and your best lifts. The community votes, and the top posts become the form references everyone else learns from. When your post earns attention, it earns you $ISO too.",
+    tone: "light",
+  },
+] as const;
+
 function IsoMark({ size = 28 }: { size?: number }) {
   return (
     <svg width={size} height={size} viewBox="0 0 120 120" aria-hidden="true">
@@ -151,10 +183,10 @@ function WaitlistForm({
     <form
       id={formId}
       onSubmit={handleSubmit}
-      className={`${compact ? "max-w-[460px]" : "max-w-[520px]"} scroll-mt-28`}
+      className={`${compact ? "w-full max-w-[460px]" : "w-full max-w-[560px]"} scroll-mt-28`}
     >
       <div className={`space-y-2 rounded-2xl border p-2 ${dark ? "border-white/20 bg-white/10" : "border-[#2a2420]/10 bg-white"} shadow-[0_12px_30px_rgba(42,36,32,0.1)]`}>
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-col gap-2 sm:flex-row">
           <input
             type="text"
             required
@@ -165,7 +197,7 @@ function WaitlistForm({
             }}
             disabled={status === "loading"}
             placeholder="First name"
-            className={`h-12 min-w-[140px] flex-1 rounded-xl border px-3 outline-none transition-colors disabled:opacity-60 ${
+            className={`h-12 w-full rounded-xl border px-3 outline-none transition-colors disabled:opacity-60 sm:min-w-[140px] sm:flex-1 ${
               dark
                 ? "border-[#243140] bg-[#1A2430] text-[#E6EDF3] placeholder:text-[#6B7C8F] focus:border-[#6B8AFD]"
                 : "border-[#2a2420]/10 bg-white text-[#2a2420] placeholder:text-[#7a7066] focus:border-[#69A5F0]"
@@ -181,14 +213,14 @@ function WaitlistForm({
             }}
             disabled={status === "loading"}
             placeholder="Last name"
-            className={`h-12 min-w-[140px] flex-1 rounded-xl border px-3 outline-none transition-colors disabled:opacity-60 ${
+            className={`h-12 w-full rounded-xl border px-3 outline-none transition-colors disabled:opacity-60 sm:min-w-[140px] sm:flex-1 ${
               dark
                 ? "border-[#243140] bg-[#1A2430] text-[#E6EDF3] placeholder:text-[#6B7C8F] focus:border-[#6B8AFD]"
                 : "border-[#2a2420]/10 bg-white text-[#2a2420] placeholder:text-[#7a7066] focus:border-[#69A5F0]"
             }`}
           />
         </div>
-        <div className="flex flex-wrap items-center gap-2">
+        <div className="flex flex-col items-stretch gap-2 sm:flex-row sm:items-center">
         <input
           type="email"
           required
@@ -199,7 +231,7 @@ function WaitlistForm({
           }}
           disabled={status === "loading"}
           placeholder="you@email.com"
-          className={`h-12 min-w-[180px] flex-1 rounded-xl border px-3 outline-none transition-colors disabled:opacity-60 ${
+          className={`h-12 w-full rounded-xl border px-3 outline-none transition-colors disabled:opacity-60 sm:min-w-[180px] sm:flex-1 ${
             dark
               ? "border-[#243140] bg-[#1A2430] text-[#E6EDF3] placeholder:text-[#6B7C8F] focus:border-[#6B8AFD]"
               : "border-[#2a2420]/10 bg-white text-[#2a2420] placeholder:text-[#7a7066] focus:border-[#69A5F0]"
@@ -208,7 +240,7 @@ function WaitlistForm({
         <button
           type="submit"
           disabled={isDisabled}
-          className={`flex h-12 items-center gap-2 rounded-xl px-5 font-display text-[15px] font-semibold text-white transition-colors ${
+          className={`flex h-12 w-full items-center justify-center gap-2 rounded-xl px-5 font-display text-[15px] font-semibold text-white transition-colors sm:w-auto ${
             hasRequiredFields
               ? "bg-[#67835a] hover:bg-[#5a7350] shadow-[0_6px_16px_rgba(103,131,90,0.33)]"
               : "cursor-not-allowed bg-[#69A5F0] shadow-[0_6px_16px_rgba(105,165,240,0.33)]"
@@ -299,7 +331,7 @@ function IOSStatusBar() {
 
 function PhoneShell({ children }: { children: React.ReactNode }) {
   return (
-    <div className="relative mx-auto w-full max-w-[360px]">
+    <div className="relative mx-auto w-full max-w-[340px] sm:max-w-[360px]">
       <div className="relative overflow-hidden rounded-[46px] bg-[#f3efe6] shadow-[0_40px_80px_rgba(0,0,0,0.18),0_0_0_1px_rgba(0,0,0,0.12)]">
         <div className="absolute left-1/2 top-2.5 z-50 h-[34px] w-[112px] -translate-x-1/2 rounded-full bg-black" />
         <div className="absolute inset-x-0 top-0 z-40">
@@ -316,7 +348,7 @@ function PhoneShell({ children }: { children: React.ReactNode }) {
 
 function PhoneChrome() {
   return (
-    <div className="flex items-center justify-between px-5 pb-2 pt-3">
+    <div className="flex items-center justify-between px-4 pb-2 pt-3 sm:px-5">
       <button className="flex h-9 w-9 items-center justify-center rounded-full bg-[#f3efe6]/90 shadow-[0_0_0_1px_rgba(42,36,32,0.08)]" aria-label="Menu">
         <svg width="16" height="4" viewBox="0 0 16 4" fill="#4a423b" aria-hidden="true">
           <circle cx="2" cy="2" r="1.6" />
@@ -445,72 +477,6 @@ function ChatScreen() {
   );
 }
 
-function AtlasMark({ size = 64 }: { size?: number }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 120 120" fill="none" aria-hidden="true">
-      <path d="M22 82C22 74 38 68 58 68 84 68 96 76 96 84 96 92 78 96 58 96 38 96 22 92 22 82Z" fill="#3f5a32" />
-      <g transform="rotate(-5 62 52)">
-        <path d="M36 52C36 44 48 40 62 40 76 40 86 46 86 54 86 60 74 64 62 64 48 64 36 60 36 52Z" fill="#2a2420" />
-      </g>
-      <g transform="rotate(6 64 25)">
-        <path d="M50 22C50 16 58 14 64 14 72 14 78 18 78 26 78 32 70 36 64 36 58 36 50 32 50 26Z" fill="#b4583a" />
-      </g>
-    </svg>
-  );
-}
-
-const ABOUT_CARDS = [
-  { n: "01", title: "Listens.", body: "Pairs with your wearables and the way you actually live. Trends over time — not single-day noise.", tone: "paper" },
-  { n: "02", title: "Reads the signal.", body: "Past surface numbers to the system underneath: load, recovery, and the rhythm between them.", tone: "clay" },
-  { n: "03", title: "Coaches, gently.", body: "One call a day, phrased like a friend who knows the science. No streaks, no guilt.", tone: "paper" },
-] as const;
-
-function AboutScreen() {
-  return (
-    <div className="relative min-h-[640px]">
-      <ChalkGridBG />
-      <div className="relative pt-[52px]">
-        <PhoneChrome />
-        <div className="px-6 pt-4">
-          <AtlasMark size={64} />
-          <p className="mt-5 font-display text-[26px] font-bold tracking-[-0.02em] text-[#2a2420]">
-            Atlas <span className="lowercase text-[#b4583a]">mfc</span>
-          </p>
-          <p className="mt-2.5 font-mono text-[9.5px] uppercase tracking-[0.18em] text-[#7a7066]">Machine Fitness Coach</p>
-          <h3 className="mt-5 font-display text-[30px] font-bold leading-none tracking-[-0.02em] text-[#2a2420]">
-            A coach
-            <br />
-            for the <span className="text-[#b4583a]">machine</span>
-            <br />
-            you move in.
-          </h3>
-          <p className="mt-4 max-w-[300px] text-[13.5px] leading-snug text-[#4a423b]">
-            Atlas listens to the signals your body already sends — heart, sleep, strain, recovery — and turns them into a plan that meets you where you are today.
-          </p>
-        </div>
-        <div className="px-5 pb-8 pt-7">
-          <p className="px-1 pb-3 font-mono text-[9.5px] uppercase tracking-[0.18em] text-[#7a7066]">How it works</p>
-          <div className="flex flex-col gap-2.5">
-            {ABOUT_CARDS.map((c) => {
-              const dark = c.tone === "clay";
-              return (
-                <div
-                  key={c.n}
-                  className={`rounded-[18px] px-5 py-4 ${dark ? "bg-[#b4583a] text-[#f3efe6]" : "bg-[#f3efe6]/90 text-[#2a2420] shadow-[0_0_0_1px_rgba(42,36,32,0.08)]"}`}
-                >
-                  <p className={`font-mono text-[9px] uppercase tracking-[0.18em] ${dark ? "text-[#f3efe6]/70" : "text-[#b4583a]"}`}>{c.n}</p>
-                  <p className="mt-1.5 font-display text-[20px] font-semibold tracking-[-0.01em]">{c.title}</p>
-                  <p className={`mt-1.5 text-[13px] leading-snug ${dark ? "text-[#f3efe6]/85" : "text-[#4a423b]"}`}>{c.body}</p>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
 function FeatureIcon({ kind, color }: { kind: Feature["icon"]; color: string }) {
   const s = { stroke: color, strokeWidth: 1.7, fill: "none", strokeLinecap: "round" as const, strokeLinejoin: "round" as const };
   const p = { width: 24, height: 24, viewBox: "0 0 28 28", "aria-hidden": true } as const;
@@ -535,10 +501,12 @@ function FeatureIcon({ kind, color }: { kind: Feature["icon"]; color: string }) 
 }
 
 function ContextNote() {
-  return <p className="mt-14 text-center font-mono text-[8.5px] uppercase tracking-[0.18em] text-[#7a7066]">Images are for context only</p>;
+  return <p className="mt-8 text-center font-mono text-[8.5px] uppercase tracking-[0.18em] text-[#7a7066] sm:mt-14">Images are for context only</p>;
 }
 
 export default function Page() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   return (
     <main className="relative text-[#2a2420]">
       <div
@@ -552,86 +520,183 @@ export default function Page() {
         <ChalkGridBG opacity={0.4} />
       </div>
       <header className="sticky top-0 z-40 border-b border-[#2a2420]/15 bg-[#f3efe6]/85 backdrop-blur">
-        <div className="mx-auto flex h-[68px] w-full max-w-[1180px] items-center justify-between px-5 md:px-8">
-          <LogoLockup />
+        <div className="mx-auto flex w-full max-w-[1180px] items-center justify-between gap-4 px-4 py-3 sm:px-5 md:px-8">
+          <div className="shrink-0">
+            <LogoLockup />
+          </div>
           <nav className="hidden items-center gap-8 font-mono text-[10px] uppercase tracking-[0.2em] text-[#4a423b] md:flex">
-            <Link href="#features">Features</Link>
-            <Link href="#coach">The coach</Link>
-            <Link href="https://isofit.app/log">Workout Log</Link>
-            <Link href="/faq">FAQ</Link>
-            <Link href="/info">Info</Link>
+            {PRIMARY_NAV_LINKS.map((item) => (
+              <Link key={item.href} href={item.href}>
+                {item.label}
+              </Link>
+            ))}
           </nav>
-          <div className="flex items-center gap-2">
+          <div className="hidden items-center gap-2 md:flex">
             <Link href="#waitlist-form" className="rounded-xl bg-[#67835a] px-4 py-2 font-display text-[13px] font-semibold text-white transition-colors hover:bg-[#5a7350]">
               Join the Waitlist
             </Link>
             <Link
-              href="https://isofit.app/login"
+              href="/login"
               className="rounded-xl border border-[#2a2420]/20 bg-white px-4 py-2 font-display text-[13px] font-semibold text-[#2a2420] transition-colors hover:bg-[#f8f5ee]"
             >
               Login
             </Link>
           </div>
+          <div className="relative md:hidden">
+            <button
+              type="button"
+              aria-expanded={isMobileMenuOpen}
+              aria-controls="mobile-nav-panel"
+              onClick={() => setIsMobileMenuOpen((open) => !open)}
+              className="flex items-center gap-2 rounded-xl border border-[#2a2420]/20 bg-white px-3 py-2 font-mono text-[10px] uppercase tracking-[0.18em] text-[#2a2420]"
+            >
+              Menu
+              <span className={`text-sm leading-none transition-transform ${isMobileMenuOpen ? "rotate-180" : ""}`}>v</span>
+            </button>
+            {isMobileMenuOpen ? (
+              <>
+                <button
+                  type="button"
+                  aria-label="Close mobile menu"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="fixed inset-0 z-40 bg-[#2a2420]/10"
+                />
+                <div
+                  id="mobile-nav-panel"
+                  className="absolute right-0 top-[calc(100%+10px)] z-50 w-[min(86vw,290px)] rounded-2xl border border-[#2a2420]/15 bg-white p-3 shadow-[0_20px_40px_rgba(42,36,32,0.15)]"
+                >
+                  <nav className="flex flex-col gap-1">
+                    {PRIMARY_NAV_LINKS.map((item) => (
+                      <Link
+                        key={item.href}
+                        href={item.href}
+                        onClick={() => setIsMobileMenuOpen(false)}
+                        className="rounded-lg px-2 py-2 font-mono text-[10px] uppercase tracking-[0.18em] text-[#4a423b] hover:bg-[#f8f5ee]"
+                      >
+                        {item.label}
+                      </Link>
+                    ))}
+                  </nav>
+                  <div className="mt-3 flex flex-col gap-2">
+                    <Link
+                      href="#waitlist-form"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="rounded-xl bg-[#67835a] px-4 py-2 text-center font-display text-[13px] font-semibold text-white transition-colors hover:bg-[#5a7350]"
+                    >
+                      Join the Waitlist
+                    </Link>
+                    <Link
+                      href="/login"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="rounded-xl border border-[#2a2420]/20 bg-white px-4 py-2 text-center font-display text-[13px] font-semibold text-[#2a2420] transition-colors hover:bg-[#f8f5ee]"
+                    >
+                      Login
+                    </Link>
+                  </div>
+                </div>
+              </>
+            ) : null}
+          </div>
         </div>
       </header>
 
-      <section className="mx-auto grid w-full max-w-[1180px] items-center gap-12 px-5 py-16 md:grid-cols-2 md:px-8">
-        <div className="pt-4">
-          <div className="mb-7 inline-flex items-center gap-2 rounded-full border border-[#2a2420]/15 px-4 py-2 font-mono text-[10px] uppercase tracking-[0.2em] text-[#4a423b]">
-            <span className="h-1.5 w-1.5 rounded-full bg-[#69A5F0]" />
-            ISOfit · workout tracker · made for iOS
-          </div>
-          <h1 className="font-display text-[clamp(46px,6vw,76px)] font-extrabold leading-[0.98] tracking-[-0.03em] text-[#2a2420]">
-            Your workouts, working <span className="text-[#69A5F0]">for you.</span>
-          </h1>
-          <p className="mt-6 max-w-[480px] text-lg leading-relaxed text-[#4a423b]">
-            Log every session in seconds with the cleanest workout tracker on iOS — then let <strong className="font-semibold text-[#b4583a]">Atlas mfc</strong>, your machine fitness coach, turn your training history into real coaching.
+      <section className="mx-auto flex min-h-[calc(100svh-72px)] w-full max-w-[1180px] flex-col justify-center px-4 pb-4 pt-8 sm:px-5 md:min-h-0 md:px-8 md:pt-12">
+        <div className="inline-flex items-center gap-2 rounded-full border border-[#2a2420]/15 px-4 py-2 font-mono text-[10px] uppercase tracking-[0.2em] text-[#4a423b]">
+          <span className="h-1.5 w-1.5 rounded-full bg-[#69A5F0]" />
+          ISOfit · workout tracker · made for iOS
+        </div>
+        <h1 className="mt-6 max-w-[920px] font-display text-[clamp(2.2rem,10vw,4.6rem)] font-extrabold leading-[0.98] tracking-[-0.03em] text-[#2a2420]">
+          You already know how to train. You just <span className="text-[#69A5F0]">stop.</span>
+        </h1>
+        <p className="mt-5 max-w-[980px] text-base leading-relaxed text-[#4a423b] sm:text-lg">
+          We care about the one variable that matters: whether or not you showed up. We designed a clean workout logger, a personal pocket fitness coach that knows your stats, a rewards currency that compounds with your consistency, and a community where proof of work speaks loudest.
+        </p>
+        <div className="mt-6 flex w-full max-w-[460px] flex-col gap-2.5 sm:flex-row">
+          <Link
+            href="#waitlist-form"
+            className="inline-flex h-12 items-center justify-center rounded-xl bg-[#67835a] px-5 font-display text-sm font-semibold text-white transition-colors hover:bg-[#5a7350]"
+          >
+            Join the Waitlist
+          </Link>
+          <Link
+            href="/log"
+            className="inline-flex h-12 items-center justify-center rounded-xl border border-[#2a2420]/15 bg-white px-5 font-display text-sm font-semibold text-[#2a2420] transition-colors hover:bg-[#f8f5ee]"
+          >
+            Open Workout Log
+          </Link>
+        </div>
+      </section>
+
+      <section className="mx-auto w-full max-w-[1180px] px-4 py-4 sm:px-5 md:px-8">
+        <PhoneShell>
+          <ChatScreen />
+        </PhoneShell>
+        <ContextNote />
+      </section>
+
+      <section id="waitlist" className="mx-auto w-full max-w-[1180px] px-4 py-8 sm:px-5 md:px-8 md:py-12">
+        <div className="rounded-3xl border border-[#2a2420]/10 bg-white p-4 shadow-[0_16px_40px_rgba(42,36,32,0.08)] sm:p-6">
+          <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-[#7a7066]">Get early access</p>
+          <h2 className="mt-2 font-display text-[clamp(1.75rem,6vw,2.4rem)] font-bold tracking-[-0.02em]">
+            Start with consistency.
+          </h2>
+          <p className="mt-2 max-w-[720px] text-[15px] text-[#4a423b]">
+            Join the waitlist to get launch access and be first in line for Atlas MFC, $ISO rewards, and The Bonfire.
           </p>
-          <div id="waitlist" className="mt-8">
+          <div className="mt-5">
             <WaitlistForm formId="waitlist-form" />
           </div>
-        </div>
-        <div>
-          <PhoneShell>
-            <ChatScreen />
-          </PhoneShell>
-          <ContextNote />
         </div>
       </section>
 
       <section id="features" className="border-y border-[#2a2420]/15 bg-[#fbf9f3]">
-        <div className="mx-auto w-full max-w-[1180px] px-5 py-16 md:px-8">
-          <h2 className="mb-10 max-w-[520px] font-display text-3xl font-semibold leading-tight tracking-[-0.015em] md:text-4xl">One iOS app, numerous paths to your next PR.</h2>
-          <div className="grid gap-x-8 gap-y-8 sm:grid-cols-2 lg:grid-cols-4">
-            {FEATURES.map((f) => (
-              <article key={f.title} className="space-y-3">
-                <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-[#2a2420]/10 bg-white shadow-[0_1px_0_rgba(42,36,32,0.04)]">
-                  <FeatureIcon kind={f.icon} color={f.color} />
-                </div>
-                <h3 className="font-display text-base font-semibold">{f.title}</h3>
-                <p className="text-sm text-[#4a423b]">{f.copy}</p>
-              </article>
-            ))}
+        <div className="mx-auto w-full max-w-[1180px] px-4 py-12 sm:px-5 md:px-8 md:py-16">
+          <h2 className="max-w-[620px] font-display text-[clamp(1.9rem,7vw,3rem)] font-semibold leading-tight tracking-[-0.02em]">
+            Value props that reward showing up.
+          </h2>
+          <div className="mt-8 grid gap-4 md:grid-cols-3">
+            {VALUE_PROPS.map((block) => {
+              const isDark = block.tone === "dark";
+              return (
+                <article
+                  id={block.id}
+                  key={block.title}
+                  className={`rounded-3xl border p-5 shadow-[0_14px_30px_rgba(42,36,32,0.07)] sm:p-6 ${
+                    isDark
+                      ? "border-[#2a2420]/10 bg-[#2a2420] text-[#f3efe6]"
+                      : "border-[#2a2420]/10 bg-white text-[#2a2420]"
+                  }`}
+                >
+                  <h3 className="font-display text-[1.45rem] font-semibold leading-tight tracking-[-0.015em]">{block.title}</h3>
+                  <p className={`mt-3 text-[15px] leading-7 ${isDark ? "text-[#f3efe6]/85" : "text-[#4a423b]"}`}>
+                    {block.copy}
+                  </p>
+                </article>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      <section id="coach" className="mx-auto grid w-full max-w-[1180px] items-center gap-12 px-5 py-20 md:grid-cols-2 md:px-8">
-        <div>
-          <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#b4583a]">03 · Personalized programming</p>
-          <h2 className="mt-4 font-display text-[clamp(32px,4vw,46px)] font-bold leading-tight tracking-[-0.02em]">Coaching built from your day to day.</h2>
-          <p className="mt-6 text-[#4a423b]">Atlas operates across specialized domains and adapts your plan to frequency, recovery, and progression logic.</p>
-        </div>
-        <div>
-          <PhoneShell>
-            <AboutScreen />
-          </PhoneShell>
-          <ContextNote />
+      <section className="mx-auto w-full max-w-[1180px] px-4 py-12 sm:px-5 md:px-8 md:py-16">
+        <h2 className="mb-8 max-w-[520px] font-display text-2xl font-semibold leading-tight tracking-[-0.015em] sm:text-3xl md:mb-10 md:text-4xl">
+          One app, many ways to train smarter.
+        </h2>
+        <div className="grid gap-x-8 gap-y-8 sm:grid-cols-2 lg:grid-cols-4">
+          {FEATURES.map((f) => (
+            <article key={f.title} className="space-y-3">
+              <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-[#2a2420]/10 bg-white shadow-[0_1px_0_rgba(42,36,32,0.04)]">
+                <FeatureIcon kind={f.icon} color={f.color} />
+              </div>
+              <h3 className="font-display text-base font-semibold">{f.title}</h3>
+              <p className="text-sm text-[#4a423b]">{f.copy}</p>
+            </article>
+          ))}
         </div>
       </section>
 
-      <section className="mx-auto w-full max-w-[1180px] px-5 pb-20 md:px-8">
-        <div className="relative overflow-hidden rounded-3xl bg-[#2a2420] p-10 md:p-14">
+      <section className="mx-auto w-full max-w-[1180px] px-4 pb-14 sm:px-5 md:px-8 md:pb-20">
+        <div className="relative overflow-hidden rounded-3xl bg-[#2a2420] p-6 sm:p-8 md:p-14">
           <div className="absolute inset-0 opacity-40">
             <ChalkGridBG opacity={0.32} />
           </div>
@@ -650,14 +715,14 @@ export default function Page() {
       </section>
 
       <footer className="border-t border-[#2a2420]/15">
-        <div className="mx-auto flex w-full max-w-[1180px] flex-wrap items-center justify-between gap-5 px-5 py-10 md:px-8">
+        <div className="mx-auto flex w-full max-w-[1180px] flex-col items-start gap-5 px-4 py-8 sm:px-5 md:flex-row md:items-center md:justify-between md:px-8 md:py-10">
           <LogoLockup />
           <div className="flex flex-wrap gap-6 font-mono text-[10px] uppercase tracking-[0.2em] text-[#7a7066]">
-            <a href="https://isofit.app/privacy">Privacy Policy</a>
+            <Link href="/privacy">Privacy Policy</Link>
             <Link href="/faq">FAQ</Link>
             <Link href="/info">Info</Link>
           </div>
-          <p className="text-right font-mono text-[10px] uppercase tracking-[0.2em] text-[#7a7066]">© 2026 ISOfit · humbly designed in queens, NY</p>
+          <p className="text-left font-mono text-[10px] uppercase tracking-[0.2em] text-[#7a7066] md:text-right">© 2026 ISOfit · humbly designed in queens, NY</p>
         </div>
       </footer>
     </main>
