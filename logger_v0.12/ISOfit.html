@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Isofit — Workout Logger</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<style>
+@font-face {
+  font-family: 'Unbounded';
+  src: url('assets/fonts/Unbounded-Regular.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Unbounded';
+  src: url('assets/fonts/Unbounded-Medium.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Unbounded';
+  src: url('assets/fonts/Unbounded-Bold.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+:root {
+  --display: 'Unbounded', 'Hanken Grotesk', sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+  --hand: 'Kalam', cursive;
+  --script: 'Caveat', cursive;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body, #root { width: 100%; height: 100%; overflow: hidden; }
+body { font-family: var(--mono); -webkit-font-smoothing: antialiased; background: #0a0a0c; }
+
+.row-scroll::-webkit-scrollbar { display: none; }
+@keyframes isofit-fade-in { from { opacity: 0; } to { opacity: 1; } }
+
+.stage {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  background:
+    radial-gradient(ellipse 800px 600px at 30% 20%, rgba(63,146,201,.1) 0%, transparent 70%),
+    #0a0a0c;
+}
+.phone-wrap {
+  width: 390px; height: 844px;
+  border-radius: 48px;
+  overflow: hidden;
+  position: relative;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.06),
+    0 40px 80px -20px rgba(0,0,0,.6),
+    0 10px 24px -8px rgba(0,0,0,.4);
+}
+@media (max-height: 900px) {
+  .phone-wrap { transform: scale(0.85); transform-origin: center; }
+}
+@media (max-height: 750px) {
+  .phone-wrap { transform: scale(0.72); transform-origin: center; }
+}
+@media (max-width: 440px) {
+  .phone-wrap { width: 100vw; height: 100vh; border-radius: 0; box-shadow: none; }
+}
+</style>
+</head>
+<body>
+<template id="__bundler_thumbnail" data-bg-color="#3F92C9">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#3F92C9"/>
+    <text x="600" y="430" font-family="'Space Grotesk', sans-serif" font-size="340" font-weight="700" fill="#ffffff" text-anchor="middle">IF</text>
+    <rect x="450" y="540" width="300" height="22" fill="#D2622E"/>
+  </svg>
+</template>
+<div id="root"></div>
+
+<script type="text/babel" src="components.jsx"></script>
+<script type="text/babel" src="screens.jsx"></script>
+<script type="text/babel">
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "accentScheme": "navy",
+  "timerStyle": "inline",
+  "typographyWeight": "bold",
+  "gridDensity": "compact",
+  "darkMode": false,
+  "showNotes": true,
+  "typeface": "mono"
+}/*EDITMODE-END*/;
+
+function TweaksPanel({ tweaks, setTweaks, visible }) {
+  if (!visible) return null;
+
+  const update = (key, val) => {
+    const next = { ...tweaks, [key]: val };
+    setTweaks(next);
+    window.parent.postMessage({ type: '__edit_mode_set_keys', edits: { [key]: val } }, '*');
+  };
+
+  const panelStyles = {
+    position: 'fixed', bottom: 16, right: 16, zIndex: 9999,
+    background: 'rgba(18,18,22,.95)', backdropFilter: 'blur(20px)',
+    border: '1px solid rgba(255,255,255,.1)', borderRadius: 16,
+    padding: '18px 20px', width: 260,
+    fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: '#ccc',
+    boxShadow: '0 20px 60px rgba(0,0,0,.5)',
+  };
+  const labelStyles = { fontSize: 9, letterSpacing: '.2em', textTransform: 'uppercase', color: '#777', marginBottom: 6, marginTop: 14, display: 'block' };
+  const rowStyles = { display: 'flex', gap: 6, flexWrap: 'wrap' };
+  const chip = (label, active, onClick) => (
+    <div key={label} onClick={onClick} style={{
+      padding: '5px 10px', borderRadius: 6, cursor: 'pointer', fontSize: 10, letterSpacing: '.08em',
+      background: active ? 'rgba(255,255,255,.15)' : 'transparent',
+      border: `1px solid ${active ? 'rgba(255,255,255,.25)' : 'rgba(255,255,255,.08)'}`,
+      color: active ? '#fff' : '#888',
+      transition: 'all .15s',
+    }}>{label}</div>
+  );
+  const toggle = (label, value, onClick) => (
+    <div onClick={onClick} style={{
+      display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+      padding: '6px 0', cursor: 'pointer',
+    }}>
+      <span style={{ fontSize: 11, color: '#ccc' }}>{label}</span>
+      <div style={{
+        width: 36, height: 20, borderRadius: 10, padding: 2,
+        background: value ? '#3F92C9' : 'rgba(255,255,255,.1)',
+        transition: 'background .2s', display: 'flex', alignItems: 'center',
+      }}>
+        <div style={{
+          width: 16, height: 16, borderRadius: 8, background: '#fff',
+          transform: value ? 'translateX(16px)' : 'translateX(0)',
+          transition: 'transform .2s',
+        }} />
+      </div>
+    </div>
+  );
+
+  return (
+    <div style={panelStyles}>
+      <div style={{ fontSize: 12, fontWeight: 600, color: '#fff', marginBottom: 4 }}>Tweaks</div>
+
+      <span style={labelStyles}>Timer</span>
+      <div style={rowStyles}>
+        {chip('inline', tweaks.timerStyle === 'inline', () => update('timerStyle', 'inline'))}
+        {chip('dock', tweaks.timerStyle === 'dock', () => update('timerStyle', 'dock'))}
+      </div>
+
+      <span style={labelStyles}>Type Weight</span>
+      <div style={rowStyles}>
+        {chip('regular', tweaks.typographyWeight === 'regular', () => update('typographyWeight', 'regular'))}
+        {chip('bold', tweaks.typographyWeight === 'bold', () => update('typographyWeight', 'bold'))}
+      </div>
+
+      <span style={labelStyles}>Density</span>
+      <div style={rowStyles}>
+        {chip('compact', tweaks.gridDensity === 'compact', () => update('gridDensity', 'compact'))}
+        {chip('relaxed', tweaks.gridDensity === 'relaxed', () => update('gridDensity', 'relaxed'))}
+      </div>
+
+      <span style={labelStyles}>Typeface</span>
+      <div style={rowStyles}>
+        {['mono', 'editorial', 'handwritten'].map(f =>
+          chip(f, tweaks.typeface === f, () => update('typeface', f))
+        )}
+      </div>
+
+      <div style={{ marginTop: 14, borderTop: '1px solid rgba(255,255,255,.08)', paddingTop: 10 }}>
+        {toggle('Dark Mode', tweaks.darkMode, () => update('darkMode', !tweaks.darkMode))}
+        {toggle('Notes Column', tweaks.showNotes, () => update('showNotes', !tweaks.showNotes))}
+      </div>
+    </div>
+  );
+}
+
+function App() {
+  const [tweaks, setTweaks] = React.useState({ ...TWEAK_DEFAULTS });
+  const [tweaksVisible, setTweaksVisible] = React.useState(false);
+
+  React.useEffect(() => {
+    const handler = (e) => {
+      if (e.data?.type === '__activate_edit_mode') setTweaksVisible(true);
+      if (e.data?.type === '__deactivate_edit_mode') setTweaksVisible(false);
+    };
+    window.addEventListener('message', handler);
+    window.parent.postMessage({ type: '__edit_mode_available' }, '*');
+    return () => window.removeEventListener('message', handler);
+  }, []);
+
+  return (
+    <div className="stage">
+      <div className="phone-wrap">
+        <WorkoutApp tweaks={tweaks} />
+      </div>
+      <TweaksPanel tweaks={tweaks} setTweaks={setTweaks} visible={tweaksVisible} />
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>
