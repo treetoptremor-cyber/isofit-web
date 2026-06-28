@@ -226,21 +226,8 @@ export default function Page() {
         </div>
       </header>
 
-      <section className="mx-auto grid w-full max-w-[1180px] items-center gap-8 px-4 pb-4 pt-8 sm:px-5 md:grid-cols-2 md:gap-12 md:px-8 md:pt-12">
-        <div className="order-2 md:order-2">
-          <div className="mx-auto w-full max-w-[430px] md:max-w-[560px]">
-            <Image
-              src="/mockups/body-graph-phone.png"
-              alt="Isofit body graph phone mockup"
-              width={576}
-              height={1024}
-              preload
-              sizes="(max-width: 768px) 86vw, (max-width: 1200px) 42vw, 520px"
-              className="h-auto w-full"
-            />
-          </div>
-        </div>
-        <div className="order-1 md:order-1">
+      <section className="mx-auto w-full max-w-[1180px] px-4 pb-4 pt-8 sm:px-5 md:px-8 md:pt-12">
+        <div>
           <div className="inline-flex items-center gap-2 rounded-full border border-[#2a2420]/15 px-4 py-2 font-mono text-[10px] uppercase tracking-[0.2em] text-[#4a423b]">
             <span className="h-1.5 w-1.5 rounded-full bg-[#69A5F0]" />
             Isofit · workout app · designed for iOS
