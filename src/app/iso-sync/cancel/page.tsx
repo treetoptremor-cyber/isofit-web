@@ -1,7 +1,7 @@
 import { StatusPage } from "@/components/pwa/status-page";
 
 export const metadata = {
-  title: "ISO Sync Cancelled | ISOfit",
+  title: "ISO Sync Cancelled | Isofit",
 };
 
 export default function IsoSyncCancelPage() {

@@ -14,7 +14,7 @@ export function AppShell({ title, description, actions, children }: AppShellProp
         <header className="mb-5 rounded-3xl border border-[#2a2420]/10 bg-white p-4 shadow-[0_18px_40px_rgba(42,36,32,0.08)] sm:mb-6 sm:p-6">
           <div className="flex flex-col items-start gap-4 sm:flex-row sm:justify-between">
             <div>
-              <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-[#7a7066]">ISOfit PWA</p>
+              <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-[#7a7066]">Isofit PWA</p>
               <h1 className="mt-1 font-display text-[clamp(1.7rem,7vw,1.95rem)] font-bold tracking-[-0.02em]">{title}</h1>
               {description ? <p className="mt-2 text-sm text-[#4a423b]">{description}</p> : null}
             </div>

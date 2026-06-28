@@ -23,7 +23,7 @@ const dmMono = DM_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "ISOfit — Your workouts, working for you",
+  title: "Isofit — Your workouts, working for you",
   description: "Log it. Track it. Own it.",
 };
 

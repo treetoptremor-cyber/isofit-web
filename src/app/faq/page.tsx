@@ -3,8 +3,8 @@ import Link from "next/link";
 import InlineWaitlistCta from "@/components/inline-waitlist-cta";
 
 export const metadata = {
-  title: "FAQ | ISOfit",
-  description: "Everything you need to know about ISOfit.",
+  title: "FAQ | Isofit",
+  description: "Everything you need to know about Isofit.",
 };
 
 type FaqItem = {
@@ -14,20 +14,20 @@ type FaqItem = {
 
 const FAQS: FaqItem[] = [
   {
-    question: "What is ISOfit?",
+    question: "What is Isofit?",
     answer:
       [
-        "ISOfit is a workout organization and training app built to make logging easier and your training history more useful.",
+        "Isofit is a workout organization and training app built to make logging easier and your training history more useful.",
         "Quickly record what you did, see how your work adds up over time, ask Atlas for guidance, and earn $ISO through consistent participation.",
       ],
   },
   {
-    question: "Who is ISOfit for?",
+    question: "Who is Isofit for?",
     answer:
       [
-        "ISOfit is for anyone who wants a clearer picture of their training.",
+        "Isofit is for anyone who wants a clearer picture of their training.",
         "You can use it for strength training, bodybuilding, running, martial arts, kettlebells, functional fitness, sports practice, mobility work, or a mix of different activities.",
-        "You do not need to follow a specific ISOfit program.",
+        "You do not need to follow a specific Isofit program.",
       ],
   },
   {
@@ -35,20 +35,20 @@ const FAQS: FaqItem[] = [
     answer: [
       "Log your workout naturally by typing or speaking.",
       "You can enter a quick description during your session and organize the details later, or record exercises, sets, reps, weight, time, distance, intensity, and other metrics as you go.",
-      "ISOfit is designed to reduce the amount of tapping and form-filling normally required by workout apps.",
+      "Isofit is designed to reduce the amount of tapping and form-filling normally required by workout apps.",
     ],
   },
   {
     question: "Do I need to use a specific exercise library?",
     answer: [
       "No.",
-      "You can select exercises from the ISOfit library, create your own, or describe your workout in plain language. ISOfit is designed to accommodate different sports, training methods, and personal terminology.",
+      "You can select exercises from the Isofit library, create your own, or describe your workout in plain language. Isofit is designed to accommodate different sports, training methods, and personal terminology.",
     ],
   },
   {
     question: "What is Atlas?",
     answer: [
-      "Atlas is ISOfit's AI training guide.",
+      "Atlas is Isofit's AI training guide.",
       "Atlas can help you understand your workout history, identify patterns, organize your training, modify a program, prepare for a session, or think through questions about strength, conditioning, recovery, and performance.",
     ],
   },
@@ -63,25 +63,25 @@ const FAQS: FaqItem[] = [
     question: "How personalized is Atlas?",
     answer: [
       "Atlas can use the information you choose to provide, including your goals, training experience, available equipment, preferences, limitations, and workout history.",
-      "Memory and personalization controls will be clearly presented. You will be able to use ISOfit without allowing Atlas to retain personal training context between conversations.",
+      "Memory and personalization controls will be clearly presented. You will be able to use Isofit without allowing Atlas to retain personal training context between conversations.",
     ],
   },
   {
     question: "What is $ISO?",
     answer: [
-      "$ISO is ISOfit's participation and rewards system.",
-      "Members may earn $ISO through eligible activity inside the app and use it for available ISOfit features, benefits, or rewards. Specific earning rates, redemption options, and eligibility rules will always be shown in the app.",
+      "$ISO is Isofit's participation and rewards system.",
+      "Members may earn $ISO through eligible activity inside the app and use it for available Isofit features, benefits, or rewards. Specific earning rates, redemption options, and eligibility rules will always be shown in the app.",
     ],
   },
   {
     question: "Is $ISO an investment or cryptocurrency?",
     answer: [
-      "ISOfit does not promise that $ISO will have a cash value or generate a financial return.",
+      "Isofit does not promise that $ISO will have a cash value or generate a financial return.",
       "It is being designed primarily as an in-app utility and rewards system. Any future functionality will be explained clearly before it becomes available.",
     ],
   },
   {
-    question: "Do I need to understand crypto to use ISOfit?",
+    question: "Do I need to understand crypto to use Isofit?",
     answer: [
       "No.",
       "You can use the workout logger, progress tools, Atlas, and community features without understanding wallets, exchanges, or cryptocurrency terminology.",
@@ -90,7 +90,7 @@ const FAQS: FaqItem[] = [
   {
     question: "What is the Bonfire?",
     answer: [
-      "The Bonfire is ISOfit's community space.",
+      "The Bonfire is Isofit's community space.",
       "It gives members a place to share training logs, ask questions, celebrate progress, exchange useful ideas, and interact without turning every workout into a performance for social media.",
       "Community participation is optional.",
     ],
@@ -103,30 +103,30 @@ const FAQS: FaqItem[] = [
     ],
   },
   {
-    question: "Can I use ISOfit without Atlas or the Bonfire?",
+    question: "Can I use Isofit without Atlas or the Bonfire?",
     answer: [
       "Yes.",
-      "Fast, flexible workout logging is the foundation of ISOfit. Atlas, $ISO, and the Bonfire add more value, but you will not be required to use every feature.",
+      "Fast, flexible workout logging is the foundation of Isofit. Atlas, $ISO, and the Bonfire add more value, but you will not be required to use every feature.",
     ],
   },
   {
-    question: "How much will ISOfit cost?",
+    question: "How much will Isofit cost?",
     answer: [
       "Core workout logging is planned to be available free of charge.",
       "Paid options may provide expanded Atlas access and other premium capabilities. Final pricing and included features will be shown clearly before you purchase anything.",
     ],
   },
   {
-    question: "What devices will ISOfit support?",
+    question: "What devices will Isofit support?",
     answer: [
-      "ISOfit is being developed with iPhone as the primary launch platform.",
-      "Additional ways to access ISOfit may be introduced as the product grows.",
+      "Isofit is being developed with iPhone as the primary launch platform.",
+      "Additional ways to access Isofit may be introduced as the product grows.",
     ],
   },
   {
-    question: "When will ISOfit launch?",
+    question: "When will Isofit launch?",
     answer: [
-      "ISOfit is currently in development.",
+      "Isofit is currently in development.",
       "Waitlist members will receive product updates and will be among the first considered for early access and beta testing.",
     ],
   },
@@ -134,22 +134,22 @@ const FAQS: FaqItem[] = [
     question: "Is joining the waitlist free?",
     answer: [
       "Yes.",
-      "Joining the waitlist does not require payment and does not obligate you to purchase a membership or subscription when ISOfit launches.",
+      "Joining the waitlist does not require payment and does not obligate you to purchase a membership or subscription when Isofit launches.",
     ],
   },
   {
     question: "What information do I provide when joining?",
     answer: [
-      "The waitlist only asks for the information needed to contact you about ISOfit's development and launch.",
+      "The waitlist only asks for the information needed to contact you about Isofit's development and launch.",
       "More detailed fitness information will not be required until you choose to create an account and begin using the app.",
     ],
   },
   {
-    question: "How does ISOfit protect my information?",
+    question: "How does Isofit protect my information?",
     answer:
       [
-        "ISOfit is being designed around limited data collection, clear consent choices, and controlled access to personal information.",
-        "Your private workout and account data will not be publicly displayed or sold to advertisers. Additional details will be available in the ISOfit Privacy Policy.",
+        "Isofit is being designed around limited data collection, clear consent choices, and controlled access to personal information.",
+        "Your private workout and account data will not be publicly displayed or sold to advertisers. Additional details will be available in the Isofit Privacy Policy.",
       ],
   },
 ];
@@ -170,10 +170,10 @@ export default function FaqPage() {
 
         <div className="rounded-3xl border border-[#2a2420]/10 bg-white p-5 shadow-[0_20px_45px_rgba(42,36,32,0.08)] sm:p-6">
           <h2 className="font-display text-2xl font-semibold tracking-[-0.015em] text-[#2a2420] sm:text-3xl">
-            Everything you need to know about ISOfit
+            Everything you need to know about Isofit
           </h2>
           <p className="mt-4 text-[15px] leading-7 text-[#4a423b]">
-            ISOfit brings workout logging, intelligent coaching, progress insights, rewards, and community into one place - without forcing you into a specific training style.
+            Isofit brings workout logging, intelligent coaching, progress insights, rewards, and community into one place - without forcing you into a specific training style.
           </p>
 
           <div className="mt-7 rounded-2xl border border-[#2a2420]/10">

@@ -5,8 +5,8 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
 export const metadata = {
-  title: "Privacy Policy | ISOfit",
-  description: "How ISOfit collects, uses, and protects your data.",
+  title: "Privacy Policy | Isofit",
+  description: "How Isofit collects, uses, and protects your data.",
 };
 
 const POLICY_PATH = path.join(process.cwd(), "src/app/privacy/privacy-policy.md");

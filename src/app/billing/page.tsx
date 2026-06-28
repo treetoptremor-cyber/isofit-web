@@ -101,7 +101,7 @@ export default function BillingPage() {
   return (
     <AppShell
       title="Billing"
-      description="Choose your ISOfit plan."
+      description="Choose your Isofit plan."
       actions={
         <Link
           href="/log"

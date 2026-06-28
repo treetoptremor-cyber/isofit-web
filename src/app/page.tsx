@@ -60,7 +60,7 @@ function IsoLogo({ size = 34 }: { size?: number }) {
   return (
     <Image
       src="/iso-logo.png"
-      alt="ISOfit"
+      alt="Isofit"
       width={size}
       height={size}
       priority
@@ -74,7 +74,7 @@ function LogoLockup() {
     <div className="flex items-center gap-2.5">
       <IsoLogo size={34} />
       <div className="leading-none">
-        <p className="font-display text-xl font-bold leading-none tracking-tight text-[#69A5F0]">ISOfit</p>
+        <p className="font-display text-xl font-bold leading-none tracking-tight text-[#69A5F0]">Isofit</p>
         <p className="mt-px font-mono text-[9px] uppercase leading-none tracking-[0.2em] text-[#7a7066]">Atlas MFC</p>
       </div>
     </div>
@@ -231,7 +231,7 @@ export default function Page() {
           <div className="mx-auto w-full max-w-[430px] md:max-w-[560px]">
             <Image
               src="/mockups/body-graph-phone.png"
-              alt="ISOfit body graph phone mockup"
+              alt="Isofit body graph phone mockup"
               width={576}
               height={1024}
               preload
@@ -243,13 +243,13 @@ export default function Page() {
         <div className="order-1 md:order-1">
           <div className="inline-flex items-center gap-2 rounded-full border border-[#2a2420]/15 px-4 py-2 font-mono text-[10px] uppercase tracking-[0.2em] text-[#4a423b]">
             <span className="h-1.5 w-1.5 rounded-full bg-[#69A5F0]" />
-            ISOfit · workout tracker · made for iOS
+            Isofit · workout app · designed for iOS
           </div>
           <h1 className="mt-6 max-w-[920px] font-display text-[clamp(2.2rem,10vw,4.6rem)] font-extrabold leading-[0.98] tracking-[-0.03em] text-[#2a2420]">
-            You already know how to train. You just <span className="text-[#69A5F0]">stop.</span>
+            You already <span className="text-[#69A5F0]">log your workouts</span>...But then what?
           </h1>
           <p className="mt-5 max-w-[980px] text-base leading-relaxed text-[#4a423b] sm:text-lg">
-            We care about the one variable that matters: whether or not you showed up. We designed a clean workout logger, a personal pocket fitness coach that knows your stats, a rewards currency that compounds with your consistency, and a community where proof of work speaks loudest.
+            We care about the one variable that matters: whether or not we showed up. Isofit is a clean workout logger, a personal machine fitness coach, and a community where proof of work speaks.
           </p>
           <div className="mt-6 flex w-full max-w-[460px] flex-col gap-2.5 sm:flex-row">
             <Link
@@ -272,10 +272,10 @@ export default function Page() {
         <div className="rounded-3xl border border-[#2a2420]/10 bg-white p-4 shadow-[0_16px_40px_rgba(42,36,32,0.08)] sm:p-6">
           <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-[#7a7066]">Get early access</p>
           <h2 className="mt-2 font-display text-[clamp(1.75rem,6vw,2.4rem)] font-bold tracking-[-0.02em]">
-            Start with consistency.
+            Let's hear you say Isofit
           </h2>
           <p className="mt-2 max-w-[720px] text-[15px] text-[#4a423b]">
-            Join the waitlist to get launch access and be first in line for Atlas MFC, $ISO rewards, and The Bonfire.
+            Sign up for more information and early access.
           </p>
           <div className="mt-5">
             <WaitlistForm formId="waitlist-form" />
@@ -340,7 +340,7 @@ export default function Page() {
             <h2 className="mt-4 font-display text-[clamp(34px,5vw,56px)] font-extrabold leading-[0.98] tracking-[-0.03em] text-[#f3efe6]">
               Start training with a <span className="text-[#69A5F0]">new coach</span> who understands the data.
             </h2>
-            <p className="mt-4 max-w-[500px] text-[#f3efe6]/75">ISOfit is launching summer 2026. Be first in — no spam, just a heads-up when we launch.</p>
+            <p className="mt-4 max-w-[500px] text-[#f3efe6]/75">Isofit is launching summer 2026. No spam, just a heads-up when we launch.</p>
             <div className="mt-8">
               <WaitlistForm dark compact />
             </div>
@@ -356,7 +356,7 @@ export default function Page() {
             <Link href="/faq">FAQ</Link>
             <Link href="/info">Info</Link>
           </div>
-          <p className="text-left font-mono text-[10px] uppercase tracking-[0.2em] text-[#7a7066] md:text-right">© 2026 ISOfit · humbly designed in queens, NY</p>
+          <p className="text-left font-mono text-[10px] uppercase tracking-[0.2em] text-[#7a7066] md:text-right">© 2026 Isofit · humbly designed in queens, NY</p>
         </div>
       </footer>
     </main>

@@ -1,7 +1,7 @@
 import { StatusPage } from "@/components/pwa/status-page";
 
 export const metadata = {
-  title: "Billing Success | ISOfit",
+  title: "Billing Success | Isofit",
 };
 
 export default function BillingSuccessPage() {

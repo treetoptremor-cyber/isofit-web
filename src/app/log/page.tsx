@@ -440,7 +440,7 @@ export default function LogPage() {
   return (
     <AppShell
       title="Workout Logger"
-      description="Track your workout and submit it to ISOfit."
+      description="Track your workout and submit it to Isofit."
       actions={
         <div className="flex w-full flex-wrap justify-end gap-2 sm:w-auto">
           <Link
@@ -615,12 +615,12 @@ export default function LogPage() {
                 Create an account to unlock{" "}
                 <SignupTermPopover
                   label="Atlas mfc"
-                  description="Atlas is ISOfit's machine fitness coach. Ask it anything about your training - programming, form, recovery, etc."
+                  description="Atlas is Isofit's machine fitness coach. Ask it anything about your training - programming, form, recovery, etc."
                 />{" "}
                 and{" "}
                 <SignupTermPopover
                   label="$ISO"
-                  description="$ISO is ISOfit's in-app currency. Earn it by consistently showing up for your fitness journey and spend it on rewards, mfc features, and more."
+                  description="$ISO is Isofit's in-app currency. Earn it by consistently showing up for your fitness journey and spend it on rewards, mfc features, and more."
                 />{" "}
                 ecosystem.
               </p>

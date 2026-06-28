@@ -1,7 +1,7 @@
 import { StatusPage } from "@/components/pwa/status-page";
 
 export const metadata = {
-  title: "Billing Cancelled | ISOfit",
+  title: "Billing Cancelled | Isofit",
 };
 
 export default function BillingCancelPage() {

@@ -1,8 +1,8 @@
 import Link from "next/link";
 
 export const metadata = {
-  title: "Info | ISOfit",
-  description: "Product information, philosophy, and launch details for ISOfit.",
+  title: "Info | Isofit",
+  description: "Product information, philosophy, and launch details for Isofit.",
 };
 
 export default function InfoPage() {
@@ -10,12 +10,12 @@ export default function InfoPage() {
     <main className="min-h-screen bg-[#f3efe6] px-4 py-8 text-[#2a2420] sm:px-5 md:px-8 md:py-12">
       <div className="mx-auto w-full max-w-4xl space-y-4 sm:space-y-6">
         <section className="rounded-3xl border border-[#2a2420]/10 bg-white p-5 shadow-[0_18px_40px_rgba(42,36,32,0.08)] sm:p-7">
-          <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#7a7066]">ISOfit · Info</p>
+          <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#7a7066]">Isofit · Info</p>
           <h1 className="mt-3 font-display text-[clamp(2rem,8vw,3.4rem)] font-bold leading-[1.02] tracking-[-0.02em]">
             Built for people who already know what to do, but need help doing it consistently.
           </h1>
           <p className="mt-4 max-w-3xl text-[15px] leading-7 text-[#4a423b] sm:text-base">
-            ISOfit combines a clean workout logger, Atlas MFC coaching, and an earned rewards system into one mobile-first experience. Every feature is designed around one core question: did you show up?
+            Isofit combines a clean workout logger, Atlas MFC coaching, and an earned rewards system into one mobile-first experience. Every feature is designed around one core question: did you show up?
           </p>
           <div className="mt-5 flex flex-wrap gap-2">
             <Link
