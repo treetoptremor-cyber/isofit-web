@@ -117,7 +117,15 @@ export default function LoginPage() {
           />
         </label>
         <label className="block space-y-1.5">
-          <span className="text-sm font-medium">Password</span>
+          <span className="flex items-center justify-between gap-3">
+            <span className="text-sm font-medium">Password</span>
+            <Link
+              href="/forgot-password"
+              className="text-sm font-medium text-[#2d6cb8] hover:text-[#69A5F0]"
+            >
+              Forgot password?
+            </Link>
+          </span>
           <input
             type="password"
             autoComplete="current-password"
