@@ -170,6 +170,18 @@ export default function SignupPage() {
         >
           {isSubmitting ? "Creating account..." : "Create account"}
         </button>
+
+        <p className="text-xs text-[#4a423b]">
+          By creating an account, you agree to the{" "}
+          <Link href="/terms" className="font-semibold text-[#2d6cb8] hover:text-[#69A5F0]">
+            Terms of Service
+          </Link>{" "}
+          and acknowledge the{" "}
+          <Link href="/privacy" className="font-semibold text-[#2d6cb8] hover:text-[#69A5F0]">
+            Privacy Policy
+          </Link>
+          .
+        </p>
       </form>
 
       {errorMessage ? (
