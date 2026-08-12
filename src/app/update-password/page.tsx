@@ -30,6 +30,21 @@ export default function UpdatePasswordPage() {
         return;
       }
 
+      // Recovery links can also arrive as implicit-flow tokens in the URL
+      // fragment (e.g. when the email redirect fell back to the Site URL and
+      // the landing page forwarded us the hash). Adopt them before asking
+      // for a session, then scrub the tokens from the address bar.
+      const hashParams = new URLSearchParams(window.location.hash.slice(1));
+      const accessToken = hashParams.get("access_token");
+      const refreshToken = hashParams.get("refresh_token");
+      if (accessToken && refreshToken) {
+        await supabase.auth.setSession({
+          access_token: accessToken,
+          refresh_token: refreshToken,
+        });
+        window.history.replaceState(null, "", window.location.pathname);
+      }
+
       const {
         data: { session },
       } = await supabase.auth.getSession();

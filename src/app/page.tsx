@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import WaitlistForm from "@/components/waitlist-form";
 
@@ -132,6 +132,16 @@ function FeatureIcon({ kind, color }: { kind: Feature["icon"]; color: string }) 
 
 export default function Page() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  // Supabase recovery emails can land on the site root with implicit-flow
+  // tokens in the URL fragment (Site URL fallback). Nothing on the landing
+  // page consumes them — forward the whole hash to the reset form.
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash.includes("type=recovery")) {
+      window.location.replace(`/update-password${hash}`);
+    }
+  }, []);
 
   return (
     <main className="relative text-[#2a2420]">
