@@ -339,6 +339,7 @@ export default function Page() {
         <div className="mx-auto flex w-full max-w-[1180px] flex-col items-start gap-5 px-4 py-8 sm:px-5 md:flex-row md:items-center md:justify-between md:px-8 md:py-10">
           <LogoLockup />
           <div className="flex flex-wrap gap-6 font-mono text-[10px] uppercase tracking-[0.2em] text-[#7a7066]">
+            <Link href="/terms">Terms of Service</Link>
             <Link href="/privacy">Privacy Policy</Link>
             <Link href="/faq">FAQ</Link>
             <Link href="/info">Info</Link>
