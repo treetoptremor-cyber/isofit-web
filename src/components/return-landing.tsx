@@ -17,6 +17,12 @@ export function ReturnLanding({ title, message }: ReturnLandingProps) {
           {title}
         </h1>
         <p className="mt-4 text-[15px] leading-7 text-[#4a423b]">{message}</p>
+        <a
+          href="isofit://open"
+          className="mt-8 inline-flex rounded-xl bg-[#69A5F0] px-5 py-2.5 font-display text-sm font-semibold text-white transition-colors hover:bg-[#5C94DA]"
+        >
+          Return to the Isofit app
+        </a>
       </div>
     </main>
   );

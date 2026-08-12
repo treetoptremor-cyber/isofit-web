@@ -9,7 +9,7 @@ export default function CheckoutSuccessPage() {
   return (
     <ReturnLanding
       title="You're in."
-      message="Payment confirmed — your membership is active. You can close this window and return to the Isofit app."
+      message="Payment confirmed — your membership is active."
     />
   );
 }

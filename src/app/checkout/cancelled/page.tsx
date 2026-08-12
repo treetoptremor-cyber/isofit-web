@@ -9,7 +9,7 @@ export default function CheckoutCancelledPage() {
   return (
     <ReturnLanding
       title="Checkout cancelled."
-      message="No charge was made. You can close this window and return to the Isofit app."
+      message="No charge was made — your plan is unchanged."
     />
   );
 }

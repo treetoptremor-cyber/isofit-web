@@ -9,7 +9,7 @@ export default function BillingReturnPage() {
   return (
     <ReturnLanding
       title="All set."
-      message="You're done managing your membership. You can close this window and return to the Isofit app."
+      message="Your membership changes are in — check the app for the latest."
     />
   );
 }
