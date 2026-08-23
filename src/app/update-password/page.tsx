@@ -97,7 +97,7 @@ export default function UpdatePasswordPage() {
       return;
     }
 
-    router.push("/log");
+    router.push("/billing");
     router.refresh();
   }
 

@@ -27,7 +27,6 @@ const FEATURES: Feature[] = [
 const PRIMARY_NAV_LINKS = [
   { href: "#features", label: "Features" },
   { href: "#coach", label: "The coach" },
-  { href: "/log", label: "Workout Log" },
   { href: "/faq", label: "FAQ" },
   { href: "/info", label: "Info" },
 ] as const;
@@ -254,12 +253,6 @@ export default function Page() {
               className="inline-flex h-12 items-center justify-center rounded-xl bg-[#67835a] px-5 font-display text-sm font-semibold text-white transition-colors hover:bg-[#5a7350]"
             >
               Join the Waitlist
-            </Link>
-            <Link
-              href="/log"
-              className="inline-flex h-12 items-center justify-center rounded-xl border border-[#2a2420]/15 bg-white px-5 font-display text-sm font-semibold text-[#2a2420] transition-colors hover:bg-[#f8f5ee]"
-            >
-              Open Workout Log
             </Link>
           </div>
         </div>

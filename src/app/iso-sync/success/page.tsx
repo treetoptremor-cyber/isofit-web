@@ -9,8 +9,8 @@ export default function IsoSyncSuccessPage() {
     <StatusPage
       title="ISO Sync"
       message="ISO Sync activated."
-      linkHref="/log"
-      linkLabel="Back to logger"
+      linkHref="/"
+      linkLabel="Back to home"
     />
   );
 }

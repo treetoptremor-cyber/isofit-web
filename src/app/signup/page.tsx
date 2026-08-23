@@ -91,7 +91,7 @@ export default function SignupPage() {
     }
 
     setIsSubmitting(false);
-    router.push("/log");
+    router.push("/billing");
     router.refresh();
   }
 

@@ -9,8 +9,8 @@ export default function BillingSuccessPage() {
     <StatusPage
       title="Billing updated"
       message="You're all set! Your plan has been upgraded."
-      linkHref="/log"
-      linkLabel="Back to logger"
+      linkHref="/billing"
+      linkLabel="Back to billing"
     />
   );
 }

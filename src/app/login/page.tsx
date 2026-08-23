@@ -19,7 +19,7 @@ export default function LoginPage() {
 
   function getDestination() {
     if (typeof window === "undefined") {
-      return "/log";
+      return "/billing";
     }
 
     const params = new URLSearchParams(window.location.search);
@@ -28,7 +28,7 @@ export default function LoginPage() {
       return redirectTo;
     }
 
-    return "/log";
+    return "/billing";
   }
 
   async function handlePasswordSignIn(event: FormEvent<HTMLFormElement>) {
@@ -93,7 +93,7 @@ export default function LoginPage() {
   return (
     <AuthShell
       title="Welcome back"
-      subtitle="Sign in to access your workout log and billing."
+      subtitle="Sign in to manage your account and billing."
       footer={
         <p>
           Need an account?{" "}

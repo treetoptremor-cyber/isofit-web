@@ -9,8 +9,8 @@ export default function IsoSyncCancelPage() {
     <StatusPage
       title="ISO Sync"
       message="No changes were made."
-      linkHref="/log"
-      linkLabel="Back to logger"
+      linkHref="/"
+      linkLabel="Back to home"
     />
   );
 }

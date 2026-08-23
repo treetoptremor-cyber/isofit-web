@@ -104,10 +104,10 @@ export default function BillingPage() {
       description="Choose your Isofit plan."
       actions={
         <Link
-          href="/log"
+          href="/"
           className="rounded-xl border border-[#2a2420]/15 bg-white px-4 py-2 text-sm font-semibold transition-colors hover:bg-[#f8f5ee]"
         >
-          Back to logger
+          Back to home
         </Link>
       }
     >
