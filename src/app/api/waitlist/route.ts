@@ -59,10 +59,6 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "First name is required" }, { status: 400 });
     }
 
-    if (!lastName) {
-      return NextResponse.json({ error: "Last name is required" }, { status: 400 });
-    }
-
     const supabase = getSupabaseAdminClient();
     if (!supabase) {
       console.error("Missing Supabase waitlist environment variables: NEXT_PUBLIC_SUPABASE_URL and key.");

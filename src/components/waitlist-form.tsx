@@ -18,7 +18,6 @@ export default function WaitlistForm({
   source = "landing_page",
 }: WaitlistFormProps) {
   const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error" | "duplicate">("idle");
   const [message, setMessage] = useState("");
@@ -34,10 +33,9 @@ export default function WaitlistForm({
     event.preventDefault();
 
     const trimmedFirstName = firstName.trim();
-    const trimmedLastName = lastName.trim();
     const trimmedEmail = email.trim().toLowerCase();
 
-    if (!trimmedFirstName || !trimmedLastName || !trimmedEmail) {
+    if (!trimmedFirstName || !trimmedEmail) {
       return;
     }
 
@@ -59,7 +57,6 @@ export default function WaitlistForm({
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           first_name: trimmedFirstName,
-          last_name: trimmedLastName,
           email: trimmedEmail,
           referrer,
           source,
@@ -74,7 +71,6 @@ export default function WaitlistForm({
         setStatus("success");
         setMessage(payload?.message ?? "Successfully joined the waitlist!");
         setFirstName("");
-        setLastName("");
         setEmail("");
         return;
       }
@@ -93,7 +89,7 @@ export default function WaitlistForm({
     }
   };
 
-  const hasRequiredFields = !!firstName.trim() && !!lastName.trim() && !!email.trim();
+  const hasRequiredFields = !!firstName.trim() && !!email.trim();
   const isDisabled = status === "loading" || !hasRequiredFields;
 
   return (
@@ -107,7 +103,7 @@ export default function WaitlistForm({
           dark ? "border-white/20 bg-white/10" : "border-[#2a2420]/10 bg-white"
         } shadow-[0_12px_30px_rgba(42,36,32,0.1)]`}
       >
-        <div className="flex flex-col gap-2 sm:flex-row">
+        <div className="flex flex-col items-stretch gap-2 sm:flex-row sm:items-center">
           <input
             type="text"
             required
@@ -118,30 +114,12 @@ export default function WaitlistForm({
             }}
             disabled={status === "loading"}
             placeholder="First name"
-            className={`h-12 w-full rounded-xl border px-3 outline-none transition-colors disabled:opacity-60 sm:min-w-[140px] sm:flex-1 ${
+            className={`h-12 w-full rounded-xl border px-3 outline-none transition-colors disabled:opacity-60 sm:min-w-[130px] sm:flex-1 ${
               dark
                 ? "border-[#243140] bg-[#1A2430] text-[#E6EDF3] placeholder:text-[#6B7C8F] focus:border-[#6B8AFD]"
                 : "border-[#2a2420]/10 bg-white text-[#2a2420] placeholder:text-[#7a7066] focus:border-[#69A5F0]"
             }`}
           />
-          <input
-            type="text"
-            required
-            value={lastName}
-            onChange={(event) => {
-              setLastName(event.target.value);
-              resetStatusIfNeeded();
-            }}
-            disabled={status === "loading"}
-            placeholder="Last name"
-            className={`h-12 w-full rounded-xl border px-3 outline-none transition-colors disabled:opacity-60 sm:min-w-[140px] sm:flex-1 ${
-              dark
-                ? "border-[#243140] bg-[#1A2430] text-[#E6EDF3] placeholder:text-[#6B7C8F] focus:border-[#6B8AFD]"
-                : "border-[#2a2420]/10 bg-white text-[#2a2420] placeholder:text-[#7a7066] focus:border-[#69A5F0]"
-            }`}
-          />
-        </div>
-        <div className="flex flex-col items-stretch gap-2 sm:flex-row sm:items-center">
           <input
             type="email"
             required
@@ -161,10 +139,10 @@ export default function WaitlistForm({
           <button
             type="submit"
             disabled={isDisabled}
-            className={`flex h-12 w-full items-center justify-center gap-2 rounded-xl px-5 font-display text-[15px] font-semibold text-white transition-colors sm:w-auto ${
+            className={`flex h-12 w-full items-center justify-center gap-2 whitespace-nowrap rounded-xl px-5 font-display text-[15px] font-semibold text-white transition-colors sm:w-auto sm:shrink-0 ${
               hasRequiredFields
                 ? "bg-[#67835a] hover:bg-[#5a7350] shadow-[0_6px_16px_rgba(103,131,90,0.33)]"
-                : "cursor-not-allowed bg-[#69A5F0] shadow-[0_6px_16px_rgba(105,165,240,0.33)]"
+                : "cursor-not-allowed bg-[#a89f90]"
             }`}
           >
             {status === "loading" ? "Joining..." : "Get Early Access"}

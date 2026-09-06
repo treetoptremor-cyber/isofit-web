@@ -18,7 +18,7 @@ const FAQS: FaqItem[] = [
     answer:
       [
         "Isofit is a workout organization and training app built to make logging easier and your training history more useful.",
-        "Quickly record what you did, see how your work adds up over time, ask Atlas for guidance, and earn $ISO through consistent participation.",
+        "Quickly record what you did, see how your work adds up over time, and ask Atlas for guidance.",
       ],
   },
   {
@@ -67,27 +67,6 @@ const FAQS: FaqItem[] = [
     ],
   },
   {
-    question: "What is $ISO?",
-    answer: [
-      "$ISO is Isofit's participation and rewards system.",
-      "Members may earn $ISO through eligible activity inside the app and use it for available Isofit features, benefits, or rewards. Specific earning rates, redemption options, and eligibility rules will always be shown in the app.",
-    ],
-  },
-  {
-    question: "Is $ISO an investment or cryptocurrency?",
-    answer: [
-      "Isofit does not promise that $ISO will have a cash value or generate a financial return.",
-      "It is being designed primarily as an in-app utility and rewards system. Any future functionality will be explained clearly before it becomes available.",
-    ],
-  },
-  {
-    question: "Do I need to understand crypto to use Isofit?",
-    answer: [
-      "No.",
-      "You can use the workout logger, progress tools, Atlas, and community features without understanding wallets, exchanges, or cryptocurrency terminology.",
-    ],
-  },
-  {
     question: "What is the Bonfire?",
     answer: [
       "The Bonfire is Isofit's community space.",
@@ -106,7 +85,7 @@ const FAQS: FaqItem[] = [
     question: "Can I use Isofit without Atlas or the Bonfire?",
     answer: [
       "Yes.",
-      "Fast, flexible workout logging is the foundation of Isofit. Atlas, $ISO, and the Bonfire add more value, but you will not be required to use every feature.",
+      "Fast, flexible workout logging is the foundation of Isofit. Atlas and the Bonfire add more value, but you will not be required to use every feature.",
     ],
   },
   {
@@ -173,7 +152,7 @@ export default function FaqPage() {
             Everything you need to know about Isofit
           </h2>
           <p className="mt-4 text-[15px] leading-7 text-[#4a423b]">
-            Isofit brings workout logging, intelligent coaching, progress insights, rewards, and community into one place - without forcing you into a specific training style.
+            Isofit brings workout logging, intelligent coaching, progress insights, and community into one place - without forcing you into a specific training style.
           </p>
 
           <div className="mt-7 rounded-2xl border border-[#2a2420]/10">
