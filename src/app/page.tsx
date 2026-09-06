@@ -4,39 +4,7 @@ import Link from "next/link";
 import RecoveryRedirect from "@/components/recovery-redirect";
 import WaitlistForm from "@/components/waitlist-form";
 
-type Feature = {
-  icon: "stopwatch" | "camera" | "chart" | "body" | "calendar" | "program";
-  title: string;
-  copy: string;
-  color: string;
-};
-
-const FEATURES: Feature[] = [
-  { icon: "stopwatch", color: "#69A5F0", title: "Quick Logger", copy: "Log any workout in seconds. Manual, voice, or tap-and-go." },
-  { icon: "camera", color: "#b4583a", title: "Form Check", copy: "Film a lift. Get instant, actionable corrections from Atlas." },
-  { icon: "chart", color: "#69A5F0", title: "Progression", copy: "Track volume, PRs, and overload across every muscle group." },
-  { icon: "body", color: "#3f5a32", title: "Body Graph", copy: "See what you're training — and what you're missing." },
-  { icon: "calendar", color: "#3f5a32", title: "Streaks", copy: "Show up. Log it. Watch consistency compound into results." },
-  { icon: "program", color: "#b4583a", title: "Periodization", copy: "Training plans shaped by your history, and personalized templates for ease and consistency." },
-];
-
-const PRIMARY_NAV_LINKS = [
-  { href: "#features", label: "Features" },
-  { href: "/faq", label: "FAQ" },
-] as const;
-
-const VALUE_PROPS = [
-  {
-    title: "Atlas mfc - Machine Fitness Coach",
-    copy:
-      "Nine specialized training domains: from strength, cardio, and hypertrophy, to combat sports and recovery. A machine fitness coach that remembers you and adapts to your goals.",
-  },
-  {
-    title: "The Bonfire - Where Good Form Gets Famous",
-    copy:
-      "Share your workouts, your PRs, and your best lifts. The community votes, and the top posts become the form references everyone else learns from.",
-  },
-] as const;
+const PRIMARY_NAV_LINKS = [{ href: "/faq", label: "FAQ" }] as const;
 
 function IsoLogo({ size = 34 }: { size?: number }) {
   return (
@@ -87,25 +55,6 @@ function ChalkGridBG({ opacity = 1 }: { opacity?: number }) {
       <rect width="100%" height="100%" fill="url(#isoGridMajor)" />
     </svg>
   );
-}
-
-function FeatureIcon({ kind, color }: { kind: Feature["icon"]; color: string }) {
-  const s = { stroke: color, strokeWidth: 1.7, fill: "none", strokeLinecap: "round" as const, strokeLinejoin: "round" as const };
-  const p = { width: 24, height: 24, viewBox: "0 0 28 28", "aria-hidden": true } as const;
-  switch (kind) {
-    case "stopwatch":
-      return <svg {...p}><circle cx="14" cy="16" r="9" {...s} /><path d="M14 16V11M14 7V4M11 4h6M22 9l1.5-1.5" {...s} /></svg>;
-    case "camera":
-      return <svg {...p}><rect x="3" y="8" width="22" height="15" rx="3" {...s} /><circle cx="14" cy="15.5" r="4.5" {...s} /><path d="M10 8l1.6-2.6h4.8L18 8" {...s} /></svg>;
-    case "chart":
-      return <svg {...p}><path d="M4 24h20" {...s} /><rect x="6" y="14" width="3.5" height="8" rx="1" {...s} /><rect x="12.5" y="9" width="3.5" height="13" rx="1" {...s} /><rect x="19" y="5" width="3.5" height="17" rx="1" {...s} /></svg>;
-    case "body":
-      return <svg {...p}><circle cx="14" cy="6" r="2.6" {...s} /><path d="M14 9v8M14 12l-5-2M14 12l5-2M14 17l-3.5 6M14 17l3.5 6" {...s} /></svg>;
-    case "calendar":
-      return <svg {...p}><rect x="4" y="6" width="20" height="18" rx="3" {...s} /><path d="M4 11h20M9 3v5M19 3v5M10 17l2.5 2.5L18 14" {...s} /></svg>;
-    case "program":
-      return <svg {...p}><rect x="4" y="4" width="9" height="9" rx="2" {...s} /><rect x="15" y="4" width="9" height="9" rx="2" {...s} /><rect x="4" y="15" width="9" height="9" rx="2" {...s} /><rect x="15" y="15" width="9" height="9" rx="2" {...s} /></svg>;
-  }
 }
 
 export default function Page() {
@@ -164,42 +113,6 @@ export default function Page() {
         </p>
         <div className="mt-7">
           <WaitlistForm formId="waitlist-form" />
-        </div>
-      </section>
-
-      <section id="features" className="border-y border-[#2a2420]/15 bg-[#fbf9f3]">
-        <div className="mx-auto w-full max-w-[1180px] px-4 py-12 sm:px-5 md:px-8 md:py-16">
-          <h2 className="max-w-[620px] font-display text-[clamp(1.9rem,7vw,3rem)] font-semibold leading-tight tracking-[-0.02em]">
-            More than a logger.
-          </h2>
-          <div className="mt-8 grid gap-4 md:grid-cols-2">
-            {VALUE_PROPS.map((block) => (
-              <article
-                key={block.title}
-                className="rounded-3xl border border-[#2a2420]/10 bg-white p-5 text-[#2a2420] shadow-[0_14px_30px_rgba(42,36,32,0.07)] sm:p-6"
-              >
-                <h3 className="font-display text-[1.45rem] font-semibold leading-tight tracking-[-0.015em]">{block.title}</h3>
-                <p className="mt-3 text-[15px] leading-7 text-[#4a423b]">{block.copy}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="mx-auto w-full max-w-[1180px] px-4 py-12 sm:px-5 md:px-8 md:py-16">
-        <h2 className="mb-8 max-w-[520px] font-display text-2xl font-semibold leading-tight tracking-[-0.015em] sm:text-3xl md:mb-10 md:text-4xl">
-          One app, many ways to train smarter.
-        </h2>
-        <div className="grid gap-x-8 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
-          {FEATURES.map((f) => (
-            <article key={f.title} className="space-y-3">
-              <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-[#2a2420]/10 bg-white shadow-[0_1px_0_rgba(42,36,32,0.04)]">
-                <FeatureIcon kind={f.icon} color={f.color} />
-              </div>
-              <h3 className="font-display text-base font-semibold">{f.title}</h3>
-              <p className="text-sm text-[#4a423b]">{f.copy}</p>
-            </article>
-          ))}
         </div>
       </section>
 
