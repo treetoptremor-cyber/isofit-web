@@ -1,10 +1,11 @@
 # Isofit Privacy Policy
 
-**Version:** 1.1
-**Effective Date:** August 9, 2026
+**Version:** 1.2
+**Effective Date:** September 8, 2026
 **Data Controller:** Isofit ltd.
 **Contact Email:** privacy@isofit.app
 **Governing Frameworks:** CCPA (California) | GDPR (EU, where applicable)
+**Consumer Health Data:** See also our [Consumer Health Data Privacy Policy](/health-privacy), which supplements this policy for the health data Isofit collects.
 
 ---
 
@@ -52,18 +53,26 @@ We collect the minimum data necessary to provide our services. The data we colle
 - **Technical Data:** Device type, operating system version, IP address, and push notification tokens. Used for delivering notifications and maintaining platform security.
 - **Moderation Data:** If your Bonfire content is flagged or reported, moderation records are generated. These are not visible to other members.
 
-### 2.3 Data Collected Through ISO Sync (Optional Add-On)
+### 2.3 Apple Health Data (Optional)
+
+If you connect Apple Health from within the app, we read the following through Apple's HealthKit framework — only after you grant permission in the iOS authorization screen, where you can allow or deny each data type individually:
+
+- **Workouts:** Workout type, start and end time, duration, distance, average and maximum heart rate, and active energy. Each workout is imported into your Isofit log as a synced session.
+- **Daily summaries (last 7 days):** Steps, exercise minutes, sleep duration, resting heart rate, and walking and running distance. These are shown in the app and, if you have opted in to Atlas personalization, included in the context Atlas uses to coach you.
+
+Connecting Apple Health does not require any subscription. See Section 5 for how we handle HealthKit data specifically.
+
+### 2.4 Data Collected Through ISO Sync (Optional Add-On)
 
 If you subscribe to ISO Sync and connect external platforms, we collect fitness and health data from those services — only with your express permission, granted when you connect each platform:
 
-- **Apple Health (via HealthKit):** Workouts, steps, heart rate, sleep data, body metrics, and VO2 max. See Section 5 for how we handle HealthKit data specifically.
 - **Strava:** Activities, routes, heart rate zones, power data, and training load.
 - **Fitbit:** Activities, steps, heart rate, sleep stages, SpO2, and stress scores.
 - **Garmin:** Activities, sleep data, body composition, stress, and pulse oximetry.
 
 You can disconnect any platform at any time.
 
-### 2.4 Data We Do NOT Collect
+### 2.5 Data We Do NOT Collect
 
 We do not collect or store:
 
@@ -88,6 +97,7 @@ We process your data only where we have a valid basis. The purposes are as follo
 - **Send transactional emails.** Your email address is used for account-related communications such as billing confirmations and referral notifications.
 - **Maintain platform security.** Technical data and login events are used for fraud detection, abuse prevention, and security monitoring.
 - **Improve the platform.** Aggregated, de-identified usage patterns help us understand how features are used and where to focus development.
+- **Academic research (optional, opt-in only).** If you opt in to research participation, your workout logs, app usage, and Atlas interactions — with your name and identifying details removed — may be included in academic research and publications on how people use AI-assisted fitness tools, conducted by Isofit's founder independently and, in the future, possibly with university partners. Nothing in the app changes either way. See Section 7 for how to opt in or withdraw.
 
 ---
 
@@ -105,6 +115,7 @@ When you interact with Atlas, the following data is provided to the AI system to
 - **Conversation history:** Recent messages from your current Atlas thread for conversational continuity.
 - **Your current message:** The text, image, or voice transcription you send.
 - **Memory items (if opted in):** Persistent facts Atlas has learned about you — such as goals, injuries, and preferences — drawn from prior conversations.
+- **Apple Health daily summaries (if connected and opted in to personalization):** Your last 7 days of steps, exercise minutes, sleep duration, resting heart rate, and walking and running distance.
 
 ### 4.2 How Atlas Uses Your Data
 
@@ -124,14 +135,16 @@ You can withdraw consent for Atlas memory at any time by toggling off the person
 
 ## 5. Apple Health and HealthKit Data
 
-Isofit accesses Apple Health data only if you subscribe to ISO Sync and grant permission through the standard iOS HealthKit authorization flow. We treat HealthKit data with special care:
+Isofit reads Apple Health data only if you choose to connect Apple Health in the app and grant permission through the standard iOS HealthKit authorization flow. No subscription is required. We treat HealthKit data with special care:
 
-- **Express permission first.** Before you enroll in ISO Sync, we ask for your express permission to collect your HealthKit data and process it through frontier AI models to generate your personal synthesis reports. You will see exactly which data types are requested in the iOS permission screen, and you can grant or deny each one individually.
-- **Purpose limitation.** HealthKit data is used solely to provide ISO Sync features for you — sync, display, and synthesis of your own training and recovery insights.
+- **Express permission first.** Before any Apple Health data is read, you consent to health-data processing in the app and then choose exactly which data types to allow in the iOS permission screen. You can grant or deny each one individually.
+- **Purpose limitation.** HealthKit data is used only to provide Isofit features for you: importing your workouts into your log, showing your recent daily summaries, and — if you have opted in to Atlas personalization — giving Atlas the same picture of your week when it coaches you. If you subscribe to ISO Sync, it is also used to generate your synthesis reports.
 - **No advertising or data mining.** We do not use HealthKit data for advertising, marketing, or use-based data mining, and we do not sell it or disclose it to third parties for those purposes.
-- **No AI training.** Your HealthKit data is never used to train AI models. It is processed by frontier AI models only to generate your reports, under terms that prohibit the model provider from training on it.
-- **No disclosure without permission.** We do not disclose your HealthKit data to any third party without your express permission.
+- **No AI training.** Your HealthKit data is never used to train AI models. It is processed by our AI provider only to generate your coaching responses and reports, under terms that prohibit the provider from training on it.
+- **No disclosure without permission.** We do not disclose your HealthKit data to any third party without your express permission. The service providers that process it on our behalf are listed in Section 6.3.
 - **Revocable at any time.** You can revoke HealthKit access at any time through iOS Settings (Privacy & Security → Health) or by disconnecting Apple Health within the app. Revoking access stops future syncs; previously synced data follows the retention rules in Section 8.
+
+Our [Consumer Health Data Privacy Policy](/health-privacy) sets out the categories of health data we collect, why, who processes it, and your rights over it in one place.
 
 ---
 
@@ -155,7 +168,6 @@ We use the following service providers to deliver Isofit. All are bound by their
 - **Stripe:** Payment processing. Handles all credit card data directly; Isofit servers never see or store your full card number. Stripe is PCI-DSS Level 1 compliant.
 - **OpenAI:** Processes Atlas AI coaching requests. Your message content and training context are sent to OpenAI's API to generate responses. Under OpenAI's API terms, data submitted through the API is not used to train OpenAI's models by default; Isofit does not opt in to any such data sharing.
 - **Frontier AI model providers (ISO Sync synthesis):** With your express permission obtained at ISO Sync enrollment, your synced fitness and health data is processed by frontier AI models solely to generate your synthesis reports. This data is never used to train those models.
-- **Google (Gemini):** Processes playlist recommendation requests. Song context and workout type are sent to generate music suggestions.
 - **Resend:** Delivers transactional emails. Receives your email address only.
 - **Apple Push Notification service (APNs):** Delivers push notifications to your iOS device. Receives a device-specific push token, not your personal information.
 - **Strava, Fitbit, Garmin (ISO Sync only):** If you connect these platforms, data flows between Isofit and the connected platform via authenticated APIs. Each platform's own privacy policy governs data on their side.
@@ -178,8 +190,9 @@ Isofit provides granular consent controls accessible in your account settings:
 - **Operational consent** (on by default): Required for the app to function. Covers core workout logging, $ISO economy, and account management.
 - **Personalization consent** (off by default): Controls whether Atlas AI can build and retain persistent memory items from your conversations. When off, Atlas still works but does not remember information between sessions.
 - **Third-party data sharing consent** (off by default): Reserved for future partnership integrations. Currently not active.
+- **Research participation consent** (off by default): Controls whether your data — workout logs, app usage, and Atlas interactions, with your name and identifying details removed — may be included in academic research and publications. You are offered this choice during onboarding and can change it at any time under Privacy & Terms in your account settings. Withdrawing stops your data from being included in future research; data already included in de-identified analyses cannot be removed. Questions: research@isofit.app.
 
-In addition, ISO Sync requires its own express permission flow before any HealthKit or external platform data is collected (see Section 5).
+In addition, Apple Health requires the iOS HealthKit permission screen before any data is read, and ISO Sync requires its own connection flow for each external platform (see Sections 2.3, 2.4, and 5).
 
 You can change these settings at any time. Changes take effect immediately.
 
@@ -195,7 +208,10 @@ We retain your data only for as long as necessary to provide the service or as r
 - **ISO Sync data:** Retained while the ISO Sync subscription is active. After cancellation, synced data is retained for 90 days, then permanently purged by an automated cleanup process. Reactivation after purge requires reconnecting your external platforms.
 - **Payment and billing records:** Retained as required by applicable financial regulations (typically up to 7 years).
 - **Security and audit logs:** Retained for a limited period for security and compliance purposes, then purged.
-- **Account deletion:** When you delete your account, your personal data is deleted. Anonymized, aggregated data that cannot identify you may be retained for platform analytics.
+- **Apple Health data:** Workouts imported into your log and daily summaries are retained with your account data. Disconnecting Apple Health stops future syncs; data already imported remains part of your account data and is deleted with your account.
+- **Consent records:** When you grant or withdraw a consent — accepting the Terms, consenting to health-data processing, or opting in to research, for example — we record which consent, the version of the text you saw, when, and a hashed IP address and device identifier. We keep these records as evidence of consent, including after account deletion. On deletion the record is severed from your account and kept in pseudonymized form: your user ID is removed and only a salted one-way hash remains, which cannot be reversed to identify you.
+- **Research data:** If you opted in to research participation, data already included in de-identified analyses cannot be removed after withdrawal or account deletion.
+- **Account deletion:** When you delete your account, your personal data is deleted, with two exceptions described above: pseudonymized consent records, and de-identified research data already included in analyses. Anonymized, aggregated data that cannot identify you may be retained for platform analytics.
 
 ---
 
@@ -211,7 +227,7 @@ If you discover a potential security vulnerability, please report it to privacy@
 
 ## 10. Membership Cancellation and Account Deletion
 
-Canceling your membership restricts access to paid features but does **not** delete your account or your personal data. To delete your personal data, request account deletion through your account settings or by contacting privacy@isofit.app.
+Canceling your membership restricts access to paid features but does **not** delete your account or your personal data. To delete your personal data, request account deletion through your account settings or by contacting privacy@isofit.app. Section 8 lists the two things we keep after deletion: pseudonymized consent records and de-identified research data already included in analyses.
 
 If you cancel an ISO Sync subscription, your synced platform data follows the 90-day retention schedule described in Section 8.
 
@@ -237,7 +253,7 @@ Depending on your jurisdiction, you may have the following rights regarding your
 - **Correction:** Request correction of any inaccurate data we hold about you, either through your account settings or by contacting us.
 - **Deletion:** Request deletion of your personal data. Note that some records may be subject to legal retention requirements.
 - **Data Portability:** Request your personal data in a structured, machine-readable format.
-- **Withdraw Consent:** Withdraw any consent you have given at any time, including consent for Atlas personalization and ISO Sync data collection. Effective for future processing.
+- **Withdraw Consent:** Withdraw any consent you have given at any time, including consent for Atlas personalization, Apple Health access, ISO Sync data collection, and research participation. Effective for future processing.
 - **Opt Out of Sale (CCPA):** We do not sell personal information, so there is nothing to opt out of. If this changes, we will provide a clear mechanism.
 - **Non-Discrimination:** We will not discriminate against you for exercising your privacy rights.
 
@@ -269,4 +285,4 @@ If you are a California resident, you may have additional rights under the CCPA.
 
 ---
 
-*End of Privacy Policy | Isofit | v1.1 | August 9, 2026*
+*End of Privacy Policy | Isofit | v1.2 | September 8, 2026*
