@@ -1,7 +1,7 @@
 # Isofit Privacy Policy
 
 **Version:** 1.2
-**Effective Date:** September 8, 2026
+**Effective Date:** August 9, 2026
 **Data Controller:** Isofit ltd.
 **Contact Email:** privacy@isofit.app
 **Governing Frameworks:** CCPA (California) | GDPR (EU, where applicable)
@@ -285,4 +285,4 @@ If you are a California resident, you may have additional rights under the CCPA.
 
 ---
 
-*End of Privacy Policy | Isofit | v1.2 | September 8, 2026*
+*End of Privacy Policy | Isofit | v1.2 | August 9, 2026*

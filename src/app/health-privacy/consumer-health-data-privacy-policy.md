@@ -1,7 +1,7 @@
 # Isofit Consumer Health Data Privacy Policy
 
 **Version:** 1.0
-**Effective Date:** September 8, 2026
+**Effective Date:** August 9, 2026
 **Applies to:** Everyone who uses Isofit. This policy is written to meet the Washington My Health My Data Act and Nevada's consumer health data law (SB 370), and it supplements our [Privacy Policy](/privacy).
 **Contact:** privacy@isofit.app
 
@@ -105,4 +105,4 @@ We will update this policy when our practices change and update the effective da
 
 ---
 
-*End of Consumer Health Data Privacy Policy | Isofit | v1.0 | September 8, 2026*
+*End of Consumer Health Data Privacy Policy | Isofit | v1.0 | August 9, 2026*
