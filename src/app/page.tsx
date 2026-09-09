@@ -146,6 +146,8 @@ export default function Page() {
           <div className="flex flex-wrap gap-6 font-mono text-[10px] uppercase tracking-[0.2em] text-[#7a7066]">
             <Link href="/terms">Terms of Service</Link>
             <Link href="/privacy">Privacy Policy</Link>
+            <Link href="/health-privacy">Consumer Health Data Privacy Policy</Link>
+            <Link href="/research">Research</Link>
             <Link href="/faq">FAQ</Link>
             <a href="https://x.com/isofit_app" target="_blank" rel="noopener noreferrer">
               X / Twitter
