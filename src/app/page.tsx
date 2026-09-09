@@ -147,6 +147,7 @@ export default function Page() {
             <Link href="/terms">Terms of Service</Link>
             <Link href="/privacy">Privacy Policy</Link>
             <Link href="/health-privacy">Consumer Health Data Privacy Policy</Link>
+            <Link href="/research">Research</Link>
             <Link href="/faq">FAQ</Link>
             <a href="https://x.com/isofit_app" target="_blank" rel="noopener noreferrer">
               X / Twitter
