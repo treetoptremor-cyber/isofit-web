@@ -91,7 +91,7 @@ Open **Settings**, then **Privacy & Terms**, and turn off **Participate in resea
 
 ## 11. Ethics Review
 
-This research is currently conducted independently and has not been reviewed by an institutional review board or independent ethics committee. Any study conducted with a university partner will go through that institution's ethics review before any data is shared, and we will update this sheet if the review status changes.
+This research will be reviewed by an independent institutional review board (IRB) before any analysis of participant data begins. Until that approval is in place, opting in records your choice and adds the thank-you, and no research analysis of your data will start. Once approved, this section will name the board and the study number and give you a way to contact the board with questions about your rights as a research participant. Any study conducted with a university partner will also go through that institution's ethics review before any data is shared.
 
 ---
 
