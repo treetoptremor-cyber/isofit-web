@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import AppScreenCarousel from "@/components/app-screen-carousel";
 import RecoveryRedirect from "@/components/recovery-redirect";
 import WaitlistForm from "@/components/waitlist-form";
 
@@ -54,62 +55,6 @@ function ChalkGridBG({ opacity = 1 }: { opacity?: number }) {
       <rect width="100%" height="100%" fill="url(#isoGridMinor)" />
       <rect width="100%" height="100%" fill="url(#isoGridMajor)" />
     </svg>
-  );
-}
-
-const APP_SCREENS = [
-  {
-    src: "/mockups/progress-body-graph.webp",
-    label: "Progress · Body graph",
-    caption:
-      "Every set lands on a muscle. The graph shows what is accumulating — and what you keep skipping.",
-    alt: "Isofit Progress tab showing the body graph: front and back muscle maps shaded by training volume, with sets by muscle and total sets beneath them.",
-  },
-  {
-    src: "/mockups/progress-history.webp",
-    label: "Progress · History",
-    caption: "Every session you have logged, in the order you trained it.",
-    alt: "Isofit Progress tab showing workout history: dated session cards listing each exercise with its sets, reps and weight.",
-  },
-  {
-    src: "/mockups/atlas-chat.webp",
-    label: "Atlas mfc",
-    caption: "Tell Atlas what you did. It tells you what to change next time.",
-    alt: "Isofit Atlas tab showing a chat in which Atlas reviews a logged session and suggests reordering the work and holding back volume.",
-  },
-] as const;
-
-function PhoneFrame({ src, alt, label, caption }: (typeof APP_SCREENS)[number]) {
-  return (
-    <figure className="w-full max-w-[264px] md:max-w-[300px]">
-      <div
-        className="relative bg-[#1d2530] p-[3.2%] shadow-[0_26px_60px_-28px_rgba(42,36,32,0.7)]"
-        style={{ borderRadius: "15.4% / 7.34%" }}
-      >
-        <span aria-hidden className="absolute -left-[0.9%] top-[15%] h-[4%] w-[1.1%] rounded-full bg-[#141a22]" />
-        <span aria-hidden className="absolute -left-[0.9%] top-[22%] h-[7.5%] w-[1.1%] rounded-full bg-[#141a22]" />
-        <span aria-hidden className="absolute -left-[0.9%] top-[31%] h-[7.5%] w-[1.1%] rounded-full bg-[#141a22]" />
-        <span aria-hidden className="absolute -right-[0.9%] top-[25%] h-[11%] w-[1.1%] rounded-full bg-[#141a22]" />
-        <div className="relative overflow-hidden bg-black" style={{ borderRadius: "15.4% / 7.09%" }}>
-          <Image
-            src={src}
-            alt={alt}
-            width={1206}
-            height={2622}
-            sizes="(max-width: 767px) 264px, 300px"
-            className="block h-auto w-full"
-          />
-          <span
-            aria-hidden
-            className="absolute left-1/2 top-[1.26%] h-[4.23%] w-[31%] -translate-x-1/2 rounded-full bg-black"
-          />
-        </div>
-      </div>
-      <figcaption className="mt-6 text-center md:text-left">
-        <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#7a7066]">{label}</p>
-        <p className="mt-2 text-sm leading-relaxed text-[#4a423b]">{caption}</p>
-      </figcaption>
-    </figure>
   );
 }
 
@@ -173,20 +118,15 @@ export default function Page() {
       </section>
 
       <section className="mx-auto w-full max-w-[1180px] px-4 pb-14 sm:px-5 md:px-8 md:pb-20">
-        <div className="max-w-[760px]">
+        <AppScreenCarousel>
           <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#4a423b]">Inside the app</p>
           <h2 className="mt-4 font-display text-[clamp(28px,5.2vw,46px)] font-extrabold leading-[1.02] tracking-[-0.03em] text-[#2a2420]">
             This is the <span className="text-[#69A5F0]">then what</span>.
           </h2>
           <p className="mt-4 text-base leading-relaxed text-[#4a423b]">
-            Screens from the iOS build landing October 1.
+            Screens from the iOS build landing October 1 — swipe the phone, or step through with the arrows.
           </p>
-        </div>
-        <div className="mt-10 grid justify-items-center gap-12 md:mt-14 md:grid-cols-3 md:gap-8">
-          {APP_SCREENS.map((screen) => (
-            <PhoneFrame key={screen.src} {...screen} />
-          ))}
-        </div>
+        </AppScreenCarousel>
       </section>
 
       <section className="mx-auto w-full max-w-[1180px] px-4 pb-14 sm:px-5 md:px-8 md:pb-20">
