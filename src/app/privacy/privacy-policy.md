@@ -1,7 +1,7 @@
 # Isofit Privacy Policy
 
-**Version:** 1.2
-**Effective Date:** August 9, 2026
+**Version:** 1.3
+**Effective Date:** September 15, 2026
 **Data Controller:** Isofit ltd.
 **Contact Email:** privacy@isofit.app
 **Governing Frameworks:** CCPA (California) | GDPR (EU, where applicable)
@@ -92,7 +92,7 @@ We process your data only where we have a valid basis. The purposes are as follo
 - **Operate the $ISO economy.** Your workout logs, streak activity, and membership tier determine your $ISO earnings. Spending, redemptions, and balance tracking require ledger data.
 - **Power the Bonfire community.** Posts, comments, reactions, and media you share are displayed to other members. Moderation systems process content to maintain community standards.
 - **Generate cross-platform insights (ISO Sync).** With your express permission, data from your connected platforms is processed by frontier AI models to generate a unified training analysis — including training load trends, recovery scores, sleep quality, and cross-platform insights. This data is never used to train those models.
-- **Process payments.** Stripe processes your subscription and billing data to manage your membership.
+- **Process payments.** In the iOS app, membership is purchased through Apple's App Store in-app purchase system; Apple processes the payment and Isofit never sees your payment details. RevenueCat manages subscription state on our behalf. Stripe continues to process billing for memberships purchased on the web before the App Store transition.
 - **Send notifications.** Push notification tokens are used to send you streak reminders, reward alerts, social notifications, and system messages via Apple Push Notification service.
 - **Send transactional emails.** Your email address is used for account-related communications such as billing confirmations and referral notifications.
 - **Maintain platform security.** Technical data and login events are used for fraud detection, abuse prevention, and security monitoring.
@@ -165,7 +165,10 @@ If you redeem an ISO Gravy reward with a partner merchant, the merchant receives
 We use the following service providers to deliver Isofit. All are bound by their respective data processing terms.
 
 - **Supabase:** Backend infrastructure, database hosting, user authentication, and real-time features.
-- **Stripe:** Payment processing. Handles all credit card data directly; Isofit servers never see or store your full card number. Stripe is PCI-DSS Level 1 compliant.
+- **Apple App Store:** Processes in-app membership purchases in the iOS app. Apple handles all payment data directly under its own privacy policy; Isofit never sees your payment details.
+- **RevenueCat:** Manages in-app subscription state (which plan you hold and whether it is active). Receives a pseudonymous app user identifier and purchase receipts — never your name, health data, or payment details.
+- **Stripe:** Payment processing for memberships purchased on the web before the App Store transition. Handles all credit card data directly; Isofit servers never see or store your full card number. Stripe is PCI-DSS Level 1 compliant.
+- **Apple Weather (WeatherKit) and Open-Meteo:** Provide the current-conditions line shown in the app header. Receive the coarse location you chose for weather (a zip code, your device location if you enabled it, or a city inferred from your timezone) — never your identity or health data.
 - **OpenAI:** Processes Atlas AI coaching requests. Your message content and training context are sent to OpenAI's API to generate responses. Under OpenAI's API terms, data submitted through the API is not used to train OpenAI's models by default; Isofit does not opt in to any such data sharing.
 - **Frontier AI model providers (ISO Sync synthesis):** With your express permission obtained at ISO Sync enrollment, your synced fitness and health data is processed by frontier AI models solely to generate your synthesis reports. This data is never used to train those models.
 - **Resend:** Delivers transactional emails. Receives your email address only.
@@ -190,7 +193,8 @@ Isofit provides granular consent controls accessible in your account settings:
 - **Operational consent** (on by default): Required for the app to function. Covers core workout logging, $ISO economy, and account management.
 - **Personalization consent** (off by default): Controls whether Atlas AI can build and retain persistent memory items from your conversations. When off, Atlas still works but does not remember information between sessions.
 - **Third-party data sharing consent** (off by default): Reserved for future partnership integrations. Currently not active.
-- **Research participation consent** (off by default): Controls whether your data — workout logs, app usage, and Atlas interactions, with your name and identifying details removed — may be included in academic research and publications. You are offered this choice during onboarding and can change it at any time under Privacy & Terms in your account settings. As a thank-you for opting in, we add 5 $ISO to your balance once; it is yours to keep even if you withdraw later. Withdrawing stops your data from being included in future research; data already included in de-identified analyses cannot be removed. Questions: research@isofit.app.
+- **Research participation consent** (off by default): Controls whether your data — workout logs, app usage, and Atlas interactions, with your name and identifying details removed — may be included in academic research and publications. When research enrollment is open, you are offered this choice in the app and can change it at any time under Privacy & Terms in your account settings. As a thank-you for opting in, we add 5 $ISO to your balance once; it is yours to keep even if you withdraw later. Withdrawing stops your data from being included in future research; data already included in de-identified analyses cannot be removed. Questions: research@isofit.app.
+- **Usage analytics** (on after you accept this policy; off anytime): Controls the in-app product analytics described in Section 2.2 (screens viewed, features used). Turn it off under Privacy & Terms in your account settings and collection stops immediately.
 
 In addition, Apple Health requires the iOS HealthKit permission screen before any data is read, and ISO Sync requires its own connection flow for each external platform (see Sections 2.3, 2.4, and 5).
 
@@ -228,6 +232,8 @@ If you discover a potential security vulnerability, please report it to privacy@
 ## 10. Membership Cancellation and Account Deletion
 
 Canceling your membership restricts access to paid features but does **not** delete your account or your personal data. To delete your personal data, request account deletion through your account settings or by contacting privacy@isofit.app. Section 8 lists the two things we keep after deletion: pseudonymized consent records and de-identified research data already included in analyses.
+
+If you subscribed through the Apple App Store, deleting your Isofit account does **not** cancel that subscription — Apple manages it, and you must cancel it yourself in your Apple account settings (Settings → your name → Subscriptions on iPhone). Stripe subscriptions linked to your account are cancelled automatically when deletion is processed.
 
 If you cancel an ISO Sync subscription, your synced platform data follows the 90-day retention schedule described in Section 8.
 
