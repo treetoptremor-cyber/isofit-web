@@ -3,7 +3,7 @@
 **Version:** 1.0
 **Effective Date:** August 9, 2026
 **Provider:** Isofit ltd.
-**Contact:** ops@isofit.app
+**Contact:** support@isofit.app
 
 ---
 
@@ -31,7 +31,7 @@ You must be at least 18 years old to use the Service. By using the Service, you 
 
 ## 3. Your Account
 
-You are responsible for your account credentials and for activity that occurs under your account. Keep your password secure and notify us at ops@isofit.app if you believe your account has been compromised. You may not share, sell, or transfer your account.
+You are responsible for your account credentials and for activity that occurs under your account. Keep your password secure and notify us at support@isofit.app if you believe your account has been compromised. You may not share, sell, or transfer your account.
 
 ---
 
@@ -175,13 +175,13 @@ These Terms, and any dispute arising out of or relating to them or the Service, 
 
 If the law of your home jurisdiction gives you mandatory consumer rights, or the right to bring or defend proceedings in your local courts, nothing in this section takes those rights away.
 
-Before filing any claim, please contact us at ops@isofit.app — most concerns can be resolved informally.
+Before filing any claim, please contact us at support@isofit.app — most concerns can be resolved informally.
 
 ---
 
 ## 18. Contact
 
-- **General:** ops@isofit.app
+- **General:** support@isofit.app
 - **Privacy:** privacy@isofit.app
 - **Website:** https://isofit.app
 

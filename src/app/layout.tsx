@@ -1,12 +1,6 @@
 import type { Metadata } from "next";
-import { Inter, Unbounded, DM_Mono } from "next/font/google";
+import { Unbounded } from "next/font/google";
 import "./globals.css";
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-});
 
 const unbounded = Unbounded({
   subsets: ["latin"],
@@ -15,22 +9,15 @@ const unbounded = Unbounded({
   display: "swap",
 });
 
-const dmMono = DM_Mono({
-  subsets: ["latin"],
-  weight: ["400", "500"],
-  variable: "--font-dm-mono",
-  display: "swap",
-});
-
 export const metadata: Metadata = {
   metadataBase: new URL("https://isofit.app"),
   title: "Isofit — Your workouts, working for you",
   description:
-    "A clean workout logger, a machine fitness coach, and a community where the work speaks for itself. Launching on iOS October 1.",
+    "A clean workout logger, an AI training guide, and a community where the work speaks for itself. iOS launch planned for October 1, 2026.",
   openGraph: {
     title: "Isofit — Your workouts, working for you",
     description:
-      "A clean workout logger, a machine fitness coach, and a community where the work speaks for itself.",
+      "A clean workout logger, an AI training guide, and a community where the work speaks for itself.",
     url: "/",
     siteName: "Isofit",
     type: "website",
@@ -41,7 +28,7 @@ export const metadata: Metadata = {
     site: "@isofit_app",
     title: "Isofit — Your workouts, working for you",
     description:
-      "A clean workout logger, a machine fitness coach, and a community where the work speaks for itself.",
+      "A clean workout logger, an AI training guide, and a community where the work speaks for itself.",
     images: ["/og.png"],
   },
 };
@@ -54,7 +41,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`h-full antialiased ${inter.variable} ${unbounded.variable} ${dmMono.variable}`}
+      className={`h-full antialiased ${unbounded.variable}`}
     >
       <body className="min-h-full flex flex-col">{children}</body>
     </html>

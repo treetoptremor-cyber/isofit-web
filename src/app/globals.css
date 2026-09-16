@@ -1,13 +1,56 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --color-sky: #6aa5ee;
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", system-ui, sans-serif;
   --font-display: var(--font-unbounded), system-ui, sans-serif;
-  --font-mono: var(--font-dm-mono), ui-monospace, monospace;
+  --font-mono: ui-monospace, "SFMono-Regular", "SF Mono", Menlo, Consolas, monospace;
 }
 
 body {
   background: #f3efe6;
   color: #2a2420;
-  font-family: var(--font-inter), system-ui, sans-serif;
+  font-family: var(--font-sans);
+}
+
+.app-device {
+  position: relative;
+  width: 100%;
+  max-width: 18.75rem;
+  aspect-ratio: 0.4852059;
+  touch-action: pan-y pinch-zoom;
+}
+
+.app-device-screen {
+  position: absolute;
+  left: 8.4928%;
+  top: 6.0074%;
+  width: 83.2536%;
+  aspect-ratio: 1206 / 2622;
+  overflow: hidden;
+  border-radius: 12.5% / 5.75%;
+  background: #f3efe6;
+}
+
+@media (min-width: 40rem) {
+  .app-device {
+    max-width: 21.25rem;
+  }
+}
+
+:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline: 3px solid #245c9b;
+  outline-offset: 4px;
+  box-shadow: 0 0 0 4px #fff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0s !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
 }

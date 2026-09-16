@@ -26,7 +26,7 @@ Isofit is a fitness platform providing AI-powered coaching, workout logging, a c
 For any privacy-related questions, concerns, or requests:
 
 - **Privacy Contact:** privacy@isofit.app
-- **General Support:** ops@isofit.app
+- **General Support:** [support@isofit.app](mailto:support@isofit.app)
 
 ---
 
@@ -278,7 +278,7 @@ We may update this Privacy Policy from time to time. We will notify you of mater
 For any questions, concerns, or requests relating to this Privacy Policy or your personal data:
 
 - **Privacy Contact:** privacy@isofit.app
-- **General Support:** ops@isofit.app
+- **General Support:** [support@isofit.app](mailto:support@isofit.app)
 - **Website:** https://isofit.app
 
 If you are a California resident, you may have additional rights under the CCPA. If you are located in the EEA, you may lodge a complaint with your local EU data protection authority.

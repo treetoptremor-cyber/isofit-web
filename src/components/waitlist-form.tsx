@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useId, useState, type FormEvent } from "react";
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -17,6 +17,7 @@ export default function WaitlistForm({
   formId,
   source = "landing_page",
 }: WaitlistFormProps) {
+  const inputId = useId();
   const [firstName, setFirstName] = useState("");
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error" | "duplicate">("idle");
@@ -36,6 +37,8 @@ export default function WaitlistForm({
     const trimmedEmail = email.trim().toLowerCase();
 
     if (!trimmedFirstName || !trimmedEmail) {
+      setStatus("error");
+      setMessage("Please enter your first name and email address.");
       return;
     }
 
@@ -89,63 +92,75 @@ export default function WaitlistForm({
     }
   };
 
-  const hasRequiredFields = !!firstName.trim() && !!email.trim();
-  const isDisabled = status === "loading" || !hasRequiredFields;
+  const isDisabled = status === "loading";
 
   return (
     <form
       id={formId}
       onSubmit={handleSubmit}
+      aria-label="Join the Isofit waitlist"
+      aria-describedby={`${inputId}-help`}
+      aria-busy={status === "loading"}
       className={`${compact ? "w-full max-w-[460px]" : "w-full max-w-[560px]"} scroll-mt-28`}
     >
-      <div
-        className={`space-y-2 rounded-2xl border p-2 ${
-          dark ? "border-white/20 bg-white/10" : "border-[#2a2420]/10 bg-white"
-        } shadow-[0_12px_30px_rgba(42,36,32,0.1)]`}
-      >
-        <div className="flex flex-col items-stretch gap-2 sm:flex-row sm:items-center">
-          <input
-            type="text"
-            required
-            value={firstName}
-            onChange={(event) => {
-              setFirstName(event.target.value);
-              resetStatusIfNeeded();
-            }}
-            disabled={status === "loading"}
-            placeholder="First name"
-            className={`h-12 w-full rounded-xl border px-3 outline-none transition-colors disabled:opacity-60 sm:min-w-[130px] sm:flex-1 ${
-              dark
-                ? "border-[#243140] bg-[#1A2430] text-[#E6EDF3] placeholder:text-[#6B7C8F] focus:border-[#6B8AFD]"
-                : "border-[#2a2420]/10 bg-white text-[#2a2420] placeholder:text-[#7a7066] focus:border-[#69A5F0]"
-            }`}
-          />
-          <input
-            type="email"
-            required
-            value={email}
-            onChange={(event) => {
-              setEmail(event.target.value);
-              resetStatusIfNeeded();
-            }}
-            disabled={status === "loading"}
-            placeholder="you@email.com"
-            className={`h-12 w-full rounded-xl border px-3 outline-none transition-colors disabled:opacity-60 sm:min-w-[180px] sm:flex-1 ${
-              dark
-                ? "border-[#243140] bg-[#1A2430] text-[#E6EDF3] placeholder:text-[#6B7C8F] focus:border-[#6B8AFD]"
-                : "border-[#2a2420]/10 bg-white text-[#2a2420] placeholder:text-[#7a7066] focus:border-[#69A5F0]"
-            }`}
-          />
+      <div className="bg-transparent">
+        <div className="grid grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] gap-2 sm:gap-3">
+          <div className="min-w-0">
+            <label htmlFor={`${inputId}-name`} className="sr-only">
+              First name
+            </label>
+            <input
+              id={`${inputId}-name`}
+              name="given-name"
+              autoComplete="given-name"
+              type="text"
+              required
+              value={firstName}
+              onChange={(event) => {
+                setFirstName(event.target.value);
+                resetStatusIfNeeded();
+              }}
+              disabled={status === "loading"}
+              placeholder="First name"
+              className={`h-11 w-full rounded-xl border px-3 text-base outline-none transition-colors disabled:opacity-60 min-w-0 sm:h-12 ${
+                dark
+                  ? "border-[#8496a8] bg-[#1A2430] text-[#E6EDF3] placeholder:text-[#9baab9] focus:border-[#6B8AFD]"
+                  : "border-[#7a7066] bg-transparent text-[#2a2420] placeholder:text-[#6c6259] focus:border-[#2d6cb8]"
+              }`}
+            />
+          </div>
+          <div className="min-w-0">
+            <label htmlFor={`${inputId}-email`} className="sr-only">
+              Email address
+            </label>
+            <input
+              id={`${inputId}-email`}
+              name="email"
+              autoComplete="email"
+              autoCapitalize="none"
+              spellCheck={false}
+              type="email"
+              required
+              value={email}
+              onChange={(event) => {
+                setEmail(event.target.value);
+                resetStatusIfNeeded();
+              }}
+              disabled={status === "loading"}
+              placeholder="Email address"
+              className={`h-11 w-full rounded-xl border px-3 text-base outline-none transition-colors disabled:opacity-60 min-w-0 sm:h-12 ${
+                dark
+                  ? "border-[#8496a8] bg-[#1A2430] text-[#E6EDF3] placeholder:text-[#9baab9] focus:border-[#6B8AFD]"
+                  : "border-[#7a7066] bg-transparent text-[#2a2420] placeholder:text-[#6c6259] focus:border-[#2d6cb8]"
+              }`}
+            />
+          </div>
           <button
             type="submit"
             disabled={isDisabled}
-            className={`flex h-12 w-full items-center justify-center gap-2 whitespace-nowrap rounded-xl px-5 font-display text-[15px] font-semibold text-white transition-colors sm:w-auto sm:shrink-0 ${
-              hasRequiredFields
-                ? "bg-[#67835a] hover:bg-[#5a7350] shadow-[0_6px_16px_rgba(103,131,90,0.33)]"
-                : "cursor-not-allowed bg-[#a89f90]"
-            }`}
+            className="col-span-2 flex min-h-11 w-full items-center justify-center gap-2 rounded-xl bg-[#526b46] px-5 py-2.5 text-base font-semibold text-white transition-colors hover:bg-[#435b38] disabled:cursor-wait sm:min-h-12"
           >
-            {status === "loading" ? "Joining..." : "Get Early Access"}
+            {status === "loading" ? "Joining..." : "Join the Waitlist"}
             <svg width="16" height="13" viewBox="0 0 16 13" fill="none" aria-hidden="true">
               <path
                 d="M1 6.5h13M9 1l5 5.5L9 12"
@@ -158,26 +173,26 @@ export default function WaitlistForm({
           </button>
         </div>
       </div>
-      <p className={`mt-3 flex items-center gap-2 text-sm ${dark ? "text-[#f3efe6]/70" : "text-[#7a7066]"}`}>
-        <span className="inline-block h-[5px] w-[5px] rounded-full bg-[#3f5a32]" />
+      <p id={`${inputId}-help`} className={`mt-2 flex items-start gap-2 text-sm leading-5 ${dark ? "text-[#f3efe6]/80" : "text-[#6c6259]"}`}>
+        <span aria-hidden="true" className="mt-2 inline-block h-[5px] w-[5px] shrink-0 rounded-full bg-[#3f5a32]" />
         Be first in. No spam, just a heads-up when we launch.
       </p>
-      {(status === "success" || status === "duplicate" || status === "error") && (
-        <p
-          className={`mt-2 text-sm ${
-            status === "success"
-              ? "text-[#3DDC97]"
-              : status === "duplicate"
-                ? dark
-                  ? "text-[#9CB2FF]"
-                  : "text-[#69A5F0]"
-                : "text-[#F5A524]"
-          }`}
-          aria-live="polite"
-        >
-          {message}
-        </p>
-      )}
+      <p
+        role="status"
+        aria-atomic="true"
+        className={`text-sm [&:not(:empty)]:mt-2 ${
+          status === "success"
+            ? dark ? "text-[#3DDC97]" : "text-[#36552b]"
+            : status === "duplicate"
+              ? dark
+                ? "text-[#9CB2FF]"
+                : "text-[#245c9b]"
+              : dark ? "text-[#F5A524]" : "text-[#93411d]"
+        }`}
+        aria-live="polite"
+      >
+        {message}
+      </p>
     </form>
   );
 }

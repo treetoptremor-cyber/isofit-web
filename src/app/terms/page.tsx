@@ -23,7 +23,7 @@ export default async function TermsPage() {
       <div className="mx-auto mb-4 w-full max-w-3xl">
         <Link
           href="/"
-          className="inline-flex rounded-xl bg-[#69A5F0] px-4 py-2 font-display text-sm font-semibold text-white transition-colors hover:bg-[#5C94DA]"
+          className="inline-flex min-h-11 items-center rounded-xl bg-[#245c9b] px-4 py-2 font-display text-sm font-semibold text-white transition-colors hover:bg-[#194b82]"
         >
           Back Home
         </Link>
@@ -38,38 +38,40 @@ export default async function TermsPage() {
                 {...props}
               />
             ),
-            h2: ({ ...props }) => (
+            h2: ({ children, ...props }) => (
               <h2
+                id={String(children).toLowerCase().replace(/[^a-z0-9\s-]/g, "").trim().replace(/\s+/g, "-")}
                 className="mt-12 mb-4 border-b border-[#2a2420]/10 pb-2 font-display text-2xl font-bold tracking-[-0.015em] text-[#2a2420]"
                 {...props}
-              />
+              >{children}</h2>
             ),
-            h3: ({ ...props }) => (
+            h3: ({ children, ...props }) => (
               <h3
+                id={String(children).toLowerCase().replace(/[^a-z0-9\s-]/g, "").trim().replace(/\s+/g, "-")}
                 className="mt-8 mb-3 font-display text-lg font-semibold text-[#2a2420]"
                 {...props}
-              />
+              >{children}</h3>
             ),
             p: ({ ...props }) => (
-              <p className="my-4 text-[15px] leading-7 text-[#4a423b]" {...props} />
+              <p className="my-4 text-base leading-7 text-[#4a423b]" {...props} />
             ),
             ul: ({ ...props }) => (
-              <ul className="my-5 list-disc space-y-2 pl-6 text-[15px] text-[#4a423b]" {...props} />
+              <ul className="my-5 list-disc space-y-2 pl-6 text-base text-[#4a423b]" {...props} />
             ),
             ol: ({ ...props }) => (
-              <ol className="my-5 list-decimal space-y-2 pl-6 text-[15px] text-[#4a423b]" {...props} />
+              <ol className="my-5 list-decimal space-y-2 pl-6 text-base text-[#4a423b]" {...props} />
             ),
             li: ({ ...props }) => <li className="leading-7" {...props} />,
             blockquote: ({ ...props }) => (
               <blockquote
-                className="my-6 rounded-r-xl border-l-4 border-[#69A5F0] bg-[#69A5F0]/5 px-5 py-3 text-[15px] italic text-[#4a423b]"
+                className="my-6 rounded-r-xl border-l-4 border-[#69A5F0] bg-[#245c9b]/5 px-5 py-3 text-base italic text-[#4a423b]"
                 {...props}
               />
             ),
             hr: ({ ...props }) => <hr className="my-10 border-[#2a2420]/10" {...props} />,
             a: ({ ...props }) => (
               <a
-                className="font-medium text-[#2d6cb8] underline decoration-[#69A5F0]/40 underline-offset-2 hover:text-[#69A5F0]"
+                className="font-medium text-[#2d6cb8] underline decoration-[#69A5F0]/40 underline-offset-2 hover:text-[#194b82]"
                 {...props}
               />
             ),
@@ -91,7 +93,7 @@ export default async function TermsPage() {
             code: ({ ...props }) => (
               <code className="rounded bg-[#ece6d9] px-1.5 py-0.5 font-mono text-[13px] text-[#2a2420]" {...props} />
             ),
-            em: ({ ...props }) => <em className="text-[#7a7066]" {...props} />,
+            em: ({ ...props }) => <em className="text-[#6c6259]" {...props} />,
           }}
         >
           {markdown}

@@ -1,0 +1,21 @@
+# Local tools, worktrees, and notes
+.claude
+.codex
+.agents
+AGENTS.md
+CLAUDE.md
+docs
+
+# Local credentials and generated files
+.env*
+*.pem
+.git
+.vercel
+.next
+node_modules
+coverage
+out
+build
+*.tsbuildinfo
+.DS_Store
+*.log

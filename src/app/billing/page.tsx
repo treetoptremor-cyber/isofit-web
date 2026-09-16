@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { loadStripe } from "@stripe/stripe-js";
 import { AppShell } from "@/components/pwa/app-shell";
 import { createClient } from "@/lib/supabase/client";
+import { WEB_MEMBERSHIP_PRICES } from "@/lib/membership-pricing";
 
 type BillingTier = "isofit_gold" | "isofit_pro";
 
@@ -19,13 +20,13 @@ const PLANS: PlanCard[] = [
   {
     tier: "isofit_gold",
     name: "Gold",
-    price: "$12/mo",
+    price: `$${WEB_MEMBERSHIP_PRICES.gold}/mo`,
     colorClass: "border-[#d9b94f]/40 bg-[#f8f1dc]",
   },
   {
     tier: "isofit_pro",
     name: "Pro",
-    price: "$15/mo",
+    price: `$${WEB_MEMBERSHIP_PRICES.pro}/mo`,
     colorClass: "border-[#69A5F0]/35 bg-[#ecf4ff]",
   },
 ];
