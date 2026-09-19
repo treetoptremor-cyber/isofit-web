@@ -7,6 +7,12 @@
   --font-mono: ui-monospace, "SFMono-Regular", "SF Mono", Menlo, Consolas, monospace;
 }
 
+html {
+  /* The header is sticky at ~65px; keep in-page anchors and sequential
+     focus from landing underneath it. */
+  scroll-padding-top: 5rem;
+}
+
 body {
   background: #f3efe6;
   color: #2a2420;
@@ -38,10 +44,17 @@ body {
   }
 }
 
+:root {
+  /* The focus indicator is context-aware: the ring is the action blue on
+     paper, and the brand sky on ink, where the action blue disappears. */
+  --focus-ring: #245c9b;
+  --focus-halo: #ffffff;
+}
+
 :where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
-  outline: 3px solid #245c9b;
+  outline: 3px solid var(--focus-ring);
   outline-offset: 4px;
-  box-shadow: 0 0 0 4px #fff;
+  box-shadow: 0 0 0 4px var(--focus-halo);
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -11,13 +11,13 @@ const unbounded = Unbounded({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://isofit.app"),
-  title: "Isofit — Your workouts, working for you",
+  title: "Isofit — a workout logger for iPhone with a body graph and an AI coach",
   description:
-    "A clean workout logger, an AI training guide, and a community where the work speaks for itself. iOS launch planned for October 1, 2026.",
+    "Isofit is a workout logger for iPhone with a body-graph heatmap of the muscle regions your sets credited and an AI coach, Atlas, scoped to training questions. iOS launch planned for 1 October 2026.",
   openGraph: {
-    title: "Isofit — Your workouts, working for you",
+    title: "Isofit — a workout logger for iPhone with a body graph and an AI coach",
     description:
-      "A clean workout logger, an AI training guide, and a community where the work speaks for itself.",
+      "Isofit is a workout logger for iPhone with a body-graph heatmap of the muscle regions your sets credited and an AI coach, Atlas, scoped to training questions.",
     url: "/",
     siteName: "Isofit",
     type: "website",
@@ -26,9 +26,9 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     site: "@isofit_app",
-    title: "Isofit — Your workouts, working for you",
+    title: "Isofit — a workout logger for iPhone with a body graph and an AI coach",
     description:
-      "A clean workout logger, an AI training guide, and a community where the work speaks for itself.",
+      "Isofit is a workout logger for iPhone with a body-graph heatmap of the muscle regions your sets credited and an AI coach, Atlas, scoped to training questions.",
     images: ["/og.png"],
   },
 };

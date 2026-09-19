@@ -1,0 +1,144 @@
+/* Scoped skin for the marketing homepage. Nothing here leaks past the
+   components that import it. */
+
+/* ── Waitlist component re-skin ──────────────────────────────────────
+   The shared WaitlistForm is reused as-is. The action colour now lives in
+   the component itself (#245c9b on paper), so nothing here restates it;
+   these rules only square the corners to match the rest of the page and
+   set the surfaces the component cannot express from a boolean prop. On
+   ink the button is the brand sky with ink-dark text. */
+
+.waitlist :global(button[type="submit"]) {
+  border-radius: 6px;
+}
+
+.waitlist :global(input) {
+  border-radius: 6px;
+  background-color: #fbf9f4;
+  font-size: 1rem;
+}
+
+.waitlistDark :global(input) {
+  /* An opaque fill: the lattice reads behind the panel, never through
+     the field the visitor is typing into. */
+  background-color: #191411;
+  color: #f3efe6;
+}
+
+.waitlistDark :global(button[type="submit"]) {
+  background-color: #6aa5ee;
+  color: #12212f;
+}
+
+.waitlistDark :global(button[type="submit"]:hover) {
+  background-color: #8dbcf5;
+}
+
+.waitlistDark :global(button[type="submit"] svg path) {
+  stroke: #12212f;
+}
+
+.waitlistDark :global(span[aria-hidden="true"]) {
+  background-color: #6aa5ee;
+}
+
+/* ── Device composite ────────────────────────────────────────────────
+   The shared .app-device / .app-device-screen CSS in globals.css does the
+   compositing. This only widens the cap for the marketing page. */
+
+.deviceLg :global(.app-device) {
+  max-width: 16rem;
+}
+
+@media (min-width: 48rem) {
+  .deviceLg :global(.app-device) {
+    max-width: 19.5rem;
+  }
+}
+
+@media (min-width: 64rem) {
+  .deviceLg :global(.app-device) {
+    max-width: 20.5rem;
+  }
+}
+
+/* ── FAQ disclosure ──────────────────────────────────────────────────
+   Native <details>, so the answers are in the DOM with JavaScript off. */
+
+.faq summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq summary {
+  list-style: none;
+}
+
+.faq details[open] .faqMark {
+  transform: rotate(45deg);
+}
+
+/* ── Detail crop ─────────────────────────────────────────────────────
+   A window onto a real screenshot, enlarged past phone-frame scale so the
+   interface text is actually legible in the column. */
+
+.crop {
+  overflow: hidden;
+  border: 1px solid rgba(42, 36, 32, 0.2);
+  border-radius: 8px;
+  background: #faf8f3;
+}
+
+.crop img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* ── Data tables ─────────────────────────────────────────────────────
+   Real <table> markup for the numeric content. */
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+}
+
+.table caption {
+  caption-side: top;
+  padding: 0 0 0.75rem;
+  text-align: left;
+  font-size: 0.6875rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #6c6259;
+}
+
+.table th,
+.table td {
+  border-top: 1px solid rgba(42, 36, 32, 0.15);
+  padding: 0.6875rem 0;
+  text-align: left;
+  font-weight: 400;
+  vertical-align: top;
+  line-height: 1.45;
+  color: #4a423b;
+}
+
+.table thead th {
+  border-top: 0;
+  padding-top: 0;
+  font-size: 0.625rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #6c6259;
+}
+
+.table td:last-child,
+.table th:last-child {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  padding-left: 1rem;
+  color: #2a2420;
+}

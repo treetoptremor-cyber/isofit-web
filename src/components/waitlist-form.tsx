@@ -4,11 +4,17 @@ import { useId, useState, type FormEvent } from "react";
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+export type WaitlistStatus = "idle" | "loading" | "success" | "error" | "duplicate";
+
 type WaitlistFormProps = {
   dark?: boolean;
   compact?: boolean;
   formId?: string;
   source?: string;
+  /** Accessible name for the form landmark. Two forms on one page must not share one. */
+  label?: string;
+  /** Server-rendered result of a no-JavaScript submission, read from the query string. */
+  notice?: { status: Exclude<WaitlistStatus, "idle" | "loading">; message: string };
 };
 
 export default function WaitlistForm({
@@ -16,12 +22,14 @@ export default function WaitlistForm({
   compact = false,
   formId,
   source = "landing_page",
+  label = "Join the Isofit waitlist",
+  notice,
 }: WaitlistFormProps) {
   const inputId = useId();
   const [firstName, setFirstName] = useState("");
   const [email, setEmail] = useState("");
-  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error" | "duplicate">("idle");
-  const [message, setMessage] = useState("");
+  const [status, setStatus] = useState<WaitlistStatus>(notice?.status ?? "idle");
+  const [message, setMessage] = useState(notice?.message ?? "");
 
   const resetStatusIfNeeded = () => {
     if (status !== "idle" && status !== "loading") {
@@ -31,6 +39,8 @@ export default function WaitlistForm({
   };
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    // Only runs with JavaScript on. With it off the form posts itself to
+    // /api/waitlist, which redirects back here with the result.
     event.preventDefault();
 
     const trimmedFirstName = firstName.trim();
@@ -93,16 +103,25 @@ export default function WaitlistForm({
   };
 
   const isDisabled = status === "loading";
+  const isInvalid = status === "error";
+  const describedBy = `${inputId}-help ${inputId}-status`;
+  const fieldClassName = `h-11 w-full rounded-xl border px-3 text-base outline-none transition-colors disabled:opacity-60 min-w-0 sm:h-12 ${
+    dark
+      ? "border-[#9aa8b8] bg-[#191411] text-[#f3efe6] placeholder:text-[#c2cdd8] focus:border-[#6aa5ee]"
+      : "border-[#7a7066] bg-transparent text-[#2a2420] placeholder:text-[#6c6259] focus:border-[#245c9b]"
+  }`;
 
   return (
     <form
       id={formId}
+      method="post"
+      action="/api/waitlist"
       onSubmit={handleSubmit}
-      aria-label="Join the Isofit waitlist"
-      aria-describedby={`${inputId}-help`}
+      aria-label={label}
       aria-busy={status === "loading"}
       className={`${compact ? "w-full max-w-[460px]" : "w-full max-w-[560px]"} scroll-mt-28`}
     >
+      <input type="hidden" name="source" value={source} />
       <div className="bg-transparent">
         <div className="grid grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] gap-2 sm:gap-3">
           <div className="min-w-0">
@@ -111,7 +130,7 @@ export default function WaitlistForm({
             </label>
             <input
               id={`${inputId}-name`}
-              name="given-name"
+              name="first_name"
               autoComplete="given-name"
               type="text"
               required
@@ -122,11 +141,9 @@ export default function WaitlistForm({
               }}
               disabled={status === "loading"}
               placeholder="First name"
-              className={`h-11 w-full rounded-xl border px-3 text-base outline-none transition-colors disabled:opacity-60 min-w-0 sm:h-12 ${
-                dark
-                  ? "border-[#8496a8] bg-[#1A2430] text-[#E6EDF3] placeholder:text-[#9baab9] focus:border-[#6B8AFD]"
-                  : "border-[#7a7066] bg-transparent text-[#2a2420] placeholder:text-[#6c6259] focus:border-[#2d6cb8]"
-              }`}
+              aria-invalid={isInvalid}
+              aria-describedby={describedBy}
+              className={fieldClassName}
             />
           </div>
           <div className="min-w-0">
@@ -148,17 +165,15 @@ export default function WaitlistForm({
               }}
               disabled={status === "loading"}
               placeholder="Email address"
-              className={`h-11 w-full rounded-xl border px-3 text-base outline-none transition-colors disabled:opacity-60 min-w-0 sm:h-12 ${
-                dark
-                  ? "border-[#8496a8] bg-[#1A2430] text-[#E6EDF3] placeholder:text-[#9baab9] focus:border-[#6B8AFD]"
-                  : "border-[#7a7066] bg-transparent text-[#2a2420] placeholder:text-[#6c6259] focus:border-[#2d6cb8]"
-              }`}
+              aria-invalid={isInvalid}
+              aria-describedby={describedBy}
+              className={fieldClassName}
             />
           </div>
           <button
             type="submit"
             disabled={isDisabled}
-            className="col-span-2 flex min-h-11 w-full items-center justify-center gap-2 rounded-xl bg-[#526b46] px-5 py-2.5 text-base font-semibold text-white transition-colors hover:bg-[#435b38] disabled:cursor-wait sm:min-h-12"
+            className="col-span-2 flex min-h-11 w-full items-center justify-center gap-2 rounded-xl bg-[#245c9b] px-5 py-2.5 text-base font-semibold text-white transition-colors hover:bg-[#1d4a7d] disabled:cursor-wait sm:min-h-12"
           >
             {status === "loading" ? "Joining..." : "Join the Waitlist"}
             <svg width="16" height="13" viewBox="0 0 16 13" fill="none" aria-hidden="true">
@@ -174,11 +189,12 @@ export default function WaitlistForm({
         </div>
       </div>
       <p id={`${inputId}-help`} className={`mt-2 flex items-start gap-2 text-sm leading-5 ${dark ? "text-[#f3efe6]/80" : "text-[#6c6259]"}`}>
-        <span aria-hidden="true" className="mt-2 inline-block h-[5px] w-[5px] shrink-0 rounded-full bg-[#3f5a32]" />
+        <span aria-hidden="true" className="mt-2 inline-block h-[5px] w-[5px] shrink-0 rounded-full bg-[#245c9b]" />
         Be first in. No spam, just a heads-up when we launch.
       </p>
       <p
-        role="status"
+        id={`${inputId}-status`}
+        role={isInvalid ? "alert" : "status"}
         aria-atomic="true"
         className={`text-sm [&:not(:empty)]:mt-2 ${
           status === "success"
