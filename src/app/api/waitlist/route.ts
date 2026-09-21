@@ -38,9 +38,25 @@ function getSupabaseAdminClient() {
   });
 }
 
+// With JavaScript off the waitlist form posts itself here as form data. Those
+// submissions get a 303 to a static result page instead of JSON. The fetch
+// path used by the client component is unchanged.
+function isFormPost(request: NextRequest) {
+  const contentType = request.headers.get("content-type") ?? "";
+  return contentType.startsWith("application/x-www-form-urlencoded") || contentType.startsWith("multipart/form-data");
+}
+
+function resultPage(request: NextRequest, result: "ok" | "already" | "missing" | "invalid" | "error") {
+  return NextResponse.redirect(new URL(`/waitlist/${result}`, request.nextUrl.origin), 303);
+}
+
 export async function POST(request: NextRequest) {
+  const formPost = isFormPost(request);
+
   try {
-    const body = (await request.json()) as WaitlistRequestBody;
+    const body: WaitlistRequestBody = formPost
+      ? Object.fromEntries((await request.formData()).entries())
+      : ((await request.json()) as WaitlistRequestBody);
     const email = toOptionalTrimmedString(body.email)?.toLowerCase();
     const firstName = toOptionalTrimmedString(body.first_name);
     const lastName = toOptionalTrimmedString(body.last_name);
@@ -48,21 +64,21 @@ export async function POST(request: NextRequest) {
     const referrer = toOptionalTrimmedString(body.referrer);
 
     if (!email) {
-      return NextResponse.json({ error: "Email is required" }, { status: 400 });
+      return formPost ? resultPage(request, "missing") : NextResponse.json({ error: "Email is required" }, { status: 400 });
     }
 
     if (!EMAIL_REGEX.test(email)) {
-      return NextResponse.json({ error: "Invalid email format" }, { status: 400 });
+      return formPost ? resultPage(request, "invalid") : NextResponse.json({ error: "Invalid email format" }, { status: 400 });
     }
 
     if (!firstName) {
-      return NextResponse.json({ error: "First name is required" }, { status: 400 });
+      return formPost ? resultPage(request, "missing") : NextResponse.json({ error: "First name is required" }, { status: 400 });
     }
 
     const supabase = getSupabaseAdminClient();
     if (!supabase) {
       console.error("Missing Supabase waitlist environment variables: NEXT_PUBLIC_SUPABASE_URL and key.");
-      return NextResponse.json({ error: "Server configuration error" }, { status: 500 });
+      return formPost ? resultPage(request, "error") : NextResponse.json({ error: "Server configuration error" }, { status: 500 });
     }
 
     const forwardedHeader = request.headers.get("x-forwarded-for");
@@ -81,16 +97,16 @@ export async function POST(request: NextRequest) {
 
     if (error) {
       if (error.code === "23505") {
-        return NextResponse.json({ message: "You're already on the list!" }, { status: 200 });
+        return formPost ? resultPage(request, "already") : NextResponse.json({ message: "You're already on the list!" }, { status: 200 });
       }
 
       console.error("Waitlist insert error:", error);
-      return NextResponse.json({ error: "Something went wrong" }, { status: 500 });
+      return formPost ? resultPage(request, "error") : NextResponse.json({ error: "Something went wrong" }, { status: 500 });
     }
 
-    return NextResponse.json({ message: "Successfully joined the waitlist!" }, { status: 201 });
+    return formPost ? resultPage(request, "ok") : NextResponse.json({ message: "Successfully joined the waitlist!" }, { status: 201 });
   } catch (error) {
     console.error("Waitlist route error:", error);
-    return NextResponse.json({ error: "Something went wrong" }, { status: 500 });
+    return formPost ? resultPage(request, "error") : NextResponse.json({ error: "Something went wrong" }, { status: 500 });
   }
 }

@@ -1,184 +1,264 @@
-import Image from "next/image";
-import Link from "next/link";
+import type { ReactNode } from "react";
 
+import { DataTable } from "@/components/marketing/doc-sections";
+import { RelatedPages, ReviewedNote, webPageJsonLd } from "@/components/marketing/doc-page";
+import IsoGrid from "@/components/marketing/iso-grid";
+import JsonLd from "@/components/marketing/json-ld";
+import { CONTAINER, ColumnCards, Device, FaqList, PageShell, Plate, Section, TextLink, WaitlistBand, faqJsonLd } from "@/components/marketing/primitives";
+import QuicklogDemo, { HeatLegend } from "@/components/marketing/quicklog-demo";
 import RecoveryRedirect from "@/components/recovery-redirect";
-import ScreenshotCarousel from "@/components/screenshot-carousel";
 import WaitlistForm from "@/components/waitlist-form";
+import { HOME_DOC } from "@/content";
+import { PRICING } from "@/content/facts";
+import type { DocSection } from "@/content/types";
+import { docMetadata } from "@/lib/metadata";
+import { SITE } from "@/lib/site";
 
-const PRIMARY_NAV_LINKS = [{ href: "/faq", label: "FAQ" }] as const;
+export const metadata = docMetadata(HOME_DOC);
 
-function IsoLogo({ size = 34 }: { size?: number }) {
+const section = (id: string) => HOME_DOC.sections.find((candidate) => candidate.id === id) as DocSection;
+
+const APP_JSON_LD = {
+  "@context": "https://schema.org",
+  "@type": "MobileApplication",
+  "@id": `${SITE.url}/#app`,
+  name: SITE.name,
+  url: SITE.url,
+  description: HOME_DOC.metaDescription,
+  applicationCategory: "HealthApplication",
+  applicationSubCategory: "Workout tracker",
+  operatingSystem: "iOS 17.6 or later",
+  availableOnDevice: "iPhone",
+  inLanguage: "en",
+  releaseNotes: `Pre-release. iOS launch planned ${SITE.launchDateLong}.`,
+  datePublished: SITE.launchDate,
+  image: `${SITE.url}/og/home`,
+  screenshot: ["log", "body-graph", "atlas"].map((name) => `${SITE.url}/screenshots/${name}.png`),
+  featureList: [
+    "Workout logging by tap, typed Quicklog line, or voice",
+    "Body graph: front and back muscle heat map by working sets over 7, 30, 90 days or all time",
+    "Atlas AI coach that can read your training log",
+    "Bonfire members-only community feed",
+    "Optional read-only Apple Health import",
+    "Routines, session history, offline logging",
+    "JSON data export and in-app account deletion",
+  ],
+  publisher: { "@id": `${SITE.url}/#organization` },
+  // No aggregateRating: the app is unreleased and has nothing to rate.
+  offers: [
+    { "@type": "Offer", name: "Free", price: "0", priceCurrency: "USD", availability: "https://schema.org/PreOrder", availabilityStarts: SITE.launchDate },
+    { "@type": "Offer", name: "Pro, monthly", price: PRICING.proMonthly.slice(1), priceCurrency: "USD", availability: "https://schema.org/PreOrder", availabilityStarts: SITE.launchDate },
+    { "@type": "Offer", name: "Pro, yearly", price: PRICING.proYearly.slice(1), priceCurrency: "USD", availability: "https://schema.org/PreOrder", availabilityStarts: SITE.launchDate },
+  ],
+};
+
+const BONFIRE_RULES = [
+  ["Who sees it", "Isofit members only"],
+  ["What a post is", "A session you actually logged"],
+  ["How often", "One post a day"],
+  ["What is missing, on purpose", "Follows, groups and direct messages"],
+] as const;
+
+function FeatureRow({
+  doc,
+  href,
+  linkLabel,
+  figure,
+  extra,
+  flip = false,
+}: {
+  doc: DocSection;
+  href: string;
+  linkLabel: string;
+  figure: ReactNode;
+  extra?: ReactNode;
+  flip?: boolean;
+}) {
   return (
-    <Image
-      src="/iso-logo.png"
-      alt="Isofit"
-      width={size}
-      height={size}
-      loading="eager"
-      className="shrink-0"
-    />
-  );
-}
-
-function LogoLockup() {
-  return (
-    <div className="flex items-center gap-2.5">
-      <IsoLogo size={34} />
-      <p className="font-display text-xl font-bold leading-none tracking-tight text-sky">Isofit</p>
-    </div>
-  );
-}
-
-function ChalkGridBG({ id, opacity = 1 }: { id: string; opacity?: number }) {
-  const minor = 26;
-  return (
-    <svg
-      aria-hidden="true"
-      preserveAspectRatio="xMidYMid slice"
-      className="pointer-events-none absolute inset-0 h-full w-full"
-      style={{ opacity }}
-    >
-      <defs>
-        <pattern id={`${id}-minor`} width={minor} height={minor} patternUnits="userSpaceOnUse">
-          <line x1="0" y1={minor} x2={minor} y2={minor} stroke="var(--color-sky)" strokeWidth="1" opacity="0.5" />
-          <line x1={minor} y1="0" x2={minor} y2={minor} stroke="var(--color-sky)" strokeWidth="1" opacity="0.5" />
-        </pattern>
-        <pattern id={`${id}-major`} width={minor * 5} height={minor * 5} patternUnits="userSpaceOnUse">
-          <line x1="0" y1={minor * 5} x2={minor * 5} y2={minor * 5} stroke="#2d6cb8" strokeWidth="1.5" opacity="0.8" />
-          <line x1={minor * 5} y1="0" x2={minor * 5} y2={minor * 5} stroke="#2d6cb8" strokeWidth="1.5" opacity="0.8" />
-        </pattern>
-      </defs>
-      <rect width="100%" height="100%" fill="#f3efe6" />
-      <rect width="100%" height="100%" fill={`url(#${id}-minor)`} />
-      <rect width="100%" height="100%" fill={`url(#${id}-major)`} />
-    </svg>
-  );
-}
-
-export default function Page() {
-  return (
-    <div className="relative text-[#2a2420]">
-      <a href="#main-content" className="sr-only fixed left-4 top-4 z-[200] rounded-xl bg-white px-4 py-3 font-semibold text-[#245c9b] focus:not-sr-only">Skip to content</a>
-      <RecoveryRedirect />
-      <div
-        aria-hidden
-        className="pointer-events-none fixed inset-0 -z-10"
-        style={{
-          WebkitMaskImage: "radial-gradient(ellipse at center, #000 38%, transparent 82%)",
-          maskImage: "radial-gradient(ellipse at center, #000 38%, transparent 82%)",
-        }}
-      >
-        <ChalkGridBG id="page-grid" opacity={0.2} />
-      </div>
-      <header className="sticky top-0 z-[120] border-b border-[#2a2420]/15 bg-[#f3efe6]/85 backdrop-blur">
-        <div className="mx-auto flex w-full max-w-[1080px] items-center justify-between gap-3 px-4 py-2 sm:px-5 sm:py-3 md:px-8">
-          <div className="shrink-0">
-            <LogoLockup />
+    <section id={doc.id} aria-labelledby={`${doc.id}-heading`} className={`${CONTAINER} py-10 md:py-16`}>
+      <div className={`grid grid-cols-[minmax(0,1fr)] gap-10 lg:items-center lg:gap-16 ${flip ? "lg:grid-cols-[26rem_minmax(0,1fr)]" : "lg:grid-cols-[minmax(0,1fr)_26rem]"}`}>
+        <div className={flip ? "lg:order-2" : ""}>
+          <p className="label">{doc.label}</p>
+          <h2 id={`${doc.id}-heading`} className="mt-2 max-w-[22ch] font-display text-[clamp(1.5rem,3vw,2.125rem)] font-bold leading-[1.14] tracking-[-0.025em]">
+            {doc.heading}
+          </h2>
+          <div className="prose-iso mt-5 max-w-[60ch]">
+            {doc.body?.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+            {doc.bullets ? <ul>{doc.bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}</ul> : null}
           </div>
-          <nav aria-label="Main navigation" className="hidden items-center gap-6 font-mono text-sm font-medium text-[#4a423b] md:flex">
-            {PRIMARY_NAV_LINKS.map((item) => (
-              <Link key={item.href} href={item.href} className="inline-flex min-h-11 items-center">
-                {item.label}
-              </Link>
-            ))}
-            <a href="mailto:support@isofit.app" className="inline-flex min-h-11 items-center">Support</a>
-          </nav>
-          <div className="hidden items-center gap-2 sm:flex">
-            <Link
-              href="#waitlist-form"
-              className="inline-flex min-h-11 items-center justify-center rounded-xl bg-[#526b46] px-3 py-2 text-sm font-semibold text-white transition-colors hover:bg-[#435b38] sm:px-4"
-            >
-              Join the Waitlist
-            </Link>
-            <Link
-              href="/login"
-              className="inline-flex min-h-11 items-center justify-center rounded-xl border border-[#2a2420]/20 bg-transparent px-3 py-2 text-sm font-semibold text-[#2a2420] transition-colors hover:bg-[#f8f5ee] sm:px-4"
-            >
-              Member login
-            </Link>
+          <div className="mt-4">
+            <TextLink href={href}>{linkLabel}</TextLink>
           </div>
-          <details className="relative md:hidden">
-            <summary className="flex min-h-11 cursor-pointer list-none items-center rounded-lg px-3 text-sm font-semibold [&::-webkit-details-marker]:hidden">
-              Menu
-            </summary>
-            <nav aria-label="Mobile navigation" className="absolute right-0 top-full mt-2 grid min-w-48 rounded-xl border border-[#2a2420]/15 bg-[#f3efe6] p-2 text-sm shadow-lg">
-              <Link href="/faq" className="flex min-h-11 items-center rounded-lg px-3 font-mono hover:bg-white/60">FAQ</Link>
-              <a href="mailto:support@isofit.app" className="flex min-h-11 items-center rounded-lg px-3 font-mono hover:bg-white/60">Support</a>
-              <Link href="/login" className="flex min-h-11 items-center rounded-lg px-3 hover:bg-white/60">Member login</Link>
-            </nav>
-          </details>
+          {extra ? <div className="mt-6 max-w-[34rem]">{extra}</div> : null}
         </div>
-      </header>
+        <div className={flip ? "lg:order-1" : ""}>{figure}</div>
+      </div>
+    </section>
+  );
+}
 
-      <main id="main-content" tabIndex={-1} className="scroll-mt-20">
-        <section aria-labelledby="hero-heading" className="mx-auto grid w-full max-w-[1080px] gap-x-4 gap-y-2 px-4 pb-10 pt-5 sm:px-5 sm:pt-8 md:px-8 lg:grid-cols-[minmax(0,1fr)_27.75rem] lg:items-center lg:pb-14 lg:pt-4">
-          <div className="flex min-w-0 flex-col">
-            <p className="order-0 inline-flex items-center gap-2 font-mono text-sm uppercase tracking-[0.04em] text-[#4a423b]">
-              <span aria-hidden="true" className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#526b46]" />
-              Workout tracking for iOS
+export default function HomePage() {
+  const glance = section("at-a-glance");
+  const isIsNot = section("is-and-is-not");
+  const tiers = section("free-and-pro");
+  const data = section("your-data");
+
+  return (
+    <PageShell waitlistHref="#waitlist-form">
+      <RecoveryRedirect />
+      <JsonLd data={[APP_JSON_LD, webPageJsonLd(HOME_DOC), faqJsonLd(HOME_DOC.faqs ?? [])]} />
+
+      <section aria-labelledby="hero-heading" className="border-b border-rule">
+        <div className={`${CONTAINER} grid gap-10 pb-12 pt-8 md:pt-12 lg:grid-cols-[minmax(0,1fr)_25rem] lg:items-center lg:gap-14 lg:pb-16`}>
+          {/* Reading order is lede then form. On a phone the form is lifted above
+              the lede so it stays near the first screen. */}
+          <div className="flex flex-col items-start">
+            <p className="label flex items-center gap-2">
+              <span aria-hidden="true" className="h-1.5 w-1.5 shrink-0 rounded-full bg-forest" />
+              <span>Workout logger for iPhone</span>
             </p>
-            <h1 id="hero-heading" className="order-1 mt-3 font-display text-[clamp(2rem,5vw,3.5rem)] font-bold leading-[1.08] tracking-[-0.03em] lg:mt-5">
-              <span className="block text-black">
-                Your workout log remembers, but…
-              </span>
-              <span className="mt-2 block max-w-[640px] text-sky">
-                What does it tell you?
-              </span>
+            <h1 id="hero-heading" className="mt-4 font-display text-[clamp(1.875rem,4.4vw,3.125rem)] font-bold leading-[1.1] tracking-[-0.03em]">
+              <span className="text-sky">Isofit is a workout logger</span> for iPhone that shows you <span className="text-sky">what your training adds up to.</span>
             </h1>
-            <p className="order-2 mt-5 max-w-[600px] text-base leading-relaxed text-[#4a423b] sm:text-lg">
-              See which muscles you’ve trained, how your workouts add up, and what to consider next—with Atlas using your training history to guide the conversation.
+            <p className="mt-5 inline-block border-y border-ink/25 py-3 font-mono text-[0.8125rem] font-medium leading-6 tracking-[0.02em] text-ink">
+              Not yet released. iOS launch planned <time dateTime={SITE.launchDate} className="tabular-nums">{SITE.launchDateLong}</time>.
             </p>
-            <div className="order-3 mt-5 lg:mt-6">
+            <p className="order-3 mt-6 max-w-[60ch] text-[1.0625rem] leading-[1.7] text-ink-2 sm:order-none sm:mt-5 sm:text-lg sm:leading-[1.7]">{HOME_DOC.lede}</p>
+            <div className="order-2 mt-6 w-full sm:order-none sm:mt-7">
               <WaitlistForm formId="waitlist-form" />
-              <p className="mt-2 font-mono text-xs leading-5 text-[#6c6259]">iOS launch planned <time dateTime="2026-10-01" className="tabular-nums">October 1, 2026</time>.</p>
             </div>
           </div>
-          <ScreenshotCarousel />
-        </section>
-
-        <section className="mx-auto w-full max-w-[1080px] px-4 pb-14 sm:px-5 md:px-8 md:pb-20">
-          <div className="relative overflow-hidden rounded-3xl bg-[#2a2420] p-6 sm:p-8 md:p-14">
-            <div className="absolute inset-0 opacity-40">
-              <ChalkGridBG id="payoff-grid" opacity={0.32} />
-            </div>
-            <div className="absolute inset-0" style={{ background: "radial-gradient(90% 120% at 100% 0%, rgba(106,165,238,0.2), transparent 55%)" }} />
-            <div className="relative max-w-[620px]">
-              <p className="font-mono text-xs uppercase tracking-[0.12em] text-[#f3efe6]/85">Launch planned October 1, 2026</p>
-              <h2 className="mt-4 font-display text-[clamp(2rem,5vw,3.5rem)] font-bold leading-[1.08] tracking-[-0.03em] text-white">
-                Your workouts,<br /><span className="text-sky">working for you.</span>
-              </h2>
-              <p className="mt-4 max-w-[500px] font-sans text-[#f3efe6]/90">Isofit is planned to launch on iOS <time dateTime="2026-10-01">October 1, 2026</time>. Join the waitlist and be first in.</p>
-              <div className="mt-8">
-                <Link
-                  href="#waitlist-form"
-                  className="inline-flex h-12 items-center justify-center rounded-xl bg-[#526b46] px-6 text-base font-semibold text-white transition-colors hover:bg-[#435b38]"
-                >
-                  Join the Waitlist
-                </Link>
+          <div className="relative">
+            <div className="rounded-[2rem] border border-rule bg-paper-raised px-6 pb-6 pt-8 shadow-[0_18px_40px_rgba(42,36,32,0.06)]">
+              <div>
+                <Device
+                  src="/screenshots/body-graph.png"
+                  alt="Isofit's body graph: front and back body figures with each muscle shaded from pale to terracotta by working sets logged, above a sets-by-muscle list and 7, 30, 90 day and all-time filters."
+                  priority
+                />
+                <HeatLegend className="mt-5 justify-center" />
               </div>
             </div>
           </div>
-        </section>
-
-      </main>
-
-      <footer className="border-t border-[#2a2420]/15">
-        <div className="mx-auto flex w-full max-w-[1080px] flex-col items-start gap-5 px-4 py-8 sm:px-5 md:flex-row md:items-center md:justify-between md:px-8 md:py-10">
-          <LogoLockup />
-          <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm uppercase tracking-[0.12em] text-[#6c6259]">
-            <a href="mailto:support@isofit.app" className="inline-flex min-h-11 items-center">Support</a>
-            <Link href="/terms" className="inline-flex min-h-11 items-center">Terms of Service</Link>
-            <Link href="/privacy" className="inline-flex min-h-11 items-center">Privacy Policy</Link>
-            <Link href="/health-privacy" className="inline-flex min-h-11 items-center">Consumer Health Data Privacy Policy</Link>
-            <Link href="/research" className="inline-flex min-h-11 items-center">Research</Link>
-            <Link href="/faq" className="inline-flex min-h-11 items-center">FAQ</Link>
-            <a className="inline-flex min-h-11 items-center" href="https://x.com/isofit_app" target="_blank" rel="noopener noreferrer">
-              X / Twitter
-            </a>
-          </div>
-          <p className="text-left font-mono text-xs uppercase tracking-[0.12em] text-[#6c6259] md:text-right">© 2026 Isofit · humbly designed in queens, NY</p>
         </div>
-      </footer>
-    </div>
+      </section>
+
+      <section aria-labelledby="glance-heading" className="border-b border-rule bg-paper-raised">
+        <div className={CONTAINER}>
+          <h2 id="glance-heading" className="sr-only">{glance.heading}</h2>
+          <dl className="grid sm:grid-cols-2 lg:grid-cols-3">
+            {glance.specs?.map((spec) => (
+              <div key={spec.term} className="border-b border-rule py-5 last:border-b-0 sm:pr-8 sm:[&:nth-last-child(-n+2)]:border-b-0 lg:[&:nth-last-child(-n+3)]:border-b-0">
+                <dt className="label">{spec.term}</dt>
+                <dd className="mt-1.5 text-[0.9375rem] leading-relaxed text-ink">{spec.value}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </section>
+
+      <FeatureRow
+        doc={section("log")}
+        href="/features/workout-logging"
+        linkLabel="How workout logging works"
+        extra={<QuicklogDemo />}
+        figure={
+          <Plate id="log-grid" caption="Today's session in the Log tab, with the Quicklog bar and microphone at the bottom.">
+            <Device
+              src="/screenshots/log.png"
+              alt="Isofit's Log tab showing today's session with back squat, overhead press and incline bench rows, each with sets, reps, pounds and RPE, start and rest timers, a Finish session button, and a Quicklog text bar beside a microphone button."
+            />
+          </Plate>
+        }
+      />
+      <FeatureRow
+        flip
+        doc={section("see")}
+        href="/features/body-graph"
+        linkLabel="How the body graph is calculated"
+        figure={
+          <Plate id="see-grid" caption="The lower half of the body graph: sets by muscle, time windows, and most and least worked.">
+            <Device
+              src="/screenshots/sets-by-muscle.png"
+              alt="Isofit's Progress tab showing a sets-by-muscle list led by side delts with 11 sets, a 7D, 30D, 90D and ALL filter, and cards for total sets, most worked and least worked muscle."
+            />
+          </Plate>
+        }
+      />
+      <FeatureRow
+        doc={section("ask")}
+        href="/features/atlas"
+        linkLabel="What Atlas does and what it sees"
+        figure={
+          <Plate id="ask-grid" caption="Atlas reviewing a logged session and suggesting changes for next time.">
+            <Device
+              src="/screenshots/atlas.png"
+              alt="An Atlas conversation in Isofit. The member asks what to change after a logged pulling session, and Atlas suggests exercise order and volume changes, above a disclaimer that Atlas is AI and gives general fitness guidance, never medical advice."
+            />
+          </Plate>
+        }
+      />
+      <FeatureRow
+        flip
+        doc={section("bonfire")}
+        href="/features/bonfire"
+        linkLabel="How Bonfire works"
+        figure={
+          <div className="relative overflow-hidden rounded-[1.75rem] bg-ink p-7 sm:p-8">
+            <IsoGrid id="bonfire-grid" tone="ink" />
+            <dl className="relative grid gap-5">
+              {BONFIRE_RULES.map(([term, value]) => (
+                <div key={term} className="border-b border-paper/15 pb-5 last:border-b-0 last:pb-0">
+                  <dt className="label !text-sky">{term}</dt>
+                  <dd className="mt-1.5 font-display text-lg font-semibold leading-snug tracking-[-0.01em] text-white">{value}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        }
+      />
+
+      <Section id={isIsNot.id} label={isIsNot.label} title={isIsNot.heading} intro={isIsNot.body?.[0]} className="border-t border-rule">
+        {isIsNot.columns ? <ColumnCards columns={isIsNot.columns} /> : null}
+      </Section>
+
+      <Section id={tiers.id} label={tiers.label} title={tiers.heading} intro={tiers.body?.[0]}>
+        {tiers.table ? <DataTable table={tiers.table} /> : null}
+        <div className="mt-4">
+          <TextLink href="/pricing">Full pricing and billing details</TextLink>
+        </div>
+      </Section>
+
+      <Section id={data.id} label={data.label} title={data.heading}>
+        <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_24rem] lg:items-start">
+          <div>
+            <div className="prose-iso max-w-[60ch]">
+              <ul>{data.bullets?.map((bullet) => <li key={bullet}>{bullet}</li>)}</ul>
+            </div>
+            <div className="mt-4 flex flex-wrap gap-x-6">
+              <TextLink href="/privacy">Privacy Policy</TextLink>
+              <TextLink href="/health-privacy">Consumer Health Data Privacy Policy</TextLink>
+            </div>
+          </div>
+          <Plate id="data-grid" caption="Export, analytics and deletion controls in the You tab.">
+            <Device
+              src="/screenshots/privacy.png"
+              alt="Isofit's Privacy and Terms screen with an Export my data button, a Share usage analytics switch, and Delete account, with a note that deleting an account does not cancel an App Store subscription."
+            />
+          </Plate>
+        </div>
+      </Section>
+
+      <Section id="faq" label="Questions" title="Common questions about Isofit" className="border-t border-rule">
+        <FaqList faqs={HOME_DOC.faqs ?? []} />
+        <div className="mt-4">
+          <TextLink href="/faq">All frequently asked questions</TextLink>
+        </div>
+      </Section>
+
+      {HOME_DOC.related ? <RelatedPages paths={HOME_DOC.related} /> : null}
+      <ReviewedNote doc={HOME_DOC} />
+      <WaitlistBand source="landing_page_footer" />
+    </PageShell>
   );
 }

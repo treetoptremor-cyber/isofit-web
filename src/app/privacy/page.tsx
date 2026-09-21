@@ -1,12 +1,14 @@
 import fs from "node:fs/promises";
 import path from "node:path";
-import Link from "next/link";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+
+import { PageShell } from "@/components/marketing/primitives";
 
 export const metadata = {
   title: "Privacy Policy | Isofit",
   description: "How Isofit collects, uses, and protects your data.",
+  alternates: { canonical: "/privacy" },
 };
 
 const POLICY_PATH = path.join(process.cwd(), "src/app/privacy/privacy-policy.md");
@@ -19,15 +21,8 @@ export default async function PrivacyPage() {
   const markdown = await getPolicyMarkdown();
 
   return (
-    <main className="min-h-screen bg-[#f3efe6] px-4 py-8 text-[#2a2420] sm:px-5 md:px-8 md:py-12">
-      <div className="mx-auto mb-4 w-full max-w-3xl">
-        <Link
-          href="/"
-          className="inline-flex min-h-11 items-center rounded-xl bg-[#245c9b] px-4 py-2 font-display text-sm font-semibold text-white transition-colors hover:bg-[#194b82]"
-        >
-          Back Home
-        </Link>
-      </div>
+    <PageShell>
+      <div className="px-4 py-8 sm:px-5 md:px-8 md:py-12">
       <article className="mx-auto w-full max-w-3xl rounded-3xl border border-[#2a2420]/10 bg-white p-5 shadow-[0_22px_50px_rgba(42,36,32,0.08)] sm:p-8 md:p-10">
         <ReactMarkdown
           remarkPlugins={[remarkGfm]}
@@ -99,6 +94,7 @@ export default async function PrivacyPage() {
           {markdown}
         </ReactMarkdown>
       </article>
-    </main>
+      </div>
+    </PageShell>
   );
 }

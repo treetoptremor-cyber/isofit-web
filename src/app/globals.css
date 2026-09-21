@@ -1,16 +1,169 @@
 @import "tailwindcss";
 
 @theme {
+  /* Paper and ink */
+  --color-paper: #f3efe6;
+  --color-paper-raised: #f8f5ee;
+  --color-paper-sunk: #ebe5d8;
+  --color-ink: #2a2420;
+  --color-ink-2: #4a423b;
+  --color-ink-3: #6c6259;
+  --color-rule: rgb(42 36 32 / 0.14);
+
+  /* Brand blues: sky is the mark and the lattice, blue is for text links */
   --color-sky: #6aa5ee;
+  --color-blue: #245c9b;
+  --color-blue-dark: #194b82;
+
+  /* Action */
+  --color-forest: #526b46;
+  --color-forest-dark: #435b38;
+
+  /* Body-graph heat scale, rest to most-worked. Same ramp the app draws muscles with. */
+  --color-heat-0: #cfc3a4;
+  --color-heat-1: #8f9868;
+  --color-heat-2: #c2a55e;
+  --color-heat-3: #d48f56;
+  --color-heat-4: #b8623a;
+  --color-heat-5: #9a4527;
+
   --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", system-ui, sans-serif;
   --font-display: var(--font-unbounded), system-ui, sans-serif;
   --font-mono: ui-monospace, "SFMono-Regular", "SF Mono", Menlo, Consolas, monospace;
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
+}
+
 body {
-  background: #f3efe6;
-  color: #2a2420;
+  background: var(--color-paper);
+  color: var(--color-ink);
   font-family: var(--font-sans);
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--color-sky);
+  color: var(--color-ink);
+}
+
+/* In the components layer so Tailwind utilities can still override them. */
+@layer components {
+  /* Mono micro-label, the app's "WED SEP 9" voice */
+  .label {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    line-height: 1rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-ink-3);
+  }
+
+  /* Figure captions and footnotes: mono like a label, but sentence case */
+  .caption {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    line-height: 1.15rem;
+    letter-spacing: 0.02em;
+    color: var(--color-ink-3);
+  }
+
+  /* Tables become a stack of cards on phones: no sideways scrolling. */
+  @media (max-width: 47.99rem) {
+    .table-stack,
+    .table-stack caption,
+    .table-stack tbody,
+    .table-stack tr,
+    .table-stack th,
+    .table-stack td {
+      display: block;
+    }
+    .table-stack thead {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
+    .table-stack tr {
+      padding: 1rem 1.25rem;
+    }
+    .table-stack tbody th {
+      padding: 0 0 0.5rem;
+      font-family: var(--font-display);
+      font-size: 0.9375rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+    .table-stack tbody th:empty {
+      display: none;
+    }
+    .table-stack td {
+      display: grid;
+      grid-template-columns: 5.25rem minmax(0, 1fr);
+      gap: 0.75rem;
+      padding: 0.3rem 0;
+    }
+    .table-stack td::before {
+      content: attr(data-label);
+      padding-top: 0.2rem;
+      font-family: var(--font-mono);
+      font-size: 0.6875rem;
+      line-height: 1rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-ink-3);
+    }
+  }
+
+  /* Long-form copy inside marketing pages */
+  .prose-iso > * + * {
+    margin-top: 1rem;
+  }
+  .prose-iso p,
+  .prose-iso li {
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    color: var(--color-ink-2);
+  }
+  .prose-iso strong {
+    color: var(--color-ink);
+    font-weight: 600;
+  }
+  .prose-iso a {
+    color: var(--color-blue);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-color: rgb(36 92 155 / 0.4);
+  }
+  .prose-iso a:hover {
+    color: var(--color-blue-dark);
+    text-decoration-color: currentColor;
+  }
+  .prose-iso ul {
+    list-style: none;
+    padding: 0;
+  }
+  .prose-iso ul > li {
+    position: relative;
+    padding-left: 1.5rem;
+  }
+  .prose-iso ul > li + li {
+    margin-top: 0.5rem;
+  }
+  .prose-iso ul > li::before {
+    content: "";
+    position: absolute;
+    left: 0.125rem;
+    top: 0.7em;
+    width: 0.5rem;
+    height: 0.5rem;
+    background: var(--color-sky);
+    transform: rotate(45deg) skew(-12deg, -12deg);
+  }
 }
 
 .app-device {
@@ -45,6 +198,9 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
   *,
   *::before,
   *::after {

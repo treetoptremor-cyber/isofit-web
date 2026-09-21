@@ -9,6 +9,8 @@ type WaitlistFormProps = {
   compact?: boolean;
   formId?: string;
   source?: string;
+  // Accessible name for the form landmark. Two forms on one page must not share one.
+  label?: string;
 };
 
 export default function WaitlistForm({
@@ -16,6 +18,7 @@ export default function WaitlistForm({
   compact = false,
   formId,
   source = "landing_page",
+  label = "Join the Isofit waitlist",
 }: WaitlistFormProps) {
   const inputId = useId();
   const [firstName, setFirstName] = useState("");
@@ -31,6 +34,8 @@ export default function WaitlistForm({
   };
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    // Only runs with JavaScript on. Without it the form posts itself to
+    // /api/waitlist, which redirects to a /waitlist result page.
     event.preventDefault();
 
     const trimmedFirstName = firstName.trim();
@@ -93,16 +98,20 @@ export default function WaitlistForm({
   };
 
   const isDisabled = status === "loading";
+  const isInvalid = status === "error";
+  const describedBy = `${inputId}-help ${inputId}-status`;
 
   return (
     <form
       id={formId}
+      method="post"
+      action="/api/waitlist"
       onSubmit={handleSubmit}
-      aria-label="Join the Isofit waitlist"
-      aria-describedby={`${inputId}-help`}
+      aria-label={label}
       aria-busy={status === "loading"}
       className={`${compact ? "w-full max-w-[460px]" : "w-full max-w-[560px]"} scroll-mt-28`}
     >
+      <input type="hidden" name="source" value={source} />
       <div className="bg-transparent">
         <div className="grid grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] gap-2 sm:gap-3">
           <div className="min-w-0">
@@ -111,7 +120,7 @@ export default function WaitlistForm({
             </label>
             <input
               id={`${inputId}-name`}
-              name="given-name"
+              name="first_name"
               autoComplete="given-name"
               type="text"
               required
@@ -122,6 +131,8 @@ export default function WaitlistForm({
               }}
               disabled={status === "loading"}
               placeholder="First name"
+              aria-invalid={isInvalid}
+              aria-describedby={describedBy}
               className={`h-11 w-full rounded-xl border px-3 text-base outline-none transition-colors disabled:opacity-60 min-w-0 sm:h-12 ${
                 dark
                   ? "border-[#8496a8] bg-[#1A2430] text-[#E6EDF3] placeholder:text-[#9baab9] focus:border-[#6B8AFD]"
@@ -148,6 +159,8 @@ export default function WaitlistForm({
               }}
               disabled={status === "loading"}
               placeholder="Email address"
+              aria-invalid={isInvalid}
+              aria-describedby={describedBy}
               className={`h-11 w-full rounded-xl border px-3 text-base outline-none transition-colors disabled:opacity-60 min-w-0 sm:h-12 ${
                 dark
                   ? "border-[#8496a8] bg-[#1A2430] text-[#E6EDF3] placeholder:text-[#9baab9] focus:border-[#6B8AFD]"
@@ -178,7 +191,8 @@ export default function WaitlistForm({
         Be first in. No spam, just a heads-up when we launch.
       </p>
       <p
-        role="status"
+        id={`${inputId}-status`}
+        role={isInvalid ? "alert" : "status"}
         aria-atomic="true"
         className={`text-sm [&:not(:empty)]:mt-2 ${
           status === "success"
