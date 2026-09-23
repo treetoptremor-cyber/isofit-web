@@ -83,7 +83,7 @@ export default function LegalDocument({ markdown }: { markdown: string }) {
   const { header, meta, body } = splitHeader(markdown);
   const contents = sections(body);
   return (
-    <PageShell>
+    <PageShell sticky={false}>
       <div className="px-4 py-8 sm:px-5 md:px-8 md:py-12">
         <article className="mx-auto w-full max-w-3xl rounded-3xl border border-rule bg-white p-5 shadow-[0_22px_50px_rgba(42,36,32,0.08)] sm:p-8 md:p-10">
           <ReactMarkdown remarkPlugins={[remarkGfm]} components={COMPONENTS}>

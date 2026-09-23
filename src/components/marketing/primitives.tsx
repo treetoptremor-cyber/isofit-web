@@ -6,12 +6,13 @@ import IsoGrid from "@/components/marketing/iso-grid";
 import JsonLd from "@/components/marketing/json-ld";
 import SiteFooter from "@/components/marketing/site-footer";
 import SiteHeader from "@/components/marketing/site-header";
+import StickyWaitlist from "@/components/marketing/sticky-waitlist";
 import WaitlistForm from "@/components/waitlist-form";
 import { SITE, absoluteUrl } from "@/lib/site";
 
 export const CONTAINER = "mx-auto w-full max-w-[1120px] px-4 min-[25rem]:px-5 sm:px-6";
 
-export function PageShell({ children, waitlistHref, grid = true }: { children: ReactNode; waitlistHref?: string; grid?: boolean }) {
+export function PageShell({ children, waitlistHref, grid = true, sticky = true }: { children: ReactNode; waitlistHref?: string; grid?: boolean; sticky?: boolean }) {
   return (
     <div className="relative flex min-h-screen flex-col text-ink">
       {/* The app's base surface: its faint sky grid behind every page, fixed to
@@ -38,6 +39,7 @@ export function PageShell({ children, waitlistHref, grid = true }: { children: R
         {children}
       </main>
       <SiteFooter />
+      {sticky ? <StickyWaitlist /> : null}
     </div>
   );
 }

@@ -18,6 +18,7 @@ export default function MobileMenu({ waitlistHref }: { waitlistHref: string }) {
   const setOpen = (value: boolean) => setOpenFor(value ? pathname : null);
 
   useEffect(() => {
+    document.body.dataset.menuOpen = open ? "true" : "false";
     if (!open) return;
     const onPointerDown = (event: PointerEvent) => {
       if (root.current && !root.current.contains(event.target as Node)) setOpen(false);

@@ -28,7 +28,7 @@ export default async function WaitlistResultPage({ params }: { params: Promise<{
   if (!result) notFound();
 
   return (
-    <PageShell>
+    <PageShell sticky={false}>
       <section className={`${CONTAINER} py-16 md:py-24`}>
         <p className="label">Isofit waitlist</p>
         <h1 className="mt-3 max-w-[20ch] font-display text-[clamp(2rem,4.6vw,3.25rem)] font-bold leading-[1.08] tracking-[-0.03em]">{result.title}</h1>

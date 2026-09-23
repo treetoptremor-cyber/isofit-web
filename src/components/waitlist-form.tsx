@@ -4,6 +4,17 @@ import { useId, useState, type FormEvent } from "react";
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+// Once someone is on the list, the phone's bottom bar has nothing to ask for
+// the rest of this visit. Session storage: it comes back on the next visit.
+export const WAITLIST_JOINED_KEY = "isofit_waitlist_joined";
+export const WAITLIST_JOINED_EVENT = "isofit:waitlist-joined";
+function rememberJoined() {
+  try {
+    sessionStorage.setItem(WAITLIST_JOINED_KEY, "1");
+  } catch {}
+  window.dispatchEvent(new Event(WAITLIST_JOINED_EVENT));
+}
+
 type WaitlistFormProps = {
   dark?: boolean;
   compact?: boolean;
@@ -82,12 +93,14 @@ export default function WaitlistForm({
         setMessage(payload?.message ?? "Successfully joined the waitlist!");
         setFirstName("");
         setEmail("");
+        rememberJoined();
         return;
       }
 
       if (response.status === 200) {
         setStatus("duplicate");
         setMessage(payload?.message ?? "You're already on the list!");
+        rememberJoined();
         return;
       }
 
