@@ -18,7 +18,7 @@ export const SITE = {
     linkedInUrl: "https://www.linkedin.com/in/an-hu/",
     xHandle: "@treetoptremor",
     xUrl: "https://x.com/treetoptremor",
-    photo: "/team/an-hu.jpg",
+    photo: "/team/an-hu-portrait.jpg",
     schools: ["Parsons School of Design, The New School", "Baruch College, Zicklin School of Business"],
   },
   supportResponse: "within 2 business days",

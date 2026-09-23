@@ -310,7 +310,7 @@ export const ATLAS_DOC: PageDoc = {
       heading: "What Atlas knows about you, and when",
       body: [
         "Personalization is off by default. With it off, Atlas answers as a general coach and does not read your training history.",
-        "With it on, a request to Atlas includes your recent workout logs, per-muscle training insights such as frequency and volume, your membership tier and streak, and the recent messages in the conversation. If you have also connected Apple Health, your last seven days of daily summaries are included. Atlas can keep memory items such as goals and preferences; you can view them, forget any of them, and turning personalization off deletes them.",
+        "With it on, a request to Atlas includes your recent workout logs, per-muscle training insights such as frequency and volume, profile details such as your training goals and experience level, and the recent messages in the conversation. If you have also connected Apple Health, your last seven days of daily summaries are included. Atlas can keep memory items such as goals and preferences; you can view them, forget any of them, and turning personalization off deletes them.",
       ],
     },
     {

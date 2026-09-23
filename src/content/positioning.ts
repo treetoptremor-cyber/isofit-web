@@ -104,7 +104,7 @@ export const TEAM: DocSection = {
       "As of 2025 I’m also a new father. Isofit was conceived and built during nap time.",
     ],
   },
-  image: { src: SITE.founder.photo, alt: `${SITE.founder.name}, founder of Isofit, in a black-and-white photo under a string of bare bulbs.` },
+  image: { src: SITE.founder.photo, alt: `Illustrated black-and-white portrait of ${SITE.founder.name}, founder of Isofit, under a string of bare bulbs.` },
   links: [
     { href: SITE.founder.linkedInUrl, label: `${SITE.founder.name} on LinkedIn` },
     { href: SITE.founder.xUrl, label: `${SITE.founder.name} on X (${SITE.founder.xHandle})` },
