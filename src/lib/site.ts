@@ -12,8 +12,8 @@ export const SITE = {
   launchDate: "2026-10-01",
   launchDateLong: "October 1, 2026",
   // Bump when product facts on the marketing pages are re-verified.
-  factsReviewed: "2026-09-19",
-  factsReviewedLong: "September 19, 2026",
+  factsReviewed: "2026-09-22",
+  factsReviewedLong: "September 22, 2026",
 } as const;
 
 export const FEATURE_LINKS = [
@@ -35,7 +35,6 @@ export const LEGAL_LINKS = [
   { href: "/terms", label: "Terms of Service" },
   { href: "/privacy", label: "Privacy Policy" },
   { href: "/health-privacy", label: "Consumer Health Data Privacy Policy" },
-  { href: "/research", label: "Research" },
 ] as const;
 
 export function absoluteUrl(path: string) {
