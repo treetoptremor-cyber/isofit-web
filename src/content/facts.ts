@@ -33,7 +33,7 @@ export const ISOFIT_ROWS: Record<CompetitorRowKey, string> = {
   platforms: "iPhone only, iOS 17.6 or later. No iPad, Apple Watch, Android or web app.",
   logging:
     "Three ways into one structured log: tap in sets, reps, weight, distance, duration and RPE; type a Quicklog line such as \"bench 5x5 225lbs\"; or speak the workout and review the parsed draft before saving.",
-  library: `485 exercises covering ${ACTIVITY_SCOPE}, plus custom exercises with your own muscle mapping.`,
+  library: `500+ exercises covering ${ACTIVITY_SCOPE}, plus unlimited custom exercises with your own muscle mapping.`,
   muscles:
     "A front and back body graph shaded by working sets per muscle over 7, 30 or 90 days or all time, with sets by muscle and most and least worked. It is explicitly not a recovery score. Pro feature.",
   coaching:

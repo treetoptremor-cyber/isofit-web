@@ -28,7 +28,7 @@ export const DIFFERENTIATORS: DocSection = {
     },
     {
       heading: "One log for six kinds of training",
-      body: `Isofit's 485-exercise library covers ${ACTIVITY_SCOPE}, so a week of lifting, running and climbing lives in one log and one body graph. Hevy, Strong, Fitbod and JEFIT each describe themselves as strength-first or strength-focused. JEFIT's library is larger, at 1,400+ exercises, but it is built around strength training.`,
+      body: `Isofit's library of 500+ exercises covers ${ACTIVITY_SCOPE}, so a week of lifting, running and climbing lives in one log and one body graph. Hevy, Strong, Fitbod and JEFIT each describe themselves as strength-first or strength-focused. JEFIT's library is larger, at 1,400+ exercises, but it is built around strength training.`,
     },
     {
       heading: "A community without followers or leaderboards",
@@ -50,7 +50,7 @@ export const DIFFERENTIATORS_BRIEF: DocSection = {
     { heading: "Log by typing or talking", body: "Type \"bench 5x5 225lbs\" or say the session. None of the four advertises typed or voice logging." },
     { heading: "A coach inside the app", body: "Atlas is a chat coach built into Isofit. Hevy's chat runs inside ChatGPT; Strong, Fitbod and JEFIT advertise no chat." },
     { heading: "Any time window", body: "The body graph looks back 7, 30 or 90 days or all time. Hevy's heat map covers the last 7 days." },
-    { heading: "One log for six kinds of training", body: "485 exercises across lifting, cardio, yoga, sports, climbing and martial arts. The four describe themselves as strength-first or strength-focused." },
+    { heading: "One log for six kinds of training", body: "500+ exercises across lifting, cardio, yoga, sports, climbing and martial arts, plus unlimited custom exercises. The four describe themselves as strength-first or strength-focused." },
     { heading: "No followers or leaderboards", body: "Bonfire posts are tied to logged sessions, one a day. Hevy's home feed is built on follows and leaderboards." },
   ],
 };
@@ -177,7 +177,7 @@ export const KEY_FACTS: DocSection = {
       value: "Workout logging by tap, typed Quicklog line or voice; body graph; Atlas AI coach; Bonfire community; read-only Apple Health import; JSON data export",
     },
     { term: "Platform", value: "iPhone, iOS 17.6 or later. No iPad, Apple Watch, Android or web app." },
-    { term: "Exercise library", value: `485 exercises across ${ACTIVITY_SCOPE}, plus custom exercises` },
+    { term: "Exercise library", value: `500+ exercises across ${ACTIVITY_SCOPE}, plus unlimited custom exercises` },
     { term: "Pricing", value: `Free tier for logging. Pro is planned at ${PRICING.proMonthly} a month or ${PRICING.proYearly} a year (USD, US App Store).` },
     { term: "Contract terms", value: "Monthly or yearly App Store subscription. No long-term contract; cancel any time in your Apple account settings." },
     { term: "Status", value: `Pre-release. iOS launch planned ${SITE.launchDateLong}.` },

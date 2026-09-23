@@ -25,8 +25,8 @@ export const SITE = {
   launchDate: "2026-10-01",
   launchDateLong: "October 1, 2026",
   // Bump when product facts on the marketing pages are re-verified.
-  factsReviewed: "2026-09-22",
-  factsReviewedLong: "September 22, 2026",
+  factsReviewed: "2026-09-23",
+  factsReviewedLong: "September 23, 2026",
 } as const;
 
 export const FEATURE_LINKS = [

@@ -49,7 +49,7 @@ export const FAQ_GROUPS: FaqGroup[] = [
       {
         question: "Do I have to use Isofit's exercise library?",
         answer: [
-          "No. The library has 485 exercises, but you can type any name and create it as a custom exercise. Isofit maps custom exercises to muscles so they count on the body graph.",
+          "No. The library has 500+ exercises, and you can type any name and create it as a custom exercise, with no limit on how many. Isofit maps custom exercises to muscles so they count on the body graph.",
         ],
       },
       {

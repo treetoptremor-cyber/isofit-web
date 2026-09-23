@@ -32,7 +32,7 @@ export const FEATURES_DOC: PageDoc = {
       label: "Also included",
       heading: "What else ships in the app",
       specs: [
-        { term: "Exercise library", value: `485 exercises across ${ACTIVITY_SCOPE}. Create a custom exercise for anything missing and Isofit maps it to muscles.` },
+        { term: "Exercise library", value: `500+ exercises across ${ACTIVITY_SCOPE}, plus unlimited custom exercises. Create one for anything missing and Isofit maps it to muscles.` },
         { term: "Apple Health import", value: "Optional and free. Imports workouts, and shows daily steps, exercise minutes, sleep, resting heart rate and distance. Read-only: Isofit never writes to Apple Health." },
         { term: "Routines", value: "Save a finished session as a routine, favorite it, and load it onto the board next time. Programs Atlas writes land in the same list." },
         { term: "History", value: "Every past session, open on every tier. Edit old sets, delete a session, or backdate one you forgot to log." },
@@ -131,7 +131,7 @@ export const LOGGING_DOC: PageDoc = {
       label: "Exercises",
       heading: "A library for more than lifting",
       body: [
-        `The built-in library has 485 exercises covering ${ACTIVITY_SCOPE}. You are not limited to it: type a name that is not there and Isofit offers to create it as a custom exercise, then maps it to the muscles it trains so it counts on your body graph.`,
+        `The built-in library has 500+ exercises covering ${ACTIVITY_SCOPE}. You are not limited to it: type a name that is not there and Isofit offers to create it as a custom exercise, then maps it to the muscles it trains so it counts on your body graph.`,
       ],
     },
     {

@@ -23,7 +23,7 @@ export const HOME_DOC: PageDoc = {
         { term: "What it is", value: "A workout logger with a muscle-by-muscle body graph, an AI coach and a members-only community." },
         { term: "Platform", value: "iPhone, iOS 17.6 or later. No iPad, Apple Watch, Android or web app." },
         { term: "Price", value: `Logging is free. Pro is planned at ${PRICING.proMonthly} a month or ${PRICING.proYearly} a year (USD).` },
-        { term: "Exercise library", value: `485 exercises across ${ACTIVITY_SCOPE}, plus your own custom exercises.` },
+        { term: "Exercise library", value: `500+ exercises across ${ACTIVITY_SCOPE}, plus unlimited custom exercises.` },
         { term: "Apple Health", value: "Optional and free. Isofit reads from Apple Health and never writes to it." },
         { term: "Status", value: `Pre-release. iOS launch planned ${SITE.launchDateLong}.` },
       ],
