@@ -209,14 +209,12 @@ export default function HomePage() {
         href="/features/bonfire"
         linkLabel="How Bonfire works"
         figure={
-          <ScreenCrop
-            context={false}
-            src="/screenshots/bonfire.png"
-            top={0.2}
-            height={0.5}
-            alt="A Bonfire post by @treetoptremor: a barbell squat photo captioned Barbell squat 3x5 225lbs, tagged strength, with kudos and comment buttons."
-            caption="A post is a session someone logged, with a photo. One a day, members only."
-          />
+          <Plate id="bonfire-grid" caption="A post is a session someone logged, with a photo. One a day, members only.">
+            <Device
+              src="/screenshots/bonfire.png"
+              alt="Isofit's Bonfire tab showing the Home and Embers feed toggle, a search bar for members and categories, a New post button, and a post by @treetoptremor with a barbell squat photo captioned Barbell squat 3x5 225lbs, tagged strength."
+            />
+          </Plate>
         }
       />
 
