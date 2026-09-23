@@ -19,8 +19,8 @@ export const DIFFERENTIATORS: DocSection = {
       body: `Type "bench 5x5 225lbs, run 5k 25:00 rpe 7" into Quicklog and Isofit logs two finished rows, parsed on your phone so it works with no signal. Or say the session out loud and review the draft before it saves. Hevy, Strong, Fitbod and JEFIT advertise structured set entry, and none of them advertises typed or voice logging.`,
     },
     {
-      heading: "An AI coach you can talk to, that reads your own log",
-      body: `Atlas is a chat coach that, with your permission, reads your training history to review a session, explain a stall or write a program. Free includes ${LIMITS.freeAtlasMessages} and Pro includes ${LIMITS.proAtlasMessages}. Strong advertises no coaching, Hevy says its Hevy Trainer programs come from an algorithm and not AI, and Fitbod and JEFIT generate workouts, but none of the four advertises an AI chat.`,
+      heading: "An AI coach inside the app you log with",
+      body: `Atlas is a chat coach built into Isofit that, with your permission, reads your training history to review a session, explain a stall or write a program, and its scope is written into its instructions. Free includes ${LIMITS.freeAtlasMessages} and Pro includes ${LIMITS.proAtlasMessages}. Hevy offers a chat about your Hevy data, but it runs inside ChatGPT rather than the Hevy app; Strong advertises no coaching, and Fitbod and JEFIT generate workouts without a chat.`,
     },
     {
       heading: "Muscle coverage over 7, 30 or 90 days, or all time",
@@ -48,7 +48,7 @@ export const DIFFERENTIATORS_BRIEF: DocSection = {
   ],
   items: [
     { heading: "Log by typing or talking", body: "Type \"bench 5x5 225lbs\" or say the session. None of the four advertises typed or voice logging." },
-    { heading: "A coach you can talk to", body: "Atlas is a chat coach. None of the four advertises an AI chat." },
+    { heading: "A coach inside the app", body: "Atlas is a chat coach built into Isofit. Hevy's chat runs inside ChatGPT; Strong, Fitbod and JEFIT advertise no chat." },
     { heading: "Any time window", body: "The body graph looks back 7, 30 or 90 days or all time. Hevy's heat map covers the last 7 days." },
     { heading: "One log for six kinds of training", body: "485 exercises across lifting, cardio, yoga, sports, climbing and martial arts. The four describe themselves as strength-first or strength-focused." },
     { heading: "No followers or leaderboards", body: "Bonfire posts are tied to logged sessions, one a day. Hevy's home feed is built on follows and leaderboards." },
@@ -79,7 +79,7 @@ export const HOW_IT_WORKS: DocSection = {
   items: [
     {
       heading: "Join the waitlist",
-      body: `Isofit is not in the App Store yet. Leave a first name and an email, and you get one email when the app launches, planned for ${SITE.launchDateLong}. Joining is free and does not commit you to a subscription.`,
+      body: `Isofit is not in the App Store yet. Leave an email address, and a first name if you like, and you get one email when the app launches, planned for ${SITE.launchDateLong}. Joining is free and does not commit you to a subscription.`,
     },
     {
       heading: "Download it and sign in",

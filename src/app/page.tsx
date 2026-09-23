@@ -4,6 +4,7 @@ import { ReviewedNote, webPageJsonLd } from "@/components/marketing/doc-page";
 import JsonLd from "@/components/marketing/json-ld";
 import { CONTAINER, Device, FaqList, PageShell, Plate, Portrait, ProTag, Section, TextLink, WaitlistBand, faqJsonLd, withAtlas } from "@/components/marketing/primitives";
 import { HeatLegend } from "@/components/marketing/quicklog-demo";
+import ScreenCrop from "@/components/marketing/screen-crop";
 import RecoveryRedirect from "@/components/recovery-redirect";
 import WaitlistForm from "@/components/waitlist-form";
 import { HOME_DOC } from "@/content";
@@ -31,8 +32,9 @@ const APP_JSON_LD = {
   operatingSystem: "iOS 17.6 or later",
   availableOnDevice: "iPhone",
   inLanguage: "en",
+  // No datePublished until the app is published; nothing can be pre-ordered,
+  // only a waitlist joined, so the offers carry a start date but no availability.
   releaseNotes: `Pre-release. iOS launch planned ${SITE.launchDateLong}.`,
-  datePublished: SITE.launchDate,
   image: `${SITE.url}/og/home`,
   screenshot: ["log", "body-graph", "atlas"].map((name) => `${SITE.url}/screenshots/${name}.png`),
   featureList: [
@@ -47,9 +49,9 @@ const APP_JSON_LD = {
   publisher: { "@id": `${SITE.url}/#organization` },
   // No aggregateRating: the app is unreleased and has nothing to rate.
   offers: [
-    { "@type": "Offer", name: "Free", price: "0", priceCurrency: "USD", availability: "https://schema.org/PreOrder", availabilityStarts: SITE.launchDate },
-    { "@type": "Offer", name: "Pro, monthly", price: PRICING.proMonthly.slice(1), priceCurrency: "USD", availability: "https://schema.org/PreOrder", availabilityStarts: SITE.launchDate },
-    { "@type": "Offer", name: "Pro, yearly", price: PRICING.proYearly.slice(1), priceCurrency: "USD", availability: "https://schema.org/PreOrder", availabilityStarts: SITE.launchDate },
+    { "@type": "Offer", name: "Free", price: "0", priceCurrency: "USD", availabilityStarts: SITE.launchDate },
+    { "@type": "Offer", name: "Pro, monthly", price: PRICING.proMonthly.slice(1), priceCurrency: "USD", availabilityStarts: SITE.launchDate },
+    { "@type": "Offer", name: "Pro, yearly", price: PRICING.proYearly.slice(1), priceCurrency: "USD", availabilityStarts: SITE.launchDate },
   ],
 };
 
@@ -67,7 +69,7 @@ function FeatureRow({
   flip?: boolean;
 }) {
   return (
-    <section id={doc.id} aria-labelledby={`${doc.id}-heading`} className={`${CONTAINER} py-10 md:py-16`}>
+    <section id={doc.id} aria-labelledby={`${doc.id}-heading`} className={`${CONTAINER} py-12 md:py-16`}>
       <div className={`grid grid-cols-[minmax(0,1fr)] gap-10 lg:items-center lg:gap-16 ${flip ? "lg:grid-cols-[26rem_minmax(0,1fr)]" : "lg:grid-cols-[minmax(0,1fr)_26rem]"}`}>
         <div className={flip ? "lg:order-2" : ""}>
           <p className="label">{doc.label}</p>
@@ -103,27 +105,27 @@ export default function HomePage() {
       <JsonLd data={[APP_JSON_LD, webPageJsonLd(HOME_DOC), faqJsonLd(HOME_DOC.faqs ?? [])]} />
 
       <section aria-labelledby="hero-heading" className="border-b border-rule">
-        <div className={`${CONTAINER} grid gap-10 pb-12 pt-8 md:pt-12 lg:grid-cols-[minmax(0,1fr)_25rem] lg:items-center lg:gap-14 lg:pb-16`}>
+        <div className={`${CONTAINER} grid gap-6 pb-10 pt-6 md:pt-12 lg:grid-cols-[minmax(0,1fr)_25rem] lg:items-center lg:gap-14 lg:pb-16`}>
           <div className="flex flex-col items-start">
             <p className="label flex items-center gap-2">
               <span aria-hidden="true" className="h-1.5 w-1.5 shrink-0 rounded-full bg-forest" />
               <span>Workout logger for iPhone</span>
             </p>
-            <h1 id="hero-heading" className="mt-4 max-w-[16ch] font-display text-[clamp(2.125rem,5vw,3.25rem)] font-bold leading-[1.08] tracking-[-0.03em]">
+            <h1 id="hero-heading" className="mt-3 max-w-[16ch] font-display text-[clamp(2rem,5vw,3.25rem)] font-bold leading-[1.08] tracking-[-0.03em]">
               {before}
               <span className="text-blue-heading">{HERO_ACCENT}</span>
               {after}
             </h1>
-            <p className="mt-5 max-w-[52ch] text-lg leading-[1.65] text-ink-2">{HOME_DOC.lede}</p>
-            <p className="mt-5 inline-block border-y border-ink/25 py-3 font-mono text-[0.8125rem] font-medium leading-6 tracking-[0.02em] text-ink">
-              Free workout logging. iOS launch planned <time dateTime={SITE.launchDate} className="tabular-nums">{SITE.launchDateLong}</time>.
-            </p>
-            <div className="mt-6 w-full sm:mt-7">
+            <p className="mt-4 max-w-[52ch] text-lg leading-[1.6] text-ink-2">{HOME_DOC.lede}</p>
+            <div className="mt-5 w-full">
               <WaitlistForm formId="waitlist-form" />
             </div>
+            <p className="mt-4 inline-block border-y border-ink/25 py-2.5 font-mono text-[0.8125rem] font-medium leading-6 tracking-[0.02em] text-ink">
+              Free workout logging. iOS launch planned <time dateTime={SITE.launchDate} className="tabular-nums">{SITE.launchDateLong}</time>.
+            </p>
           </div>
-          <figure className="rounded-[2rem] border border-rule bg-paper-raised px-6 pb-6 pt-5 shadow-[0_18px_40px_rgba(42,36,32,0.06)]">
-            <div className="mb-4 flex items-center justify-between gap-3">
+          <figure className="rounded-[2rem] border border-rule bg-paper-raised px-5 pb-5 pt-4 shadow-[0_18px_40px_rgba(42,36,32,0.06)] sm:px-6 sm:pb-6">
+            <div className="mb-3 flex items-center justify-between gap-3">
               <figcaption className="label">The body graph</figcaption>
               <ProTag />
             </div>
@@ -140,11 +142,11 @@ export default function HomePage() {
       <section aria-labelledby="glance-heading" className="border-b border-rule bg-paper-raised">
         <div className={CONTAINER}>
           <h2 id="glance-heading" className="sr-only">{glance.heading}</h2>
-          <dl className="grid sm:grid-cols-2 lg:grid-cols-3">
+          <dl className="grid grid-cols-2 gap-x-5 lg:grid-cols-3">
             {glance.specs?.map((spec) => (
-              <div key={spec.term} className="border-b border-rule py-5 last:border-b-0 sm:pr-8 sm:[&:nth-last-child(-n+2)]:border-b-0 lg:[&:nth-last-child(-n+3)]:border-b-0">
+              <div key={spec.term} className="border-b border-rule py-4 [&:nth-last-child(-n+2)]:border-b-0 sm:py-5 sm:pr-8 lg:[&:nth-last-child(-n+3)]:border-b-0">
                 <dt className="label">{spec.term}</dt>
-                <dd className="mt-1.5 text-[0.9375rem] leading-relaxed text-ink">{spec.value}</dd>
+                <dd className="mt-1.5 text-[0.875rem] leading-relaxed text-ink sm:text-[0.9375rem]">{spec.value}</dd>
               </div>
             ))}
           </dl>
@@ -173,12 +175,14 @@ export default function HomePage() {
         href="/features/body-graph"
         linkLabel="How the body graph is calculated"
         figure={
-          <Plate id="see-grid" caption="Your logged sets, grouped by muscle, with the most and least worked.">
-            <Device
-              src="/screenshots/sets-by-muscle.png"
-              alt="Isofit's Progress tab showing a sets-by-muscle list led by side delts with 11 sets, a 7D, 30D, 90D and ALL filter, and cards for total sets, most worked and least worked muscle."
-            />
-          </Plate>
+          <ScreenCrop
+            context={false}
+            src="/screenshots/sets-by-muscle.png"
+            top={0.555}
+            height={0.29}
+            alt="The lower half of Isofit's body graph. A Sets by muscle list reads Side Delts 11, Triceps 10, Glutes 9, Biceps 8, Front Delts 8. Beside it a 7D, 30D, 90D and ALL filter sits above cards for Total sets 45, Most worked Side Delts and Least worked Upper Back."
+            caption="Your logged sets, grouped by muscle, with the most and least worked."
+          />
         }
       />
       <FeatureRow
@@ -186,12 +190,15 @@ export default function HomePage() {
         href="/features/atlas"
         linkLabel="What Atlas does and what it sees"
         figure={
-          <Plate id="ask-grid" tone="atlas" caption="Atlas reviewing a logged session and suggesting changes for next time.">
-            <Device
-              src="/screenshots/atlas.png"
-              alt="An Atlas conversation in Isofit. The member asks what to change after a logged pulling session, and Atlas suggests exercise order and volume changes, above a disclaimer that Atlas is AI and gives general fitness guidance, never medical advice."
-            />
-          </Plate>
+          <ScreenCrop
+            context={false}
+            tone="atlas"
+            src="/screenshots/atlas.png"
+            top={0.182}
+            height={0.585}
+            alt="An Atlas conversation. The member says they just logged a session of lat pulldowns, seated cable rows, barbell curls and shoulder presses, and asks what to change next time. Atlas replies to put the incline dumbbell press before the pulling work, calls five sets at RPE 6 reasonable, suggests reducing back volume slightly, and says to keep the shoulder press light and strictly pain-free."
+            caption="A question about the session just logged, answered against that session."
+          />
         }
       />
       <FeatureRow
@@ -200,21 +207,23 @@ export default function HomePage() {
         href="/features/bonfire"
         linkLabel="How Bonfire works"
         figure={
-          <Plate id="bonfire-grid" caption="A Bonfire post: a logged squat session with a photo.">
-            <Device
-              src="/screenshots/bonfire.png"
-              alt="Isofit's Bonfire tab showing the Home and Embers feed toggle, a search bar for members and categories, a New post button, and a post by @treetoptremor with a barbell squat photo captioned Barbell squat 3x5 225lbs, tagged strength."
-            />
-          </Plate>
+          <ScreenCrop
+            context={false}
+            src="/screenshots/bonfire.png"
+            top={0.2}
+            height={0.5}
+            alt="A Bonfire post by @treetoptremor: a barbell squat photo captioned Barbell squat 3x5 225lbs, tagged strength, with kudos and comment buttons."
+            caption="A post is a session someone logged, with a photo. One a day, members only."
+          />
         }
       />
 
       <Section id={different.id} label={different.label} title={different.heading} intro={different.body?.[0]} className="border-t border-rule">
-        <ul className="grid gap-x-10 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="grid gap-x-10 gap-y-5 sm:grid-cols-2 sm:gap-y-8 lg:grid-cols-3">
           {different.items?.map((item) => (
             <li key={item.heading} className="border-t-2 border-blue/70 pt-4">
               <h3 className="font-display text-[1.0625rem] font-bold leading-snug tracking-[-0.01em]">{withAtlas(item.heading)}</h3>
-              <p className="mt-2 text-[1.0625rem] leading-relaxed text-ink-2">{item.body}</p>
+              <p className="mt-1.5 text-base leading-relaxed text-ink-2 sm:mt-2 sm:text-[1.0625rem]">{item.body}</p>
             </li>
           ))}
         </ul>
@@ -241,8 +250,8 @@ export default function HomePage() {
       </Section>
 
       <Section id={data.id} label={data.label} title={data.heading}>
-        <div className="rounded-[1.75rem] border border-forest/20 bg-forest-soft px-6 py-7 sm:px-8">
-          <ul className="grid gap-6 md:grid-cols-3">
+        <div className="rounded-[1.75rem] border border-forest/20 bg-forest-soft px-5 py-5 sm:px-8 sm:py-7">
+          <ul className="grid gap-4 md:grid-cols-3 md:gap-6">
             {data.bullets?.map((bullet) => (
               <li key={bullet} className="flex gap-3 text-[1.0625rem] leading-relaxed text-ink">
                 <span aria-hidden="true" className="mt-[0.2rem] font-mono text-sm font-bold text-forest">✓</span>

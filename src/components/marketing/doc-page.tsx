@@ -32,7 +32,7 @@ export function RelatedPages({ paths }: { paths: string[] }) {
       <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {docs.map((doc) => (
           <li key={doc.path}>
-            <Link href={doc.path} className="group flex h-full flex-col rounded-2xl border border-rule bg-paper-raised p-5 transition-colors hover:border-blue/50 hover:bg-white">
+            <Link href={doc.path} prefetch={false} className="group flex h-full flex-col rounded-2xl border border-rule bg-paper-raised p-5 transition-colors hover:border-blue/50 hover:bg-white">
               <span className="font-display text-base font-semibold tracking-[-0.01em] group-hover:text-blue">{doc.name}</span>
               <span className="mt-2 text-[0.9375rem] leading-relaxed text-ink-2">{doc.metaDescription}</span>
             </Link>

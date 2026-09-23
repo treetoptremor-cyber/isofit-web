@@ -54,6 +54,17 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+a,
+button,
+summary {
+  -webkit-tap-highlight-color: transparent;
+}
+a:active,
+button:active,
+summary:active {
+  opacity: 0.8;
+}
+
 ::selection {
   background: var(--color-sky);
   color: var(--color-ink);

@@ -51,7 +51,7 @@ export const HOME_DOC: PageDoc = {
       label: "02 · See it",
       heading: "See which muscles your training actually reaches",
       body: [
-        "Every working set you log counts toward the muscles it trains, and the body graph shades a front and back figure by that count over 7, 30 or 90 days or all time. The muscles you train most read warmest; the ones you skip stay pale. It counts logged work, not recovery. The full graph is part of Pro.",
+        "Every working set you log counts toward the muscles it trains, and the body graph shades a front and back figure by that count over 7, 30 or 90 days or all time. The muscles with the most credited work read warmest; those with relatively little stay pale. It counts logged work, not recovery. The full graph is part of Pro.",
       ],
     },
     {

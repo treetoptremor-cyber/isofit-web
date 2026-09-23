@@ -15,6 +15,7 @@ export default function ScreenCrop({
   height,
   priority = false,
   tone,
+  context = true,
 }: {
   src: string;
   alt: string;
@@ -24,14 +25,17 @@ export default function ScreenCrop({
   priority?: boolean;
   // "atlas" frames an Atlas conversation in terra on pale terra.
   tone?: "atlas";
+  // false drops the context phone at every width: just the enlarged band.
+  context?: boolean;
 }) {
   const atlas = tone === "atlas";
   const shift = (top * (SOURCE_H / SOURCE_W) * 100).toFixed(2);
   return (
     <figure>
-      <div className="grid grid-cols-[minmax(0,1fr)] items-center gap-6 md:grid-cols-[11.5rem_minmax(0,1fr)] md:gap-8 lg:grid-cols-[13rem_minmax(0,46rem)]">
+      <div className={`grid grid-cols-[minmax(0,1fr)] items-center gap-6 ${context ? "md:grid-cols-[11.5rem_minmax(0,1fr)] md:gap-8 lg:grid-cols-[13rem_minmax(0,46rem)]" : ""}`}>
         {/* The whole screen, for context. Decorative: the zoom carries the alt
             text. Hidden on phones, where it would only repeat the zoom below. */}
+        {context ? (
         <div aria-hidden="true" className="hidden md:order-1 md:block md:w-full">
           <div className="app-device !max-w-none">
             <div className="app-device-screen">
@@ -52,6 +56,7 @@ export default function ScreenCrop({
             />
           </div>
         </div>
+        ) : null}
         <div
           className={`order-1 overflow-hidden rounded-[1.25rem] border-2 shadow-[0_18px_40px_rgba(42,36,32,0.10)] md:order-2 ${atlas ? "border-terra/50 bg-terra-soft" : "border-sky/70 bg-paper-raised"}`}
           style={{ aspectRatio: `${SOURCE_W} / ${Math.round(height * SOURCE_H)}` }}

@@ -71,10 +71,6 @@ export async function POST(request: NextRequest) {
       return formPost ? resultPage(request, "invalid") : NextResponse.json({ error: "Invalid email format" }, { status: 400 });
     }
 
-    if (!firstName) {
-      return formPost ? resultPage(request, "missing") : NextResponse.json({ error: "First name is required" }, { status: 400 });
-    }
-
     const supabase = getSupabaseAdminClient();
     if (!supabase) {
       console.error("Missing Supabase waitlist environment variables: NEXT_PUBLIC_SUPABASE_URL and key.");
@@ -86,10 +82,12 @@ export async function POST(request: NextRequest) {
     const clientIp = forwardedHeader?.split(",")[0]?.trim() || realIpHeader || "unknown";
     const ipHash = createHash("sha256").update(clientIp).digest("hex");
 
+    // The table's migration declares first_name and last_name NOT NULL. The
+    // name is optional on the form, so absent values are stored as "".
     const { error } = await supabase.from("waitlist_signups").insert({
       email,
-      first_name: firstName,
-      last_name: lastName,
+      first_name: firstName ?? "",
+      last_name: lastName ?? "",
       source,
       referrer,
       ip_hash: ipHash,

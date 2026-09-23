@@ -1,7 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { FEATURE_LINKS, PRIMARY_NAV, SITE } from "@/lib/site";
+import MobileMenu from "@/components/marketing/mobile-menu";
+import { PRIMARY_NAV } from "@/lib/site";
 
 export function LogoLockup() {
   return (
@@ -21,7 +22,7 @@ export default function SiteHeader({ waitlistHref = "/#waitlist" }: { waitlistHr
       >
         Skip to content
       </a>
-      <header className="sticky top-0 z-[120] border-b border-rule bg-paper/90 backdrop-blur">
+      <header className="relative sticky top-0 z-[120] border-b border-rule bg-paper/90 backdrop-blur">
         <div className="mx-auto flex w-full max-w-[1120px] items-center justify-between gap-3 px-4 py-2 sm:px-6 sm:py-2.5">
           <LogoLockup />
           <nav aria-label="Main" className="hidden items-center gap-7 text-[0.9375rem] font-medium text-ink-2 md:flex">
@@ -42,38 +43,7 @@ export default function SiteHeader({ waitlistHref = "/#waitlist" }: { waitlistHr
               Join the waitlist
             </Link>
           </div>
-          <details className="relative md:hidden">
-            <summary className="flex min-h-11 cursor-pointer list-none items-center rounded-lg px-3 text-sm font-semibold [&::-webkit-details-marker]:hidden">
-              Menu
-            </summary>
-            <nav
-              aria-label="Mobile"
-              className="absolute right-0 top-full mt-2 grid w-64 rounded-2xl border border-rule bg-paper p-2 text-[0.9375rem] shadow-[0_18px_40px_rgba(42,36,32,0.16)]"
-            >
-              {PRIMARY_NAV.map((item) => (
-                <div key={item.href}>
-                  <Link href={item.href} className="flex min-h-11 items-center rounded-lg px-3 font-medium hover:bg-white/70">
-                    {item.label}
-                  </Link>
-                  {item.href === "/features"
-                    ? FEATURE_LINKS.map((feature) => (
-                        <Link key={feature.href} href={feature.href} className="flex min-h-10 items-center rounded-lg pl-7 pr-3 text-ink-2 hover:bg-white/70">
-                          {feature.label}
-                        </Link>
-                      ))
-                    : null}
-                </div>
-              ))}
-              <hr className="my-2 border-rule" />
-              <Link href="/login" className="flex min-h-11 items-center rounded-lg px-3 font-medium hover:bg-white/70">
-                Log in
-              </Link>
-              <Link href={waitlistHref} className="mt-1 flex min-h-11 items-center justify-center rounded-xl bg-forest px-3 font-semibold text-white">
-                Join the waitlist
-              </Link>
-              <p className="label px-3 pb-1 pt-3">iOS · {SITE.launchDateLong}</p>
-            </nav>
-          </details>
+          <MobileMenu waitlistHref={waitlistHref} />
         </div>
       </header>
     </>

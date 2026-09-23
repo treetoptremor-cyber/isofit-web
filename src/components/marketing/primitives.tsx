@@ -9,7 +9,7 @@ import SiteHeader from "@/components/marketing/site-header";
 import WaitlistForm from "@/components/waitlist-form";
 import { SITE, absoluteUrl } from "@/lib/site";
 
-export const CONTAINER = "mx-auto w-full max-w-[1120px] px-4 sm:px-6";
+export const CONTAINER = "mx-auto w-full max-w-[1120px] px-4 min-[25rem]:px-5 sm:px-6";
 
 export function PageShell({ children, waitlistHref, grid = true }: { children: ReactNode; waitlistHref?: string; grid?: boolean }) {
   return (
@@ -128,7 +128,7 @@ export function Section({
   const headingId = id ? `${id}-heading` : undefined;
   const Heading = level === 3 ? "h3" : "h2";
   return (
-    <section id={id} aria-labelledby={headingId} className={`${CONTAINER} py-10 md:py-14 ${className}`}>
+    <section id={id} aria-labelledby={headingId} className={`${CONTAINER} py-12 md:py-14 ${className}`}>
       {label ? <p className="label">{label}</p> : null}
       <Heading id={headingId} className="mt-2 max-w-[24ch] font-display text-[clamp(1.5rem,3vw,2.125rem)] font-bold leading-[1.14] tracking-[-0.025em]">
         {withAtlas(title)}
@@ -358,7 +358,7 @@ export function WaitlistBand({ source, id = "waitlist" }: { source: string; id?:
               {[
                 ["For", "Adults, 18 and over"],
                 ["Sign-in", "Apple, Google or email"],
-                ["We ask for", "A name and an email"],
+                ["We ask for", "An email. A first name is optional"],
               ].map(([term, value]) => (
                 <div key={term}>
                   <dt className="label !text-sky">{term}</dt>

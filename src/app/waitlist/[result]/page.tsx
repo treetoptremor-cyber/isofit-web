@@ -10,7 +10,7 @@ import { SITE } from "@/lib/site";
 const RESULTS: Record<string, { title: string; body: string; retry: boolean }> = {
   ok: { title: "You are on the list.", body: `We will email you once, when Isofit is in the App Store. The iOS launch is planned for ${SITE.launchDateLong}.`, retry: false },
   already: { title: "You are already on the list.", body: "That email address has already joined. There is nothing more to do.", retry: false },
-  missing: { title: "We need a name and an email.", body: "Please go back and enter your first name and email address.", retry: true },
+  missing: { title: "We need an email address.", body: "Please go back and enter your email address.", retry: true },
   invalid: { title: "That email address does not look right.", body: "Please go back and check it.", retry: true },
   error: { title: "Something went wrong.", body: `Please try again in a moment, or email ${SITE.supportEmail}.`, retry: true },
 };

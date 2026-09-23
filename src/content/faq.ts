@@ -150,7 +150,7 @@ export const FAQ_GROUPS: FaqGroup[] = [
       },
       {
         question: "What information do I give when I join the waitlist?",
-        answer: ["A first name and an email address, used to tell you when Isofit launches. Isofit does not collect phone numbers, and no fitness information is asked for until you create an account in the app."],
+        answer: ["An email address, and a first name if you want to give one, used to tell you when Isofit launches. Isofit does not collect phone numbers, and no fitness information is asked for until you create an account in the app."],
       },
       {
         question: "Does cancelling my membership delete my data?",

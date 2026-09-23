@@ -69,7 +69,7 @@ export const LOGGING_DOC: PageDoc = {
   name: "Workout logging",
   metaTitle: "Workout logging by tap, text or voice | Isofit",
   metaDescription:
-    "Log workouts in Isofit three ways: tap in sets, reps and weight, type a Quicklog line like \"bench 5x5 225lbs\", or speak the session. Free on iPhone, works offline.",
+    "Log workouts in Isofit three ways: tap in sets, reps and weight, type a Quicklog line like \"bench 5x5 225lbs\", or speak the session. Free on iPhone; tap and Quicklog work offline, voice needs a connection.",
   h1: "Tap it. Type it. Say it.",
   lede:
     "Isofit's logger accepts a workout three ways and stores it one way. Tap in sets, reps, weight, distance, time and RPE. Type a Quicklog line such as \"bench 5x5 225lbs\" and get a finished row. Or hold the microphone, describe the session, and review the draft before it saves. All three produce the same structured log, and logging is free.",
@@ -109,7 +109,7 @@ export const LOGGING_DOC: PageDoc = {
       heading: "How voice logging works",
       body: [
         "Hold the microphone button and talk. Speech is transcribed on your iPhone where the device supports it. The transcript is then sent to Isofit's server, where an AI model (OpenAI) turns it into exercise rows. If on-device transcription is not confident, the audio is sent for server transcription instead.",
-        "Voice never writes to your log on its own. The parsed rows appear in the logger as a draft for you to check, fix and save. Voice logging is available on every tier and is powered by $ISO, the in-app points you earn by logging: each successfully processed voice entry costs 0.05 $ISO on all plans, needs enough balance, and is refunded if processing fails. Usage limits apply.",
+        "Voice never writes to your log on its own. The parsed rows appear in the logger as a draft for you to check, fix and save. Voice logging is available on every tier and is powered by $ISO, the in-app points you earn by logging: each successfully processed voice entry costs 0.05 $ISO on all plans, is blocked when your balance is zero, and is refunded if processing fails. Usage limits apply.",
         "Units are kept as spoken. Say \"squat 100 kilos\" and the row records 100 kg even if your account is set to pounds. Isofit never converts a spoken weight.",
       ],
     },
@@ -194,7 +194,7 @@ export const BODY_GRAPH_DOC: PageDoc = {
     "Isofit's body graph shades a front and back figure by the working sets you logged for each muscle over 7, 30 or 90 days or all time, so you can see what you train and what you skip.",
   h1: "See where your work goes.",
   lede:
-    "The body graph is Isofit's muscle heat map. It shades a front and back figure by the number of working sets (every logged set except warm-ups) you logged for each muscle, over the last 7, 30 or 90 days or your whole history. Muscles you train most read warmest and neglected ones stay pale. It counts the work you logged. It is not a recovery or soreness score. The full body graph is a Pro feature.",
+    "The body graph is Isofit's muscle heat map. It shades a front and back figure by the number of working sets (every logged set except warm-ups) you logged for each muscle, over the last 7, 30 or 90 days or your whole history. Muscles with the most credited work read warmest; those with relatively little stay pale. It counts the work you logged. It is not a recovery or soreness score. The full body graph is a Pro feature.",
   sections: [
     {
       id: "what-you-see",
