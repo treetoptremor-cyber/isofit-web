@@ -18,6 +18,8 @@ export type DocSection = {
   bullets?: string[];
   // Named points under the section, each an h3 with a short answer.
   items?: DocItem[];
+  // A passage in someone's own words, e.g. the founder's story.
+  statement?: { paragraphs: string[]; attribution: string };
   // A portrait or figure that belongs to the section's content.
   image?: { src: string; alt: string };
   // Outbound links shown under the copy, e.g. a founder's profiles.

@@ -91,12 +91,19 @@ export const TEAM: DocSection = {
   label: "Team",
   heading: "The team behind Isofit",
   body: [
-    `${SITE.founder.name} founded Isofit in ${SITE.founded} to make training easier to track, understand, and build on. He designs and builds the app himself between New York City and Philadelphia.`,
-    "The idea came from his own training: more than 15 years of strength work, pages of workouts buried in the Notes app, and little reason to revisit them. He wanted a log worth coming back to—easy to keep, clear to read, and built to show progress.",
-    "Eight years in New York fine dining shaped his approach. As a senior server and captain at Jungsik, Loring Place, and Pastis, he made precision a daily practice: careful preparation, attention to detail, and something to improve after every service. Isofit brings that same discipline to training.",
-    "An holds degrees from Parsons School of Design and Baruch College’s Zicklin School of Business. Beyond strength work, he ran cross country in high school and more recently took up Muay Thai. His own training questions led to Atlas, Isofit’s AI coach, which can discuss your actual training history rather than offer generic advice.",
-    "He’s also a new father. Most of Isofit was built during nap time.",
+    `Isofit is an independent workout logging app for iPhone, founded by ${SITE.founder.name} in ${SITE.founded}. It combines fast workout logging, a body graph showing logged sets by muscle, and Atlas, an AI coach that can use your training history with your permission.`,
   ],
+  statement: {
+    attribution: `${SITE.founder.name}, founder of Isofit`,
+    paragraphs: [
+      "I founded Isofit in 2026 to make workout logging easy and useful beyond the workout. I design and build the app myself, working between New York City and Philadelphia.",
+      "I’ve been strength training for over 15 years and spent much of that time researching training principles and writing my own programs. But my workout history lived in pages of the Notes app that I rarely reopened. I was recording the work without getting anything back from it. I wanted to see my progress, understand where my effort was going, and know whether my program was actually working.",
+      "In early 2026, I was negotiating to buy an independent gym and began scoping its membership software as a CRM. When the deal fell through, I realized I didn’t need to own a gym to build something useful for the people in it. The workout log became the focus.",
+      "That’s what drives Isofit: quick logging, useful visualizations, and a clearer connection between the work you put in and what you do next. Atlas, Isofit’s AI coach, brings guidance into that same space, with the ability to help you make sense of your own training history (if you opt in). It gives general guidance without personalization.",
+      "Before Isofit, I spent eight years in New York fine dining as a senior server and captain at Jungsik, Loring Place, and Pastis. Preparation, timing, and the habit of learning from each service still shape how I build. I hold degrees from Parsons School of Design and Baruch College’s Zicklin School of Business.",
+      "As of 2025 I’m also a new father. Isofit was conceived and built during nap time.",
+    ],
+  },
   image: { src: SITE.founder.photo, alt: `${SITE.founder.name}, founder of Isofit, in a black-and-white photo under a string of bare bulbs.` },
   links: [
     { href: SITE.founder.linkedInUrl, label: `${SITE.founder.name} on LinkedIn` },

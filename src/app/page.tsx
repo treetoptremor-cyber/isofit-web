@@ -4,7 +4,7 @@ import { DataTable } from "@/components/marketing/doc-sections";
 import { RelatedPages, ReviewedNote, webPageJsonLd } from "@/components/marketing/doc-page";
 import IsoGrid from "@/components/marketing/iso-grid";
 import JsonLd from "@/components/marketing/json-ld";
-import { CONTAINER, ColumnCards, Device, FaqList, ItemList, PageShell, Plate, Portrait, Section, SpecList, TextLink, WaitlistBand, faqJsonLd } from "@/components/marketing/primitives";
+import { CONTAINER, ColumnCards, Device, FaqList, ItemList, PageShell, Plate, Portrait, Section, SpecList, Statement, TextLink, WaitlistBand, faqJsonLd } from "@/components/marketing/primitives";
 import QuicklogDemo, { HeatLegend } from "@/components/marketing/quicklog-demo";
 import RecoveryRedirect from "@/components/recovery-redirect";
 import WaitlistForm from "@/components/waitlist-form";
@@ -251,6 +251,7 @@ export default function HomePage() {
             <div className="prose-iso max-w-[66ch]">
               {team.body?.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
             </div>
+            {team.statement ? <div className="mt-6"><Statement {...team.statement} /></div> : null}
             <div className="mt-4 flex flex-wrap gap-x-6">
               {team.links?.map((link) => (
                 <a key={link.href} href={link.href} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-1.5 font-medium text-blue underline decoration-blue/40 underline-offset-4 hover:text-blue-dark hover:decoration-current">

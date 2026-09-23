@@ -185,6 +185,18 @@ export function Device({
   );
 }
 
+// A longer passage in someone's own words, with who said it.
+export function Statement({ paragraphs, attribution }: { paragraphs: string[]; attribution: string }) {
+  return (
+    <figure className="max-w-[66ch]">
+      <blockquote className="prose-iso border-l-[3px] border-sky pl-5">
+        {paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+      </blockquote>
+      <figcaption className="label mt-4 pl-5">— {attribution}</figcaption>
+    </figure>
+  );
+}
+
 // A square photo of a person, e.g. the founder on the team section.
 export function Portrait({ src, alt, className = "" }: { src: string; alt: string; className?: string }) {
   return (

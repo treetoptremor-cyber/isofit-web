@@ -30,6 +30,9 @@ export function docToMarkdown(doc: PageDoc, { headingOffset = 0 }: { headingOffs
     out.push(`${h(section.level ?? 2)} ${section.heading}`);
     if (section.body) out.push(...section.body);
     if (section.bullets) out.push(section.bullets.map((bullet) => `- ${bullet}`).join("\n"));
+    if (section.statement) {
+      out.push(section.statement.paragraphs.map((paragraph) => `> ${paragraph}`).join("\n>\n") + `\n>\n> — ${section.statement.attribution}`);
+    }
     if (section.image) out.push(`![${section.image.alt}](${absoluteUrl(section.image.src)})`);
     if (section.links) out.push(section.links.map((link) => `- [${link.label}](${link.href})`).join("\n"));
     for (const item of section.items ?? []) {

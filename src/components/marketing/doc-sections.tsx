@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 
-import { ColumnCards, ItemList, Portrait, QuoteBlock, Section, SpecList } from "@/components/marketing/primitives";
+import { ColumnCards, ItemList, Portrait, QuoteBlock, Section, SpecList, Statement } from "@/components/marketing/primitives";
 import type { DocSection, DocTable } from "@/content/types";
 
 // One table in the DOM. From md up it is a normal table; below that the CSS in
@@ -64,6 +64,7 @@ export default function DocSections({
                 {section.bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}
               </ul>
             ) : null}
+            {section.statement ? <div className="mt-6"><Statement {...section.statement} /></div> : null}
           </div>
         );
         return (
@@ -78,7 +79,7 @@ export default function DocSections({
               </div>
             ) : (
               <>
-                {section.body || section.bullets ? copy : null}
+                {section.body || section.bullets || section.statement ? copy : null}
                 {section.specs ? <div className={section.body || section.bullets ? "mt-8" : ""}><SpecList specs={section.specs} columns={2} /></div> : null}
               </>
             )}
