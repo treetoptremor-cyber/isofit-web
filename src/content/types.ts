@@ -31,10 +31,11 @@ export type DocSection = {
   // Two opposed lists shown as side-by-side cards: is / is not, answers / declines.
   columns?: { heading: string; tone: "yes" | "no"; items: string[] }[];
   // A sentence quoted verbatim from the app, with where it appears.
-  quote?: { text: string; source: string; tone?: "atlas" };
+  // A pulled sentence. `source` is omitted when the surrounding text is already signed.
+  quote?: { text: string; source?: string; tone?: "atlas" };
 };
 
-export type DocItem = { heading: string; body: string };
+export type DocItem = { heading: string; body: string; label?: string };
 
 export type DocFaq = {
   question: string;

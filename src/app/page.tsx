@@ -1,6 +1,9 @@
 import type { ReactNode } from "react";
 
+import Link from "next/link";
+
 import { ReviewedNote, webPageJsonLd } from "@/components/marketing/doc-page";
+import IsoGrid from "@/components/marketing/iso-grid";
 import JsonLd from "@/components/marketing/json-ld";
 import { CONTAINER, Device, FaqList, PageShell, Plate, Portrait, ProTag, Section, TextLink, WaitlistBand, faqJsonLd, withAtlas } from "@/components/marketing/primitives";
 import { HeatLegend } from "@/components/marketing/quicklog-demo";
@@ -95,7 +98,6 @@ export default function HomePage() {
   const does = section("does");
   const different = section("different");
   const tiers = section("free-and-pro");
-  const data = section("your-data");
   const team = section("team");
   const [before, after] = HOME_DOC.h1.split(HERO_ACCENT);
 
@@ -249,36 +251,61 @@ export default function HomePage() {
         </div>
       </Section>
 
-      <Section id={data.id} label={data.label} title={data.heading}>
-        <div className="rounded-[1.75rem] border border-forest/20 bg-forest-soft px-5 py-5 sm:px-8 sm:py-7">
-          <ul className="grid gap-4 md:grid-cols-3 md:gap-6">
-            {data.bullets?.map((bullet) => (
-              <li key={bullet} className="flex gap-3 text-[1.0625rem] leading-relaxed text-ink">
-                <span aria-hidden="true" className="mt-[0.2rem] font-mono text-sm font-bold text-forest">✓</span>
-                <span>{bullet}</span>
-              </li>
-            ))}
-          </ul>
-          <div className="mt-5 flex flex-wrap gap-x-6 border-t border-forest/20 pt-2">
-            <TextLink href="/privacy">Privacy Policy</TextLink>
-            <TextLink href="/health-privacy">Consumer Health Data Privacy Policy</TextLink>
+      {/* The founder panel: An's words on ink, with the Atlas and data cards.
+          "built Isofit." takes sky, which reads at 6:1 on ink. */}
+      <section id={team.id} aria-labelledby={`${team.id}-heading`} className={`${CONTAINER} py-12 md:py-14`}>
+        <div className="relative overflow-hidden rounded-[1.75rem] bg-ink px-6 py-8 text-paper sm:px-8 md:px-12 md:py-12">
+          <IsoGrid id="team-grid" tone="ink" />
+          <div className="relative">
+            <p className="label !text-paper/70">{team.label}</p>
+            <h2 id={`${team.id}-heading`} className="mt-3 font-display text-[clamp(1.75rem,4vw,2.75rem)] font-bold leading-[1.08] tracking-[-0.03em] text-white">
+              {team.heading.split(" ").slice(0, 2).join(" ")} <span className="text-sky">{team.heading.split(" ").slice(2).join(" ")}</span>
+            </h2>
+            <div className="mt-8 grid gap-8 md:grid-cols-[minmax(0,2fr)_minmax(0,5fr)] md:gap-12">
+              <div className="flex items-center gap-5 md:block">
+                {team.image ? <Portrait {...team.image} className="w-24 shrink-0 rounded-2xl sm:w-28 md:w-full md:rounded-[1.5rem]" /> : null}
+                <div className="md:mt-4">
+                  <p className="font-display text-lg font-bold tracking-[-0.01em] text-white">{SITE.founder.name}</p>
+                  <p className="mt-1 text-[0.9375rem] text-paper/70">{team.byline}</p>
+                </div>
+              </div>
+              <div className="max-w-[60ch]">
+                <div className="prose-iso [&_p]:text-paper/85">
+                  {team.statement ? <p>{team.statement.paragraphs[0]}</p> : null}
+                  {team.quote ? (
+                    <blockquote className="border-l-[3px] border-sky pl-5">
+                      <p className="!text-lg !font-medium !leading-[1.5] !text-white sm:!text-xl">{team.quote.text}</p>
+                    </blockquote>
+                  ) : null}
+                  {team.statement?.paragraphs.slice(1).map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+                </div>
+                <div className="mt-5">
+                  <Link href="/about#founder" className="inline-flex min-h-11 items-center gap-1.5 font-medium text-sky underline decoration-sky/40 underline-offset-4 hover:text-white">
+                    The full story
+                    <span aria-hidden="true">→</span>
+                  </Link>
+                </div>
+              </div>
+            </div>
+            <ul className="mt-10 grid gap-5 border-t border-paper/15 pt-8 md:grid-cols-2">
+              {team.items?.map((item, index) => {
+                const atlas = index === 0;
+                return (
+                  <li key={item.heading} className={`rounded-[1.5rem] p-6 sm:p-7 ${atlas ? "bg-terra-ink" : "bg-forest-ink"}`}>
+                    <p className={`label ${atlas ? "!text-terra-light" : "!text-sage-light"}`}>{item.label}</p>
+                    <h3 className={`mt-3 font-display text-xl font-bold leading-snug tracking-[-0.02em] ${atlas ? "text-terra-light" : "text-sage-light"}`}>{item.heading}</h3>
+                    <p className="mt-3 text-[1.0625rem] leading-relaxed text-paper/85">{item.body}</p>
+                    <Link href={atlas ? "/features/atlas" : "/privacy"} className="mt-4 inline-flex min-h-11 items-center gap-1.5 text-[0.9375rem] font-medium text-paper/80 underline decoration-paper/30 underline-offset-4 hover:text-white">
+                      {atlas ? "What Atlas does and what it sees" : "Privacy Policy"}
+                      <span aria-hidden="true">→</span>
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
           </div>
         </div>
-      </Section>
-
-      <Section id={team.id} label={team.label} title={team.heading} className="border-t border-rule">
-        <div className="grid gap-8 sm:grid-cols-[10rem_minmax(0,1fr)] sm:items-start md:grid-cols-[13rem_minmax(0,1fr)] md:gap-12">
-          {team.image ? <Portrait {...team.image} className="w-36 rounded-[1.5rem] sm:w-full" /> : null}
-          <div className="max-w-[62ch]">
-            <div className="prose-iso">
-              {team.body?.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
-            </div>
-            <div className="mt-4">
-              <TextLink href="/about#founder">Why I built Isofit</TextLink>
-            </div>
-          </div>
-        </div>
-      </Section>
+      </section>
 
       <Section id="faq" label="Questions" title="Frequently asked questions about Isofit" className="border-t border-rule">
         <FaqList faqs={HOME_DOC.faqs ?? []} />

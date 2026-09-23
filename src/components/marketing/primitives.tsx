@@ -14,15 +14,20 @@ export const CONTAINER = "mx-auto w-full max-w-[1120px] px-4 min-[25rem]:px-5 sm
 export function PageShell({ children, waitlistHref, grid = true }: { children: ReactNode; waitlistHref?: string; grid?: boolean }) {
   return (
     <div className="relative flex min-h-screen flex-col text-ink">
-      {/* The app's chalk grid behind the top of the page only, fading out before
-          the long reading sections. Off for legal documents. */}
+      {/* The app's base surface: its faint sky grid behind every page, fixed to
+          the viewport and dissolving toward all four edges the way the app's
+          edgeFade does (clear at the edge, solid from 12% in). */}
       {grid ? (
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[56rem] opacity-50"
+          className="pointer-events-none fixed inset-0 -z-10"
           style={{
-            WebkitMaskImage: "linear-gradient(to bottom, #000 30%, transparent 100%)",
-            maskImage: "linear-gradient(to bottom, #000 30%, transparent 100%)",
+            WebkitMaskImage:
+              "linear-gradient(to bottom, transparent, #000 12%, #000 88%, transparent), linear-gradient(to right, transparent, #000 12%, #000 88%, transparent)",
+            WebkitMaskComposite: "source-in",
+            maskImage:
+              "linear-gradient(to bottom, transparent, #000 12%, #000 88%, transparent), linear-gradient(to right, transparent, #000 12%, #000 88%, transparent)",
+            maskComposite: "intersect",
           }}
         >
           <IsoGrid id="page-grid" />
@@ -289,11 +294,11 @@ export function ColumnCards({ columns }: { columns: { heading: string; tone: "ye
   );
 }
 
-export function QuoteBlock({ text, source, tone }: { text: string; source: string; tone?: "atlas" }) {
+export function QuoteBlock({ text, source, tone }: { text: string; source?: string; tone?: "atlas" }) {
   return (
     <blockquote className={`max-w-[46rem] border-l-[3px] pl-5 ${tone === "atlas" ? "border-terra" : "border-sky"}`}>
       <p className="font-display text-[1.125rem] font-medium leading-[1.5] tracking-[-0.01em] text-ink sm:text-xl sm:leading-[1.5]">“{text}”</p>
-      <footer className="label mt-3">{source}</footer>
+      {source ? <footer className="label mt-3">{source}</footer> : null}
     </blockquote>
   );
 }

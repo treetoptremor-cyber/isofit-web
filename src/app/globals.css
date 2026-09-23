@@ -23,11 +23,17 @@
      shares a hex with heat-5 but is its own role: never recolor the graph. */
   --color-terra: #9a4527;
   --color-terra-soft: #f3e7e1;
+  /* On ink: the app's dark-appearance terra and its dark terra surface */
+  --color-terra-light: #c9866a;
+  --color-terra-ink: #33241e;
 
   /* Privacy, ownership, controls and primary actions */
   --color-forest: #526b46;
   --color-forest-dark: #435b38;
   --color-forest-soft: #e6eadd;
+  /* On ink: the app's dark-appearance sage and a matching dark surface */
+  --color-sage-light: #8ca065;
+  --color-forest-ink: #242b1f;
 
   /* Body-graph heat scale, rest to most-worked. Same ramp the app draws muscles with. */
   --color-heat-0: #cfc3a4;

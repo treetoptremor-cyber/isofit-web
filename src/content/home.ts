@@ -1,5 +1,5 @@
 import { ACTIVITY_SCOPE, LIMITS, PRICING } from "@/content/facts";
-import { DIFFERENTIATORS_BRIEF, TEAM_TEASER } from "@/content/positioning";
+import { DIFFERENTIATORS_BRIEF, FOUNDER_PANEL } from "@/content/positioning";
 import type { PageDoc } from "@/content/types";
 import { SITE } from "@/lib/site";
 
@@ -88,17 +88,7 @@ export const HOME_DOC: PageDoc = {
         },
       ],
     },
-    {
-      id: "your-data",
-      label: "Your data",
-      heading: "Your training data stays yours",
-      bullets: [
-        "No data sales, no advertising, and your fitness and health data never trains AI models.",
-        "Export everything as a JSON file, or delete your account, from inside the app.",
-        "Atlas personalization and Apple Health access stay off until you turn them on.",
-      ],
-    },
-    TEAM_TEASER,
+    FOUNDER_PANEL,
   ],
   faqs: [
     {

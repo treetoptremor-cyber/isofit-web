@@ -119,7 +119,6 @@ export const FOUNDER: DocSection = {
   ],
   quote: {
     text: "I wanted to see my progress, understand where my effort was going, and know whether my program was actually working.",
-    source: SITE.founder.name,
   },
   statement: {
     attribution: `${SITE.founder.name}, founder of Isofit`,
@@ -134,16 +133,27 @@ export const FOUNDER: DocSection = {
   },
 };
 
-// The home page's short version, linking to the letter.
-export const TEAM_TEASER: DocSection = {
+// The home page's founder panel, in An's words, with the Atlas and data cards.
+export const FOUNDER_PANEL: DocSection = {
   id: "team",
-  label: "Team",
-  heading: "The team behind Isofit",
-  body: [
-    `Isofit is an independent workout logging app for iPhone, founded by ${SITE.founder.name} in ${SITE.founded}. It combines fast workout logging, a body graph showing logged sets by muscle, and Atlas, an AI coach that can use your training history with your permission.`,
-    `It is designed and built by ${SITE.founder.name}, a strength athlete of more than 15 years and a former senior server and captain in New York fine dining, who wanted a log worth coming back to. Most of Isofit was built during nap time.`,
-  ],
+  label: `Independent by design · Founded in ${SITE.founded}`,
+  heading: "Why I built Isofit.",
+  byline: "Founder, designer & developer",
   image: FOUNDER_PORTRAIT,
+  quote: {
+    text: "I wanted to see my progress, understand where my effort was going, and know whether my program was actually working.",
+  },
+  statement: {
+    attribution: `${SITE.founder.name}, founder of Isofit`,
+    paragraphs: [
+      "I founded Isofit to make workout logs useful beyond the workout. I design and build the app myself, working between New York City and Philadelphia.",
+      "I’m also a new father. Most of Isofit was built during nap time.",
+    ],
+  },
+  items: [
+    { label: "Atlas · AI coach", heading: "Ask about your training.", body: "Review a session or plan your next week. With your permission, Atlas can use your workout history." },
+    { label: "Your data", heading: "Your training stays yours.", body: "Your log is private by default. You choose what to share and can export your data." },
+  ],
 };
 
 export const KEY_FACTS: DocSection = {

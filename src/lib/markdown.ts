@@ -45,7 +45,7 @@ export function docToMarkdown(doc: PageDoc, { headingOffset = 0 }: { headingOffs
       out.push(`${h(3)} ${column.heading}`);
       out.push(column.items.map((item) => `- ${item}`).join("\n"));
     }
-    if (section.quote) out.push(`> "${section.quote.text}"\n> (${section.quote.source})`);
+    if (section.quote) out.push(`> "${section.quote.text}"` + (section.quote.source ? `\n> (${section.quote.source})` : ""));
   }
 
   if (doc.faqs?.length) {
