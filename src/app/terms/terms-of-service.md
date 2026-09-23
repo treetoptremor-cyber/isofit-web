@@ -1,7 +1,7 @@
 # Isofit Terms of Service
 
-**Version:** 1.0
-**Effective Date:** August 9, 2026
+**Version:** 1.1
+**Effective Date:** September 16, 2026
 **Provider:** Isofit ltd.
 **Contact:** support@isofit.app
 
@@ -39,7 +39,7 @@ You are responsible for your account credentials and for activity that occurs un
 
 The core workout logger is available free of charge. Paid membership tiers unlock additional features, including expanded Atlas access. The features, prices, and billing period of each tier are shown before you purchase.
 
-- **Billing.** Payments are processed by Stripe or by Apple through the App Store, depending on where you purchase. We do not store your full card details.
+- **Billing.** Apple processes membership payments through the App Store, and RevenueCat manages subscription status on our behalf. We do not store your full card details.
 - **Renewal and cancellation.** Paid memberships renew automatically until you cancel. Cancellation takes effect at the end of the current billing period; where you purchased through Apple, Apple's subscription management and refund processes apply.
 - **Changes.** We may change membership pricing or included features with advance notice. Changes take effect at your next renewal.
 
@@ -49,7 +49,7 @@ Canceling a membership does not delete your account or data — see Section 10 o
 
 ## 5. Atlas and AI-Generated Content
 
-"Atlas" is Isofit's AI coaching feature. "AI Content" means any output generated or synthesized by artificial-intelligence or automated systems within the Service, including Atlas chat responses, form-check feedback, training insights and syntheses, progress analyses and visualizations (including the body graph and other Progress outputs), and structured training suggestions such as workout programs, exercise prescriptions, and training targets.
+"Atlas" is Isofit's AI coaching feature. "AI Content" means any output generated or synthesized by artificial-intelligence or automated systems within the Service, including Atlas chat responses, form-check feedback, training insights, progress analyses and visualizations (including the body graph and other Progress outputs), and structured training suggestions such as workout programs, exercise prescriptions, and training targets.
 
 ### 5.1 Atlas Is an AI System, Not a Person
 
@@ -95,7 +95,7 @@ You are responsible for what you post. We may remove content or restrict account
 
 ## 8. $ISO and Rewards
 
-$ISO is Isofit's in-app participation and rewards feature. $ISO has no cash value, is not money, currency, an investment, or a security, and cannot be sold, transferred, or exchanged outside the Service. $ISO is a limited, revocable license feature, not your property. Earning rates, redemption options, and eligibility rules are shown in the app and may change. We may adjust or remove $ISO balances obtained through abuse, error, or fraud, and we may modify or discontinue the $ISO feature with reasonable notice. Specific rewards (including partner redemptions) may carry their own stated conditions.
+$ISO is Isofit's in-app participation and rewards feature. $ISO has no cash value, is not money, currency, an investment, or a security, and cannot be sold, transferred, or exchanged outside the Service. $ISO is a limited, revocable license feature, not your property. Earning rates, redemption options, and eligibility rules are shown in the app and may change. We may adjust or remove $ISO balances obtained through abuse, error, or fraud, and we may modify or discontinue the $ISO feature with reasonable notice. Specific rewards may carry their own stated conditions.
 
 If the nature or functionality of $ISO ever changes — for example, if new earning, redemption, or transfer functionality is introduced — that change will be introduced under updated or supplemental terms presented to you before it takes effect. Nothing in the Service or these Terms is a promise that $ISO will ever have monetary value or any particular future functionality.
 
@@ -125,7 +125,7 @@ The Service — including its software, design, branding, exercise library, and 
 
 ## 11. Third-Party Services
 
-The Service depends on third-party services — including Stripe and Apple for payments, the AI model providers identified in the Privacy Policy, and optional platform connections such as Apple Health, Strava, Fitbit, Garmin, Spotify, and Apple Music. Your use of a third-party service is governed by that party's own terms and privacy policy, and we are not responsible for third-party services.
+The Service depends on third-party services — including Apple for payments, RevenueCat for subscription management, the AI model providers identified in the Privacy Policy, and the optional Apple Health connection. Your use of a third-party service is governed by that party's own terms and privacy policy, and we are not responsible for third-party services.
 
 ---
 
@@ -187,4 +187,4 @@ Before filing any claim, please contact us at support@isofit.app — most concer
 
 ---
 
-*End of Terms of Service | Isofit | v1.0 | August 9, 2026*
+*End of Terms of Service | Isofit | v1.1 | September 16, 2026*

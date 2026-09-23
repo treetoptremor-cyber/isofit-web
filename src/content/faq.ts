@@ -97,7 +97,7 @@ export const FAQ_GROUPS: FaqGroup[] = [
       {
         question: "How personalized is Atlas?",
         answer: [
-          "Personalization is off by default. When you turn it on, Atlas receives your recent workout data, training insights, profile context and the recent messages in the thread. It can also keep memory items such as goals and preferences, which you can view and forget. Turning personalization off deletes stored memory items; it does not delete messages already sent.",
+          "When you message Atlas, it receives your recent workout data, training insights, profile context and the recent messages in the thread. The Atlas personalization opt-in is off by default. Opting in lets Atlas keep memory items such as goals and preferences, and use your Apple Health daily summaries if you connected Apple Health. Withdrawing the opt-in in account settings deletes stored memory items and stops Atlas using those summaries; Atlas still works, and messages already sent are not deleted.",
         ],
         link: { href: "/privacy#4-atlas-ai-and-your-data", label: "Privacy Policy: Atlas and your data" },
       },
@@ -143,17 +143,24 @@ export const FAQ_GROUPS: FaqGroup[] = [
         link: { href: "/pricing", label: "Full Free and Pro comparison" },
       },
       {
+        question: "Who handles payments?",
+        answer: [
+          "Apple processes membership payments through the App Store, and RevenueCat manages subscription status on Isofit's behalf. Isofit does not store your full payment card details.",
+        ],
+        link: { href: "/terms#4-memberships-billing-and-cancellation", label: "Terms: memberships, billing, and cancellation" },
+      },
+      {
         question: "Is joining the waitlist free?",
         answer: ["Yes. It costs nothing and does not commit you to a subscription."],
       },
       {
         question: "What information do I give when I join the waitlist?",
-        answer: ["A first name and an email address, used to tell you when Isofit launches. No fitness information is asked for until you create an account in the app."],
+        answer: ["A first name and an email address, used to tell you when Isofit launches. Isofit does not collect phone numbers. No fitness information is asked for until you create an account in the app."],
       },
       {
         question: "Does cancelling my membership delete my data?",
         answer: [
-          "No. Cancelling a paid membership does not delete your account or personal data. To delete your account, use the option in the app's settings or email privacy@isofit.app. Deleting your account does not cancel an App Store subscription, so cancel that with Apple too. Some records may be retained where the law requires it.",
+          "No. Cancelling a paid membership does not delete your account or personal data. To delete your account, use the option in the app's settings or email privacy@isofit.app. Deleting your account does not cancel an App Store subscription, so cancel that with Apple too, under Settings > your name > Subscriptions on iPhone. After deletion, Isofit keeps pseudonymized consent records and records the law requires, and may keep anonymized, aggregated data for platform analytics.",
         ],
         link: { href: "/privacy#10-membership-cancellation-and-account-deletion", label: "Privacy Policy: cancellation and deletion" },
       },
@@ -176,6 +183,20 @@ export const FAQ_GROUPS: FaqGroup[] = [
           "Isofit uses administrative, technical and organizational safeguards, including encryption in transit and at rest, as described in the Privacy Policy. Workout data is private by default. Isofit does not sell personal information or use your data for advertising.",
         ],
         link: { href: "/privacy#9-data-security", label: "Privacy Policy: data security" },
+      },
+      {
+        question: "Can I sign in with Google?",
+        answer: [
+          "Yes. Google Sign-In is an optional way to sign in to your Isofit account. If you choose it, Google processes your sign-in and shares the account information you authorize with Isofit, under Google's own privacy policy.",
+        ],
+        link: { href: "/privacy#62-technology-service-providers", label: "Privacy Policy: service providers" },
+      },
+      {
+        question: "Does Isofit store my precise GPS location?",
+        answer: [
+          "No. Device location access for weather is optional. Weather providers receive only the coarse location used for the forecast, such as a zip code, your device location if you enable it, or a city inferred from your timezone. They never receive your identity or health data.",
+        ],
+        link: { href: "/privacy#62-technology-service-providers", label: "Privacy Policy: weather providers" },
       },
       {
         question: "Is my fitness data used to train AI models?",

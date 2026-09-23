@@ -35,7 +35,6 @@ export const LEGAL_LINKS = [
   { href: "/terms", label: "Terms of Service" },
   { href: "/privacy", label: "Privacy Policy" },
   { href: "/health-privacy", label: "Consumer Health Data Privacy Policy" },
-  { href: "/research", label: "Research" },
 ] as const;
 
 export function absoluteUrl(path: string) {
