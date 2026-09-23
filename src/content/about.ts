@@ -6,10 +6,10 @@ import { SITE } from "@/lib/site";
 export const ABOUT_DOC: PageDoc = {
   path: "/about",
   name: "About Isofit",
-  metaTitle: "About Isofit: founder, company facts and how to reach us",
+  metaTitle: "About Isofit and founder An Hu | iPhone workout logger",
   metaDescription:
     "Isofit is an independent workout logging app for iPhone, founded in 2026 by An Hu and designed in Queens, New York. Who builds it, what it is for, where the name comes from, and how to get in touch.",
-  h1: "Isofit is an independent workout app, designed in Queens, New York.",
+  h1: "Isofit is an independent workout app, founded by An Hu and designed in Queens, New York.",
   lede: `Isofit is a workout logger for iPhone published by ${SITE.company} and designed in ${SITE.madeIn}. It was founded in ${SITE.founded} by ${SITE.founder.name}, who builds it alone. The app exists to make a training log useful after the workout is over: quick to fill in, honest about what you trained, and able to answer questions about it. The iOS launch is planned for ${SITE.launchDateLong}.`,
   sections: [
     {

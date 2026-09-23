@@ -49,7 +49,6 @@ const SITE_JSON_LD = [
     logo: `${SITE.url}/iso-logo.png`,
     description: "Isofit ltd. publishes Isofit, a workout logger for iPhone with a muscle-by-muscle body graph, an AI coach and a members-only community.",
     email: SITE.supportEmail,
-    foundingDate: SITE.founded,
     founder: {
       "@type": "Person",
       "@id": `${SITE.url}/#founder`,
