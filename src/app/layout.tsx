@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
   title: { default: "Isofit: workout logger for iPhone", template: "%s" },
   description:
-    "A clean workout logger, an AI training guide, and a community where the work speaks for itself. iOS launch planned for October 1, 2026.",
+    "Isofit is a workout logger for iPhone with a muscle-by-muscle body graph, an AI coach called Atlas, and a members-only community. iOS launch planned for October 1, 2026.",
   applicationName: SITE.name,
   openGraph: {
     siteName: SITE.name,

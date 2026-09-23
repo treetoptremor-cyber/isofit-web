@@ -30,6 +30,7 @@ export function docToMarkdown(doc: PageDoc, { headingOffset = 0 }: { headingOffs
     out.push(`${h(section.level ?? 2)} ${section.heading}`);
     if (section.body) out.push(...section.body);
     if (section.bullets) out.push(section.bullets.map((bullet) => `- ${bullet}`).join("\n"));
+    if (section.byline) out.push(`*${section.byline}*`);
     if (section.statement) {
       out.push(section.statement.paragraphs.map((paragraph) => `> ${paragraph}`).join("\n>\n") + `\n>\n> — ${section.statement.attribution}`);
     }

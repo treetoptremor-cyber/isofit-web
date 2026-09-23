@@ -25,7 +25,7 @@ export default function FaqPage() {
             height={2000}
             sizes="(max-width: 1023px) 208px, 288px"
             priority
-            className="mx-auto h-auto w-52 lg:w-72"
+            className="mx-auto h-auto w-32 lg:w-44"
           />
         }
       />

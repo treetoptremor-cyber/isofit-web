@@ -18,6 +18,10 @@ export type CompetitorRowKey =
   | "price"
   | "export";
 
+// The rows the /compare hub shows, in short form.
+export const HUB_ROWS = ["logging", "muscles", "coaching", "social", "platforms", "price"] as const;
+export type HubRowKey = (typeof HUB_ROWS)[number];
+
 export type Competitor = {
   slug: string;
   name: string;
@@ -28,6 +32,9 @@ export type Competitor = {
   // Who should honestly pick this app over Isofit.
   chooseThem: string[];
   rows: Record<CompetitorRowKey, string>;
+  // Three-to-twelve-word versions of the hub table's rows, from the same
+  // sources. The full rows stay on each head-to-head page.
+  brief: Record<HubRowKey, string>;
   sources: { label: string; url: string }[];
 };
 
@@ -60,6 +67,14 @@ export const COMPETITORS: Competitor[] = [
         "Free tier with unlimited workouts, 4 routines and 7 custom exercises. Pro is listed at $2.99 monthly, $23.99 yearly or $74.99 lifetime (USD).",
       export: "Workout data export from settings, and CSV import from Strong.",
     },
+    brief: {
+      logging: "Structured sets and routines. Typed or voice logging not advertised.",
+      muscles: "Last-7-days heat map and sets per muscle group.",
+      coaching: "Algorithm-generated programs (Pro). No AI chat advertised.",
+      social: "Feed with follows, comments and leaderboards.",
+      platforms: "iOS, Android, Apple Watch, Wear OS and web.",
+      price: "Free tier. Pro $2.99 a month, $23.99 a year or $74.99 once.",
+    },
     sources: [
       { label: "Hevy pricing", url: "https://hevy.com/pricing" },
       { label: "Hevy help center", url: "https://help.hevyapp.com" },
@@ -90,6 +105,14 @@ export const COMPETITORS: Competitor[] = [
       scope: "Strength focused, with cardio and duration exercise types.",
       price: "Free version limited to 3 custom routines with unlimited workouts. PRO is listed at $4.99 monthly or $29.99 yearly (USD).",
       export: "CSV export on iOS and Android.",
+    },
+    brief: {
+      logging: "Structured sets and templates. Typed or voice logging not advertised.",
+      muscles: "A muscle heat map. What it measures is not stated.",
+      coaching: "None advertised.",
+      social: "Share by link. No feed advertised.",
+      platforms: "iPhone, iPad, Apple Watch and Android.",
+      price: "Free, 3 custom routines. PRO $4.99 a month or $29.99 a year.",
     },
     sources: [
       { label: "Strong website", url: "https://www.strong.app" },
@@ -125,6 +148,14 @@ export const COMPETITORS: Competitor[] = [
       price: "Listed at $15.99 monthly or $95.99 yearly (USD) after a 7-day trial. No ongoing free tier was found.",
       export: "Not stated.",
     },
+    brief: {
+      logging: "Logs against a generated workout. Typed or voice logging not advertised.",
+      muscles: "Post-workout heat map and a 0 to 100% recovery figure.",
+      coaching: "Algorithmic workout generation. No AI chat advertised.",
+      social: "Share by link or image. No feed advertised.",
+      platforms: "iOS, Android, Apple Watch and Wear OS.",
+      price: "$15.99 a month or $95.99 a year after a 7-day trial.",
+    },
     sources: [
       { label: "Fitbod website", url: "https://fitbod.me" },
       { label: "Fitbod help: muscle recovery", url: "https://help.fitbod.me/hc/en-us/articles/360006269014" },
@@ -157,6 +188,14 @@ export const COMPETITORS: Competitor[] = [
       scope: "Strength-training focused.",
       price: "Free Basic tier. Elite is listed at $12.99 monthly or $69.99 yearly (USD) and removes ads.",
       export: "Not stated.",
+    },
+    brief: {
+      logging: "Structured sets and instant workouts. Typed or voice logging not advertised.",
+      muscles: "Muscle map, recovery chart and weekly sets per muscle.",
+      coaching: "AI-powered Adaptive Plan (Elite). AI chat not advertised.",
+      social: "Follows, comments and the JEFIT feed.",
+      platforms: "iOS, Android, Apple Watch, Wear OS and a website.",
+      price: "Free Basic. Elite $12.99 a month or $69.99 a year.",
     },
     sources: [
       { label: "JEFIT Elite pricing", url: "https://www.jefit.com/elite" },

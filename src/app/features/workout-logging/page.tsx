@@ -12,8 +12,8 @@ export default function WorkoutLoggingPage() {
     <DocPage
       doc={LOGGING_DOC}
       trail={[{ href: "/features", label: "Features" }, { href: LOGGING_DOC.path, label: "Workout logging" }]}
+      aside={<QuicklogDemo />}
       media={{
-        quicklog: <QuicklogDemo />,
         "what-you-can-record": (
           <Plate id="logging-log-grid" caption="Today's session in the Log tab, with the Quicklog bar and microphone at the bottom.">
             <Device

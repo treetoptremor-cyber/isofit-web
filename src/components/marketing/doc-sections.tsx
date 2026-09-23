@@ -1,7 +1,11 @@
-import type { ReactNode } from "react";
+import { Fragment, type ReactNode } from "react";
 
 import { ColumnCards, ItemList, Portrait, QuoteBlock, Section, SpecList, Statement } from "@/components/marketing/primitives";
 import type { DocSection, DocTable } from "@/content/types";
+
+// Columns headed "Isofit" or "Pro" get a pale sky tint: enough to find, not a
+// winner's badge.
+const HIGHLIGHT = new Set(["Isofit", "Pro"]);
 
 // One table in the DOM. From md up it is a normal table; below that the CSS in
 // globals.css stacks each row into a card, labelling cells from data-label.
@@ -14,7 +18,7 @@ export function DataTable({ table }: { table: DocTable }) {
         <thead role="rowgroup">
           <tr role="row">
             {table.head.map((cell) => (
-              <th key={cell} role="columnheader" scope="col" className={`border-b border-rule px-5 py-3 align-bottom font-display text-sm font-semibold ${cell === "Isofit" || cell === "Pro" ? "text-blue" : "text-ink"}`}>
+              <th key={cell} role="columnheader" scope="col" className={`border-b border-rule px-5 py-3 align-bottom font-display text-sm font-semibold ${HIGHLIGHT.has(cell) ? "bg-sky-soft text-blue" : "text-ink"}`}>
                 {cell}
               </th>
             ))}
@@ -27,7 +31,7 @@ export function DataTable({ table }: { table: DocTable }) {
                 index === 0 ? (
                   <th key={index} role="rowheader" scope="row" className="align-top font-medium text-ink md:w-[24%] md:px-5 md:py-3.5">{cell}</th>
                 ) : (
-                  <td key={index} role="cell" data-label={table.head[index]} className="align-top text-ink-2 md:px-5 md:py-3.5">{cell}</td>
+                  <td key={index} role="cell" data-label={table.head[index]} className={`align-top text-ink-2 md:px-5 md:py-3.5 ${HIGHLIGHT.has(table.head[index]) ? "md:bg-sky-soft/70" : ""}`}>{cell}</td>
                 ),
               )}
             </tr>
@@ -44,17 +48,21 @@ export default function DocSections({
   sections,
   media = {},
   wide = {},
+  replace = {},
 }: {
   sections: DocSection[];
   media?: Record<string, ReactNode>;
   // Full-width figures shown under a section's copy, keyed by section id.
   wide?: Record<string, ReactNode>;
+  // A page's own rendering of a section, used in place of the default one.
+  replace?: Record<string, ReactNode>;
 }) {
   let mediaCount = 0;
   return (
     <>
       {sections.map((section) => {
-        const figure = media[section.id] ?? (section.image ? <Portrait {...section.image} className="mx-auto w-72 lg:w-full" /> : undefined);
+        if (replace[section.id]) return <Fragment key={section.id}>{replace[section.id]}</Fragment>;
+        const figure = media[section.id] ?? (section.image ? <Portrait {...section.image} className="mx-auto w-72 rounded-[1.75rem] lg:w-full" /> : undefined);
         const flip = figure ? mediaCount++ % 2 === 1 : false;
         const copy = (
           <div className="prose-iso max-w-[66ch]">

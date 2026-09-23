@@ -1,4 +1,5 @@
 import { ACTIVITY_SCOPE, LIMITS } from "@/content/facts";
+import { AUDIENCE } from "@/content/positioning";
 import type { PageDoc } from "@/content/types";
 
 export const FEATURES_DOC: PageDoc = {
@@ -9,12 +10,12 @@ export const FEATURES_DOC: PageDoc = {
     "Everything Isofit does: workout logging by tap, text or voice, a muscle-by-muscle body graph, the Atlas AI coach, the Bonfire community, Apple Health import and data export.",
   h1: "Everything Isofit does, in one place.",
   lede:
-    "Isofit has four parts, one per tab: a workout logger you can tap, type or talk to; a body graph that shows which muscles your logged sets reached; Atlas, an AI coach that can read your training history; and Bonfire, a members-only community feed. Around them sit Apple Health import, streaks, routines, data export and account deletion.",
+    "Isofit has four parts, one per tab: a workout logger you can tap, type or talk to; a body graph of the muscles your logged sets reached; Atlas, an AI coach; and Bonfire, a members-only community feed.",
   sections: [
     {
       id: "the-four-tabs",
-      label: "The app",
-      heading: "The four main features",
+      label: "Tiers",
+      heading: "Features by tier",
       table: {
         head: ["Feature", "What it does", "Tier"],
         rows: [
@@ -25,6 +26,7 @@ export const FEATURES_DOC: PageDoc = {
         ],
       },
     },
+    AUDIENCE,
     {
       id: "everything-else",
       label: "Also included",
@@ -36,7 +38,7 @@ export const FEATURES_DOC: PageDoc = {
         { term: "History", value: "Every past session, open on every tier. Edit old sets, delete a session, or backdate one you forgot to log." },
         { term: "Streaks", value: "A day streak on the Log tab, judged by your own local date, with one automatic streak freeze a month." },
         { term: "$ISO", value: "In-app points earned by logging and spent on small actions such as Bonfire kudos, comments and voice logs. $ISO has no cash value and is not money." },
-        { term: "Weekly SITREP", value: "On Pro, Atlas writes a Monday review of your training week that you can open and discuss." },
+        { term: "SITREP (weekly training review)", value: "On Pro, Atlas writes a Monday review of your training week that you can open and discuss." },
         { term: "Appearance", value: "Light, dark or match the system." },
         { term: "Sign-in", value: "Sign in with Apple, Google, or email and password." },
         { term: "Your data", value: "On-demand JSON export and in-app account deletion with a seven-day grace period." },
@@ -55,10 +57,11 @@ export const FEATURES_DOC: PageDoc = {
         "No video posts in Bonfire, and no follows, groups or direct messages.",
         "No meal, calorie or macro tracking.",
         "No recovery or readiness score.",
+        "No medical or diagnostic features. Atlas gives general fitness guidance.",
       ],
     },
   ],
-  related: ["/features/workout-logging", "/features/body-graph", "/features/atlas", "/features/bonfire", "/pricing", "/compare"],
+  related: ["/pricing", "/compare", "/faq"],
 };
 
 export const LOGGING_DOC: PageDoc = {
@@ -67,7 +70,7 @@ export const LOGGING_DOC: PageDoc = {
   metaTitle: "Workout logging by tap, text or voice | Isofit",
   metaDescription:
     "Log workouts in Isofit three ways: tap in sets, reps and weight, type a Quicklog line like \"bench 5x5 225lbs\", or speak the session. Free on iPhone, works offline.",
-  h1: "Log a workout by tapping, typing or talking.",
+  h1: "Tap it. Type it. Say it.",
   lede:
     "Isofit's logger accepts a workout three ways and stores it one way. Tap in sets, reps, weight, distance, time and RPE. Type a Quicklog line such as \"bench 5x5 225lbs\" and get a finished row. Or hold the microphone, describe the session, and review the draft before it saves. All three produce the same structured log, and logging is free.",
   sections: [
@@ -106,7 +109,7 @@ export const LOGGING_DOC: PageDoc = {
       heading: "How voice logging works",
       body: [
         "Hold the microphone button and talk. Speech is transcribed on your iPhone where the device supports it. The transcript is then sent to Isofit's server, where an AI model (OpenAI) turns it into exercise rows. If on-device transcription is not confident, the audio is sent for server transcription instead.",
-        "Voice never writes to your log on its own. The parsed rows appear in the logger as a draft for you to check, fix and save. Voice logging is available on every tier. Each voice log costs 0.05 $ISO, the in-app points you earn by logging, refunded if the log fails.",
+        "Voice never writes to your log on its own. The parsed rows appear in the logger as a draft for you to check, fix and save. Voice logging is available on every tier and is powered by $ISO, the in-app points you earn by logging: each successfully processed voice entry costs 0.05 $ISO on all plans, needs enough balance, and is refunded if processing fails. Usage limits apply.",
         "Units are kept as spoken. Say \"squat 100 kilos\" and the row records 100 kg even if your account is set to pounds. Isofit never converts a spoken weight.",
       ],
     },
@@ -138,7 +141,7 @@ export const LOGGING_DOC: PageDoc = {
       bullets: [
         "Save any finished session as a routine, favorite it, and load it next time. There is no cap on routines.",
         "History lists every session on every tier. Edit old sets, delete a session, or backdate a workout you forgot.",
-        "Finish a session with no signal and it is queued on the phone, then synced when you reconnect. Each session carries its own ID, so a retry can never log it twice.",
+        "Finish a session with no signal and it is queued on the phone, then synced when you reconnect.",
         "Units follow your account setting and can be switched per row.",
       ],
       specs: [
@@ -189,19 +192,10 @@ export const BODY_GRAPH_DOC: PageDoc = {
   metaTitle: "Body graph: a muscle heat map of your training | Isofit",
   metaDescription:
     "Isofit's body graph shades a front and back figure by the working sets you logged for each muscle over 7, 30 or 90 days or all time, so you can see what you train and what you skip.",
-  h1: "See which muscles your training reaches, and which it misses.",
+  h1: "See where your work goes.",
   lede:
-    "The body graph is Isofit's muscle heat map. It shades a front and back figure by the number of working sets you logged for each muscle, over the last 7, 30 or 90 days or your whole history. Muscles you train most read warmest and neglected ones stay pale. It counts the work you logged. It is not a recovery or soreness score. The full body graph is a Pro feature.",
+    "The body graph is Isofit's muscle heat map. It shades a front and back figure by the number of working sets (every logged set except warm-ups) you logged for each muscle, over the last 7, 30 or 90 days or your whole history. Muscles you train most read warmest and neglected ones stay pale. It counts the work you logged. It is not a recovery or soreness score. The full body graph is a Pro feature.",
   sections: [
-    {
-      id: "how-it-works",
-      label: "Method",
-      heading: "How the body graph is calculated",
-      body: [
-        "The unit is the working set. Each working set you log gives full credit to the exercise's primary muscles and partial credit to its secondary muscles. Warm-up sets are left out. Bodyweight sets count. The graph measures sets, not tonnage, so a heavy single and a light set of twenty each count once.",
-        "Totals are taken over a fixed window with no decay, then scaled so the warmest color always marks your most-worked muscle in that window. The in-app note says it directly: resistance volume uses recorded working sets and primary and secondary muscle weights, and this is not a recovery score.",
-      ],
-    },
     {
       id: "what-you-see",
       label: "On screen",
@@ -226,8 +220,17 @@ export const BODY_GRAPH_DOC: PageDoc = {
       ],
     },
     {
+      id: "how-it-works",
+      label: "Method",
+      heading: "How the body graph is calculated",
+      body: [
+        "The unit is the working set. Each working set you log gives full credit to the exercise's primary muscles and partial credit to its secondary muscles. Warm-up sets are left out. Bodyweight sets count. The graph measures sets, not tonnage, so a heavy single and a light set of twenty each count once.",
+        "Totals are taken over a fixed window with no decay, then scaled so the warmest color always marks your most-worked muscle in that window. The in-app note says it directly: resistance volume uses recorded working sets and primary and secondary muscle weights, and this is not a recovery score.",
+      ],
+    },
+    {
       id: "muscles",
-      label: "Taxonomy",
+      label: "Muscles",
       heading: "The muscles Isofit tracks",
       body: [
         "Exercises are mapped to 25 muscle groups: chest, upper chest, lower chest, front delts, side delts, rear delts, biceps, brachialis, triceps, long head of the triceps, forearms, lats, upper back, traps, lower back, core, obliques, glutes, hip flexors, adductors, quadriceps, hamstrings, calves, soleus and ankles.",
@@ -286,7 +289,7 @@ export const ATLAS_DOC: PageDoc = {
   metaTitle: "Atlas: an AI workout coach that reads your training log | Isofit",
   metaDescription:
     "Atlas is the AI coach inside Isofit. With your permission it reads your workout history to review sessions, answer training questions and write programs. General fitness guidance, not medical advice.",
-  h1: "Atlas is an AI coach that can read your training log.",
+  h1: "Ask Atlas about your training.",
   lede:
     "Atlas is the chat-based AI coach built into Isofit. Ask it to review a session, explain a plateau or plan a training week. If you turn personalization on, Atlas reads your logged workouts, so its answers are about your training and not a generic template. On Pro it can write a program and save it into your routines. Atlas gives general fitness guidance and is not a source of medical advice.",
   sections: [
@@ -300,7 +303,7 @@ export const ATLAS_DOC: PageDoc = {
         "Explain training concepts: volume, intensity, RPE, progression, exercise order.",
         "Plan a week or a block around your schedule and the equipment you have.",
         "On Pro, write a program and save it to your routines, ready to load in the logger.",
-        "On Pro, produce a weekly SITREP: a Monday review of your training week that you can open and discuss.",
+        "On Pro, write your SITREP (weekly training review): a Monday review of your training week that you can open and discuss.",
         "Dictate your question by voice. Dictation runs on your iPhone and never sends on its own.",
       ],
     },
@@ -323,7 +326,7 @@ export const ATLAS_DOC: PageDoc = {
           ["Standard messages", "10 a month", "30 a day"],
           ["Deep analysis", "One answer at a time, for 1 $ISO", "100 requests a month, shared with program generation"],
           ["Programs saved to routines", "No", "Yes"],
-          ["Weekly SITREP", "No", "Yes"],
+          ["SITREP (weekly training review)", "No", "Yes"],
         ],
       },
     },
@@ -365,13 +368,13 @@ export const ATLAS_DOC: PageDoc = {
             "Homework, code and writing tasks",
             "Politics, news, finance and legal questions",
             "Relationship advice and general trivia",
-            "Attempts to override its own rules",
           ],
         },
       ],
       quote: {
         text: "Atlas is AI and thus can make mistakes. Its suggestions are general fitness guidance, never medical advice.",
         source: "Shown in the app under every Atlas conversation",
+        tone: "atlas",
       },
     },
   ],
@@ -417,13 +420,13 @@ export const BONFIRE_DOC: PageDoc = {
   metaTitle: "Bonfire: a members-only workout community | Isofit",
   metaDescription:
     "Bonfire is Isofit's members-only community feed. One post a day, each tied to a session you actually logged, with kudos and comments. No follows, no DMs, and your log stays private unless you post.",
-  h1: "Bonfire is a community where the work speaks for itself.",
+  h1: "Share the work.",
   lede:
     "Bonfire is the community feed inside Isofit, visible only to Isofit members. A post is a caption, an optional photo and the logged session behind it, and you can make one a day. Others can give kudos and comment. There are no follows, groups or direct messages. Your workout log is private, and nothing appears in Bonfire unless you choose to post that session.",
   sections: [
     {
       id: "how-it-works",
-      label: "Mechanics",
+      label: "How it works",
       heading: "How Bonfire works",
       specs: [
         { term: "Feeds", value: "Home, the member feed, and Embers, the highlights." },

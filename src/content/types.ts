@@ -18,6 +18,8 @@ export type DocSection = {
   bullets?: string[];
   // Named points under the section, each an h3 with a short answer.
   items?: DocItem[];
+  // A person's role, shown beside their portrait.
+  byline?: string;
   // A passage in someone's own words, e.g. the founder's story.
   statement?: { paragraphs: string[]; attribution: string };
   // A portrait or figure that belongs to the section's content.
@@ -29,7 +31,7 @@ export type DocSection = {
   // Two opposed lists shown as side-by-side cards: is / is not, answers / declines.
   columns?: { heading: string; tone: "yes" | "no"; items: string[] }[];
   // A sentence quoted verbatim from the app, with where it appears.
-  quote?: { text: string; source: string };
+  quote?: { text: string; source: string; tone?: "atlas" };
 };
 
 export type DocItem = { heading: string; body: string };

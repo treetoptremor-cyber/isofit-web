@@ -11,20 +11,23 @@ import { SITE, absoluteUrl } from "@/lib/site";
 
 export const CONTAINER = "mx-auto w-full max-w-[1120px] px-4 sm:px-6";
 
-export function PageShell({ children, waitlistHref }: { children: ReactNode; waitlistHref?: string }) {
+export function PageShell({ children, waitlistHref, grid = true }: { children: ReactNode; waitlistHref?: string; grid?: boolean }) {
   return (
     <div className="relative flex min-h-screen flex-col text-ink">
-      {/* The app's chalk grid behind every page, faded out toward the edges. */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none fixed inset-0 -z-10 opacity-60"
-        style={{
-          WebkitMaskImage: "radial-gradient(ellipse at center, #000 38%, transparent 82%)",
-          maskImage: "radial-gradient(ellipse at center, #000 38%, transparent 82%)",
-        }}
-      >
-        <IsoGrid id="page-grid" />
-      </div>
+      {/* The app's chalk grid behind the top of the page only, fading out before
+          the long reading sections. Off for legal documents. */}
+      {grid ? (
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[56rem] opacity-50"
+          style={{
+            WebkitMaskImage: "linear-gradient(to bottom, #000 30%, transparent 100%)",
+            maskImage: "linear-gradient(to bottom, #000 30%, transparent 100%)",
+          }}
+        >
+          <IsoGrid id="page-grid" />
+        </div>
+      ) : null}
       <SiteHeader waitlistHref={waitlistHref} />
       <main id="main-content" tabIndex={-1} className="flex-1 outline-none">
         {children}
@@ -70,6 +73,12 @@ export function Breadcrumbs({ trail }: { trail: Crumb[] }) {
   );
 }
 
+// Headings name Atlas in terra, its color role, wherever the word appears.
+export function withAtlas(text: ReactNode): ReactNode {
+  if (typeof text !== "string" || !text.includes("Atlas")) return text;
+  return text.split(/(\bAtlas\b)/).map((part, index) => (part === "Atlas" ? <span key={index} className="text-terra">Atlas</span> : part));
+}
+
 // Interior page opener. `lede` should be the one-paragraph answer to the
 // question the page exists for; assistants tend to quote it verbatim.
 export function PageHero({
@@ -88,8 +97,8 @@ export function PageHero({
       <Breadcrumbs trail={trail} />
       <div className={aside ? "mt-6 grid gap-10 lg:grid-cols-[minmax(0,1fr)_22rem] lg:items-start" : "mt-6"}>
         <div>
-          <h1 className="max-w-[20ch] font-display text-[clamp(2rem,4.6vw,3.25rem)] font-bold leading-[1.08] tracking-[-0.03em]">
-            {title}
+          <h1 className="max-w-[24ch] font-display text-[clamp(2rem,4.6vw,3.25rem)] font-bold leading-[1.08] tracking-[-0.03em]">
+            {withAtlas(title)}
           </h1>
           <p className="mt-5 max-w-[62ch] text-lg leading-relaxed text-ink-2 sm:text-xl sm:leading-relaxed">{lede}</p>
         </div>
@@ -122,7 +131,7 @@ export function Section({
     <section id={id} aria-labelledby={headingId} className={`${CONTAINER} py-10 md:py-14 ${className}`}>
       {label ? <p className="label">{label}</p> : null}
       <Heading id={headingId} className="mt-2 max-w-[24ch] font-display text-[clamp(1.5rem,3vw,2.125rem)] font-bold leading-[1.14] tracking-[-0.025em]">
-        {title}
+        {withAtlas(title)}
       </Heading>
       {intro ? <p className="mt-4 max-w-[64ch] text-[1.0625rem] leading-[1.7] text-ink-2">{intro}</p> : null}
       {children ? <div className="mt-8">{children}</div> : null}
@@ -132,6 +141,25 @@ export function Section({
 
 export type Spec = { term: string; value: ReactNode };
 
+// Web addresses and email addresses inside a fact become real links.
+function linkify(value: ReactNode): ReactNode {
+  if (typeof value !== "string") return value;
+  return value.split(/(https?:\/\/[^\s),;]+|[\w.+-]+@[\w-]+\.[\w.]+\w)/).map((part, index) => {
+    if (/^https?:\/\//.test(part)) return <a key={index} href={part} className="text-blue underline decoration-blue/40 underline-offset-2 hover:text-blue-dark">{part.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "")}</a>;
+    if (/^[\w.+-]+@/.test(part)) return <a key={index} href={`mailto:${part}`} className="text-blue underline decoration-blue/40 underline-offset-2 hover:text-blue-dark">{part}</a>;
+    return part;
+  });
+}
+
+// A small tag naming the tier a pictured feature belongs to.
+export function ProTag({ className = "" }: { className?: string }) {
+  return (
+    <span className={`inline-flex items-center rounded-full bg-sky-soft px-2.5 py-1 font-mono text-[0.6875rem] font-semibold uppercase leading-none tracking-[0.14em] text-blue ${className}`}>
+      Pro feature
+    </span>
+  );
+}
+
 // Facts as a definition list: scannable for people, unambiguous for parsers.
 export function SpecList({ specs, columns = 1 }: { specs: Spec[]; columns?: 1 | 2 | 3 }) {
   const grid = columns === 3 ? "sm:grid-cols-2 lg:grid-cols-3" : columns === 2 ? "sm:grid-cols-2" : "";
@@ -140,7 +168,7 @@ export function SpecList({ specs, columns = 1 }: { specs: Spec[]; columns?: 1 | 
       {specs.map((spec) => (
         <div key={spec.term} className="border-b border-rule py-4">
           <dt className="label">{spec.term}</dt>
-          <dd className="mt-1.5 text-[1.0625rem] leading-relaxed text-ink">{spec.value}</dd>
+          <dd className="mt-1.5 text-[1.0625rem] leading-relaxed text-ink">{linkify(spec.value)}</dd>
         </div>
       ))}
     </dl>
@@ -185,22 +213,24 @@ export function Device({
   );
 }
 
-// A longer passage in someone's own words, with who said it.
+// A letter in someone's own words: plain paragraphs and a signature. Quote
+// styling is kept for one pulled sentence, not the whole letter.
 export function Statement({ paragraphs, attribution }: { paragraphs: string[]; attribution: string }) {
   return (
-    <figure className="max-w-[66ch]">
-      <blockquote className="prose-iso border-l-[3px] border-sky pl-5">
+    <div className="max-w-[64ch]">
+      <div className="prose-iso">
         {paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
-      </blockquote>
-      <figcaption className="label mt-4 pl-5">— {attribution}</figcaption>
-    </figure>
+      </div>
+      <p className="label mt-5">— {attribution}</p>
+    </div>
   );
 }
 
-// A square photo of a person, e.g. the founder on the team section.
-export function Portrait({ src, alt, className = "" }: { src: string; alt: string; className?: string }) {
+// A square portrait of a person. Pass a rounding class with the size; small
+// portraits want a tighter radius than the 1.75rem cards.
+export function Portrait({ src, alt, className = "rounded-[1.75rem]" }: { src: string; alt: string; className?: string }) {
   return (
-    <div className={`overflow-hidden rounded-[1.75rem] border border-rule bg-paper-raised shadow-[0_18px_40px_rgba(42,36,32,0.06)] ${className}`}>
+    <div className={`overflow-hidden border border-rule bg-paper-raised shadow-[0_18px_40px_rgba(42,36,32,0.06)] ${className}`}>
       <Image src={src} alt={alt} width={800} height={800} sizes="(max-width: 1023px) 288px, 384px" className="h-auto w-full" />
     </div>
   );
@@ -208,10 +238,11 @@ export function Portrait({ src, alt, className = "" }: { src: string; alt: strin
 
 // A white plate that a Device sits on, lifted off the page grid, with a figure
 // caption underneath.
-export function Plate({ caption, children }: { id?: string; caption?: ReactNode; children: ReactNode }) {
+// `tone="atlas"` sets it on pale terra, the surface behind Atlas conversations.
+export function Plate({ caption, children, tone }: { id?: string; caption?: ReactNode; children: ReactNode; tone?: "atlas" }) {
   return (
     <figure>
-      <div className="rounded-[1.75rem] border border-rule bg-paper-raised px-6 py-8 shadow-[0_18px_40px_rgba(42,36,32,0.06)]">
+      <div className={`rounded-[1.75rem] border px-6 py-8 shadow-[0_18px_40px_rgba(42,36,32,0.06)] ${tone === "atlas" ? "border-terra/20 bg-terra-soft" : "border-rule bg-paper-raised"}`}>
         {children}
       </div>
       {caption ? <figcaption className="caption mt-3">{caption}</figcaption> : null}
@@ -227,7 +258,7 @@ export function ItemList({ items, ordered = false }: { items: { heading: string;
       {items.map((item, index) => (
         <li key={item.heading} className="rounded-[1.75rem] border border-rule bg-paper-raised p-6 sm:p-7">
           {ordered ? <p className="label">Step {index + 1}</p> : null}
-          <h3 className={`${ordered ? "mt-2 " : ""}font-display text-lg font-bold leading-snug tracking-[-0.01em]`}>{item.heading}</h3>
+          <h3 className={`${ordered ? "mt-2 " : ""}font-display text-lg font-bold leading-snug tracking-[-0.01em]`}>{withAtlas(item.heading)}</h3>
           <p className="mt-3 text-[1.0625rem] leading-relaxed text-ink-2">{item.body}</p>
         </li>
       ))}
@@ -241,12 +272,12 @@ export function ColumnCards({ columns }: { columns: { heading: string; tone: "ye
       {columns.map((column) => {
         const yes = column.tone === "yes";
         return (
-          <div key={column.heading} className={`rounded-[1.75rem] border p-6 sm:p-7 ${yes ? "border-forest/30 bg-forest/[0.06]" : "border-heat-5/25 bg-heat-5/[0.05]"}`}>
-            <h3 className={`font-display text-lg font-bold tracking-[-0.01em] ${yes ? "text-forest-dark" : "text-heat-5"}`}>{column.heading}</h3>
+          <div key={column.heading} className={`rounded-[1.75rem] border p-6 sm:p-7 ${yes ? "border-forest/25 bg-forest-soft/60" : "border-terra/20 bg-terra-soft/60"}`}>
+            <h3 className={`font-display text-lg font-bold tracking-[-0.01em] ${yes ? "text-forest-dark" : "text-terra"}`}>{withAtlas(column.heading)}</h3>
             <ul className="mt-4 grid gap-3">
               {column.items.map((item) => (
                 <li key={item} className="flex gap-3 text-[1.0625rem] leading-relaxed text-ink-2">
-                  <span aria-hidden="true" className={`mt-[0.35rem] font-mono text-sm font-bold ${yes ? "text-forest" : "text-heat-5"}`}>{yes ? "+" : "−"}</span>
+                  <span aria-hidden="true" className={`mt-[0.35rem] font-mono text-sm font-bold ${yes ? "text-forest" : "text-terra"}`}>{yes ? "+" : "−"}</span>
                   <span>{item}</span>
                 </li>
               ))}
@@ -258,9 +289,9 @@ export function ColumnCards({ columns }: { columns: { heading: string; tone: "ye
   );
 }
 
-export function QuoteBlock({ text, source }: { text: string; source: string }) {
+export function QuoteBlock({ text, source, tone }: { text: string; source: string; tone?: "atlas" }) {
   return (
-    <blockquote className="max-w-[46rem] border-l-[3px] border-sky pl-5">
+    <blockquote className={`max-w-[46rem] border-l-[3px] pl-5 ${tone === "atlas" ? "border-terra" : "border-sky"}`}>
       <p className="font-display text-[1.125rem] font-medium leading-[1.5] tracking-[-0.01em] text-ink sm:text-xl sm:leading-[1.5]">“{text}”</p>
       <footer className="label mt-3">{source}</footer>
     </blockquote>

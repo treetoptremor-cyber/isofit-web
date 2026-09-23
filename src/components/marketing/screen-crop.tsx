@@ -14,6 +14,7 @@ export default function ScreenCrop({
   top,
   height,
   priority = false,
+  tone,
 }: {
   src: string;
   alt: string;
@@ -21,18 +22,22 @@ export default function ScreenCrop({
   top: number;
   height: number;
   priority?: boolean;
+  // "atlas" frames an Atlas conversation in terra on pale terra.
+  tone?: "atlas";
 }) {
+  const atlas = tone === "atlas";
   const shift = (top * (SOURCE_H / SOURCE_W) * 100).toFixed(2);
   return (
     <figure>
       <div className="grid grid-cols-[minmax(0,1fr)] items-center gap-6 md:grid-cols-[11.5rem_minmax(0,1fr)] md:gap-8 lg:grid-cols-[13rem_minmax(0,46rem)]">
-        {/* The whole screen. Decorative: the zoom carries the alt text. */}
-        <div aria-hidden="true" className="order-2 mx-auto w-[9.5rem] md:order-1 md:w-full">
+        {/* The whole screen, for context. Decorative: the zoom carries the alt
+            text. Hidden on phones, where it would only repeat the zoom below. */}
+        <div aria-hidden="true" className="hidden md:order-1 md:block md:w-full">
           <div className="app-device !max-w-none">
             <div className="app-device-screen">
               <Image src={src} alt="" width={SOURCE_W} height={SOURCE_H} sizes="208px" loading={priority ? "eager" : "lazy"} className="h-auto w-full" />
               <span
-                className="absolute inset-x-0 rounded-[6px] border-2 border-sky bg-sky/10 shadow-[0_0_0_200vmax_rgba(243,239,230,0.55)]"
+                className={`absolute inset-x-0 rounded-[6px] border-2 shadow-[0_0_0_200vmax_rgba(243,239,230,0.55)] ${atlas ? "border-terra bg-terra/10" : "border-sky bg-sky/10"}`}
                 style={{ top: `${top * 100}%`, height: `${height * 100}%` }}
               />
             </div>
@@ -48,7 +53,7 @@ export default function ScreenCrop({
           </div>
         </div>
         <div
-          className="order-1 overflow-hidden rounded-[1.25rem] border-2 border-sky/70 bg-paper-raised shadow-[0_18px_40px_rgba(42,36,32,0.10)] md:order-2"
+          className={`order-1 overflow-hidden rounded-[1.25rem] border-2 shadow-[0_18px_40px_rgba(42,36,32,0.10)] md:order-2 ${atlas ? "border-terra/50 bg-terra-soft" : "border-sky/70 bg-paper-raised"}`}
           style={{ aspectRatio: `${SOURCE_W} / ${Math.round(height * SOURCE_H)}` }}
         >
           <Image
@@ -65,7 +70,7 @@ export default function ScreenCrop({
       </div>
       <figcaption className="caption mt-4">
         <span className="label mr-2 !text-ink">Real screen</span>
-        {caption} The outlined band on the phone is the part shown enlarged.
+        {caption}
       </figcaption>
     </figure>
   );

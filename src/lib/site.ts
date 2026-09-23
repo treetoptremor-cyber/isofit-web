@@ -32,7 +32,7 @@ export const SITE = {
 export const FEATURE_LINKS = [
   { href: "/features/workout-logging", label: "Workout logging", short: "Log" },
   { href: "/features/body-graph", label: "Body graph", short: "Progress" },
-  { href: "/features/atlas", label: "Atlas AI guide", short: "Atlas" },
+  { href: "/features/atlas", label: "Atlas AI coach", short: "Atlas" },
   { href: "/features/bonfire", label: "Bonfire community", short: "Bonfire" },
 ] as const;
 

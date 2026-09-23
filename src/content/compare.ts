@@ -1,5 +1,5 @@
-import { COMPETITORS, COMPETITORS_REVIEWED_LONG, COMPETITOR_ROW_LABELS, type Competitor, type CompetitorRowKey } from "@/content/competitors";
-import { ISOFIT_ROWS } from "@/content/facts";
+import { COMPETITORS, COMPETITORS_REVIEWED_LONG, COMPETITOR_ROW_LABELS, HUB_ROWS, type Competitor, type CompetitorRowKey } from "@/content/competitors";
+import { ISOFIT_BRIEF, ISOFIT_ROWS } from "@/content/facts";
 import { DIFFERENTIATORS } from "@/content/positioning";
 import type { PageDoc } from "@/content/types";
 import { SITE } from "@/lib/site";
@@ -40,13 +40,13 @@ function versusDoc(competitor: Competitor): PageDoc {
       },
       {
         id: "choose-them",
-        label: "Be honest",
+        label: "Where it fits",
         heading: `Choose ${name} if`,
         bullets: competitor.chooseThem,
       },
       {
         id: "choose-isofit",
-        label: "And",
+        label: "Where Isofit fits",
         heading: "Choose Isofit if",
         bullets: CHOOSE_ISOFIT,
       },
@@ -94,12 +94,12 @@ export const COMPARE_DOC: PageDoc = {
       label: "Overview",
       heading: "Five workout apps at a glance",
       table: {
-        caption: `Competitor columns: as published by each company, read ${COMPETITORS_REVIEWED_LONG}.`,
+        caption: `Competitor columns: as published by each company, read ${COMPETITORS_REVIEWED_LONG}. Short versions; each head-to-head page has the full detail and sources.`,
         head: ["", "Isofit", ...COMPETITORS.map((competitor) => competitor.name)],
-        rows: (["logging", "muscles", "coaching", "social", "platforms", "price"] as CompetitorRowKey[]).map((key) => [
+        rows: HUB_ROWS.map((key) => [
           COMPETITOR_ROW_LABELS[key],
-          ISOFIT_ROWS[key],
-          ...COMPETITORS.map((competitor) => competitor.rows[key]),
+          ISOFIT_BRIEF[key],
+          ...COMPETITORS.map((competitor) => competitor.brief[key]),
         ]),
       },
     },
@@ -107,7 +107,7 @@ export const COMPARE_DOC: PageDoc = {
     { ...DIFFERENTIATORS, id: "what-is-different", body: undefined },
     {
       id: "where-others-win",
-      label: "Be honest",
+      label: "The other side",
       heading: "Where the other apps are the better choice",
       bullets: [
         "All four are released, established and available today. Isofit is pre-release.",

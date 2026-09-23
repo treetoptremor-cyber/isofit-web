@@ -37,6 +37,24 @@ export const DIFFERENTIATORS: DocSection = {
   ],
 };
 
+// The home page's one-line version of the five, pointing to /compare for the
+// sourced detail. Same claims, same competitor facts.
+export const DIFFERENTIATORS_BRIEF: DocSection = {
+  id: "different",
+  label: "Differences",
+  heading: "What makes Isofit different",
+  body: [
+    `Compared with Hevy, Strong, Fitbod and JEFIT as each describes itself, read ${COMPETITORS_REVIEWED_LONG}. Those four are released, run on Android and a watch, and most cost less.`,
+  ],
+  items: [
+    { heading: "Log by typing or talking", body: "Type \"bench 5x5 225lbs\" or say the session. None of the four advertises typed or voice logging." },
+    { heading: "A coach you can talk to", body: "Atlas is a chat coach. None of the four advertises an AI chat." },
+    { heading: "Any time window", body: "The body graph looks back 7, 30 or 90 days or all time. Hevy's heat map covers the last 7 days." },
+    { heading: "One log for six kinds of training", body: "485 exercises across lifting, cardio, yoga, sports, climbing and martial arts. The four describe themselves as strength-first or strength-focused." },
+    { heading: "No followers or leaderboards", body: "Bonfire posts are tied to logged sessions, one a day. Hevy's home feed is built on follows and leaderboards." },
+  ],
+};
+
 export const AUDIENCE: DocSection = {
   id: "who-for",
   label: "Who it is for",
@@ -86,13 +104,23 @@ export const HOW_IT_WORKS: DocSection = {
   ],
 };
 
-export const TEAM: DocSection = {
-  id: "team",
-  label: "Team",
-  heading: "The team behind Isofit",
-  body: [
-    `Isofit is an independent workout logging app for iPhone, founded by ${SITE.founder.name} in ${SITE.founded}. It combines fast workout logging, a body graph showing logged sets by muscle, and Atlas, an AI coach that can use your training history with your permission.`,
+const FOUNDER_PORTRAIT = { src: SITE.founder.photo, alt: `Illustrated black-and-white portrait of ${SITE.founder.name}, founder of Isofit, under a string of bare bulbs.` };
+
+// The full letter, in An's own words, for /about. Edit it only at typo level.
+export const FOUNDER: DocSection = {
+  id: "founder",
+  label: "Founder",
+  heading: `Meet ${SITE.founder.name}, Isofit's founder`,
+  byline: "Founder, designer and developer",
+  image: FOUNDER_PORTRAIT,
+  links: [
+    { href: SITE.founder.linkedInUrl, label: "LinkedIn" },
+    { href: SITE.founder.xUrl, label: `X (${SITE.founder.xHandle})` },
   ],
+  quote: {
+    text: "I wanted to see my progress, understand where my effort was going, and know whether my program was actually working.",
+    source: SITE.founder.name,
+  },
   statement: {
     attribution: `${SITE.founder.name}, founder of Isofit`,
     paragraphs: [
@@ -104,12 +132,18 @@ export const TEAM: DocSection = {
       "As of 2025 I’m also a new father. Isofit was conceived and built during nap time.",
     ],
   },
-  image: { src: SITE.founder.photo, alt: `Illustrated black-and-white portrait of ${SITE.founder.name}, founder of Isofit, under a string of bare bulbs.` },
-  links: [
-    { href: SITE.founder.linkedInUrl, label: `${SITE.founder.name} on LinkedIn` },
-    { href: SITE.founder.xUrl, label: `${SITE.founder.name} on X (${SITE.founder.xHandle})` },
-    { href: SITE.xUrl, label: `Isofit on X (${SITE.xHandle})` },
+};
+
+// The home page's short version, linking to the letter.
+export const TEAM_TEASER: DocSection = {
+  id: "team",
+  label: "Team",
+  heading: "The team behind Isofit",
+  body: [
+    `Isofit is an independent workout logging app for iPhone, founded by ${SITE.founder.name} in ${SITE.founded}. It combines fast workout logging, a body graph showing logged sets by muscle, and Atlas, an AI coach that can use your training history with your permission.`,
+    `It is designed and built by ${SITE.founder.name}, a strength athlete of more than 15 years and a former senior server and captain in New York fine dining, who wanted a log worth coming back to. Most of Isofit was built during nap time.`,
   ],
+  image: FOUNDER_PORTRAIT,
 };
 
 export const KEY_FACTS: DocSection = {

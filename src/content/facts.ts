@@ -1,4 +1,4 @@
-import type { CompetitorRowKey } from "@/content/competitors";
+import type { CompetitorRowKey, HubRowKey } from "@/content/competitors";
 
 // Product facts reused across pages. Each was checked against the iOS app
 // source (build 9) on SITE.factsReviewed. Things that could not be confirmed
@@ -19,6 +19,15 @@ export const LIMITS = {
 } as const;
 
 export const ACTIVITY_SCOPE = "strength training, cardio, yoga, sports, climbing and martial arts";
+
+export const ISOFIT_BRIEF: Record<HubRowKey, string> = {
+  logging: "Tap, a typed Quicklog line, or voice.",
+  muscles: "Body graph over 7, 30 or 90 days or all time (Pro).",
+  coaching: "Atlas, an AI coach you chat with.",
+  social: "Bonfire: members only, no follows or direct messages.",
+  platforms: "iPhone only, iOS 17.6 or later.",
+  price: `Free. Pro planned at ${PRICING.proMonthly} a month or ${PRICING.proYearly} a year.`,
+};
 
 export const ISOFIT_ROWS: Record<CompetitorRowKey, string> = {
   platforms: "iPhone only, iOS 17.6 or later. No iPad, Apple Watch, Android or web app.",

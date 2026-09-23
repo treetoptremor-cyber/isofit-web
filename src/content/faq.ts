@@ -139,7 +139,7 @@ export const FAQ_GROUPS: FaqGroup[] = [
       {
         question: "How much does Isofit cost?",
         answer: [
-          `Logging is free, with no cap on workouts or routines. Pro is planned at ${PRICING.proMonthly} a month or ${PRICING.proYearly} a year in the US App Store and adds the full body graph, ${LIMITS.proAtlasMessages} with deep analysis and saved programs, the weekly SITREP, and posting to Bonfire.`,
+          `Logging is free, with no cap on workouts or routines. Pro is planned at ${PRICING.proMonthly} a month or ${PRICING.proYearly} a year in the US App Store and adds the full body graph, ${LIMITS.proAtlasMessages} with deep analysis and saved programs, SITREP (weekly training review), and posting to Bonfire.`,
           "Apple processes payments and RevenueCat manages subscription status, so Isofit never stores your full payment card details.",
         ],
         link: { href: "/pricing", label: "Full Free and Pro comparison" },

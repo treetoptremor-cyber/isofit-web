@@ -1,11 +1,9 @@
 import type { ReactNode } from "react";
 
-import { DataTable } from "@/components/marketing/doc-sections";
-import { RelatedPages, ReviewedNote, webPageJsonLd } from "@/components/marketing/doc-page";
-import IsoGrid from "@/components/marketing/iso-grid";
+import { ReviewedNote, webPageJsonLd } from "@/components/marketing/doc-page";
 import JsonLd from "@/components/marketing/json-ld";
-import { CONTAINER, ColumnCards, Device, FaqList, ItemList, PageShell, Plate, Portrait, Section, SpecList, Statement, TextLink, WaitlistBand, faqJsonLd } from "@/components/marketing/primitives";
-import QuicklogDemo, { HeatLegend } from "@/components/marketing/quicklog-demo";
+import { CONTAINER, Device, FaqList, PageShell, Plate, Portrait, ProTag, Section, TextLink, WaitlistBand, faqJsonLd, withAtlas } from "@/components/marketing/primitives";
+import { HeatLegend } from "@/components/marketing/quicklog-demo";
 import RecoveryRedirect from "@/components/recovery-redirect";
 import WaitlistForm from "@/components/waitlist-form";
 import { HOME_DOC } from "@/content";
@@ -17,6 +15,9 @@ import { SITE } from "@/lib/site";
 export const metadata = docMetadata(HOME_DOC);
 
 const section = (id: string) => HOME_DOC.sections.find((candidate) => candidate.id === id) as DocSection;
+
+// The one phrase in the headline that takes the brand's heading blue.
+const HERO_ACCENT = "adds up to";
 
 const APP_JSON_LD = {
   "@context": "https://schema.org",
@@ -52,26 +53,17 @@ const APP_JSON_LD = {
   ],
 };
 
-const BONFIRE_RULES = [
-  ["Who sees it", "Isofit members only"],
-  ["What a post is", "A session you actually logged"],
-  ["How often", "One post a day"],
-  ["What is missing, on purpose", "Follows, groups and direct messages"],
-] as const;
-
 function FeatureRow({
   doc,
   href,
   linkLabel,
   figure,
-  extra,
   flip = false,
 }: {
   doc: DocSection;
   href: string;
   linkLabel: string;
   figure: ReactNode;
-  extra?: ReactNode;
   flip?: boolean;
 }) {
   return (
@@ -80,7 +72,7 @@ function FeatureRow({
         <div className={flip ? "lg:order-2" : ""}>
           <p className="label">{doc.label}</p>
           <h3 id={`${doc.id}-heading`} className="mt-2 max-w-[22ch] font-display text-[clamp(1.5rem,3vw,2.125rem)] font-bold leading-[1.14] tracking-[-0.025em]">
-            {doc.heading}
+            {withAtlas(doc.heading)}
           </h3>
           <div className="prose-iso mt-5 max-w-[60ch]">
             {doc.body?.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
@@ -89,7 +81,6 @@ function FeatureRow({
           <div className="mt-4">
             <TextLink href={href}>{linkLabel}</TextLink>
           </div>
-          {extra ? <div className="mt-6 max-w-[34rem]">{extra}</div> : null}
         </div>
         <div className={flip ? "lg:order-1" : ""}>{figure}</div>
       </div>
@@ -101,13 +92,10 @@ export default function HomePage() {
   const glance = section("at-a-glance");
   const does = section("does");
   const different = section("different");
-  const audience = section("who-for");
-  const isIsNot = section("is-and-is-not");
-  const team = section("team");
-  const steps = section("how-it-works");
   const tiers = section("free-and-pro");
   const data = section("your-data");
-  const facts = section("key-facts");
+  const team = section("team");
+  const [before, after] = HOME_DOC.h1.split(HERO_ACCENT);
 
   return (
     <PageShell waitlistHref="#waitlist-form">
@@ -116,36 +104,36 @@ export default function HomePage() {
 
       <section aria-labelledby="hero-heading" className="border-b border-rule">
         <div className={`${CONTAINER} grid gap-10 pb-12 pt-8 md:pt-12 lg:grid-cols-[minmax(0,1fr)_25rem] lg:items-center lg:gap-14 lg:pb-16`}>
-          {/* Reading order is lede then form. On a phone the form is lifted above
-              the lede so it stays near the first screen. */}
           <div className="flex flex-col items-start">
             <p className="label flex items-center gap-2">
               <span aria-hidden="true" className="h-1.5 w-1.5 shrink-0 rounded-full bg-forest" />
               <span>Workout logger for iPhone</span>
             </p>
-            <h1 id="hero-heading" className="mt-4 font-display text-[clamp(1.875rem,4.4vw,3.125rem)] font-bold leading-[1.1] tracking-[-0.03em]">
-              <span className="text-sky">Isofit is a workout logger</span> for iPhone that shows you <span className="text-sky">what your training adds up to.</span>
+            <h1 id="hero-heading" className="mt-4 max-w-[16ch] font-display text-[clamp(2.125rem,5vw,3.25rem)] font-bold leading-[1.08] tracking-[-0.03em]">
+              {before}
+              <span className="text-blue-heading">{HERO_ACCENT}</span>
+              {after}
             </h1>
+            <p className="mt-5 max-w-[52ch] text-lg leading-[1.65] text-ink-2">{HOME_DOC.lede}</p>
             <p className="mt-5 inline-block border-y border-ink/25 py-3 font-mono text-[0.8125rem] font-medium leading-6 tracking-[0.02em] text-ink">
-              Not yet released. iOS launch planned <time dateTime={SITE.launchDate} className="tabular-nums">{SITE.launchDateLong}</time>.
+              Free workout logging. iOS launch planned <time dateTime={SITE.launchDate} className="tabular-nums">{SITE.launchDateLong}</time>.
             </p>
-            <p className="order-3 mt-6 max-w-[60ch] text-[1.0625rem] leading-[1.7] text-ink-2 sm:order-none sm:mt-5 sm:text-lg sm:leading-[1.7]">{HOME_DOC.lede}</p>
-            <div className="order-2 mt-6 w-full sm:order-none sm:mt-7">
+            <div className="mt-6 w-full sm:mt-7">
               <WaitlistForm formId="waitlist-form" />
             </div>
           </div>
-          <div className="relative">
-            <div className="rounded-[2rem] border border-rule bg-paper-raised px-6 pb-6 pt-8 shadow-[0_18px_40px_rgba(42,36,32,0.06)]">
-              <div>
-                <Device
-                  src="/screenshots/body-graph.png"
-                  alt="Isofit's body graph: front and back body figures with each muscle shaded from pale to terracotta by working sets logged, above a sets-by-muscle list and 7, 30, 90 day and all-time filters."
-                  priority
-                />
-                <HeatLegend className="mt-5 justify-center" />
-              </div>
+          <figure className="rounded-[2rem] border border-rule bg-paper-raised px-6 pb-6 pt-5 shadow-[0_18px_40px_rgba(42,36,32,0.06)]">
+            <div className="mb-4 flex items-center justify-between gap-3">
+              <figcaption className="label">The body graph</figcaption>
+              <ProTag />
             </div>
-          </div>
+            <Device
+              src="/screenshots/body-graph.png"
+              alt="Isofit's body graph: front and back body figures with each muscle shaded from pale to terracotta by working sets logged, above a sets-by-muscle list and 7, 30, 90 day and all-time filters."
+              priority
+            />
+            <HeatLegend className="mt-5 justify-center" />
+          </figure>
         </div>
       </section>
 
@@ -170,7 +158,6 @@ export default function HomePage() {
         doc={section("log")}
         href="/features/workout-logging"
         linkLabel="How workout logging works"
-        extra={<QuicklogDemo />}
         figure={
           <Plate id="log-grid" caption="Today's session in the Log tab, with the Quicklog bar and microphone at the bottom.">
             <Device
@@ -186,7 +173,7 @@ export default function HomePage() {
         href="/features/body-graph"
         linkLabel="How the body graph is calculated"
         figure={
-          <Plate id="see-grid" caption="The lower half of the body graph: sets by muscle, time windows, and most and least worked.">
+          <Plate id="see-grid" caption="Your logged sets, grouped by muscle, with the most and least worked.">
             <Device
               src="/screenshots/sets-by-muscle.png"
               alt="Isofit's Progress tab showing a sets-by-muscle list led by side delts with 11 sets, a 7D, 30D, 90D and ALL filter, and cards for total sets, most worked and least worked muscle."
@@ -199,7 +186,7 @@ export default function HomePage() {
         href="/features/atlas"
         linkLabel="What Atlas does and what it sees"
         figure={
-          <Plate id="ask-grid" caption="Atlas reviewing a logged session and suggesting changes for next time.">
+          <Plate id="ask-grid" tone="atlas" caption="Atlas reviewing a logged session and suggesting changes for next time.">
             <Device
               src="/screenshots/atlas.png"
               alt="An Atlas conversation in Isofit. The member asks what to change after a logged pulling session, and Atlas suggests exercise order and volume changes, above a disclaimer that Atlas is AI and gives general fitness guidance, never medical advice."
@@ -213,91 +200,75 @@ export default function HomePage() {
         href="/features/bonfire"
         linkLabel="How Bonfire works"
         figure={
-          <div className="relative overflow-hidden rounded-[1.75rem] bg-ink p-7 sm:p-8">
-            <IsoGrid id="bonfire-grid" tone="ink" />
-            <dl className="relative grid gap-5">
-              {BONFIRE_RULES.map(([term, value]) => (
-                <div key={term} className="border-b border-paper/15 pb-5 last:border-b-0 last:pb-0">
-                  <dt className="label !text-sky">{term}</dt>
-                  <dd className="mt-1.5 font-display text-lg font-semibold leading-snug tracking-[-0.01em] text-white">{value}</dd>
-                </div>
-              ))}
-            </dl>
-          </div>
+          <Plate id="bonfire-grid" caption="A Bonfire post: a logged squat session with a photo.">
+            <Device
+              src="/screenshots/bonfire.png"
+              alt="Isofit's Bonfire tab showing the Home and Embers feed toggle, a search bar for members and categories, a New post button, and a post by @treetoptremor with a barbell squat photo captioned Barbell squat 3x5 225lbs, tagged strength."
+            />
+          </Plate>
         }
       />
 
       <Section id={different.id} label={different.label} title={different.heading} intro={different.body?.[0]} className="border-t border-rule">
-        {different.items ? <ItemList items={different.items} /> : null}
-        <div className="mt-4">
-          <TextLink href="/compare">Full comparison, with sources, and where the others are the better choice</TextLink>
+        <ul className="grid gap-x-10 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
+          {different.items?.map((item) => (
+            <li key={item.heading} className="border-t-2 border-blue/70 pt-4">
+              <h3 className="font-display text-[1.0625rem] font-bold leading-snug tracking-[-0.01em]">{withAtlas(item.heading)}</h3>
+              <p className="mt-2 text-[1.0625rem] leading-relaxed text-ink-2">{item.body}</p>
+            </li>
+          ))}
+        </ul>
+        <div className="mt-6">
+          <TextLink href="/compare">The sourced comparison, and where the others are the better choice</TextLink>
         </div>
       </Section>
 
-      <Section id={audience.id} label={audience.label} title={audience.heading} intro={audience.body?.[0]}>
-        <div className="prose-iso max-w-[66ch]">
-          <ul>{audience.bullets?.map((bullet) => <li key={bullet}>{bullet}</li>)}</ul>
-        </div>
-      </Section>
-
-      <Section id={isIsNot.id} label={isIsNot.label} title={isIsNot.heading} intro={isIsNot.body?.[0]}>
-        {isIsNot.columns ? <ColumnCards columns={isIsNot.columns} /> : null}
-      </Section>
-
-      <Section id={team.id} label={team.label} title={team.heading} className="border-t border-rule">
-        <div className="grid gap-10 md:grid-cols-[14rem_minmax(0,1fr)] md:items-start lg:grid-cols-[16rem_minmax(0,1fr)]">
-          {team.image ? <Portrait {...team.image} className="w-56 md:w-full" /> : null}
-          <div>
-            <div className="prose-iso max-w-[66ch]">
-              {team.body?.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
-            </div>
-            {team.statement ? <div className="mt-6"><Statement {...team.statement} /></div> : null}
-            <div className="mt-4 flex flex-wrap gap-x-6">
-              {team.links?.map((link) => (
-                <a key={link.href} href={link.href} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-1.5 font-medium text-blue underline decoration-blue/40 underline-offset-4 hover:text-blue-dark hover:decoration-current">
-                  {link.label}
-                  <span aria-hidden="true">↗</span>
-                </a>
-              ))}
-              <TextLink href="/about">About Isofit</TextLink>
-            </div>
-          </div>
-        </div>
-      </Section>
-
-      <Section id={steps.id} label={steps.label} title={steps.heading} className="border-t border-rule">
-        {steps.items ? <ItemList items={steps.items} ordered /> : null}
-      </Section>
-
-      <Section id={tiers.id} label={tiers.label} title={tiers.heading} intro={tiers.body?.[0]}>
-        {tiers.table ? <DataTable table={tiers.table} /> : null}
+      <Section id={tiers.id} label={tiers.label} title={tiers.heading}>
+        <dl className="grid gap-5 md:grid-cols-2">
+          {tiers.specs?.map((spec, index) => {
+            const pro = index === 1;
+            return (
+              <div key={spec.term} className={`rounded-[1.75rem] border p-6 sm:p-7 ${pro ? "border-ink bg-ink" : "border-rule bg-paper-raised"}`}>
+                <dt className={`font-display text-lg font-bold leading-snug tracking-[-0.01em] ${pro ? "text-white" : "text-ink"}`}>{spec.term}</dt>
+                <dd className={`mt-3 text-[1.0625rem] leading-relaxed ${pro ? "text-paper/85" : "text-ink-2"}`}>{spec.value}</dd>
+              </div>
+            );
+          })}
+        </dl>
         <div className="mt-4">
           <TextLink href="/pricing">Full pricing and billing details</TextLink>
         </div>
       </Section>
 
       <Section id={data.id} label={data.label} title={data.heading}>
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_24rem] lg:items-start">
-          <div>
-            <div className="prose-iso max-w-[60ch]">
-              <ul>{data.bullets?.map((bullet) => <li key={bullet}>{bullet}</li>)}</ul>
-            </div>
-            <div className="mt-4 flex flex-wrap gap-x-6">
-              <TextLink href="/privacy">Privacy Policy</TextLink>
-              <TextLink href="/health-privacy">Consumer Health Data Privacy Policy</TextLink>
-            </div>
+        <div className="rounded-[1.75rem] border border-forest/20 bg-forest-soft px-6 py-7 sm:px-8">
+          <ul className="grid gap-6 md:grid-cols-3">
+            {data.bullets?.map((bullet) => (
+              <li key={bullet} className="flex gap-3 text-[1.0625rem] leading-relaxed text-ink">
+                <span aria-hidden="true" className="mt-[0.2rem] font-mono text-sm font-bold text-forest">✓</span>
+                <span>{bullet}</span>
+              </li>
+            ))}
+          </ul>
+          <div className="mt-5 flex flex-wrap gap-x-6 border-t border-forest/20 pt-2">
+            <TextLink href="/privacy">Privacy Policy</TextLink>
+            <TextLink href="/health-privacy">Consumer Health Data Privacy Policy</TextLink>
           </div>
-          <Plate id="data-grid" caption="Export, analytics and deletion controls in the You tab.">
-            <Device
-              src="/screenshots/privacy.png"
-              alt="Isofit's Privacy and Terms screen with an Export my data button, a Share usage analytics switch, and Delete account, with a note that deleting an account does not cancel an App Store subscription."
-            />
-          </Plate>
         </div>
       </Section>
 
-      <Section id={facts.id} label={facts.label} title={facts.heading} className="border-t border-rule">
-        {facts.specs ? <SpecList specs={facts.specs} columns={2} /> : null}
+      <Section id={team.id} label={team.label} title={team.heading} className="border-t border-rule">
+        <div className="grid gap-8 sm:grid-cols-[10rem_minmax(0,1fr)] sm:items-start md:grid-cols-[13rem_minmax(0,1fr)] md:gap-12">
+          {team.image ? <Portrait {...team.image} className="w-36 rounded-[1.5rem] sm:w-full" /> : null}
+          <div className="max-w-[62ch]">
+            <div className="prose-iso">
+              {team.body?.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+            </div>
+            <div className="mt-4">
+              <TextLink href="/about#founder">Why I built Isofit</TextLink>
+            </div>
+          </div>
+        </div>
       </Section>
 
       <Section id="faq" label="Questions" title="Frequently asked questions about Isofit" className="border-t border-rule">
@@ -307,7 +278,6 @@ export default function HomePage() {
         </div>
       </Section>
 
-      {HOME_DOC.related ? <RelatedPages paths={HOME_DOC.related} /> : null}
       <ReviewedNote doc={HOME_DOC} />
       <WaitlistBand source="landing_page_footer" />
     </PageShell>

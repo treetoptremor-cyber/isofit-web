@@ -22,7 +22,7 @@ export default function QuicklogDemo() {
             <span className="flex gap-5">
               {row.chips.map(([value, unit], index) => (
                 <span key={unit} className="text-center">
-                  <span className={`block font-mono text-xl font-semibold tabular-nums ${index === 0 ? "text-sky" : "text-ink"}`}>{value}</span>
+                  <span className={`block font-mono text-xl font-semibold tabular-nums ${index === 0 ? "text-blue" : "text-ink"}`}>{value}</span>
                   <span className="label !text-[0.625rem]">{unit}</span>
                 </span>
               ))}

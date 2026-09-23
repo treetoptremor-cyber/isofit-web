@@ -11,7 +11,8 @@ export const TIER_CARDS = [
     per: "",
     note: "The logger is not the paywall.",
     items: [
-      "Unlimited logging by tap, Quicklog and voice",
+      "Unlimited logging by tap and Quicklog",
+      "Voice logging for 0.05 earned $ISO an entry",
       "Unlimited routines and full history",
       "485-exercise library and custom exercises",
       "Apple Health import",
@@ -32,7 +33,7 @@ export const TIER_CARDS = [
       "Atlas: 30 messages a day",
       "Atlas deep analysis, 100 a month",
       "Atlas programs saved to your routines",
-      "A weekly SITREP on your training week",
+      "SITREP (weekly training review) from Atlas",
       "Bonfire posting, one post a day",
       "Higher $ISO earning with streak multipliers",
     ],
@@ -46,7 +47,7 @@ export const PRICING_DOC: PageDoc = {
   metaDescription:
     "Isofit is free for workout logging, routines, history and Apple Health import. Pro is planned at $14.99 a month or $124.99 a year and adds the full body graph, more Atlas and Bonfire posting.",
   h1: "Logging is free. Pro is $14.99 a month.",
-  lede: `Isofit has two tiers. Free includes unlimited workout logging, Quicklog, routines, full history, Apple Health import, data export and ${LIMITS.freeAtlasMessages}. Pro is planned at ${PRICING.proMonthly} a month or ${PRICING.proYearly} a year in the US App Store, and adds the full body graph, higher Atlas limits with deep analysis and saved programs, the weekly SITREP, and posting to Bonfire. Isofit is not released yet, so these prices are planned and the App Store listing will be final.`,
+  lede: `Isofit has two tiers. Free includes unlimited workout logging, Quicklog, routines, full history, Apple Health import, data export and ${LIMITS.freeAtlasMessages}. Pro is planned at ${PRICING.proMonthly} a month or ${PRICING.proYearly} a year in the US App Store, and adds the full body graph, higher Atlas limits with deep analysis and saved programs, SITREP (weekly training review), and posting to Bonfire. Isofit is not released yet, so these prices are planned and the App Store listing will be final.`,
   sections: [
     {
       id: "tiers",
@@ -56,7 +57,8 @@ export const PRICING_DOC: PageDoc = {
         head: ["", "Free", "Pro"],
         rows: [
           ["Price", "$0", `${PRICING.proMonthly} a month or ${PRICING.proYearly} a year`],
-          ["Workout logging by tap, Quicklog and voice", "Unlimited", "Unlimited"],
+          ["Workout logging by tap and Quicklog", "Unlimited", "Unlimited"],
+          ["Voice logging", "0.05 $ISO an entry; usage limits apply", "0.05 $ISO an entry; usage limits apply"],
           ["Routines and session history", "Unlimited", "Unlimited"],
           ["Exercise library and custom exercises", "Included", "Included"],
           ["Apple Health import", "Included", "Included"],
@@ -64,7 +66,7 @@ export const PRICING_DOC: PageDoc = {
           ["Atlas messages", "10 a month", "30 a day"],
           ["Atlas deep analysis", "One answer at a time, for 1 $ISO", "100 requests a month"],
           ["Atlas programs saved to routines", "No", "Yes"],
-          ["Weekly SITREP from Atlas", "No", "Yes"],
+          ["SITREP (weekly training review) from Atlas", "No", "Yes"],
           ["Bonfire", "Read, kudos, comment", "Read, kudos, comment and post"],
           ["$ISO earning", "On your first log of the day", "Daily amount plus a higher per-log rate with streak multipliers"],
           ["Data export and account deletion", "Included", "Included"],
@@ -119,13 +121,13 @@ export const PRICING_DOC: PageDoc = {
     {
       question: "What do I get for free in Isofit?",
       answer: [
-        `Unlimited workout logging by tap, Quicklog and voice, unlimited routines, full session history, the exercise library and custom exercises, Apple Health import, data export, and ${LIMITS.freeAtlasMessages}. In Bonfire you can read, give kudos and comment.`,
+        `Unlimited workout logging by tap and Quicklog, voice logging for 0.05 earned $ISO an entry, unlimited routines, full session history, the exercise library and custom exercises, Apple Health import, data export, and ${LIMITS.freeAtlasMessages}. In Bonfire you can read, give kudos and comment.`,
       ],
     },
     {
       question: "What does Isofit Pro add?",
       answer: [
-        `The full body graph with muscle detail and stats, ${LIMITS.proAtlasMessages} and ${LIMITS.proAtlasDeep}, Atlas programs saved to your routines, the weekly SITREP, posting to Bonfire, and higher $ISO earning.`,
+        `The full body graph with muscle detail and stats, ${LIMITS.proAtlasMessages} and ${LIMITS.proAtlasDeep}, Atlas programs saved to your routines, SITREP (weekly training review), posting to Bonfire, and higher $ISO earning.`,
       ],
     },
     {

@@ -10,14 +10,24 @@
   --color-ink-3: #6c6259;
   --color-rule: rgb(42 36 32 / 0.14);
 
-  /* Brand blues: sky is the mark and the lattice, blue is for text links */
+  /* Brand blues. Sky is the mark, the lattice and text on ink; it is 2.2:1 on
+     paper, so never paper-background text. Blue is links and the logging
+     accent. Blue-heading is for large display text only (4.1:1 on paper). */
   --color-sky: #6aa5ee;
+  --color-sky-soft: #eaf2fd;
   --color-blue: #245c9b;
   --color-blue-dark: #194b82;
+  --color-blue-heading: #3975bc;
 
-  /* Action */
+  /* Atlas. Terra marks Atlas's name, its prompts and "declines"/"is not". It
+     shares a hex with heat-5 but is its own role: never recolor the graph. */
+  --color-terra: #9a4527;
+  --color-terra-soft: #f3e7e1;
+
+  /* Privacy, ownership, controls and primary actions */
   --color-forest: #526b46;
   --color-forest-dark: #435b38;
+  --color-forest-soft: #e6eadd;
 
   /* Body-graph heat scale, rest to most-worked. Same ramp the app draws muscles with. */
   --color-heat-0: #cfc3a4;

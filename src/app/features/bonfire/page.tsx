@@ -10,17 +10,15 @@ export default function BonfirePage() {
     <DocPage
       doc={BONFIRE_DOC}
       trail={[{ href: "/features", label: "Features" }, { href: BONFIRE_DOC.path, label: "Bonfire" }]}
-      media={{
-        "how-it-works": (
-          <Plate caption="The Bonfire feed: one member's squat session, posted with a photo and a strength tag.">
-            <Device
-              priority
-              src="/screenshots/bonfire.png"
-              alt="Isofit's Bonfire tab showing the Home and Embers feed toggle, a search bar for members and categories, a New post button, and a post by @treetoptremor with a barbell squat photo captioned Barbell squat 3x5 225lbs, tagged strength."
-            />
-          </Plate>
-        ),
-      }}
+      aside={
+        <Plate caption="A post is a session someone actually logged, with a photo and a tag.">
+          <Device
+            priority
+            src="/screenshots/bonfire.png"
+            alt="Isofit's Bonfire tab showing the Home and Embers feed toggle, a search bar for members and categories, a New post button, and a post by @treetoptremor with a barbell squat photo captioned Barbell squat 3x5 225lbs, tagged strength."
+          />
+        </Plate>
+      }
     />
   );
 }

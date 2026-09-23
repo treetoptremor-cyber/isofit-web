@@ -6,6 +6,7 @@ import { type FormEvent, useState } from "react";
 import { AuthShell } from "@/components/pwa/auth-shell";
 import { createClient } from "@/lib/supabase/client";
 import { clearSyncedWorkouts, getStoredWorkouts, markWorkoutSynced } from "@/lib/workout-storage";
+import { SITE } from "@/lib/site";
 
 export default function SignupPage() {
   const router = useRouter();
@@ -98,7 +99,7 @@ export default function SignupPage() {
   return (
     <AuthShell
       title="Create your account"
-      subtitle="Start logging workouts and managing your plan."
+      subtitle={`The account you will use in the Isofit iPhone app. The iOS launch is planned for ${SITE.launchDateLong}.`}
       footer={
         <p>
           Already have an account?{" "}

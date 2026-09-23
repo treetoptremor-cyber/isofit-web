@@ -60,6 +60,7 @@ export default function DocPage({
   aside,
   media,
   wide,
+  replace,
   lead,
   children,
   extraJsonLd = [],
@@ -69,6 +70,7 @@ export default function DocPage({
   aside?: ReactNode;
   media?: Record<string, ReactNode>;
   wide?: Record<string, ReactNode>;
+  replace?: Record<string, ReactNode>;
   // Rendered between the hero and the doc sections.
   lead?: ReactNode;
   // Rendered between the doc sections and the FAQ.
@@ -80,7 +82,7 @@ export default function DocPage({
       <JsonLd data={[webPageJsonLd(doc), ...(doc.faqs?.length ? [faqJsonLd(doc.faqs)] : []), ...extraJsonLd]} />
       <PageHero trail={trail} title={doc.h1} lede={doc.lede} aside={aside} />
       {lead}
-      <DocSections sections={doc.sections} media={media} wide={wide} />
+      <DocSections sections={doc.sections} media={media} wide={wide} replace={replace} />
       {children}
       {doc.faqs?.length ? (
         <Section id="faq" label="Questions" title={`${doc.name}: frequently asked questions`}>

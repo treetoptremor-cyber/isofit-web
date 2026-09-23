@@ -15,7 +15,7 @@ export function StatusPage({ title, message, linkHref, linkLabel }: StatusPagePr
         <p className="mt-3 text-[15px] text-[#4a423b]">{message}</p>
         <Link
           href={linkHref}
-          className="mt-6 inline-flex h-11 items-center justify-center rounded-xl bg-[#69A5F0] px-5 font-display text-sm font-semibold text-white transition-colors hover:bg-[#5c94da]"
+          className="mt-6 inline-flex h-11 items-center justify-center rounded-xl bg-forest px-5 font-display text-sm font-semibold text-white transition-colors hover:bg-forest-dark"
         >
           {linkLabel}
         </Link>
