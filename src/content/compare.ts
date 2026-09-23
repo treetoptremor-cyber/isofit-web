@@ -9,7 +9,7 @@ const ROW_ORDER = Object.keys(COMPETITOR_ROW_LABELS) as CompetitorRowKey[];
 const CHOOSE_ISOFIT = [
   "You want to log in plain language, typed or spoken, and not only by tapping in sets.",
   "You want a coach built into the app you log with, one that reads your own training history and stays within training.",
-  "You train across disciplines, such as lifting plus running, climbing, yoga or martial arts, and want one log for all of it.",
+  "You train across disciplines, such as lifting plus running, yoga or martial arts, and want one log for all of it.",
   "You use an iPhone and do not need a watch, tablet or Android app.",
   "You want Apple Health read but never written to.",
 ];
