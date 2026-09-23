@@ -4,7 +4,7 @@ import { DataTable } from "@/components/marketing/doc-sections";
 import { RelatedPages, ReviewedNote, webPageJsonLd } from "@/components/marketing/doc-page";
 import IsoGrid from "@/components/marketing/iso-grid";
 import JsonLd from "@/components/marketing/json-ld";
-import { CONTAINER, ColumnCards, Device, FaqList, PageShell, Plate, Section, TextLink, WaitlistBand, faqJsonLd } from "@/components/marketing/primitives";
+import { CONTAINER, ColumnCards, Device, FaqList, ItemList, PageShell, Plate, Portrait, Section, SpecList, TextLink, WaitlistBand, faqJsonLd } from "@/components/marketing/primitives";
 import QuicklogDemo, { HeatLegend } from "@/components/marketing/quicklog-demo";
 import RecoveryRedirect from "@/components/recovery-redirect";
 import WaitlistForm from "@/components/waitlist-form";
@@ -79,9 +79,9 @@ function FeatureRow({
       <div className={`grid grid-cols-[minmax(0,1fr)] gap-10 lg:items-center lg:gap-16 ${flip ? "lg:grid-cols-[26rem_minmax(0,1fr)]" : "lg:grid-cols-[minmax(0,1fr)_26rem]"}`}>
         <div className={flip ? "lg:order-2" : ""}>
           <p className="label">{doc.label}</p>
-          <h2 id={`${doc.id}-heading`} className="mt-2 max-w-[22ch] font-display text-[clamp(1.5rem,3vw,2.125rem)] font-bold leading-[1.14] tracking-[-0.025em]">
+          <h3 id={`${doc.id}-heading`} className="mt-2 max-w-[22ch] font-display text-[clamp(1.5rem,3vw,2.125rem)] font-bold leading-[1.14] tracking-[-0.025em]">
             {doc.heading}
-          </h2>
+          </h3>
           <div className="prose-iso mt-5 max-w-[60ch]">
             {doc.body?.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
             {doc.bullets ? <ul>{doc.bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}</ul> : null}
@@ -99,9 +99,15 @@ function FeatureRow({
 
 export default function HomePage() {
   const glance = section("at-a-glance");
+  const does = section("does");
+  const different = section("different");
+  const audience = section("who-for");
   const isIsNot = section("is-and-is-not");
+  const team = section("team");
+  const steps = section("how-it-works");
   const tiers = section("free-and-pro");
   const data = section("your-data");
+  const facts = section("key-facts");
 
   return (
     <PageShell waitlistHref="#waitlist-form">
@@ -156,6 +162,9 @@ export default function HomePage() {
           </dl>
         </div>
       </section>
+
+      {/* The four feature rows below are this section's h3s. */}
+      <Section id={does.id} label={does.label} title={does.heading} intro={does.body?.[0]} className="!pb-0" />
 
       <FeatureRow
         doc={section("log")}
@@ -218,8 +227,45 @@ export default function HomePage() {
         }
       />
 
-      <Section id={isIsNot.id} label={isIsNot.label} title={isIsNot.heading} intro={isIsNot.body?.[0]} className="border-t border-rule">
+      <Section id={different.id} label={different.label} title={different.heading} intro={different.body?.[0]} className="border-t border-rule">
+        {different.items ? <ItemList items={different.items} /> : null}
+        <div className="mt-4">
+          <TextLink href="/compare">Full comparison, with sources, and where the others are the better choice</TextLink>
+        </div>
+      </Section>
+
+      <Section id={audience.id} label={audience.label} title={audience.heading} intro={audience.body?.[0]}>
+        <div className="prose-iso max-w-[66ch]">
+          <ul>{audience.bullets?.map((bullet) => <li key={bullet}>{bullet}</li>)}</ul>
+        </div>
+      </Section>
+
+      <Section id={isIsNot.id} label={isIsNot.label} title={isIsNot.heading} intro={isIsNot.body?.[0]}>
         {isIsNot.columns ? <ColumnCards columns={isIsNot.columns} /> : null}
+      </Section>
+
+      <Section id={team.id} label={team.label} title={team.heading} className="border-t border-rule">
+        <div className="grid gap-10 md:grid-cols-[14rem_minmax(0,1fr)] md:items-start lg:grid-cols-[16rem_minmax(0,1fr)]">
+          {team.image ? <Portrait {...team.image} className="w-56 md:w-full" /> : null}
+          <div>
+            <div className="prose-iso max-w-[66ch]">
+              {team.body?.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+            </div>
+            <div className="mt-4 flex flex-wrap gap-x-6">
+              {team.links?.map((link) => (
+                <a key={link.href} href={link.href} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-1.5 font-medium text-blue underline decoration-blue/40 underline-offset-4 hover:text-blue-dark hover:decoration-current">
+                  {link.label}
+                  <span aria-hidden="true">↗</span>
+                </a>
+              ))}
+              <TextLink href="/about">About Isofit</TextLink>
+            </div>
+          </div>
+        </div>
+      </Section>
+
+      <Section id={steps.id} label={steps.label} title={steps.heading} className="border-t border-rule">
+        {steps.items ? <ItemList items={steps.items} ordered /> : null}
       </Section>
 
       <Section id={tiers.id} label={tiers.label} title={tiers.heading} intro={tiers.body?.[0]}>
@@ -249,7 +295,11 @@ export default function HomePage() {
         </div>
       </Section>
 
-      <Section id="faq" label="Questions" title="Common questions about Isofit" className="border-t border-rule">
+      <Section id={facts.id} label={facts.label} title={facts.heading} className="border-t border-rule">
+        {facts.specs ? <SpecList specs={facts.specs} columns={2} /> : null}
+      </Section>
+
+      <Section id="faq" label="Questions" title="Frequently asked questions about Isofit" className="border-t border-rule">
         <FaqList faqs={HOME_DOC.faqs ?? []} />
         <div className="mt-4">
           <TextLink href="/faq">All frequently asked questions</TextLink>

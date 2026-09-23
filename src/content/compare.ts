@@ -1,5 +1,6 @@
 import { COMPETITORS, COMPETITORS_REVIEWED_LONG, COMPETITOR_ROW_LABELS, type Competitor, type CompetitorRowKey } from "@/content/competitors";
 import { ISOFIT_ROWS } from "@/content/facts";
+import { DIFFERENTIATORS } from "@/content/positioning";
 import type { PageDoc } from "@/content/types";
 import { SITE } from "@/lib/site";
 
@@ -102,17 +103,8 @@ export const COMPARE_DOC: PageDoc = {
         ]),
       },
     },
-    {
-      id: "what-is-different",
-      label: "Differences",
-      heading: "What is different about Isofit",
-      bullets: [
-        "Plain-language logging. Type \"bench 5x5 225lbs\" or say the session aloud. None of the four other apps advertises free-text or voice logging on the pages reviewed.",
-        "A coach you talk to. Atlas is a chat that can read your log. The others offer either no coaching, or generated workouts and progression suggestions without a conversation.",
-        "One log for every discipline. The library spans lifting, cardio, yoga, sports, climbing and martial arts.",
-        "Apple Health is read, never written.",
-      ],
-    },
+    // Same five points as the home page, as h3s, with competitors named.
+    { ...DIFFERENTIATORS, id: "what-is-different", body: undefined },
     {
       id: "where-others-win",
       label: "Be honest",

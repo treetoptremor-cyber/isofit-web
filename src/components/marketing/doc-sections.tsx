@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 
-import { ColumnCards, QuoteBlock, Section, SpecList } from "@/components/marketing/primitives";
+import { ColumnCards, ItemList, Portrait, QuoteBlock, Section, SpecList } from "@/components/marketing/primitives";
 import type { DocSection, DocTable } from "@/content/types";
 
 // One table in the DOM. From md up it is a normal table; below that the CSS in
@@ -54,7 +54,7 @@ export default function DocSections({
   return (
     <>
       {sections.map((section) => {
-        const figure = media[section.id];
+        const figure = media[section.id] ?? (section.image ? <Portrait {...section.image} className="mx-auto w-72 lg:w-full" /> : undefined);
         const flip = figure ? mediaCount++ % 2 === 1 : false;
         const copy = (
           <div className="prose-iso max-w-[66ch]">
@@ -67,7 +67,7 @@ export default function DocSections({
           </div>
         );
         return (
-          <Section key={section.id} id={section.id} label={section.label} title={section.heading}>
+          <Section key={section.id} id={section.id} label={section.label} title={section.heading} level={section.level}>
             {figure ? (
               <div className={`grid grid-cols-[minmax(0,1fr)] gap-10 lg:items-start ${flip ? "lg:grid-cols-[24rem_minmax(0,1fr)]" : "lg:grid-cols-[minmax(0,1fr)_24rem]"}`}>
                 <div className={flip ? "lg:order-2" : ""}>
@@ -82,6 +82,19 @@ export default function DocSections({
                 {section.specs ? <div className={section.body || section.bullets ? "mt-8" : ""}><SpecList specs={section.specs} columns={2} /></div> : null}
               </>
             )}
+            {section.links ? (
+              <ul className="mt-4 flex flex-wrap gap-x-6">
+                {section.links.map((link) => (
+                  <li key={link.href}>
+                    <a href={link.href} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-1.5 font-medium text-blue underline decoration-blue/40 underline-offset-4 hover:text-blue-dark hover:decoration-current">
+                      {link.label}
+                      <span aria-hidden="true">↗</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            ) : null}
+            {section.items ? <div className={section.body || section.bullets || section.specs ? "mt-8" : ""}><ItemList items={section.items} /></div> : null}
             {section.columns ? <div className="mt-8"><ColumnCards columns={section.columns} /></div> : null}
             {section.table ? <div className="mt-8"><DataTable table={section.table} /></div> : null}
             {wide[section.id] ? <div className="mt-10">{wide[section.id]}</div> : null}

@@ -1,4 +1,5 @@
 import { ACTIVITY_SCOPE, LIMITS, PRICING } from "@/content/facts";
+import { AUDIENCE, DIFFERENTIATORS, HOW_IT_WORKS, KEY_FACTS, TEAM } from "@/content/positioning";
 import type { PageDoc } from "@/content/types";
 import { SITE } from "@/lib/site";
 
@@ -10,7 +11,7 @@ export const HOME_DOC: PageDoc = {
     "Isofit is a workout logger for iPhone. Log by tapping, typing or talking, see which muscles your training reaches, and ask Atlas, an AI coach that reads your log. iOS launch planned October 1, 2026.",
   h1: "Isofit is a workout logger for iPhone that shows you what your training adds up to.",
   lede:
-    "Isofit is a workout tracking app for iPhone. You log a session by tapping in sets, typing a line like \"bench 5x5 225lbs\", or saying it out loud. A front and back body graph then shows which muscles that work reached, and Atlas, a built-in AI coach, answers questions using your actual training history. Logging is free. Isofit is not released yet: the iOS launch is planned for October 1, 2026.",
+    "Isofit is a workout logger for iPhone that turns the sessions you tap, type or say into a muscle-by-muscle picture of your training, for adults who lift, run, climb, practice yoga or martial arts, or mix them. Log a set by tapping it in, typing a line like \"bench 5x5 225lbs\", or saying it out loud. A front and back body graph shows which muscles that work reached, and Atlas, a built-in AI coach, answers questions using your actual training history. Logging is free. Isofit is not released yet: the iOS launch is planned for October 1, 2026.",
   sections: [
     {
       id: "at-a-glance",
@@ -26,7 +27,16 @@ export const HOME_DOC: PageDoc = {
       ],
     },
     {
+      id: "does",
+      label: "The app",
+      heading: "What Isofit does",
+      body: [
+        "Isofit has four parts, one per tab in the app: a logger that takes taps, typed lines or your voice; a body graph of the muscles your sets reached; Atlas, an AI coach; and Bonfire, a members-only community feed.",
+      ],
+    },
+    {
       id: "log",
+      level: 3,
       label: "01 · Log it",
       heading: "Log a workout by tapping, typing or talking",
       body: [
@@ -42,6 +52,7 @@ export const HOME_DOC: PageDoc = {
     },
     {
       id: "see",
+      level: 3,
       label: "02 · See it",
       heading: "See which muscles your training actually reaches",
       body: [
@@ -51,6 +62,7 @@ export const HOME_DOC: PageDoc = {
     },
     {
       id: "ask",
+      level: 3,
       label: "03 · Ask Atlas",
       heading: "Ask Atlas, an AI coach that can read your log",
       body: [
@@ -61,6 +73,7 @@ export const HOME_DOC: PageDoc = {
     },
     {
       id: "bonfire",
+      level: 3,
       label: "04 · Bonfire",
       heading: "Share a session at the Bonfire, or never post at all",
       body: [
@@ -68,6 +81,8 @@ export const HOME_DOC: PageDoc = {
         "Your workout log is private. Nothing reaches Bonfire unless you choose to post that session, and you can use Isofit without ever opening the tab.",
       ],
     },
+    DIFFERENTIATORS,
+    AUDIENCE,
     {
       id: "is-and-is-not",
       label: "Plainly stated",
@@ -104,6 +119,8 @@ export const HOME_DOC: PageDoc = {
         },
       ],
     },
+    TEAM,
+    HOW_IT_WORKS,
     {
       id: "free-and-pro",
       label: "Pricing",
@@ -136,6 +153,7 @@ export const HOME_DOC: PageDoc = {
         "Atlas personalization and Apple Health access are both opt-in and both revocable.",
       ],
     },
+    KEY_FACTS,
   ],
   faqs: [
     {
@@ -170,7 +188,7 @@ export const HOME_DOC: PageDoc = {
     {
       question: "How is Isofit different from other workout trackers?",
       answer: [
-        "Three things. You can log in plain language, typed or spoken, as well as by tapping in sets. The body graph turns your log into a muscle-by-muscle picture of where your working sets went. And Atlas is a conversational coach that reads your own history, where most trackers offer either no coaching or an automatic workout generator.",
+        "You can log in plain language, typed or spoken, as well as by tapping in sets. The body graph turns your log into a muscle-by-muscle picture of where your working sets went. And Atlas is a conversational coach that reads your own history, where most trackers offer either no coaching or an automatic workout generator.",
       ],
       link: { href: "/compare", label: "Compare Isofit with Hevy, Strong, Fitbod and JEFIT" },
     },

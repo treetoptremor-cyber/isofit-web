@@ -83,7 +83,7 @@ export default function DocPage({
       <DocSections sections={doc.sections} media={media} wide={wide} />
       {children}
       {doc.faqs?.length ? (
-        <Section id="faq" label="Questions" title={`${doc.name}: common questions`}>
+        <Section id="faq" label="Questions" title={`${doc.name}: frequently asked questions`}>
           <FaqList faqs={doc.faqs} />
         </Section>
       ) : null}

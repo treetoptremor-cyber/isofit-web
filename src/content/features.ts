@@ -158,7 +158,7 @@ export const LOGGING_DOC: PageDoc = {
     {
       question: "Can I log a workout with my voice?",
       answer: [
-        "Yes. Hold the microphone button, describe the session for up to 90 seconds, and Isofit drafts the rows. You review the draft before it is saved. Each voice log costs 0.05 $ISO.",
+        "Yes. Hold the microphone button, describe the session for up to 90 seconds, and Isofit drafts rows that you review before they are saved. Each voice log costs 0.05 $ISO.",
       ],
     },
     {
@@ -400,7 +400,7 @@ export const ATLAS_DOC: PageDoc = {
     {
       question: "Is Atlas a replacement for a personal trainer or a doctor?",
       answer: [
-        "No. Atlas is a training and organization tool. It is not a doctor or physical therapist and cannot see you move. Pain, injury and symptoms belong with a qualified professional.",
+        "No. Atlas is a training and organization tool, not a doctor or physical therapist, and it cannot see you move. Pain, injury and symptoms belong with a qualified professional.",
       ],
     },
     {

@@ -9,6 +9,19 @@ export const SITE = {
   xHandle: "@isofit_app",
   xUrl: "https://x.com/isofit_app",
   madeIn: "Queens, New York",
+  company: "Isofit ltd.",
+  // Where Isofit ltd. is domiciled. The app is designed in madeIn.
+  domicile: "Pennsylvania",
+  founded: "2026",
+  founder: {
+    name: "An Hu",
+    linkedInUrl: "https://www.linkedin.com/in/an-hu/",
+    xHandle: "@treetoptremor",
+    xUrl: "https://x.com/treetoptremor",
+    photo: "/team/an-hu.jpg",
+    schools: ["Parsons School of Design, The New School", "Baruch College, Zicklin School of Business"],
+  },
+  supportResponse: "within 2 business days",
   launchDate: "2026-10-01",
   launchDateLong: "October 1, 2026",
   // Bump when product facts on the marketing pages are re-verified.

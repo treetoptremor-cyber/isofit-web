@@ -39,7 +39,7 @@ export default function SiteFooter() {
         </div>
         {COLUMNS.map((column) => (
           <nav key={column.heading} aria-label={column.heading}>
-            <h2 className="label">{column.heading}</h2>
+            <p className="label">{column.heading}</p>
             <ul className="mt-3 grid gap-0.5">
               {column.links.map((link) => (
                 <li key={link.href}>
@@ -54,7 +54,7 @@ export default function SiteFooter() {
       </div>
       <div className="border-t border-rule">
         <div className="mx-auto flex w-full max-w-[1120px] flex-col gap-2 px-4 py-5 sm:px-6 md:flex-row md:items-center md:justify-between">
-          <p className="label">© 2026 Isofit · humbly designed in Queens, NY</p>
+          <p className="label">© {SITE.founded} {SITE.company}, a {SITE.domicile} company · humbly designed in Queens, NY</p>
           <p className="flex flex-wrap gap-x-5 gap-y-1 text-sm text-ink-2">
             <a href={`mailto:${SITE.supportEmail}`} className="inline-flex min-h-9 items-center hover:text-ink">{SITE.supportEmail}</a>
             <a href={SITE.xUrl} target="_blank" rel="noopener noreferrer me" className="inline-flex min-h-9 items-center hover:text-ink">X / Twitter</a>

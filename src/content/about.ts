@@ -1,15 +1,16 @@
 import { ACTIVITY_SCOPE } from "@/content/facts";
+import { KEY_FACTS, TEAM } from "@/content/positioning";
 import type { PageDoc } from "@/content/types";
 import { SITE } from "@/lib/site";
 
 export const ABOUT_DOC: PageDoc = {
   path: "/about",
   name: "About Isofit",
-  metaTitle: "About Isofit: who makes it, what it is for, how to reach us",
+  metaTitle: "About Isofit: founder, company facts and how to reach us",
   metaDescription:
-    "Isofit is an independent workout logging app for iPhone, designed in Queens, New York by a solo developer. What the app is for, where the name comes from, and how to get in touch.",
+    "Isofit is an independent workout logging app for iPhone, founded in 2026 by An Hu and designed in Queens, New York. Who builds it, what it is for, where the name comes from, and how to get in touch.",
   h1: "Isofit is an independent workout app, designed in Queens, New York.",
-  lede: `Isofit is a workout logger for iPhone published by Isofit ltd. and designed in ${SITE.madeIn}. It is built by a solo developer. The app exists to make a training log useful after the workout is over: quick to fill in, honest about what you trained, and able to answer questions about it. The iOS launch is planned for ${SITE.launchDateLong}.`,
+  lede: `Isofit is a workout logger for iPhone published by ${SITE.company} and designed in ${SITE.madeIn}. It was founded in ${SITE.founded} by ${SITE.founder.name}, who builds it alone. The app exists to make a training log useful after the workout is over: quick to fill in, honest about what you trained, and able to answer questions about it. The iOS launch is planned for ${SITE.launchDateLong}.`,
   sections: [
     {
       id: "why",
@@ -20,6 +21,7 @@ export const ABOUT_DOC: PageDoc = {
         "So the app does three things in order. It makes logging fast enough that you keep doing it, by accepting taps, a typed line or your voice. It turns the log into a picture, the body graph, that shows which muscles your sets reached. And it gives you Atlas, a coach you can ask about your own history.",
       ],
     },
+    TEAM,
     {
       id: "name",
       label: "The name",
@@ -42,27 +44,12 @@ export const ABOUT_DOC: PageDoc = {
         "Adults only. Isofit is for people aged 18 and over.",
       ],
     },
-    {
-      id: "facts",
-      label: "Company",
-      heading: "Company facts",
-      specs: [
-        { term: "Product", value: "Isofit, a workout logging app for iPhone" },
-        { term: "Company", value: "Isofit ltd." },
-        { term: "Designed in", value: SITE.madeIn },
-        { term: "Team", value: "One developer" },
-        { term: "Status", value: `Pre-release. iOS launch planned ${SITE.launchDateLong}.` },
-        { term: "Website", value: SITE.url },
-        { term: "Support", value: SITE.supportEmail },
-        { term: "Privacy requests", value: SITE.privacyEmail },
-        { term: "X / Twitter", value: SITE.xHandle },
-      ],
-    },
+    KEY_FACTS,
   ],
   faqs: [
     {
       question: "Who makes Isofit?",
-      answer: [`Isofit is published by Isofit ltd. and built by a solo developer. It is designed in ${SITE.madeIn}.`],
+      answer: [`Isofit was founded in ${SITE.founded} by ${SITE.founder.name}, who builds it alone in ${SITE.madeIn}. It is published by ${SITE.company}, a company domiciled in ${SITE.domicile}.`],
     },
     {
       question: "What does the name Isofit mean?",
@@ -70,7 +57,7 @@ export const ABOUT_DOC: PageDoc = {
     },
     {
       question: "How do I contact Isofit?",
-      answer: [`Email ${SITE.supportEmail} for help, or ${SITE.privacyEmail} for privacy requests.`],
+      answer: [`Email ${SITE.supportEmail} for help, and expect a reply ${SITE.supportResponse}. Privacy requests go to ${SITE.privacyEmail}.`],
     },
   ],
   related: ["/features", "/pricing", "/faq"],

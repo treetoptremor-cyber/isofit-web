@@ -33,7 +33,7 @@ export default function FaqPage() {
         <div className="rounded-2xl border border-rule bg-paper-raised px-5 py-4">
           <h2 id="support-contact" className="label">Support and contact</h2>
           <p className="mt-1.5 text-[1.0625rem] leading-relaxed text-ink-2">
-            Need a hand? Email <a href={`mailto:${SITE.supportEmail}`} className="font-medium text-blue underline underline-offset-4">{SITE.supportEmail}</a>. For privacy requests, contact{" "}
+            Need a hand? Email <a href={`mailto:${SITE.supportEmail}`} className="font-medium text-blue underline underline-offset-4">{SITE.supportEmail}</a> and expect a reply {SITE.supportResponse}. For privacy requests, contact{" "}
             <a href={`mailto:${SITE.privacyEmail}`} className="font-medium text-blue underline underline-offset-4">{SITE.privacyEmail}</a>.
           </p>
         </div>

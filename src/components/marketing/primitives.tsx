@@ -103,6 +103,7 @@ export function Section({
   id,
   label,
   title,
+  level = 2,
   intro,
   children,
   className = "",
@@ -110,17 +111,19 @@ export function Section({
   id?: string;
   label?: string;
   title: ReactNode;
+  level?: 2 | 3;
   intro?: ReactNode;
   children?: ReactNode;
   className?: string;
 }) {
   const headingId = id ? `${id}-heading` : undefined;
+  const Heading = level === 3 ? "h3" : "h2";
   return (
     <section id={id} aria-labelledby={headingId} className={`${CONTAINER} py-10 md:py-14 ${className}`}>
       {label ? <p className="label">{label}</p> : null}
-      <h2 id={headingId} className="mt-2 max-w-[24ch] font-display text-[clamp(1.5rem,3vw,2.125rem)] font-bold leading-[1.14] tracking-[-0.025em]">
+      <Heading id={headingId} className="mt-2 max-w-[24ch] font-display text-[clamp(1.5rem,3vw,2.125rem)] font-bold leading-[1.14] tracking-[-0.025em]">
         {title}
-      </h2>
+      </Heading>
       {intro ? <p className="mt-4 max-w-[64ch] text-[1.0625rem] leading-[1.7] text-ink-2">{intro}</p> : null}
       {children ? <div className="mt-8">{children}</div> : null}
     </section>
@@ -182,6 +185,15 @@ export function Device({
   );
 }
 
+// A square photo of a person, e.g. the founder on the team section.
+export function Portrait({ src, alt, className = "" }: { src: string; alt: string; className?: string }) {
+  return (
+    <div className={`overflow-hidden rounded-[1.75rem] border border-rule bg-paper-raised shadow-[0_18px_40px_rgba(42,36,32,0.06)] ${className}`}>
+      <Image src={src} alt={alt} width={800} height={800} sizes="(max-width: 1023px) 288px, 384px" className="h-auto w-full" />
+    </div>
+  );
+}
+
 // A white plate that a Device sits on, lifted off the page grid, with a figure
 // caption underneath.
 export function Plate({ caption, children }: { id?: string; caption?: ReactNode; children: ReactNode }) {
@@ -192,6 +204,22 @@ export function Plate({ caption, children }: { id?: string; caption?: ReactNode;
       </div>
       {caption ? <figcaption className="caption mt-3">{caption}</figcaption> : null}
     </figure>
+  );
+}
+
+// Named points as h3 cards: differentiators, steps. Numbered when `ordered`.
+export function ItemList({ items, ordered = false }: { items: { heading: string; body: string }[]; ordered?: boolean }) {
+  const List = ordered ? "ol" : "ul";
+  return (
+    <List className="grid gap-5 md:grid-cols-2">
+      {items.map((item, index) => (
+        <li key={item.heading} className="rounded-[1.75rem] border border-rule bg-paper-raised p-6 sm:p-7">
+          {ordered ? <p className="label">Step {index + 1}</p> : null}
+          <h3 className={`${ordered ? "mt-2 " : ""}font-display text-lg font-bold leading-snug tracking-[-0.01em]`}>{item.heading}</h3>
+          <p className="mt-3 text-[1.0625rem] leading-relaxed text-ink-2">{item.body}</p>
+        </li>
+      ))}
+    </List>
   );
 }
 
@@ -276,9 +304,10 @@ export function WaitlistBand({ source, id = "waitlist" }: { source: string; id?:
             <p className="label !text-paper/80">
               iOS launch planned <time dateTime={SITE.launchDate}>{SITE.launchDateLong}</time>
             </p>
-            <h2 id={`${id}-heading`} className="mt-3 font-display text-[clamp(1.75rem,4vw,2.75rem)] font-bold leading-[1.08] tracking-[-0.03em] text-white">
+            {/* A slogan, not a topic: kept out of the heading outline. */}
+            <p id={`${id}-heading`} className="mt-3 font-display text-[clamp(1.75rem,4vw,2.75rem)] font-bold leading-[1.08] tracking-[-0.03em] text-white">
               Your workouts, <span className="text-sky">working for you.</span>
-            </h2>
+            </p>
             <p className="mt-4 max-w-[46ch] text-[1.0625rem] leading-relaxed text-paper/85">
               Isofit is not in the App Store yet. Join the waitlist and we will email you once, when it is.
             </p>

@@ -29,11 +29,11 @@ Consumer health data is personal information that is linked or reasonably linkab
 
 | Category | Purposes |
 | --- | --- |
-| Workouts and quick logs | Keep your log; compute training analytics; determine $ISO earnings and streaks; give Atlas context for coaching |
+| Workouts and quick logs | Keep your log; compute training analytics; determine $ISO earnings and streaks; with Atlas personalization opt-in, give Atlas context for coaching |
 | Injury, pain, and limitation details | Shape your program and Atlas's coaching so it works around them |
 | Atlas conversations | Generate coaching responses; with personalization consent, build memory items that improve future coaching |
 | Apple Health data | Import workouts into your log; show your recent daily summaries; with Atlas personalization opt-in, give Atlas the same picture |
-| Derived insights | Show you your progress; give Atlas context |
+| Derived insights | Show you your progress; with Atlas personalization opt-in, give Atlas context |
 
 We also use technical and security data to keep the platform safe, as described in our Privacy Policy. We do not use consumer health data for advertising, and we do not sell it.
 
@@ -56,7 +56,7 @@ If we ever want to collect a new category of consumer health data, use it for a 
 The following service providers process consumer health data on our behalf, under contracts that limit them to providing their service to us:
 
 - **Supabase** hosts our database and authentication, so the data described above is stored with Supabase.
-- **OpenAI** receives your Atlas messages, form-check media, and the training context described in our Privacy Policy — including Apple Health summaries when you have opted in to personalization — to generate Atlas's responses. Under OpenAI's API terms this data is not used to train OpenAI's models, and Isofit does not opt in to any such use.
+- **OpenAI** receives your Atlas messages and form-check media and, when you have opted in to personalization, the training context described in our Privacy Policy, including Apple Health summaries, to generate Atlas's responses. Under OpenAI's API terms this data is not used to train OpenAI's models, and Isofit does not opt in to any such use.
 
 We do not share consumer health data with any other third party, except:
 

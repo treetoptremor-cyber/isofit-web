@@ -78,10 +78,10 @@ We do not collect or store:
 We process your data only where we have a valid basis. The purposes are as follows.
 
 - **Provide workout logging and training analytics.** Your workout data, quick logs, and training history are the core of the Isofit experience. Without this data, the app cannot function.
-- **Deliver Atlas AI coaching.** When you message Atlas, your recent workout history, training insights, and profile data are included as context so Atlas can provide personalized coaching. If you opt in to personalization, Atlas also draws on persistent memory items it has built from prior conversations.
+- **Deliver Atlas AI coaching.** When you message Atlas, your message and the recent messages in that thread are used to generate a response. If you opt in to personalization, Atlas also receives your profile details, training insights, recent workout history, and the persistent memory items it has built from prior conversations, so it can provide personalized coaching.
 - **Operate the $ISO economy.** Your workout logs, streak activity, and membership tier determine your $ISO earnings. Spending, redemptions, and balance tracking require ledger data.
 - **Power the Bonfire community.** Posts, comments, reactions, and media you share are displayed to other members. Moderation systems process content to maintain community standards.
-- **Generate training insights.** Your workout history is used to identify training trends and give Atlas coaching context. If you connect Apple Health and opt in to Atlas personalization, Atlas can also use your recent daily summaries. This data is never used to train AI models.
+- **Generate training insights.** Your workout history is used to identify training trends and, if you opt in to Atlas personalization, to give Atlas coaching context. If you also connect Apple Health, Atlas can use your recent daily summaries. This data is never used to train AI models.
 - **Process payments and manage subscriptions.** In the iOS app, membership is purchased through Apple's App Store in-app purchase system; Apple processes the payment and Isofit never sees your payment details. RevenueCat manages subscription state on our behalf.
 - **Send notifications.** Push notification tokens are used to send you streak reminders, reward alerts, social notifications, and system messages via Apple Push Notification service.
 - **Send transactional emails.** Your email address is used for account-related communications such as billing confirmations and referral notifications.
@@ -98,13 +98,18 @@ This section describes how your personal data interacts with the Atlas AI coachi
 
 When you interact with Atlas, the following data is provided to the AI system to generate responses:
 
-- **Your profile context:** Membership tier, current streak, $ISO balance.
-- **Training insights:** Muscle group activity data from your workout history (frequency, volume, last trained date, average RPE per muscle group).
-- **Recent workout logs:** Your last 30 days of structured workout data, including exercises, sets, reps, and weights.
-- **Conversation history:** Recent messages from your current Atlas thread for conversational continuity.
 - **Your current message:** The text, image, or voice transcription you send.
-- **Memory items (if opted in):** Persistent facts Atlas has learned about you — such as goals, injuries, and preferences — drawn from prior conversations.
-- **Apple Health daily summaries (if connected and opted in to personalization):** Your last 7 days of steps, exercise minutes, sleep duration, resting heart rate, and walking and running distance.
+- **Conversation history:** Recent messages from your current Atlas thread for conversational continuity.
+
+If you opt in to Atlas personalization, Atlas also receives:
+
+- **Your profile details:** Such as your name, username, bio, training goals, experience level, and age range, along with app settings such as your measurement units and timezone.
+- **Training insights:** Muscle group activity data from your workout history (frequency, volume, last trained date, average RPE per muscle group).
+- **Your workout history:** Your last 30 days of structured workout data, including exercises, sets, reps, and weights, and a rolling summary of your training history prepared from your logs.
+- **Memory items:** Persistent facts Atlas has learned about you — such as goals, injuries, and preferences — drawn from prior conversations.
+- **Apple Health daily summaries (if connected):** Your last 7 days of steps, exercise minutes, sleep duration, resting heart rate, and walking and running distance.
+
+Without personalization, Atlas answers as a general coach and does not receive your profile details, training insights, workout history, memory items, or Apple Health data.
 
 ### 4.2 How Atlas Uses Your Data
 
@@ -118,7 +123,7 @@ Atlas does not make decisions that produce legal or similarly significant effect
 
 ### 4.4 Withdrawing Consent for Atlas Personalization
 
-You can withdraw your Atlas personalization opt-in at any time in your account settings. Doing so will delete your stored Atlas memory items. Withdrawal does not affect messages already sent or coaching already delivered.
+You can withdraw your Atlas personalization opt-in at any time in your account settings. Doing so will delete your stored Atlas memory items, and Atlas will stop receiving your profile details, training insights, workout history, and Apple Health daily summaries. Withdrawal does not affect messages already sent or coaching already delivered.
 
 ---
 
@@ -152,7 +157,7 @@ We use the following service providers to deliver Isofit. All are bound by their
 - **Apple App Store:** Processes in-app membership purchases in the iOS app. Apple handles all payment data directly under its own privacy policy; Isofit never sees your payment details.
 - **RevenueCat:** Manages in-app subscription state (which plan you hold and whether it is active). Receives a pseudonymous app user identifier and purchase receipts — never your name, health data, or payment details.
 - **Apple Weather (WeatherKit) and Open-Meteo:** Provide the current-conditions line shown in the app header. Receive the coarse location you chose for weather (a zip code, your device location if you enabled it, or a city inferred from your timezone) — never your identity or health data.
-- **OpenAI:** Processes Atlas AI coaching requests. Your message content and training context are sent to OpenAI's API to generate responses. Under OpenAI's API terms, data submitted through the API is not used to train OpenAI's models by default; Isofit does not opt in to any such data sharing.
+- **OpenAI:** Processes Atlas AI coaching requests. Your message content, and your training context if you have opted in to personalization, are sent to OpenAI's API to generate responses. Under OpenAI's API terms, data submitted through the API is not used to train OpenAI's models by default; Isofit does not opt in to any such data sharing.
 - **Resend:** Delivers transactional emails. Receives your email address only.
 - **Apple Push Notification service (APNs):** Delivers push notifications to your iOS device. Receives a device-specific push token, not your personal information.
 
@@ -171,7 +176,7 @@ Isofit does not sell, rent, or trade your personal information to any third part
 Isofit provides granular consent controls accessible in your account settings:
 
 - **Operational consent** (on by default): Required for the app to function. Covers core workout logging, $ISO economy, and account management.
-- **Atlas personalization opt-in** (off by default): Controls whether Atlas AI can build and retain persistent memory items from your conversations and use your Apple Health daily summaries if connected. Without this opt-in, Atlas still works but does not retain persistent memory items between sessions or use those daily summaries for coaching.
+- **Atlas personalization opt-in** (off by default): Controls whether Atlas AI receives your profile details, training insights, and workout history, builds and retains persistent memory items from your conversations, and uses your Apple Health daily summaries if connected. Without this opt-in, Atlas still works as a general coach but does not receive that data or retain persistent memory items between sessions.
 - **Usage analytics** (on after you accept this policy; off anytime): Controls the in-app product analytics described in Section 2.2 (screens viewed, features used). Turn it off under Privacy & Terms in your account settings and collection stops immediately.
 
 In addition, Apple Health requires the iOS HealthKit permission screen before any data is read (see Sections 2.3 and 5).

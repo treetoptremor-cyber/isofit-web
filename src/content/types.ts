@@ -12,8 +12,16 @@ export type DocSection = {
   id: string;
   label?: string;
   heading: string;
+  // 3 nests the section under the h2 before it (h3 on the page, ### in markdown).
+  level?: 2 | 3;
   body?: string[];
   bullets?: string[];
+  // Named points under the section, each an h3 with a short answer.
+  items?: DocItem[];
+  // A portrait or figure that belongs to the section's content.
+  image?: { src: string; alt: string };
+  // Outbound links shown under the copy, e.g. a founder's profiles.
+  links?: { href: string; label: string }[];
   specs?: { term: string; value: string }[];
   table?: DocTable;
   // Two opposed lists shown as side-by-side cards: is / is not, answers / declines.
@@ -21,6 +29,8 @@ export type DocSection = {
   // A sentence quoted verbatim from the app, with where it appears.
   quote?: { text: string; source: string };
 };
+
+export type DocItem = { heading: string; body: string };
 
 export type DocFaq = {
   question: string;

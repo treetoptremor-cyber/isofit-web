@@ -27,9 +27,14 @@ export function docToMarkdown(doc: PageDoc, { headingOffset = 0 }: { headingOffs
   out.push(doc.lede);
 
   for (const section of doc.sections) {
-    out.push(`${h(2)} ${section.heading}`);
+    out.push(`${h(section.level ?? 2)} ${section.heading}`);
     if (section.body) out.push(...section.body);
     if (section.bullets) out.push(section.bullets.map((bullet) => `- ${bullet}`).join("\n"));
+    if (section.image) out.push(`![${section.image.alt}](${absoluteUrl(section.image.src)})`);
+    if (section.links) out.push(section.links.map((link) => `- [${link.label}](${link.href})`).join("\n"));
+    for (const item of section.items ?? []) {
+      out.push(`${h(3)} ${item.heading}`, item.body);
+    }
     if (section.specs) out.push(section.specs.map((spec) => `- **${spec.term}:** ${spec.value}`).join("\n"));
     if (section.table) out.push(tableToMarkdown(section.table));
     for (const column of section.columns ?? []) {
