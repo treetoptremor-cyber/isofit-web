@@ -1,7 +1,7 @@
 # Isofit Consumer Health Data Privacy Policy
 
-**Version:** 1.1
-**Effective Date:** September 16, 2026
+**Version:** 1.2
+**Effective Date:** September 24, 2026
 **Applies to:** Everyone who uses Isofit. This policy is written to meet the Washington My Health My Data Act and Nevada's consumer health data law (SB 370), and it supplements our [Privacy Policy](/privacy).
 **Contact:** privacy@isofit.app
 
@@ -18,6 +18,7 @@ We do not sell consumer health data. We do not use it for advertising. Our AI pr
 Consumer health data is personal information that is linked or reasonably linkable to you and that identifies your past, present, or future physical or mental health status. In Isofit that includes:
 
 - **Workouts you log:** Activity sessions, exercises, sets, reps, weight, RPE (rate of perceived exertion), session notes, and quick logs entered by text or voice.
+- **Voice input:** Recorded audio and transcripts from voice workout logging or Atlas dictation when they contain health or fitness information. Section 2 explains the processing for each feature.
 - **Injury, pain, and limitation details you share**, whether in your profile, a session note, or a conversation with Atlas.
 - **Atlas coaching conversations:** Messages to our AI coach, images or video you submit for form checks, voice transcriptions, and — if you opt in to personalization — the memory items Atlas keeps about your goals, injuries, and preferences.
 - **Apple Health data, if you connect it:** Workouts (type, time, duration, distance, average and maximum heart rate, active energy) and daily summaries (steps, exercise minutes, sleep duration, resting heart rate, walking and running distance).
@@ -30,10 +31,15 @@ Consumer health data is personal information that is linked or reasonably linkab
 | Category | Purposes |
 | --- | --- |
 | Workouts and quick logs | Keep your log; compute training analytics; determine $ISO earnings and streaks; with Atlas personalization opt-in, give Atlas context for coaching |
+| Voice input | Transcribe spoken input; create workout drafts for you to review before saving; compose Atlas message drafts for you to send |
 | Injury, pain, and limitation details | Shape your program and Atlas's coaching so it works around them |
 | Atlas conversations | Generate coaching responses; with personalization consent, build memory items that improve future coaching |
 | Apple Health data | Import workouts into your log; show your recent daily summaries; with Atlas personalization opt-in, give Atlas the same picture |
 | Derived insights | Show you your progress; with Atlas personalization opt-in, give Atlas context |
+
+Apple speech recognition runs on your device when supported and may otherwise process audio on Apple's servers. When you choose voice workout logging, the transcript is sent to Isofit and then to OpenAI to create a workout draft. If recognition is unavailable, fails, returns no text, or has low confidence, the recorded clip is sent to Isofit and then to OpenAI for transcription. You review the draft before saving it. This voice workout processing occurs whether or not Atlas personalization is enabled; you can use text entry instead.
+
+Atlas dictation places recognized text in a draft and does not send the audio to Isofit or OpenAI. Once you choose Send, that text is processed and stored like other Atlas messages.
 
 We also use technical and security data to keep the platform safe, as described in our Privacy Policy. We do not use consumer health data for advertising, and we do not sell it.
 
@@ -55,8 +61,10 @@ If we ever want to collect a new category of consumer health data, use it for a 
 
 The following service providers process consumer health data on our behalf, under contracts that limit them to providing their service to us:
 
-- **Supabase** hosts our database and authentication, so the data described above is stored with Supabase.
-- **OpenAI** receives your Atlas messages and form-check media and, when you have opted in to personalization, the training context described in our Privacy Policy, including Apple Health summaries, to generate Atlas's responses. Under OpenAI's API terms this data is not used to train OpenAI's models, and Isofit does not opt in to any such use.
+- **Supabase** hosts our backend, database, and authentication. It stores the health data saved to your account and processes voice workout transcripts and fallback recordings on their way to OpenAI.
+- **OpenAI** receives your Atlas messages and form-check media and, when you have opted in to personalization, the training context described in our Privacy Policy, including Apple Health summaries, to generate Atlas's responses. It also receives voice workout transcripts to create workout drafts and, in the fallback cases described in Section 2, recorded workout clips for transcription. This voice workout processing does not depend on Atlas personalization. Under OpenAI's API terms this data is not used to train OpenAI's models, and Isofit does not opt in to any such use.
+
+Voice features also use Apple Speech Recognition. Recognition runs on your device when supported; otherwise Apple may receive and process the audio on its servers.
 
 We do not share consumer health data with any other third party, except:
 
@@ -82,7 +90,7 @@ You can:
 
 ## 6. Security and Retention
 
-Consumer health data is encrypted in transit and at rest. It is retained as described in Section 8 of our Privacy Policy: with your account while it is active, and deleted when you delete your account, except the pseudonymized consent records noted there.
+Health data saved to your account is encrypted in transit and at rest. Saved workouts, Atlas messages, and other account data are retained as described in Section 8 of our Privacy Policy: with your account while it is active, and deleted when you delete your account, except the pseudonymized consent records noted there. Voice input is processed as described in Section 2.
 
 ---
 
@@ -100,4 +108,4 @@ We will update this policy when our practices change and update the effective da
 
 ---
 
-*End of Consumer Health Data Privacy Policy | Isofit | v1.1 | September 16, 2026*
+*End of Consumer Health Data Privacy Policy | Isofit | v1.2 | September 24, 2026*

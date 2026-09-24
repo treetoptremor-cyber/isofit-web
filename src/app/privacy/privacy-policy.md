@@ -1,7 +1,7 @@
 # Isofit Privacy Policy
 
-**Version:** 1.4
-**Effective Date:** September 16, 2026
+**Version:** 1.5
+**Effective Date:** September 24, 2026
 **Data Controller:** Isofit ltd.
 **Contact Email:** privacy@isofit.app
 **Governing Frameworks:** CCPA (California) | GDPR (EU, where applicable)
@@ -39,6 +39,7 @@ We collect the minimum data necessary to provide our services. The data we colle
 - **Account and Identity Data:** First name, last name, email address, username, display name, avatar image, and bio. Collected during account creation and profile setup.
 - **Preferences and Settings:** Timezone, measurement units (imperial or metric), default post visibility, notification preferences, and Atlas personalization opt-in.
 - **Workout and Training Data:** Activity sessions, exercises performed, sets, reps, weight, RPE (Rate of Perceived Exertion), session notes, and freeform quick logs entered via text or voice.
+- **Voice Input:** Audio recorded when you choose voice workout logging or Atlas dictation, and the resulting transcripts. Section 3 explains how each feature processes this input and when audio is sent to Apple or to Isofit and OpenAI.
 - **Atlas AI Conversations:** Messages you send to Atlas (our AI coach), including text messages, images submitted for form checks, and any voice transcriptions. If you opt in to Atlas personalization, Atlas also stores persistent memory items it learns about you over time — such as your goals, injuries, and preferences.
 - **Bonfire Community Content:** Posts, comments, reactions, and media (photos and videos) you share in Bonfire, our community feed. Includes your chosen Bonfire nickname.
 - **Payment and Subscription Information:** Apple processes App Store payments, and RevenueCat manages subscription status using a pseudonymous app user identifier and purchase receipts. Isofit does not store your credit card number, CVV, or full card details on our servers.
@@ -78,7 +79,8 @@ We do not collect or store:
 We process your data only where we have a valid basis. The purposes are as follows.
 
 - **Provide workout logging and training analytics.** Your workout data, quick logs, and training history are the core of the Isofit experience. Without this data, the app cannot function.
-- **Deliver Atlas AI coaching.** When you message Atlas, your message and the recent messages in that thread are used to generate a response. If you opt in to personalization, Atlas also receives your profile details, training insights, recent workout history, and the persistent memory items it has built from prior conversations, so it can provide personalized coaching.
+- **Process voice input.** Apple speech recognition processes audio on your device when supported and may otherwise process it on Apple's servers. When you choose voice workout logging, the transcript is sent to Isofit and then to OpenAI to create a workout draft. If speech recognition is unavailable, fails, returns no text, or has low confidence, the recorded clip is sent to Isofit and then to OpenAI for transcription. You review the workout draft before saving it. This processing occurs when you choose voice workout logging, whether or not Atlas personalization is enabled. You can use text entry instead.
+- **Deliver Atlas AI coaching.** Atlas dictation places the recognized text in a draft; it does not send the audio to Isofit or OpenAI. Once you choose Send, that text is processed and stored like other Atlas messages. When you message Atlas, your message and the recent messages in that thread are used to generate a response. If you opt in to personalization, Atlas also receives your profile details, training insights, recent workout history, and the persistent memory items it has built from prior conversations, so it can provide personalized coaching.
 - **Operate the $ISO economy.** Your workout logs, streak activity, and membership tier determine your $ISO earnings. Spending, redemptions, and balance tracking require ledger data.
 - **Power the Bonfire community.** Posts, comments, reactions, and media you share are displayed to other members. Moderation systems process content to maintain community standards.
 - **Generate training insights.** Your workout history is used to identify training trends and, if you opt in to Atlas personalization, to give Atlas coaching context. If you also connect Apple Health, Atlas can use your recent daily summaries. This data is never used to train AI models.
@@ -155,9 +157,10 @@ We use the following service providers to deliver Isofit. All are bound by their
 - **Supabase:** Backend infrastructure, database hosting, user authentication, and real-time features.
 - **Google:** Provides optional Google Sign-In for account authentication. If you choose it, Google processes your sign-in and shares the account information you authorize with Isofit, subject to Google's own privacy policy.
 - **Apple App Store:** Processes in-app membership purchases in the iOS app. Apple handles all payment data directly under its own privacy policy; Isofit never sees your payment details.
+- **Apple Speech Recognition:** Transcribes voice input for workout logging and Atlas dictation. Recognition runs on your device when supported; otherwise, Apple may receive and process the audio on its servers.
 - **RevenueCat:** Manages in-app subscription state (which plan you hold and whether it is active). Receives a pseudonymous app user identifier and purchase receipts — never your name, health data, or payment details.
 - **Apple Weather (WeatherKit) and Open-Meteo:** Provide the current-conditions line shown in the app header. Receive the coarse location you chose for weather (a zip code, your device location if you enabled it, or a city inferred from your timezone) — never your identity or health data.
-- **OpenAI:** Processes Atlas AI coaching requests. Your message content, and your training context if you have opted in to personalization, are sent to OpenAI's API to generate responses. Under OpenAI's API terms, data submitted through the API is not used to train OpenAI's models by default; Isofit does not opt in to any such data sharing.
+- **OpenAI:** Processes Atlas AI coaching requests. Your message content, and your training context if you have opted in to personalization, are sent to OpenAI's API to generate responses. OpenAI also receives voice workout transcripts to create workout drafts and, in the fallback cases described in Section 3, recorded workout clips for transcription. Voice workout processing does not depend on Atlas personalization. Under OpenAI's API terms, data submitted through the API is not used to train OpenAI's models by default; Isofit does not opt in to any such data sharing.
 - **Resend:** Delivers transactional emails. Receives your email address only.
 - **Apple Push Notification service (APNs):** Delivers push notifications to your iOS device. Receives a device-specific push token, not your personal information.
 
@@ -270,4 +273,4 @@ If you are a California resident, you may have additional rights under the CCPA.
 
 ---
 
-*End of Privacy Policy | Isofit | v1.4 | September 16, 2026*
+*End of Privacy Policy | Isofit | v1.5 | September 24, 2026*
