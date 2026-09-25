@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Unbounded } from "next/font/google";
 
 import JsonLd from "@/components/marketing/json-ld";
+import { HOME_SOCIAL_IMAGE } from "@/lib/metadata";
 import { SITE } from "@/lib/site";
 import "./globals.css";
 
@@ -24,12 +25,12 @@ export const metadata: Metadata = {
     siteName: SITE.name,
     type: "website",
     locale: "en_US",
-    images: [{ url: "/og.png", width: 1200, height: 630, alt: "Isofit" }],
+    images: [HOME_SOCIAL_IMAGE],
   },
   twitter: {
     card: "summary_large_image",
     site: SITE.xHandle,
-    images: ["/og.png"],
+    images: [HOME_SOCIAL_IMAGE],
   },
 };
 

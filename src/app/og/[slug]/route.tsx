@@ -2,6 +2,7 @@ import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { ImageResponse } from "next/og";
 
+import HomeSocialImage from "@/components/marketing/home-social-image";
 import { ALL_DOCS } from "@/content";
 import { ogSlug } from "@/lib/metadata";
 import { SITE } from "@/lib/site";
@@ -19,16 +20,19 @@ export async function GET(_request: Request, { params }: { params: Promise<{ slu
   const doc = ALL_DOCS.find((candidate) => ogSlug(candidate.path) === slug);
   if (!doc) return new Response("Not found", { status: 404 });
 
-  const [bold, medium, logo] = await Promise.all([
+  const [bold, medium, logo, bodyGraph] = await Promise.all([
     readFile(join(process.cwd(), "src/app/fonts/Unbounded-Bold.ttf")),
     readFile(join(process.cwd(), "src/app/fonts/Unbounded-Medium.ttf")),
     readFile(join(process.cwd(), "public/iso-logo.png")),
+    doc.path === "/" ? readFile(join(process.cwd(), "public/screenshots/body-graph.png")) : null,
   ]);
   const logoSrc = `data:image/png;base64,${logo.toString("base64")}`;
   const minor = 40;
 
   return new ImageResponse(
-    (
+    bodyGraph ? (
+      <HomeSocialImage logoSrc={logoSrc} bodyGraphSrc={`data:image/png;base64,${bodyGraph.toString("base64")}`} />
+    ) : (
       <div
         style={{
           width: "100%",
