@@ -5,7 +5,6 @@ import { ImageResponse } from "next/og";
 import HomeSocialImage from "@/components/marketing/home-social-image";
 import { ALL_DOCS } from "@/content";
 import { ogSlug } from "@/lib/metadata";
-import { SITE } from "@/lib/site";
 
 export const dynamicParams = false;
 
@@ -62,7 +61,7 @@ export async function GET(_request: Request, { params }: { params: Promise<{ slu
             {["#8f9868", "#c2a55e", "#d48f56", "#b8623a", "#9a4527"].map((color) => (
               <div key={color} style={{ width: 34, height: 14, borderRadius: 7, backgroundColor: color }} />
             ))}
-            <div style={{ display: "flex", marginLeft: 12 }}>iOS · {SITE.launchDateLong}</div>
+            <div style={{ display: "flex", marginLeft: 12 }}>iPhone + web · Coming soon</div>
           </div>
         </div>
       </div>

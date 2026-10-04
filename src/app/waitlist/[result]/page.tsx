@@ -8,7 +8,7 @@ import { SITE } from "@/lib/site";
 // Where a waitlist submission lands when JavaScript is off. With it on, the
 // form reports its result in place and nobody sees these pages.
 const RESULTS: Record<string, { title: string; body: string; retry: boolean }> = {
-  ok: { title: "You are on the list.", body: `We will email you once, when Isofit is in the App Store. The iOS launch is planned for ${SITE.launchDateLong}.`, retry: false },
+  ok: { title: "You are on the list.", body: `We will email you once, when Isofit launches. ${SITE.launchStatus}`, retry: false },
   already: { title: "You are already on the list.", body: "That email address has already joined. There is nothing more to do.", retry: false },
   missing: { title: "We need an email address.", body: "Please go back and enter your email address.", retry: true },
   invalid: { title: "That email address does not look right.", body: "Please go back and check it.", retry: true },

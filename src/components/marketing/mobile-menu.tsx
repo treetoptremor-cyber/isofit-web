@@ -4,9 +4,10 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useId, useRef, useState } from "react";
 
+import WebAppLink from "@/components/marketing/web-app-link";
 import { PRIMARY_NAV, SITE } from "@/lib/site";
 
-// The phone menu: six full-width rows and the waitlist button. It closes on a
+// The phone menu: navigation rows and app/waitlist buttons. It closes on a
 // tap outside, on Escape, and when the route changes.
 export default function MobileMenu({ waitlistHref }: { waitlistHref: string }) {
   const panelId = useId();
@@ -35,7 +36,7 @@ export default function MobileMenu({ waitlistHref }: { waitlistHref: string }) {
   }, [open]);
 
   return (
-    <div ref={root} className="md:hidden">
+    <div ref={root} className="lg:hidden">
       <button
         type="button"
         aria-expanded={open}
@@ -66,17 +67,12 @@ export default function MobileMenu({ waitlistHref }: { waitlistHref: string }) {
               </Link>
             </li>
           ))}
-          <li>
-            <Link href="/login" prefetch={false} className="flex min-h-12 items-center justify-between text-[1.0625rem] font-medium">
-              Log in
-              <span aria-hidden="true" className="text-ink-3">→</span>
-            </Link>
-          </li>
         </ul>
+        <WebAppLink className="mt-3 w-full" />
         <Link href={waitlistHref} className="mt-3 flex min-h-12 items-center justify-center rounded-xl bg-forest px-3 font-semibold text-white">
           Join the waitlist
         </Link>
-        <p className="label pt-3">iOS · {SITE.launchDateLong}</p>
+        <p className="label pt-3">{SITE.launchStatus}</p>
       </nav>
     </div>
   );

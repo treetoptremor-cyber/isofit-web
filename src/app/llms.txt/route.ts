@@ -12,7 +12,7 @@ export function GET() {
     "",
     `> ${HOME_DOC.lede}`,
     "",
-    `Status: not yet released. iOS launch planned ${SITE.launchDateLong}. Facts on this site were last reviewed ${SITE.factsReviewedLong}.`,
+    `Status: not yet released. ${SITE.launchStatus} Facts on this site were last reviewed ${SITE.factsReviewedLong}.`,
     `Contact: ${SITE.supportEmail}. Full text of every page in one file: ${SITE.url}/llms-full.txt`,
     "",
     "## Pages",

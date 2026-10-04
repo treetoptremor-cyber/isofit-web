@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import MobileMenu from "@/components/marketing/mobile-menu";
+import WebAppLink from "@/components/marketing/web-app-link";
 import { PRIMARY_NAV } from "@/lib/site";
 
 export function LogoLockup() {
@@ -25,17 +26,15 @@ export default function SiteHeader({ waitlistHref = "/#waitlist" }: { waitlistHr
       <header className="relative sticky top-0 z-[120] border-b border-rule bg-paper/90 backdrop-blur">
         <div className="mx-auto flex w-full max-w-[1120px] items-center justify-between gap-3 px-4 py-2 sm:px-6 sm:py-2.5">
           <LogoLockup />
-          <nav aria-label="Main" className="hidden items-center gap-7 text-[0.9375rem] font-medium text-ink-2 md:flex">
+          <nav aria-label="Main" className="hidden items-center gap-7 text-[0.9375rem] font-medium text-ink-2 lg:flex">
             {PRIMARY_NAV.map((item) => (
               <Link key={item.href} href={item.href} className="inline-flex min-h-11 items-center transition-colors hover:text-ink">
                 {item.label}
               </Link>
             ))}
           </nav>
-          <div className="hidden items-center gap-1 md:flex">
-            <Link href="/login" className="inline-flex min-h-11 items-center px-3 text-[0.9375rem] font-medium text-ink-2 transition-colors hover:text-ink">
-              Log in
-            </Link>
+          <div className="hidden items-center gap-2 lg:flex">
+            <WebAppLink compact />
             <Link
               href={waitlistHref}
               className="inline-flex min-h-11 items-center justify-center rounded-xl bg-forest px-4 text-[0.9375rem] font-semibold text-white transition-colors hover:bg-forest-dark"

@@ -12,7 +12,7 @@ export const FAQ_GROUPS: FaqGroup[] = [
       {
         question: "What is Isofit?",
         answer: [
-          "Isofit is a workout logging app for iPhone. You record training by tapping, typing or speaking, a body graph shows which muscles that work reached, and Atlas, a built-in AI coach, answers questions about your training. It also has Bonfire, a members-only community feed.",
+          "Isofit is a workout tracker coming soon to iPhone and the web. You record training by tapping, typing or speaking, a body graph shows which muscles that work reached, and Atlas, a built-in personal AI fitness coach, answers questions about your training. It also has Bonfire, a members-only community feed.",
         ],
       },
       {
@@ -27,11 +27,11 @@ export const FAQ_GROUPS: FaqGroup[] = [
       },
       {
         question: "What devices does Isofit support?",
-        answer: ["iPhone running iOS 17.6 or later. There is no iPad, Apple Watch, Android or web version."],
+        answer: ["Isofit is coming soon to iPhone (iOS 17.6 or later) and the web. Neither app is available yet. There are no native iPad, Apple Watch or Android apps."],
       },
       {
         question: "When will Isofit launch?",
-        answer: [`The iOS launch is planned for ${SITE.launchDateLong}. Isofit is not in the App Store yet.`],
+        answer: [`${SITE.launchStatus} Neither app is available yet. Join the waitlist for a heads-up when Isofit launches.`],
       },
     ],
   },
@@ -220,7 +220,7 @@ export const FAQ_DOC: PageDoc = {
   metaDescription:
     "Direct answers about Isofit: what it is, what it costs, how logging works, what Atlas sees, whether it works with Apple Health, and how your data is handled.",
   h1: "Frequently asked questions about Isofit.",
-  lede: `Isofit is a workout logger for iPhone with a muscle-by-muscle body graph and an AI coach called Atlas. Logging is free, Pro is planned at ${PRICING.proMonthly} a month, and the iOS launch is planned for ${SITE.launchDateLong}. The answers below cover the product, pricing, privacy and Apple Health.`,
+  lede: `Isofit is a workout tracker with a muscle-by-muscle body graph and an AI coach called Atlas. ${SITE.launchStatus} Logging is free, and Pro is planned at ${PRICING.proMonthly} a month. The answers below cover the product, pricing, privacy and Apple Health.`,
   sections: [],
   faqs: FAQ_GROUPS.flatMap((group) => group.faqs),
   related: ["/features", "/pricing", "/compare", "/about"],

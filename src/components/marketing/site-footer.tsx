@@ -31,10 +31,10 @@ export default function SiteFooter() {
         <div className="col-span-2 md:col-span-1">
           <LogoLockup />
           <p className="mt-3 max-w-[30ch] text-[0.9375rem] leading-relaxed text-ink-2">
-            A workout logger for iPhone with a muscle-by-muscle body graph and an AI coach.
+            A workout tracker with a muscle-by-muscle body graph and a personal AI fitness coach.
           </p>
           <p className="label mt-5">
-            iOS launch planned <time dateTime={SITE.launchDate}>{SITE.launchDateLong}</time>
+            {SITE.launchStatus}
           </p>
         </div>
         {COLUMNS.map((column) => (

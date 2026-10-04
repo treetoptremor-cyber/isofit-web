@@ -352,14 +352,14 @@ export function WaitlistBand({ source, id = "waitlist" }: { source: string; id?:
         <div className="relative grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,30rem)] lg:items-center">
           <div>
             <p className="label !text-paper/80">
-              iOS launch planned <time dateTime={SITE.launchDate}>{SITE.launchDateLong}</time>
+              {SITE.launchStatus}
             </p>
             {/* A slogan, not a topic: kept out of the heading outline. */}
             <p id={`${id}-heading`} className="mt-3 font-display text-[clamp(1.75rem,4vw,2.75rem)] font-bold leading-[1.08] tracking-[-0.03em] text-white">
               Your workouts, <span className="text-sky">working for you.</span>
             </p>
             <p className="mt-4 max-w-[46ch] text-[1.0625rem] leading-relaxed text-paper/85">
-              Isofit is not in the App Store yet. Join the waitlist and we will email you once, when it is.
+              Both apps are coming soon. Join the waitlist and we will email you once, when Isofit launches.
             </p>
             <dl className="mt-8 grid max-w-[34rem] grid-cols-2 gap-x-8 gap-y-5 border-t border-paper/20 pt-6 sm:grid-cols-3">
               {[

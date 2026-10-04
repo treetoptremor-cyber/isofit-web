@@ -26,7 +26,7 @@ function versusDoc(competitor: Competitor): PageDoc {
     metaTitle: `Isofit vs ${name}: an honest workout app comparison`,
     metaDescription: `How Isofit and ${name} differ on logging, muscle tracking, AI coaching, community, Apple Health, platforms and price, with sources, and who should pick which.`,
     h1: `Isofit vs ${name}: which workout app fits how you train?`,
-    lede: `${competitor.summary} Isofit is a workout logger for iPhone that takes workouts by tap, typed line or voice, shows the muscles your sets reached on a body graph, and includes Atlas, an AI coach that can read your log. ${name} is released and established; Isofit is pre-release, with an iOS launch planned for ${SITE.launchDateLong}. The short version: pick ${name} if ${competitor.chooseThem[0].replace(/^You /, "you ").replace(/\.$/, "")}; pick Isofit if you want plain-language logging and a coach built into the app, on iPhone.`,
+    lede: `${competitor.summary} Isofit is a workout tracker that takes workouts by tap, typed line or voice, shows the muscles your sets reached on a body graph, and includes Atlas, an AI coach that can read your log. ${name} is released and established; Isofit is pre-release. ${SITE.launchStatus} The short version: pick ${name} if ${competitor.chooseThem[0].replace(/^You /, "you ").replace(/\.$/, "")}; pick Isofit if you want plain-language logging and a coach built into the app.`,
     sections: [
       {
         id: "side-by-side",
@@ -69,7 +69,7 @@ function versusDoc(competitor: Competitor): PageDoc {
       },
       {
         question: `Is Isofit available now, like ${name}?`,
-        answer: [`No. ${name} is available today. Isofit is pre-release, with an iOS launch planned for ${SITE.launchDateLong}.`],
+        answer: [`No. ${name} is available today. Isofit is pre-release. ${SITE.launchStatus}`],
       },
     ],
     related: ["/compare", ...COMPETITORS.filter((other) => other.slug !== competitor.slug).map((other) => `/compare/isofit-vs-${other.slug}`), "/pricing"].slice(0, 6),
@@ -111,7 +111,7 @@ export const COMPARE_DOC: PageDoc = {
       heading: "Where the other apps are the better choice",
       bullets: [
         "All four are released, established and available today. Isofit is pre-release.",
-        "All four support Android and a smartwatch. Isofit is iPhone only.",
+        "All four support Android and a smartwatch. Isofit's iPhone and web apps are coming soon; there are no native Android or smartwatch apps.",
         "Hevy, Strong and Fitbod advertise exercise demonstration animations or videos, and JEFIT lists the largest library at 1,400+ exercises.",
         "Fitbod and JEFIT will generate the workout for you. Isofit records the workout you chose, though Atlas can write a program on Pro.",
         "Hevy and Strong list lower prices than Isofit Pro, and Hevy lists a one-time lifetime price.",
@@ -140,7 +140,7 @@ export const COMPARE_DOC: PageDoc = {
     },
     {
       question: "Which of these apps work on Android?",
-      answer: [`${ALL_NAMES} all list Android support. Isofit is iPhone only.`],
+      answer: [`${ALL_NAMES} all list Android support. Isofit has no native Android app; its iPhone and web apps are both coming soon.`],
     },
   ],
   related: [...COMPETITORS.map((competitor) => `/compare/isofit-vs-${competitor.slug}`), "/features", "/pricing"],

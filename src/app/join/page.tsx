@@ -24,11 +24,11 @@ export default function JoinPage() {
           A friend wants you training on Isofit.
         </h1>
         <p className="mt-5 max-w-[56ch] text-lg leading-relaxed text-ink-2">
-          Isofit is an iOS strength-training app: a fast set-by-set logger, a body
+          Isofit is a workout tracker: a fast set-by-set logger, a body
           graph that shows where your training actually lands, and Atlas, a
-          coach that reads your real history. The iOS launch is planned for{" "}
-          {SITE.launchDateLong} — join the waitlist below and we will email you
-          once, when it is in the App Store.
+          personal AI fitness coach that reads your workout history with your permission.{" "}
+          {SITE.launchStatus} Join the waitlist below and we will email you
+          once, when Isofit launches.
         </p>
         <Suspense fallback={null}>
           <JoinReferral />

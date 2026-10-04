@@ -9,11 +9,11 @@ import { SITE } from "@/lib/site";
 export const HOME_DOC: PageDoc = {
   path: "/",
   name: "Isofit",
-  metaTitle: "Isofit: workout logger for iPhone with a body graph and AI coach",
+  metaTitle: "Isofit | Workout Tracker & AI Coach — Coming Soon",
   metaDescription:
-    "Isofit is a workout logger for iPhone. Log by tapping, typing or talking, see which muscles your training reaches, and ask Atlas, an AI coach that reads your log. iOS launch planned October 1, 2026.",
-  h1: "See what your training adds up to.",
-  lede: "Isofit logs your workouts by tap, text or voice and shows where your working sets go. Ask Atlas about your training history once you turn on personalization.",
+    "Track workouts by tap, text or voice, visualize your training by muscle, and meet Atlas, Isofit’s AI fitness coach. Coming soon to iPhone and the web.",
+  h1: "Put your workouts to work.",
+  lede: "Isofit is a workout tracker that helps you make sense of your training. Log by tap, text or voice, and see which muscles you’re working—and which you might be overlooking. Meet Atlas, Isofit’s built-in personal AI fitness coach. With your permission, Atlas reads your workout history to help you review sessions and plan what’s next.",
   sections: [
     {
       id: "at-a-glance",
@@ -21,11 +21,11 @@ export const HOME_DOC: PageDoc = {
       heading: "Isofit at a glance",
       specs: [
         { term: "What it is", value: "A workout logger with a muscle-by-muscle body graph, an AI coach and a members-only community." },
-        { term: "Platform", value: "iPhone, iOS 17.6 or later. No iPad, Apple Watch, Android or web app." },
+        { term: "Platform", value: "iPhone (iOS 17.6 or later) and web app, both coming soon." },
         { term: "Price", value: `Logging is free. Pro is planned at ${PRICING.proMonthly} a month or ${PRICING.proYearly} a year (USD).` },
         { term: "Exercise library", value: `500+ exercises across ${ACTIVITY_SCOPE}, plus add unlimited custom exercises.` },
         { term: "Apple Health", value: "Optional and free. Isofit reads from Apple Health and never writes to it." },
-        { term: "Status", value: `Pre-release. iOS launch planned ${SITE.launchDateLong}.` },
+        { term: "Status", value: `Pre-release. ${SITE.launchStatus}` },
       ],
     },
     {
@@ -94,7 +94,7 @@ export const HOME_DOC: PageDoc = {
     {
       question: "What is Isofit?",
       answer: [
-        "Isofit is a workout logging app for iPhone. You record training by tapping, typing or speaking, and the app shows which muscles that training reached on a front and back body graph. It includes Atlas, an AI coach that can read your log, and Bonfire, a members-only community feed.",
+        "Isofit is a workout tracker coming soon to iPhone and the web. You record training by tapping, typing or speaking, and the app shows which muscles that training reached on a front and back body graph. It includes Atlas, a personal AI fitness coach that can read your workout history with your permission, and Bonfire, a members-only community feed.",
       ],
     },
     {
@@ -105,13 +105,13 @@ export const HOME_DOC: PageDoc = {
       link: { href: "/pricing", label: "See what each tier includes" },
     },
     {
-      question: "Is Isofit available on Android or Apple Watch?",
-      answer: ["No. Isofit is built for iPhone running iOS 17.6 or later. There is no Android, iPad, Apple Watch or web version."],
+      question: "Which platforms is Isofit coming to?",
+      answer: ["Isofit is coming soon to iPhone (iOS 17.6 or later) and the web. Neither app is available yet. There are no native Android, iPad or Apple Watch apps."],
     },
     {
       question: "When does Isofit launch?",
       answer: [
-        `The iOS launch is planned for ${SITE.launchDateLong}. Isofit is not in the App Store yet. Joining the waitlist gets you one email when it is available.`,
+        `${SITE.launchStatus} Neither app is available yet. Joining the waitlist gets you one email when Isofit launches.`,
       ],
     },
   ],

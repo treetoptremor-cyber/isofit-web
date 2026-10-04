@@ -29,7 +29,7 @@ export default function HomeSocialImage({ logoSrc, bodyGraphSrc }: { logoSrc: st
       </div>
 
       <div style={{ position: "absolute", top: 132, left: 64, display: "flex", fontSize: 15, fontWeight: 500, letterSpacing: 1.6, color: "#526b46" }}>
-        WORKOUT TRACKING FOR IPHONE
+        WORKOUT TRACKER & AI FITNESS COACH
       </div>
 
       <div style={{ position: "absolute", top: 180, left: 60, width: COPY_WIDTH - 100, display: "flex", flexDirection: "column", fontSize: 54, lineHeight: 1.18, fontWeight: 700, letterSpacing: -2.5 }}>
@@ -40,7 +40,7 @@ export default function HomeSocialImage({ logoSrc, bodyGraphSrc }: { logoSrc: st
 
       <div style={{ position: "absolute", top: 407, left: 64, width: COPY_WIDTH - 120, display: "flex", flexDirection: "column", gap: 12, fontSize: 22, lineHeight: 1.45, fontWeight: 500, color: "#4a423b" }}>
         <div style={{ display: "flex" }}>Log by tap, text or voice.</div>
-        <div style={{ display: "flex", flexWrap: "wrap" }}>Get guidance from Atlas, your AI coach.</div>
+        <div style={{ display: "flex", flexWrap: "wrap" }}>Meet Atlas, your personal AI fitness coach.</div>
       </div>
 
       <div style={{ position: "absolute", bottom: 44, left: 64, width: COPY_WIDTH - 128, display: "flex", alignItems: "center", justifyContent: "space-between", borderTop: "1px solid rgba(42,36,32,0.18)", paddingTop: 20 }}>
@@ -48,7 +48,7 @@ export default function HomeSocialImage({ logoSrc, bodyGraphSrc }: { logoSrc: st
           <div style={{ display: "flex" }}>isofit.app</div>
           <svg width="24" height="20" viewBox="0 0 26 22"><path d="M1 11h22M15 3l8 8-8 8" fill="none" stroke="#9a4527" strokeWidth="3" /></svg>
         </div>
-        <div style={{ display: "flex", fontSize: 16, fontWeight: 500, color: "#526b46" }}>Free workout logging</div>
+        <div style={{ display: "flex", fontSize: 16, fontWeight: 500, color: "#526b46" }}>iPhone + web · Coming soon</div>
       </div>
 
       <div style={{ position: "absolute", top: (HEIGHT - FRAME_HEIGHT) / 2, left: COPY_WIDTH + (ART_WIDTH - FRAME_WIDTH) / 2, width: FRAME_WIDTH, height: FRAME_HEIGHT, display: "flex", flexDirection: "column", alignItems: "center", borderRadius: 24, backgroundColor: "#f8f5ee", border: "1px solid rgba(42,36,32,0.2)", boxShadow: "0 16px 32px rgba(42,36,32,0.2)", overflow: "hidden" }}>

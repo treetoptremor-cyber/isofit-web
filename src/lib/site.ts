@@ -4,6 +4,7 @@
 export const SITE = {
   name: "Isofit",
   url: "https://isofit.app",
+  webAppUrl: "https://app.isofit.app",
   supportEmail: "support@isofit.app",
   privacyEmail: "privacy@isofit.app",
   xHandle: "@isofit_app",
@@ -22,8 +23,7 @@ export const SITE = {
     schools: ["Parsons School of Design, The New School", "Baruch College, Zicklin School of Business"],
   },
   supportResponse: "within 2 business days",
-  launchDate: "2026-10-01",
-  launchDateLong: "October 1, 2026",
+  launchStatus: "Coming soon to iPhone and the web.",
   // Bump when product facts on the marketing pages are re-verified.
   factsReviewed: "2026-09-23",
   factsReviewedLong: "September 23, 2026",

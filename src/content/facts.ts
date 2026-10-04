@@ -25,12 +25,12 @@ export const ISOFIT_BRIEF: Record<HubRowKey, string> = {
   muscles: "Body graph over 7, 30 or 90 days or all time (Pro).",
   coaching: "Atlas, an AI coach you chat with.",
   social: "Bonfire: members only, no follows or direct messages.",
-  platforms: "iPhone only, iOS 17.6 or later.",
+  platforms: "iPhone (iOS 17.6 or later) and web app, both coming soon.",
   price: `Free. Pro planned at ${PRICING.proMonthly} a month or ${PRICING.proYearly} a year.`,
 };
 
 export const ISOFIT_ROWS: Record<CompetitorRowKey, string> = {
-  platforms: "iPhone only, iOS 17.6 or later. No iPad, Apple Watch, Android or web app.",
+  platforms: "iPhone (iOS 17.6 or later) and web app, both coming soon. No native iPad, Apple Watch or Android apps.",
   logging:
     "Three ways into one structured log: tap in sets, reps, weight, distance, duration and RPE; type a Quicklog line such as \"bench 5x5 225lbs\"; or speak the workout and review the parsed draft before saving.",
   library: `500+ exercises covering ${ACTIVITY_SCOPE}, plus add unlimited custom exercises with your own muscle mapping.`,

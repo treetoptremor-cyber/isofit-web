@@ -99,7 +99,7 @@ export default function SignupPage() {
   return (
     <AuthShell
       title="Create your account"
-      subtitle={`The account you will use in the Isofit iPhone app. The iOS launch is planned for ${SITE.launchDateLong}.`}
+      subtitle={`Your Isofit account. ${SITE.launchStatus}`}
       footer={
         <p>
           Already have an account?{" "}

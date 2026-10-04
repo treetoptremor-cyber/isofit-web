@@ -17,9 +17,9 @@ const unbounded = Unbounded({
 // defaults for account, billing and legal routes.
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
-  title: { default: "Isofit: workout logger for iPhone", template: "%s" },
+  title: { default: "Isofit | Workout Tracker & AI Coach — Coming Soon", template: "%s" },
   description:
-    "Isofit is a workout logger for iPhone with a muscle-by-muscle body graph, an AI coach called Atlas, and a members-only community. iOS launch planned for October 1, 2026.",
+    `Isofit is a workout tracker with a muscle-by-muscle body graph, a personal AI fitness coach called Atlas, and a members-only community. ${SITE.launchStatus}`,
   applicationName: SITE.name,
   openGraph: {
     siteName: SITE.name,
@@ -48,7 +48,7 @@ const SITE_JSON_LD = [
     legalName: SITE.company,
     url: SITE.url,
     logo: `${SITE.url}/iso-logo.png`,
-    description: "Isofit ltd. publishes Isofit, a workout logger for iPhone with a muscle-by-muscle body graph, an AI coach and a members-only community.",
+    description: `Isofit ltd. is developing Isofit, a workout tracker with a muscle-by-muscle body graph, a personal AI fitness coach and a members-only community. ${SITE.launchStatus}`,
     email: SITE.supportEmail,
     founder: {
       "@type": "Person",

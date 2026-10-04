@@ -79,7 +79,7 @@ export const HOW_IT_WORKS: DocSection = {
   items: [
     {
       heading: "Join the waitlist",
-      body: `Isofit is not in the App Store yet. Leave an email address, and a first name if you like, and you get one email when the app launches, planned for ${SITE.launchDateLong}. Joining is free and does not commit you to a subscription.`,
+      body: `${SITE.launchStatus} Neither app is available yet. Leave an email address, and a first name if you like, and you get one email when Isofit launches. Joining is free and does not commit you to a subscription.`,
     },
     {
       heading: "Download it and sign in",
@@ -162,7 +162,7 @@ export const KEY_FACTS: DocSection = {
   heading: "Key facts about Isofit",
   specs: [
     { term: "Company name", value: `${SITE.company}, publisher of the Isofit app` },
-    { term: "Type", value: "Consumer mobile app: a workout logger for iPhone" },
+    { term: "Type", value: "Workout tracker with iPhone and web apps in development" },
     { term: "Founded", value: SITE.founded },
     {
       term: "Founder",
@@ -176,11 +176,11 @@ export const KEY_FACTS: DocSection = {
       term: "Features",
       value: "Workout logging by tap, typed Quicklog line or voice; body graph; Atlas AI coach; Bonfire community; read-only Apple Health import; JSON data export",
     },
-    { term: "Platform", value: "iPhone, iOS 17.6 or later. No iPad, Apple Watch, Android or web app." },
+    { term: "Platform", value: "iPhone (iOS 17.6 or later) and web app, both coming soon. No native iPad, Apple Watch or Android apps." },
     { term: "Exercise library", value: `500+ exercises across ${ACTIVITY_SCOPE}, plus add unlimited custom exercises` },
     { term: "Pricing", value: `Free tier for logging. Pro is planned at ${PRICING.proMonthly} a month or ${PRICING.proYearly} a year (USD, US App Store).` },
     { term: "Contract terms", value: "Monthly or yearly App Store subscription. No long-term contract; cancel any time in your Apple account settings." },
-    { term: "Status", value: `Pre-release. iOS launch planned ${SITE.launchDateLong}.` },
+    { term: "Status", value: `Pre-release. ${SITE.launchStatus}` },
     { term: "Support", value: `Email ${SITE.supportEmail}, answered ${SITE.supportResponse}. Privacy requests: ${SITE.privacyEmail}.` },
     { term: "Competitors", value: "Hevy, Strong, Fitbod and JEFIT" },
     { term: "Social", value: `Isofit: ${SITE.xHandle} on X. ${SITE.founder.name}: ${SITE.founder.xHandle} on X, and ${SITE.founder.linkedInUrl}` },

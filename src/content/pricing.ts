@@ -137,7 +137,7 @@ export const PRICING_DOC: PageDoc = {
     },
     {
       question: "Can I buy Isofit today?",
-      answer: [`Not yet. Isofit is pre-release, with the iOS launch planned for ${SITE.launchDateLong}. Joining the waitlist is free and carries no obligation to subscribe.`],
+      answer: [`Not yet. ${SITE.launchStatus} Joining the waitlist is free and carries no obligation to subscribe.`],
     },
   ],
   related: ["/features", "/features/body-graph", "/features/atlas", "/compare", "/faq"],
