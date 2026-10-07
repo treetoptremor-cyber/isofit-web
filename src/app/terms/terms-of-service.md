@@ -1,7 +1,7 @@
 # Isofit Terms of Service
 
-**Version:** 1.1
-**Effective Date:** September 16, 2026
+**Version:** 1.2
+**Effective Date:** October 7, 2026
 **Provider:** Isofit ltd.
 **Contact:** support@isofit.app
 
@@ -126,6 +126,14 @@ The Service — including its software, design, branding, exercise library, and 
 ## 11. Third-Party Services
 
 The Service depends on third-party services — including Apple for payments, RevenueCat for subscription management, the AI model providers identified in the Privacy Policy, and the optional Apple Health connection. Your use of a third-party service is governed by that party's own terms and privacy policy, and we are not responsible for third-party services.
+
+### 11.1 Using Isofit Through Muse
+
+If you use Isofit through Muse or another AI assistant provided by Meta, your use of that assistant is subject to Meta's terms, consents, and policies, which govern everything that happens within Meta's service. Isofit does not operate Muse and is not responsible for it. Workouts logged this way count toward your streak but do not earn $ISO. You can revoke the connection at any time from your Isofit account; revoking deletes the workouts logged through Muse from Isofit.
+
+### 11.2 Using Isofit Through ChatGPT
+
+If you use Isofit through ChatGPT, your use of ChatGPT is subject to OpenAI's terms, consents, and policies, which govern everything that happens within OpenAI's service. Isofit does not operate ChatGPT, is not affiliated with or endorsed by OpenAI, and is not responsible for ChatGPT. Workouts logged this way count toward your streak but do not earn $ISO. You can disconnect at any time from your Isofit account or in ChatGPT; disconnecting your last ChatGPT account deletes the workouts logged through ChatGPT from Isofit.
 
 ---
 
