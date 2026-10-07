@@ -129,7 +129,7 @@ The Service depends on third-party services — including Apple for payments, Re
 
 ### 11.1 Using Isofit Through Muse
 
-If you use Isofit through Muse or another AI assistant provided by Meta, your use of that assistant is subject to Meta's terms, consents, and policies, which govern everything that happens within Meta's service. Isofit does not operate Muse and is not responsible for it. Workouts logged this way count toward your streak but do not earn $ISO. You can revoke the connection at any time from your Isofit account; revoking your last Muse connection deletes the workouts logged through Muse from Isofit.
+If you use Isofit through Muse or another AI assistant provided by Meta, your use of that assistant is subject to Meta's terms, consents, and policies, which govern everything that happens within Meta's service. Isofit does not operate Muse and is not responsible for it. Workouts logged this way count toward your streak but do not earn $ISO. You can revoke the connection at any time from your Isofit account; revoking deletes the workouts logged through Muse from Isofit.
 
 ### 11.2 Using Isofit Through ChatGPT
 
