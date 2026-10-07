@@ -1,7 +1,7 @@
 # Isofit Privacy Policy
 
-**Version:** 1.5
-**Effective Date:** September 24, 2026
+**Version:** 1.6
+**Effective Date:** October 7, 2026
 **Data Controller:** Isofit ltd.
 **Contact Email:** privacy@isofit.app
 **Governing Frameworks:** CCPA (California) | GDPR (EU, where applicable)
@@ -172,6 +172,22 @@ We may disclose your data where required by law, court order, or regulatory auth
 
 Isofit does not sell, rent, or trade your personal information to any third party. We do not use your data for advertising or allow third-party advertisers to access your data. We do not use your fitness or health data to train AI models.
 
+If you use Isofit through Muse (Section 6.5), Meta's own policies govern what Meta does with that information, including any use to train its AI. If you use Isofit through ChatGPT (Section 6.6), OpenAI's own policies govern what OpenAI does with that information.
+
+### 6.5 Using Isofit Through Muse (Meta)
+
+You can choose to connect Isofit to Muse, an AI agent provided by Meta Platforms, Inc. When you use Isofit through Muse, everything you say to Muse, and everything Isofit sends back through it, is handled by Meta under Meta's own terms, privacy policies, and settings. Those govern how Meta collects, uses, keeps, and shares that information, including whether Meta uses it to train its AI, and they take precedence over this policy for anything Meta does. Isofit has no control over Meta's handling of your information. Review Meta's Muse Privacy Policy before connecting.
+
+This policy continues to govern the information Isofit itself receives through the connection (the workouts you log), which Isofit keeps in your Isofit account until you revoke the connection or delete your account. You can revoke Muse's access at any time from your Isofit account. Revoking your last Muse connection deletes the workouts logged through Muse that Isofit holds; it does not delete anything Meta already holds.
+
+### 6.6 Using Isofit Through ChatGPT (OpenAI)
+
+You can choose to connect Isofit to ChatGPT, provided by OpenAI. When you use Isofit through ChatGPT, everything you say to ChatGPT, and everything Isofit sends back through it, is handled by OpenAI under OpenAI's own terms, privacy policy, and your ChatGPT settings. Those govern how OpenAI collects, uses, keeps, and shares that information, including whether OpenAI uses it to improve its services, and they take precedence over this policy for anything OpenAI does. Isofit has no control over OpenAI's handling of your information. Review OpenAI's Privacy Policy before connecting.
+
+Some Isofit features in ChatGPT, such as searching exercises, work without connecting an Isofit account; Isofit does not store those requests.
+
+This policy continues to govern the information Isofit itself receives through the connection (the workouts you log), which Isofit keeps in your Isofit account until you disconnect ChatGPT or delete your account. You can disconnect ChatGPT at any time from your Isofit account (You → Connections) or in ChatGPT. Disconnecting your last ChatGPT account deletes the workouts logged through ChatGPT that Isofit holds; it does not delete anything OpenAI already holds.
+
 ---
 
 ## 7. Your Consent Controls
@@ -197,6 +213,7 @@ We retain your data only for as long as necessary to provide the service or as r
 - **Bonfire posts and comments:** Retained while your account is active. Content deleted by you or by moderation is removed according to our data cleanup schedule.
 - **Payment and billing records:** Retained as required by applicable financial regulations (typically up to 7 years).
 - **Security and audit logs:** Retained for a limited period for security and compliance purposes, then purged.
+- **Workouts logged through Muse or ChatGPT:** Retained with your account until you revoke or disconnect your last connection to that assistant, or delete your account; at that point Isofit deletes the workouts logged through it. Your connection keys are stored only as a one-way hash and are deleted when revoked.
 - **Apple Health data:** Workouts imported into your log and daily summaries are retained with your account data. Disconnecting Apple Health stops future syncs; data already imported remains part of your account data and is deleted with your account.
 - **Consent records:** When you grant or withdraw a consent — accepting the Terms, consenting to health-data processing, or opting in to Atlas personalization, for example — we record which consent, the version of the text you saw, when, and a hashed IP address and device identifier. We keep these records as evidence of consent, including after account deletion. On deletion the record is severed from your account and kept in pseudonymized form: your user ID is removed and only a salted one-way hash remains, which cannot be reversed to identify you.
 - **Account deletion:** When you delete your account, your personal data is deleted, except for the pseudonymized consent records described above and records retained as required by law. Anonymized, aggregated data that cannot identify you may be retained for platform analytics.
@@ -273,4 +290,4 @@ If you are a California resident, you may have additional rights under the CCPA.
 
 ---
 
-*End of Privacy Policy | Isofit | v1.5 | September 24, 2026*
+*End of Privacy Policy | Isofit | v1.6 | October 7, 2026*
