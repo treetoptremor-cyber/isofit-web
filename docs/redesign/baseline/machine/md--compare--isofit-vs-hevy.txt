@@ -1,0 +1,59 @@
+status 200
+content-type: text/markdown; charset=utf-8
+x-robots-tag: noindex, follow
+
+# Isofit vs Hevy: which workout app fits how you train?
+
+Source: https://isofit.app/compare/isofit-vs-hevy
+Facts last reviewed: 2026-09-23
+
+Hevy is a free workout tracker for iOS and Android built around reusable routines, structured set logging and a social feed of friends' workouts. Isofit is a workout tracker that takes workouts by tap, typed line or voice, shows the muscles your sets reached on a body graph, and includes Atlas, an AI coach that can read your log. Hevy is released and established; Isofit is pre-release. Coming soon to iPhone and the web. The short version: pick Hevy if you train with friends who already use Hevy and want a shared feed and leaderboards; pick Isofit if you want plain-language logging and a coach built into the app.
+
+## Isofit and Hevy compared
+
+Hevy column: as published by Hevy Studios S.L., read September 19, 2026.
+
+|  | Isofit | Hevy |
+| --- | --- | --- |
+| Platforms | iPhone (iOS 17.6 or later) and web app, both coming soon. No native iPad, Apple Watch or Android apps. | iOS, Android, Apple Watch, Wear OS and a web app. |
+| How you log | Three ways into one structured log: tap in sets, reps, weight, distance, duration and RPE; type a Quicklog line such as "bench 5x5 225lbs"; or speak the workout and review the parsed draft before saving. | Structured sets, reps and weight with warm-up, drop and failure sets, supersets, RPE and rest timers. Routines work as reusable templates. Free-text or voice logging is not advertised. |
+| Exercise library | 500+ exercises covering strength training, cardio, yoga, sports and martial arts, plus add unlimited custom exercises with your own muscle mapping. | 400+ exercises, each with a demonstration animation, plus custom exercises. |
+| Muscle view | A front and back body graph shaded by working sets per muscle over 7, 30 or 90 days or all time, with sets by muscle and most and least worked. It is explicitly not a recovery score. Pro feature. | A last-7-days body heat map, set counts per muscle group and a muscle distribution chart. |
+| AI and coaching | Atlas, an AI coach you talk to in chat. With your permission it reads your training history, and on Pro it writes programs and routines into your log. General fitness guidance, not medical advice. | Hevy Trainer (Pro) generates a program and suggests progressive overload; Hevy says these programs come from an algorithm and do not rely on AI. Separately, a Hevy app inside ChatGPT (tag @hevy in a ChatGPT conversation) reads your Hevy workout history, analyzes it, answers training questions and saves generated plans to your account. It is free to all Hevy users, and the chat happens in ChatGPT, not in the Hevy app (read September 23, 2026). |
+| Community | Bonfire, a members-only feed. A post is tied to a session you logged, limited to one a day, and visible to all members. No follows, groups or direct messages. | The home tab is a social feed with follows, likes, comments and leaderboards. Profiles can be switched to private. |
+| Apple Health | Optionally reads workouts and daily summaries from Apple Health on every tier. Does not write to Apple Health. | Connects to Apple Health and Health Connect with read and write permission. |
+| Activities covered | Logs strength training, cardio, yoga, sports and martial arts. | Strength first, with cardio and duration exercise types. |
+| Price | Free tier with logging, history and Apple Health import. Pro is planned at $14.99 monthly or $124.99 yearly (USD). | Free tier with unlimited workouts, 4 routines and 7 custom exercises. Pro is listed at $2.99 monthly, $23.99 yearly or $74.99 lifetime (USD). |
+| Data export | On-demand JSON export of your training, Atlas, account, health and social records. | Workout data export from settings, and CSV import from Strong. |
+
+## Choose Hevy if
+
+- You train with friends who already use Hevy and want a shared feed and leaderboards.
+- You need Android, Apple Watch, Wear OS or a web app today.
+- You want demonstration animations for every library exercise.
+- You want a low-cost or lifetime plan: Hevy lists Pro at $2.99 a month, $23.99 a year or $74.99 once.
+- You already use ChatGPT and want to chat about your training there, with your Hevy history connected.
+
+## Choose Isofit if
+
+- You want to log in plain language, typed or spoken, and not only by tapping in sets.
+- You want a coach built into the app you log with, one that reads your own training history and stays within training.
+- You train across disciplines, such as lifting plus running, yoga or martial arts, and want one log for all of it.
+- You use an iPhone and do not need a watch, tablet or Android app.
+- You want Apple Health read but never written to.
+
+## How this comparison was made
+
+Facts about Hevy come only from each company's own website, help center and store listings, read on September 19, 2026. Where a company does not state something, this page says "Not stated" and does not guess. Apps change and prices vary by region, so check each company's site for current details.
+
+Isofit's column describes the app as built for launch and was reviewed on September 23, 2026. Isofit is not released yet, so you cannot try the two side by side today.
+
+## Frequently asked questions
+
+### Is Isofit a good alternative to Hevy?
+
+It depends on what you want from a log. Isofit fits if you want to log in plain language, see sets per muscle on a body graph, and ask an AI coach about your own history, all on iPhone. Hevy fits better if you train with friends who already use Hevy and want a shared feed and leaderboards.
+
+### Is Isofit available now, like Hevy?
+
+No. Hevy is available today. Isofit is pre-release. Coming soon to iPhone and the web.

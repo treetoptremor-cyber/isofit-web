@@ -1,0 +1,56 @@
+status 200
+content-type: text/markdown; charset=utf-8
+x-robots-tag: noindex, follow
+
+# Everything Isofit does, in one place.
+
+Source: https://isofit.app/features
+Facts last reviewed: 2026-09-23
+
+Isofit has four parts, one per tab: a workout logger you can tap, type or talk to; a body graph of the muscles your logged sets reached; Atlas, an AI coach; and Bonfire, a members-only community feed.
+
+## Features by tier
+
+| Feature | What it does | Tier |
+| --- | --- | --- |
+| Workout logging | Record any session by tapping in sets, typing a Quicklog line or speaking. Routines, timers, history, offline queue. | Free |
+| Body graph | Front and back figure shaded by working sets per muscle over 7, 30 or 90 days or all time. | Pro (locked preview on Free) |
+| Atlas AI coach | Chat-based coaching that can read your log, review sessions and write programs. | Free: 10 Atlas messages a month. Pro: higher limits and programs |
+| Bonfire community | Members-only feed of posts tied to logged sessions, with kudos and comments. | Free to read and react. Pro to post |
+
+## Who Isofit is for
+
+Isofit is for adults 18 and over with an iPhone on iOS 17.6 or later. It is not the right fit if you need Android or a smartwatch, want the app to plan each workout for you, or want calorie tracking.
+
+- Lifters who log every set and find tapping through rows between sets too slow.
+- Hybrid athletes who mix lifting with running, yoga, sports or martial arts and want one log instead of one app per sport.
+- People who want to see which muscles they have neglected over the last 7, 30 or 90 days.
+- People training without a coach who want answers drawn from their own training history, not a generic plan.
+- Hevy and Strong users who want typed or voice logging and a coach they can chat with.
+- People who want their log private by default, with a feed they post to only when they choose.
+
+## What else ships in the app
+
+- **Exercise library:** 500+ exercises across strength training, cardio, yoga, sports and martial arts, plus add unlimited custom exercises. Create one for anything missing and Isofit maps it to muscles.
+- **Apple Health import:** Optional and free. Imports workouts, and shows daily steps, exercise minutes, sleep, resting heart rate and distance. Read-only: Isofit never writes to Apple Health.
+- **Routines:** Save a finished session as a routine, favorite it, and load it onto the board next time. Programs Atlas writes land in the same list.
+- **History:** Every past session, open on every tier. Edit old sets, delete a session, or backdate one you forgot to log.
+- **Streaks:** A day streak on the Log tab, judged by your own local date, with one automatic streak freeze a month.
+- **$ISO:** In-app points earned by logging and spent on small actions such as Bonfire kudos, comments and voice logs. $ISO has no cash value and is not money.
+- **SITREP (weekly training review):** On Pro, Atlas writes a Monday review of your training week that you can open and discuss.
+- **Appearance:** Light, dark or match the system.
+- **Sign-in:** Sign in with Apple, Google, or email and password.
+- **Your data:** On-demand JSON export and in-app account deletion with a seven-day grace period.
+
+## What Isofit does not have
+
+Knowing what an app lacks is as useful as knowing what it has. As of this page's review date, Isofit has:
+
+- No native Android, iPad or Apple Watch apps. The iPhone and web apps are both coming soon.
+- No writing to Apple Health.
+- No home-screen widgets.
+- No personal-record tracking.
+- No video posts in Bonfire, and no follows, groups or direct messages.
+- No meal, calorie or macro tracking.
+- No recovery or readiness score.
+- No medical or diagnostic features. Atlas gives general fitness guidance.
