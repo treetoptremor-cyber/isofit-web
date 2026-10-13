@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 
-import DocSections from "@/components/marketing/doc-sections";
+import DocSections, { type Chip } from "@/components/marketing/doc-sections";
 import JsonLd from "@/components/marketing/json-ld";
 import { CONTAINER, FaqList, PageHero, PageShell, Section, WaitlistBand, faqJsonLd, type Crumb } from "@/components/marketing/primitives";
 import { DOCS_BY_PATH } from "@/content";
@@ -61,6 +61,7 @@ export default function DocPage({
   media,
   wide,
   replace,
+  chips,
   lead,
   children,
   extraJsonLd = [],
@@ -71,6 +72,7 @@ export default function DocPage({
   media?: Record<string, ReactNode>;
   wide?: Record<string, ReactNode>;
   replace?: Record<string, ReactNode>;
+  chips?: Record<string, Chip[]>;
   // Rendered between the hero and the doc sections.
   lead?: ReactNode;
   // Rendered between the doc sections and the FAQ.
@@ -82,7 +84,7 @@ export default function DocPage({
       <JsonLd data={[webPageJsonLd(doc), ...(doc.faqs?.length ? [faqJsonLd(doc.faqs)] : []), ...extraJsonLd]} />
       <PageHero trail={trail} title={doc.h1} lede={doc.lede} aside={aside} />
       {lead}
-      <DocSections sections={doc.sections} media={media} wide={wide} replace={replace} />
+      <DocSections sections={doc.sections} media={media} wide={wide} replace={replace} chips={chips} />
       {children}
       {doc.faqs?.length ? (
         <Section id="faq" label="Questions" title={`${doc.name}: frequently asked questions`}>

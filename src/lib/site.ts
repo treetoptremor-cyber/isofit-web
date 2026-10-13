@@ -24,6 +24,8 @@ export const SITE = {
   },
   supportResponse: "within 2 business days",
   launchStatus: "Coming soon to iPhone and the web.",
+  // Homepage hero only: the web app is live, the iPhone app is not. Everything else still reads launchStatus.
+  heroStatus: "Coming soon to iOS.",
   // Bump when product facts on the marketing pages are re-verified.
   factsReviewed: "2026-09-23",
   factsReviewedLong: "September 23, 2026",

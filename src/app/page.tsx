@@ -5,7 +5,7 @@ import Link from "next/link";
 import { ReviewedNote, webPageJsonLd } from "@/components/marketing/doc-page";
 import IsoGrid from "@/components/marketing/iso-grid";
 import JsonLd from "@/components/marketing/json-ld";
-import { CONTAINER, Device, FaqList, PageShell, Plate, Portrait, ProTag, Section, TextLink, WaitlistBand, faqJsonLd, withAtlas } from "@/components/marketing/primitives";
+import { CONTAINER, Device, FaqList, HeatRibbon, PageShell, Plate, Portrait, ProTag, Section, TextLink, WaitlistBand, faqJsonLd, withAtlas } from "@/components/marketing/primitives";
 import { HeatLegend } from "@/components/marketing/quicklog-demo";
 import ScreenCrop from "@/components/marketing/screen-crop";
 import WebAppLink from "@/components/marketing/web-app-link";
@@ -58,36 +58,64 @@ const APP_JSON_LD = {
   ],
 };
 
+// Each product part is a full-width chapter with its own surface. The numeral
+// is decorative (aria-hidden); the "01 · Log it" label stays as the real text.
+const CHAPTER_SURFACE = {
+  paper: { wrap: "", label: "", heading: "", prose: "", figure: "", num: "text-blue", link: "" },
+  ink: { wrap: "bg-ink text-paper", label: "!text-paper/70", heading: "text-white", prose: "[&_p]:!text-paper/85 [&_li]:!text-paper/85", figure: "[&_.caption]:!text-paper/75", num: "text-sky", link: "!text-sky !decoration-sky/40 hover:!text-white" },
+  terra: { wrap: "bg-terra-soft", label: "!text-terra", heading: "", prose: "", figure: "", num: "text-terra", link: "!text-terra !decoration-terra/40 hover:!text-terra" },
+  forest: { wrap: "bg-forest-soft", label: "", heading: "", prose: "", figure: "", num: "text-forest-dark", link: "" },
+} as const;
+
 function FeatureRow({
   doc,
   href,
   linkLabel,
   figure,
+  surface = "paper",
   flip = false,
 }: {
   doc: DocSection;
   href: string;
   linkLabel: string;
   figure: ReactNode;
+  surface?: keyof typeof CHAPTER_SURFACE;
   flip?: boolean;
 }) {
+  const tone = CHAPTER_SURFACE[surface];
+  const numeral = doc.label?.split(" ")[0];
   return (
-    <section id={doc.id} aria-labelledby={`${doc.id}-heading`} className={`${CONTAINER} py-12 md:py-16`}>
-      <div className={`grid grid-cols-[minmax(0,1fr)] gap-10 lg:items-center lg:gap-16 ${flip ? "lg:grid-cols-[26rem_minmax(0,1fr)]" : "lg:grid-cols-[minmax(0,1fr)_26rem]"}`}>
-        <div className={flip ? "lg:order-2" : ""}>
-          <p className="label">{doc.label}</p>
-          <h3 id={`${doc.id}-heading`} className="mt-2 max-w-[22ch] font-display text-[clamp(1.5rem,3vw,2.125rem)] font-bold leading-[1.14] tracking-[-0.025em]">
-            {withAtlas(doc.heading)}
-          </h3>
-          <div className="prose-iso mt-5 max-w-[60ch]">
-            {doc.body?.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
-            {doc.bullets ? <ul>{doc.bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}</ul> : null}
+    <section id={doc.id} aria-labelledby={`${doc.id}-heading`} className={`relative overflow-hidden ${tone.wrap}`}>
+      {surface === "ink" ? <IsoGrid id={`${doc.id}-grid`} tone="ink" /> : null}
+      <div className={`${CONTAINER} relative py-16 md:py-24`}>
+        <div className={`grid grid-cols-[minmax(0,1fr)] gap-10 lg:items-center lg:gap-16 ${flip ? "lg:grid-cols-[26rem_minmax(0,1fr)]" : "lg:grid-cols-[minmax(0,1fr)_26rem]"}`}>
+          <div className={flip ? "lg:order-2" : ""}>
+            {numeral ? (
+              <p aria-hidden="true" className={`font-display text-[clamp(5rem,14vw,10rem)] font-extrabold leading-[0.8] tracking-[-0.06em] [-webkit-text-fill-color:transparent] [-webkit-text-stroke:2px_currentColor] ${tone.num}`}>
+                {numeral}
+              </p>
+            ) : null}
+            <p className={`label mt-6 ${tone.label}`}>{doc.label}</p>
+            <h3 id={`${doc.id}-heading`} className={`mt-3 max-w-[20ch] font-display text-[clamp(2rem,4.4vw,3.25rem)] font-bold leading-[1.08] tracking-[-0.04em] ${tone.heading}`}>
+              {withAtlas(doc.heading)}
+            </h3>
+            <div className={`prose-iso mt-6 max-w-[60ch] ${tone.prose}`}>
+              {doc.body?.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+              {doc.bullets ? <ul>{doc.bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}</ul> : null}
+            </div>
+            <div className="mt-4">
+              {surface === "paper" || surface === "forest" ? (
+                <TextLink href={href}>{linkLabel}</TextLink>
+              ) : (
+                <Link href={href} className={`inline-flex min-h-11 items-center gap-1.5 font-medium underline underline-offset-4 ${tone.link}`}>
+                  {linkLabel}
+                  <span aria-hidden="true">→</span>
+                </Link>
+              )}
+            </div>
           </div>
-          <div className="mt-4">
-            <TextLink href={href}>{linkLabel}</TextLink>
-          </div>
+          <div className={`${flip ? "lg:order-1" : ""} ${tone.figure}`}>{figure}</div>
         </div>
-        <div className={flip ? "lg:order-1" : ""}>{figure}</div>
       </div>
     </section>
   );
@@ -107,13 +135,13 @@ export default function HomePage() {
       <JsonLd data={[APP_JSON_LD, webPageJsonLd(HOME_DOC), faqJsonLd(HOME_DOC.faqs ?? [])]} />
 
       <section aria-labelledby="hero-heading" className="border-b border-rule">
-        <div className={`${CONTAINER} grid gap-6 pb-10 pt-6 md:pt-12 lg:grid-cols-[minmax(0,1fr)_25rem] lg:items-center lg:gap-14 lg:pb-16`}>
+        <div className={`${CONTAINER} grid gap-8 pb-12 pt-8 md:pt-14 lg:grid-cols-[minmax(0,1fr)_25rem] lg:items-center lg:gap-14 lg:pb-20`}>
           <div className="flex flex-col items-start">
             <p className="label flex items-center gap-2">
               <span aria-hidden="true" className="h-1.5 w-1.5 shrink-0 rounded-full bg-forest" />
               <span>Workout tracker & AI fitness coach</span>
             </p>
-            <h1 id="hero-heading" className="mt-3 max-w-[16ch] font-display text-[clamp(2rem,5vw,3.25rem)] font-bold leading-[1.08] tracking-[-0.03em]">
+            <h1 id="hero-heading" className="mt-4 max-w-[12ch] font-display text-[clamp(2.75rem,8.4vw,6.5rem)] font-extrabold leading-[1.02] tracking-[-0.045em]">
               {before}
               <span className="text-blue-heading">{HERO_ACCENT}</span>
               {after}
@@ -121,11 +149,12 @@ export default function HomePage() {
             <p className="mt-4 max-w-[52ch] text-lg leading-[1.6] text-ink-2">{HOME_DOC.lede}</p>
             <WebAppLink className="mt-5" />
             <p className="mt-4 inline-block border-y border-ink/25 py-2.5 font-mono text-[0.8125rem] font-medium leading-6 tracking-[0.02em] text-ink">
-              {SITE.launchStatus}
+              {SITE.heroStatus}
             </p>
             <div className="mt-5 w-full">
               <WaitlistForm formId="waitlist-form" />
             </div>
+            <HeatRibbon className="mt-8 w-full max-w-xs" />
           </div>
           <figure className="rounded-[2rem] border border-rule bg-paper-raised px-5 pb-5 pt-4 shadow-[0_18px_40px_rgba(42,36,32,0.06)] sm:px-6 sm:pb-6">
             <div className="mb-3 flex items-center justify-between gap-3">
@@ -146,8 +175,8 @@ export default function HomePage() {
         <div className={CONTAINER}>
           <h2 id="glance-heading" className="sr-only">{glance.heading}</h2>
           <dl className="grid grid-cols-2 gap-x-5 lg:grid-cols-3">
-            {glance.specs?.map((spec) => (
-              <div key={spec.term} className="border-b border-rule py-4 [&:nth-last-child(-n+2)]:border-b-0 sm:py-5 sm:pr-8 lg:[&:nth-last-child(-n+3)]:border-b-0">
+            {glance.specs?.map((spec, index) => (
+              <div key={spec.term} className={`border-t-[3px] py-4 sm:py-5 sm:pr-8 ${["border-heat-0", "border-heat-1", "border-heat-2", "border-heat-3", "border-heat-4", "border-heat-5"][index % 6]}`}>
                 <dt className="label">{spec.term}</dt>
                 <dd className="mt-1.5 text-[0.875rem] leading-relaxed text-ink sm:text-[0.9375rem]">{spec.value}</dd>
               </div>
@@ -157,7 +186,7 @@ export default function HomePage() {
       </section>
 
       {/* The four feature rows below are this section's h3s. */}
-      <Section id={does.id} label={does.label} title={does.heading} intro={does.body?.[0]} className="!pb-0" />
+      <Section id={does.id} label={does.label} title={does.heading} intro={does.body?.[0]} className="!pb-6 pt-16 md:pt-24" />
 
       <FeatureRow
         doc={section("log")}
@@ -174,6 +203,7 @@ export default function HomePage() {
       />
       <FeatureRow
         flip
+        surface="ink"
         doc={section("see")}
         href="/features/body-graph"
         linkLabel="How the body graph is calculated"
@@ -189,6 +219,7 @@ export default function HomePage() {
         }
       />
       <FeatureRow
+        surface="terra"
         doc={section("ask")}
         href="/features/atlas"
         linkLabel="What Atlas does and what it sees"
@@ -206,6 +237,7 @@ export default function HomePage() {
       />
       <FeatureRow
         flip
+        surface="forest"
         doc={section("bonfire")}
         href="/features/bonfire"
         linkLabel="How Bonfire works"

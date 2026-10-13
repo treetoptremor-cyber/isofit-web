@@ -104,7 +104,7 @@ export function PageHero({
       <Breadcrumbs trail={trail} />
       <div className={aside ? "mt-6 grid gap-10 lg:grid-cols-[minmax(0,1fr)_22rem] lg:items-start" : "mt-6"}>
         <div>
-          <h1 className="max-w-[24ch] font-display text-[clamp(2rem,4.6vw,3.25rem)] font-bold leading-[1.08] tracking-[-0.03em]">
+          <h1 className="max-w-[22ch] font-display text-[clamp(2.25rem,6vw,4.5rem)] font-extrabold leading-[1.04] tracking-[-0.045em]">
             {withAtlas(title)}
           </h1>
           <p className="mt-5 max-w-[62ch] text-lg leading-relaxed text-ink-2 sm:text-xl sm:leading-relaxed">{lede}</p>
@@ -137,7 +137,7 @@ export function Section({
   return (
     <section id={id} aria-labelledby={headingId} className={`${CONTAINER} py-12 md:py-14 ${className}`}>
       {label ? <p className="label">{label}</p> : null}
-      <Heading id={headingId} className="mt-2 max-w-[24ch] font-display text-[clamp(1.5rem,3vw,2.125rem)] font-bold leading-[1.14] tracking-[-0.025em]">
+      <Heading id={headingId} className="mt-2 max-w-[24ch] font-display text-[clamp(1.75rem,3.6vw,2.75rem)] font-bold leading-[1.1] tracking-[-0.035em]">
         {withAtlas(title)}
       </Heading>
       {intro ? <p className="mt-4 max-w-[64ch] text-[1.0625rem] leading-[1.7] text-ink-2">{intro}</p> : null}
@@ -159,6 +159,16 @@ function linkify(value: ReactNode): ReactNode {
 }
 
 // A small tag naming the tier a pictured feature belongs to.
+// The six heat-map roles as a thin ribbon: the site's recurring, ownable motif.
+// Decorative; never recolor the ramp.
+export function HeatRibbon({ className = "" }: { className?: string }) {
+  return (
+    <div aria-hidden="true" className={`flex h-2 overflow-hidden rounded-full ${className}`}>
+      {["bg-heat-0", "bg-heat-1", "bg-heat-2", "bg-heat-3", "bg-heat-4", "bg-heat-5"].map((color) => <i key={color} className={`flex-1 ${color}`} />)}
+    </div>
+  );
+}
+
 export function ProTag({ className = "" }: { className?: string }) {
   return (
     <span className={`inline-flex items-center rounded-full bg-sky-soft px-2.5 py-1 font-mono text-[0.6875rem] font-semibold uppercase leading-none tracking-[0.14em] text-blue ${className}`}>

@@ -63,3 +63,13 @@ Sentence case as in the source copy. No serif.
 1. Is the hero scale and the numbered, color-blocked chapters the right level of expressiveness?
 2. Any chapter surface you dislike (ink for "See it", terra-soft for "Ask Atlas", forest-soft for "Bonfire")?
 3. Approve applying this system in Phase 2 to the shared shell, the homepage and the body-graph page?
+
+## Phase 2: shared patterns, homepage, body-graph page (Gate 2)
+
+**Code changed:** `src/app/page.tsx` (chapters, hero scale, heat ribbon, fact-strip heat rules), `src/components/marketing/primitives.tsx` (larger Unbounded scale for `PageHero` and `Section` headings, new `HeatRibbon`), `src/components/marketing/doc-sections.tsx` and `doc-page.tsx` (optional `chips` prop that highlights phrases already in a paragraph), `src/app/features/body-graph/page.tsx` (neglected-muscles chips), `src/components/marketing/web-app-link.tsx` ("Try web app"), `src/lib/site.ts` (`heroStatus`). The existing grid in `PageShell` is unchanged and still shows behind paper surfaces; the ink chapter has its own.
+
+**Verification run:** `tsc` clean, `eslint` 0 errors (one pre-existing warning in `mobile-menu.tsx`), `next build` passes, `compare.py` against the baseline with `approved-changes.json` reports `clean` for desktop, mobile (including the opened menu) and no-JS captures: titles, canonicals, meta, JSON-LD, links, alts, headings, anchors, copy and all 32 machine outputs unchanged. Without the approved list the only differences are "Web app" -> "Try web app" (every header and the mobile menu) and the hero line "Coming soon to iPhone and the web." -> "Coming soon to iOS." Perf (local, mobile emulation): JS bytes +37, page bytes +0.5 to 0.9%, CLS 0, LCP unchanged within noise.
+
+**Not yet verified:** keyboard-only and screen-reader pass, 200%/400% zoom, forced reduced-motion screenshot, interaction states (menu, form errors, sticky CTA). These are scheduled before Phase 3.
+
+**Side effects to review.** The larger heading scale lives in shared components, so every page that uses `PageHero` or `Section` (features, pricing, compare, FAQ, about) already picks it up; those pages have not had their layouts reviewed yet. "Try web app" appears in all headers; the footer link still says "Web app". The approved-changes list allows "Coming soon to iPhone and the web." to drop on one page, so it cannot by itself catch a missing footer copy of the same line; the footer text was checked by hand.

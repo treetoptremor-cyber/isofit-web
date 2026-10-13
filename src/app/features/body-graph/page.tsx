@@ -26,6 +26,13 @@ export default function BodyGraphPage() {
           <HeatLegend className="mt-5 justify-center" />
         </figure>
       }
+      // The two kinds of gap the muscle panel labels, picked out in the heat ramp.
+      chips={{
+        gaps: [
+          { text: "\"Not trained in this window\"", dot: "bg-heat-0" },
+          { text: "\"Below your usual volume\"", dot: "bg-heat-2" },
+        ],
+      }}
       wide={{
         gaps: (
           <ScreenCrop

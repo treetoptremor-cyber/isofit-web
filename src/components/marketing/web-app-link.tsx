@@ -16,7 +16,7 @@ export default function WebAppLink({
         <rect x="3" y="4" width="18" height="13" rx="2" stroke="currentColor" strokeWidth="1.5" />
         <path d="M8 21h8m-4-4v4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
       </svg>
-      Web app
+      Try web app
       <span aria-hidden="true" className="font-normal">→</span>
     </a>
   );

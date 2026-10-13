@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Compare a fresh capture against baseline.   Usage: compare.py <baseline_dir> <new_dir> [--perf]
+"""Compare a fresh capture against baseline.   Usage: compare.py <baseline_dir> <new_dir> [--perf] [--approved approved-changes.json]
 
 Checks (per route, for desktop, mobile and no-JS captures):
   * status, title, canonical, meta/OG/Twitter tags, JSON-LD: exact match
@@ -18,6 +18,10 @@ a, b = sys.argv[1:3]
 norm = lambda s: re.sub(r"\s+", " ", s).strip().lower()
 lines = lambda t: Counter(n for n in (norm(l) for l in t.split("\n")) if len(n) > 3)
 bad = 0
+APPROVED = {"copy": set(), "ids": set()}
+if "--approved" in sys.argv:
+    j = json.load(open(sys.argv[sys.argv.index("--approved") + 1]))
+    APPROVED = {"copy": {norm(x) for x in j.get("copy", [])}, "ids": set(j.get("ids", []))}
 def report(msg):
     global bad; bad += 1; print(msg)
 for variant in ("text", "text-mobile", "text-nojs"):
@@ -30,14 +34,17 @@ for variant in ("text", "text-mobile", "text-nojs"):
             if old.get(k) != new.get(k): out.append(k)
         for k in ("links", "imgalts", "ids", "headings"):
             o, nw = Counter(old[k]), Counter(new[k]); miss, extra = o - nw, nw - o
+            if k == "ids": extra = Counter({x: v for x, v in extra.items() if x not in APPROVED["ids"]})
             if miss: out.append(f"{k} missing {list(miss.elements())[:4]}")
             if extra: out.append(f"{k} added/duplicated {list(extra.elements())[:4]}")
         o, nw = lines(old["text"]), lines(new["text"])
         gone, dup = o - nw, nw - o
+        gone = Counter({k: v for k, v in gone.items() if k not in APPROVED["copy"]}); dup = Counter({k: v for k, v in dup.items() if k not in APPROVED["copy"]})
         if gone: out.append(f"{sum(gone.values())} copy lines missing e.g. {list(gone)[:3]}")
         if dup: out.append(f"{sum(dup.values())} copy lines duplicated/added e.g. {list(dup)[:3]}")
         if "menuOpenText" in old:
             gm = lines(old["menuOpenText"]) - lines(new.get("menuOpenText", ""))
+            gm = Counter({k: v for k, v in gm.items() if k not in APPROVED["copy"]})
             if gm: out.append(f"mobile menu lines missing e.g. {list(gm)[:3]}")
         if out: report(f"[{variant}] {old['route']} -> " + "; ".join(map(str, out)))
 for f in sorted(glob.glob(f"{a}/machine/*")):
