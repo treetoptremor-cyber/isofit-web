@@ -7,7 +7,7 @@ const COLUMNS = [
   {
     heading: "Product",
     links: [
-      { href: SITE.webAppUrl, label: "Web app" },
+      { href: SITE.webAppUrl, label: "Try web app" },
       { href: "/features", label: "All features" },
       ...FEATURE_LINKS,
       { href: "/pricing", label: "Pricing" },
