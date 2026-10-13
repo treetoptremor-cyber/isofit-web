@@ -108,14 +108,14 @@ export default function UpdatePasswordPage() {
       footer={
         <p>
           Back to{" "}
-          <Link href="/login" className="font-semibold text-[#2d6cb8] hover:text-[#69A5F0]">
+          <Link href="/login" className="font-semibold text-blue hover:text-blue-dark">
             Sign in
           </Link>
         </p>
       }
     >
       {isCheckingSession ? (
-        <p className="text-sm text-[#4a423b]">Checking reset link...</p>
+        <p className="text-sm text-ink-2">Checking reset link...</p>
       ) : (
         <form className="space-y-3" onSubmit={handleUpdatePassword}>
           <label className="block space-y-1.5">
@@ -128,7 +128,7 @@ export default function UpdatePasswordPage() {
               value={password}
               disabled={isSubmitting || !hasRecoverySession}
               onChange={(event) => setPassword(event.target.value)}
-              className="h-11 w-full rounded-xl border border-[#2a2420]/15 bg-white px-3 outline-none transition-colors focus:border-[#69A5F0]"
+              className="h-11 w-full rounded-xl border border-rule bg-white px-3 outline-none transition-colors focus:border-blue"
             />
           </label>
           <label className="block space-y-1.5">
@@ -141,7 +141,7 @@ export default function UpdatePasswordPage() {
               value={confirmPassword}
               disabled={isSubmitting || !hasRecoverySession}
               onChange={(event) => setConfirmPassword(event.target.value)}
-              className="h-11 w-full rounded-xl border border-[#2a2420]/15 bg-white px-3 outline-none transition-colors focus:border-[#69A5F0]"
+              className="h-11 w-full rounded-xl border border-rule bg-white px-3 outline-none transition-colors focus:border-blue"
             />
           </label>
           <button

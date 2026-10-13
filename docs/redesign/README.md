@@ -81,7 +81,7 @@ Sentence case as in the source copy. No serif.
 **Performance work (user asked for fast loads and low latency).** Method: production builds of `main` and this branch side by side, mobile emulation, 1.6 Mbps / 150 ms RTT, 4x CPU slowdown, median of 5 (`scratchpad` scripts; `tools/capture.mjs` records the unthrottled equivalent in `baseline/perf`).
 - **Found and fixed a regression I introduced:** the larger hero heading wrapped differently between the fallback font and Unbounded, so the homepage layout shifted (CLS 0.175, "needs improvement"). The h1 now reserves its three lines (`min-h-[3.06em]`); CLS is 0.023, equal to `main`'s 0.026.
 - **Images:** `next.config.ts` now serves AVIF first (WebP fallback) with a 30-day optimizer cache. Measured on `/features/workout-logging`: hero screen 52 KB to 40 KB, phone frame 31 KB to 8 KB, repeat-visit cache lifetime 4 hours to 30 days.
-- **Unchanged and already good:** all marketing pages are statically generated; the middleware only runs on `/billing`; JavaScript is byte-for-byte the same size as `main` (545 KB raw, framework dominated, 9 chunks); one self-hosted preloaded variable font; no third-party scripts; hero images are `priority`, the rest lazy.
+- **Unchanged and already good:** all marketing pages are statically generated; the middleware only runs on `/billing`; JavaScript is within about 1 KB of `main` (545 KB raw, framework dominated, 9 chunks); one self-hosted preloaded variable font; no third-party scripts; hero images are `priority`, the rest lazy.
 - **Result (median, throttled):** FCP/LCP within ±40 ms of `main` on `/`, `/pricing`, `/faq`, `/features/body-graph`, `/features/workout-logging`, `/compare/isofit-vs-hevy` (home 876 → 852 ms after the CLS fix, `main` 808 ms; within run-to-run noise). TBT 236 to 320 ms on both.
 - **Known, pre-existing, not changed:** `log.png` is requested at two widths on the workout-logging page (a `sizes` mismatch between the preload and the image); worth a follow-up since it is one extra image request.
 
@@ -95,3 +95,8 @@ Motion is decorative only and limited to the four approved patterns: `hero-settl
 - Fail open: only below-fold items are hidden, and only after JS adds `reveal-ready`; without JS nothing is hidden, and a 6 s timeout reveals anything still pending.
 - Verified at 390 px: 12/12 reveal items hidden then revealed after scroll; 0 hidden under reduced motion.
 - No horizontal overflow at 320 and 390 px over 26 routes. `compare.py --perf --approved` reports `clean`. Home CLS 0.023, JS unchanged at about 545 KB.
+
+### Final review fixes
+
+- `reveal.tsx`: `threshold` is now 0 so a tall section reveals as soon as its top enters the lower part of the viewport (no blank screen on phones); focus inside a pending item reveals it at once.
+- Standalone account, billing, checkout, sync and password screens (`AuthShell`, `StatusPage`, `ReturnLanding`, `AppShell`) now use the paper/rule/ink tokens, the faint grid, the heat ribbon and the larger Unbounded title. Forms, copy and behavior are unchanged; the `/signup` and billing buttons use the `forest` token (contrast fix).

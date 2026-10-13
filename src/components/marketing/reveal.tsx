@@ -21,7 +21,7 @@ export default function Reveal() {
           observer.unobserve(entry.target);
         }
       },
-      { threshold: 0.08, rootMargin: "0px 0px -6% 0px" },
+      { threshold: 0, rootMargin: "0px 0px -6% 0px" },
     );
     // Hide first, then watch: anything already on screen was never hidden.
     for (const item of belowFold) {
@@ -29,11 +29,18 @@ export default function Reveal() {
       item.dataset.revealPending = "";
       observer.observe(item);
     }
+    // Keyboard focus inside a pending item reveals it at once.
+    const onFocusIn = (event: FocusEvent) => {
+      const host = (event.target as HTMLElement).closest<HTMLElement>("[data-reveal]");
+      if (host) host.dataset.revealed = "";
+    };
+    document.addEventListener("focusin", onFocusIn);
     document.documentElement.classList.add("reveal-ready");
     // Fail open if the observer never fires (print, background tab, odd viewport).
     const failOpen = window.setTimeout(() => belowFold.forEach((item) => (item.dataset.revealed = "")), 6000);
     return () => {
       window.clearTimeout(failOpen);
+      document.removeEventListener("focusin", onFocusIn);
       observer.disconnect();
       document.documentElement.classList.remove("reveal-ready");
       belowFold.forEach((item) => { item.dataset.revealed = ""; });

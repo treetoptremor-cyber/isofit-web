@@ -103,7 +103,7 @@ export default function SignupPage() {
       footer={
         <p>
           Already have an account?{" "}
-          <Link href="/login" className="font-semibold text-[#2d6cb8] hover:text-[#69A5F0]">
+          <Link href="/login" className="font-semibold text-blue hover:text-blue-dark">
             Sign in
           </Link>
         </p>
@@ -120,7 +120,7 @@ export default function SignupPage() {
               value={firstName}
               disabled={isSubmitting}
               onChange={(event) => setFirstName(event.target.value)}
-              className="h-11 w-full rounded-xl border border-[#2a2420]/15 bg-white px-3 outline-none transition-colors focus:border-[#69A5F0]"
+              className="h-11 w-full rounded-xl border border-rule bg-white px-3 outline-none transition-colors focus:border-blue"
             />
           </label>
           <label className="block space-y-1.5">
@@ -132,7 +132,7 @@ export default function SignupPage() {
               value={lastName}
               disabled={isSubmitting}
               onChange={(event) => setLastName(event.target.value)}
-              className="h-11 w-full rounded-xl border border-[#2a2420]/15 bg-white px-3 outline-none transition-colors focus:border-[#69A5F0]"
+              className="h-11 w-full rounded-xl border border-rule bg-white px-3 outline-none transition-colors focus:border-blue"
             />
           </label>
         </div>
@@ -146,7 +146,7 @@ export default function SignupPage() {
             value={email}
             disabled={isSubmitting}
             onChange={(event) => setEmail(event.target.value)}
-            className="h-11 w-full rounded-xl border border-[#2a2420]/15 bg-white px-3 outline-none transition-colors focus:border-[#69A5F0]"
+            className="h-11 w-full rounded-xl border border-rule bg-white px-3 outline-none transition-colors focus:border-blue"
           />
         </label>
 
@@ -160,25 +160,25 @@ export default function SignupPage() {
             disabled={isSubmitting}
             minLength={8}
             onChange={(event) => setPassword(event.target.value)}
-            className="h-11 w-full rounded-xl border border-[#2a2420]/15 bg-white px-3 outline-none transition-colors focus:border-[#69A5F0]"
+            className="h-11 w-full rounded-xl border border-rule bg-white px-3 outline-none transition-colors focus:border-blue"
           />
         </label>
 
         <button
           type="submit"
           disabled={isSubmitting}
-          className="h-11 w-full rounded-xl bg-[#67835a] font-display text-sm font-semibold text-white transition-colors hover:bg-[#5a7350] disabled:cursor-not-allowed disabled:opacity-60"
+          className="h-11 w-full rounded-xl bg-forest font-display text-sm font-semibold text-white transition-colors hover:bg-forest-dark disabled:cursor-not-allowed disabled:opacity-60"
         >
           {isSubmitting ? "Creating account..." : "Create account"}
         </button>
 
-        <p className="text-xs text-[#4a423b]">
+        <p className="text-xs text-ink-2">
           By creating an account, you agree to the{" "}
-          <Link href="/terms" className="font-semibold text-[#2d6cb8] hover:text-[#69A5F0]">
+          <Link href="/terms" className="font-semibold text-blue hover:text-blue-dark">
             Terms of Service
           </Link>{" "}
           and acknowledge the{" "}
-          <Link href="/privacy" className="font-semibold text-[#2d6cb8] hover:text-[#69A5F0]">
+          <Link href="/privacy" className="font-semibold text-blue hover:text-blue-dark">
             Privacy Policy
           </Link>
           .

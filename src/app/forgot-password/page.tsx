@@ -48,7 +48,7 @@ export default function ForgotPasswordPage() {
       footer={
         <p>
           Remembered it?{" "}
-          <Link href="/login" className="font-semibold text-[#2d6cb8] hover:text-[#69A5F0]">
+          <Link href="/login" className="font-semibold text-blue hover:text-blue-dark">
             Sign in
           </Link>
         </p>
@@ -64,7 +64,7 @@ export default function ForgotPasswordPage() {
             value={email}
             disabled={isSubmitting}
             onChange={(event) => setEmail(event.target.value)}
-            className="h-11 w-full rounded-xl border border-[#2a2420]/15 bg-white px-3 outline-none transition-colors focus:border-[#69A5F0]"
+            className="h-11 w-full rounded-xl border border-rule bg-white px-3 outline-none transition-colors focus:border-blue"
           />
         </label>
         <button
@@ -77,7 +77,7 @@ export default function ForgotPasswordPage() {
       </form>
 
       {successMessage ? (
-        <p className="rounded-xl border border-[#67835a]/20 bg-[#67835a]/8 px-3 py-2 text-sm text-[#3f5236]">
+        <p className="rounded-xl border border-[#67835a]/20 bg-forest/8 px-3 py-2 text-sm text-[#3f5236]">
           {successMessage}
         </p>
       ) : null}
