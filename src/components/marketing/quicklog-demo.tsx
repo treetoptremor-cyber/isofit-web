@@ -41,7 +41,7 @@ const HEAT = ["bg-heat-0", "bg-heat-1", "bg-heat-2", "bg-heat-3", "bg-heat-4", "
 
 export function HeatLegend({ className = "" }: { className?: string }) {
   return (
-    <div className={`flex items-center gap-3 ${className}`}>
+    <div className={`flex flex-wrap items-center gap-x-3 gap-y-1 ${className}`}>
       <span className="label">Rest</span>
       <span aria-hidden="true" className="flex gap-1">
         {HEAT.map((color) => (

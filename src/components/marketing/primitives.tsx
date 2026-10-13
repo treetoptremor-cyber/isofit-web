@@ -102,7 +102,7 @@ export function PageHero({
   return (
     <section className={`${CONTAINER} pb-10 pt-8 md:pb-14 md:pt-12`}>
       <Breadcrumbs trail={trail} />
-      <div className={aside ? "mt-6 grid gap-10 lg:grid-cols-[minmax(0,1fr)_22rem] lg:items-start" : "mt-6"}>
+      <div className={aside ? "mt-6 grid grid-cols-[minmax(0,1fr)] gap-10 lg:grid-cols-[minmax(0,1fr)_22rem] lg:items-start" : "mt-6"}>
         <div>
           <h1 className="max-w-[22ch] font-display text-[clamp(2.25rem,6vw,4.5rem)] font-extrabold leading-[1.04] tracking-[-0.045em]">
             {withAtlas(title)}
