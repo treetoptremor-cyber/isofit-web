@@ -141,7 +141,7 @@ export default function HomePage() {
               <span aria-hidden="true" className="h-1.5 w-1.5 shrink-0 rounded-full bg-forest" />
               <span>Workout tracker & AI fitness coach</span>
             </p>
-            <h1 id="hero-heading" className="mt-4 max-w-[12ch] font-display text-[clamp(2.25rem,8.4vw,6.5rem)] font-extrabold leading-[1.02] tracking-[-0.045em]">
+            <h1 id="hero-heading" className="mt-4 min-h-[3.06em] max-w-[12ch] font-display text-[clamp(2.25rem,8.4vw,6.5rem)] font-extrabold leading-[1.02] tracking-[-0.045em]">
               {before}
               <span className="text-blue-heading">{HERO_ACCENT}</span>
               {after}

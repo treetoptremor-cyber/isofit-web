@@ -108,6 +108,7 @@ export function PageHero({
             {withAtlas(title)}
           </h1>
           <p className="mt-5 max-w-[62ch] text-lg leading-relaxed text-ink-2 sm:text-xl sm:leading-relaxed">{lede}</p>
+          <HeatRibbon className="mt-8 w-full max-w-[14rem]" />
         </div>
         {aside}
       </div>

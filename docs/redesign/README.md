@@ -73,3 +73,16 @@ Sentence case as in the source copy. No serif.
 **Not yet verified:** keyboard-only and screen-reader pass, 200%/400% zoom, forced reduced-motion screenshot, interaction states (menu, form errors, sticky CTA). These are scheduled before Phase 3.
 
 **Side effects to review.** The larger heading scale lives in shared components, so every page that uses `PageHero` or `Section` (features, pricing, compare, FAQ, about) already picks it up; those pages have not had their layouts reviewed yet. "Try web app" appears in all headers; the footer link still says "Web app". The approved-changes list allows "Coming soon to iPhone and the web." to drop on one page, so it cannot by itself catch a missing footer copy of the same line; the footer text was checked by hand.
+
+## Phase 3 and performance (approved at Gate 2)
+
+**Rollout.** The type scale, heat ribbon under every interior page title (`PageHero`), and the shared sections already reach features, compare, pricing, FAQ and About through shared components; legal and the auth, waitlist, billing, checkout and sync screens keep their layouts and behavior and sit on the same tokens. No workflow, form, route or backend code changed.
+
+**Performance work (user asked for fast loads and low latency).** Method: production builds of `main` and this branch side by side, mobile emulation, 1.6 Mbps / 150 ms RTT, 4x CPU slowdown, median of 5 (`scratchpad` scripts; `tools/capture.mjs` records the unthrottled equivalent in `baseline/perf`).
+- **Found and fixed a regression I introduced:** the larger hero heading wrapped differently between the fallback font and Unbounded, so the homepage layout shifted (CLS 0.175, "needs improvement"). The h1 now reserves its three lines (`min-h-[3.06em]`); CLS is 0.023, equal to `main`'s 0.026.
+- **Images:** `next.config.ts` now serves AVIF first (WebP fallback) with a 30-day optimizer cache. Measured on `/features/workout-logging`: hero screen 52 KB to 40 KB, phone frame 31 KB to 8 KB, repeat-visit cache lifetime 4 hours to 30 days.
+- **Unchanged and already good:** all marketing pages are statically generated; the middleware only runs on `/billing`; JavaScript is byte-for-byte the same size as `main` (545 KB raw, framework dominated, 9 chunks); one self-hosted preloaded variable font; no third-party scripts; hero images are `priority`, the rest lazy.
+- **Result (median, throttled):** FCP/LCP within ±40 ms of `main` on `/`, `/pricing`, `/faq`, `/features/body-graph`, `/features/workout-logging`, `/compare/isofit-vs-hevy` (home 876 → 852 ms after the CLS fix, `main` 808 ms; within run-to-run noise). TBT 236 to 320 ms on both.
+- **Known, pre-existing, not changed:** `log.png` is requested at two widths on the workout-logging page (a `sizes` mismatch between the preload and the image); worth a follow-up since it is one extra image request.
+
+**Overflow:** no horizontal scroll at 320 or 390 px on 26 routes (all 14 SEO pages, legal, auth, waitlist, billing/checkout/sync samples). This includes the two overflows that already existed on `main`.
