@@ -45,7 +45,7 @@ Sentence case as in the source copy. No serif.
 2. *Heat ribbon.* The six real heat-map colors form the brand's ownable motif: hero accent bar, fact-strip top rules, legend. Colors are never recolored.
 3. *Hero.* Much larger Unbounded headline with the real body-graph screen beside it. The inline waitlist form (same fields, labels and "Be first in" line), Web app link, launch-status line and the Rest / Most worked legend all stay in the first screen.
 4. *Long pages.* Large page title, sticky in-page contents on desktop, tables keep today's stack-to-cards behavior on phones, Isofit column tinted `forest-soft`.
-5. *Grid motif* stays fixed, faint and decorative behind pages as today.
+5. *Grid motif* is back as in the live site: the app's 26 px sky grid, fixed behind the page and fading toward every edge. It shows on paper surfaces (hero, fact strip, first chapter, pricing) and as a slightly stronger grid inside the ink chapter; the terra-soft, forest-soft and closing bands are solid so the grid never competes with screens or text.
 
 **Motion (Phase 4, not applied yet).** Only `hero-settle` (shown in the mockups: 600 ms, 8 px, page load) is prototyped; skipped under `prefers-reduced-motion`; content is visible without it.
 
@@ -53,7 +53,13 @@ Sentence case as in the source copy. No serif.
 
 **Mockup limits to be aware of.** Static HTML, not the Next components. The "sets by muscle" figure uses the full screenshot; the real build keeps the existing `ScreenCrop`. Footer is abbreviated; feature and comparison pages show only some sections, but those shown use the live anchor ids (`what-you-see`, `gaps`, `how-it-works`, `muscles`, `free-vs-pro`; `choose-them`, `choose-isofit`) and the live heading levels. The mockup does not yet show the Quicklog example in the hero (suggested by the schema's America.gov row; open for Gate 1).
 
-## Gate 1 questions
+## Gate 1 decisions (from the user)
+1. Approved, with the grid background restored (done in the mockups, see item 5 above).
+2. Chapter surfaces approved as is.
+3. Body-graph page: neglected-muscles logic added. Using only existing copy, the "gaps" section now shows the two live panel labels ("Not trained in this window", "Below your usual volume") as two visual states beside the real muscle-detail screenshot; the FAQ "How do I find out which muscles I am neglecting?" stays unchanged. No new copy was written; say so if you want an extra sentence.
+4. Homepage hero: status line is now "Coming soon to iOS." and the button reads "Try web app". These are deliberate copy changes. `SITE.launchStatus` is one constant that also feeds the footer, mobile menu, meta descriptions, JSON-LD, `llms.txt`, FAQ and comparison pages, plus the homepage "Platform" and "Status" fact-strip rows, which still say "iPhone ... and web app, both coming soon". In Phase 2 only the hero line and the Web app link label (all headers) change; the rest is left until you decide whether to update it site-wide, since doing so would change metadata, structured data and the mirrors.
+
+## Original Gate 1 questions
 1. Is the hero scale and the numbered, color-blocked chapters the right level of expressiveness?
 2. Any chapter surface you dislike (ink for "See it", terra-soft for "Ask Atlas", forest-soft for "Bonfire")?
 3. Approve applying this system in Phase 2 to the shared shell, the homepage and the body-graph page?
