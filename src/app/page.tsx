@@ -89,7 +89,7 @@ function FeatureRow({
       {surface === "ink" ? <IsoGrid id={`${doc.id}-grid`} tone="ink" /> : null}
       <div className={`${CONTAINER} relative py-16 md:py-24`}>
         <div className={`grid grid-cols-[minmax(0,1fr)] gap-10 lg:items-center lg:gap-16 ${flip ? "lg:grid-cols-[26rem_minmax(0,1fr)]" : "lg:grid-cols-[minmax(0,1fr)_26rem]"}`}>
-          <div className={flip ? "lg:order-2" : ""}>
+          <div data-reveal="story" className={flip ? "lg:order-2" : ""}>
             {numeral ? (
               <p aria-hidden="true" className={`font-display text-[clamp(5rem,14vw,10rem)] font-extrabold leading-[0.8] tracking-[-0.06em] [-webkit-text-fill-color:transparent] [-webkit-text-stroke:2px_currentColor] ${tone.num}`}>
                 {numeral}
@@ -114,7 +114,7 @@ function FeatureRow({
               )}
             </div>
           </div>
-          <div className={`${flip ? "lg:order-1" : ""} ${tone.figure}`}>{figure}</div>
+          <div data-reveal="screen" className={`${flip ? "lg:order-1" : ""} ${tone.figure}`}>{figure}</div>
         </div>
       </div>
     </section>
@@ -141,12 +141,12 @@ export default function HomePage() {
               <span aria-hidden="true" className="h-1.5 w-1.5 shrink-0 rounded-full bg-forest" />
               <span>Workout tracker & AI fitness coach</span>
             </p>
-            <h1 id="hero-heading" className="mt-4 min-h-[3.06em] max-w-[12ch] font-display text-[clamp(2.25rem,8.4vw,6.5rem)] font-extrabold leading-[1.02] tracking-[-0.045em]">
+            <h1 id="hero-heading" className="motion-hero mt-4 min-h-[3.06em] max-w-[12ch] font-display text-[clamp(2.25rem,8.4vw,6.5rem)] font-extrabold leading-[1.02] tracking-[-0.045em]">
               {before}
               <span className="text-blue-heading">{HERO_ACCENT}</span>
               {after}
             </h1>
-            <p className="mt-4 max-w-[52ch] text-lg leading-[1.6] text-ink-2">{HOME_DOC.lede}</p>
+            <p className="motion-hero motion-hero-2 mt-4 max-w-[52ch] text-lg leading-[1.6] text-ink-2">{HOME_DOC.lede}</p>
             <WebAppLink className="mt-5" />
             <p className="mt-4 inline-block border-y border-ink/25 py-2.5 font-mono text-[0.8125rem] font-medium leading-6 tracking-[0.02em] text-ink">
               {SITE.heroStatus}
@@ -156,7 +156,7 @@ export default function HomePage() {
             </div>
             <HeatRibbon className="mt-8 w-full max-w-xs" />
           </div>
-          <figure className="rounded-[2rem] border border-rule bg-paper-raised px-5 pb-5 pt-4 shadow-[0_18px_40px_rgba(42,36,32,0.06)] sm:px-6 sm:pb-6">
+          <figure className="motion-hero motion-hero-2 rounded-[2rem] border border-rule bg-paper-raised px-5 pb-5 pt-4 shadow-[0_18px_40px_rgba(42,36,32,0.06)] sm:px-6 sm:pb-6">
             <div className="mb-3 flex items-center justify-between gap-3">
               <figcaption className="label">The body graph</figcaption>
               <ProTag />

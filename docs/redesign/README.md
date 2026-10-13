@@ -86,3 +86,12 @@ Sentence case as in the source copy. No serif.
 - **Known, pre-existing, not changed:** `log.png` is requested at two widths on the workout-logging page (a `sizes` mismatch between the preload and the image); worth a follow-up since it is one extra image request.
 
 **Overflow:** no horizontal scroll at 320 or 390 px on 26 routes (all 14 SEO pages, legal, auth, waitlist, billing/checkout/sync samples). This includes the two overflows that already existed on `main`.
+
+## Phase 4: motion and verification
+
+Motion is decorative only and limited to the four approved patterns: `hero-settle` (hero h1, lede and figure ease in, 0.5 s), `story-reveal` (page sections and chapter copy fade up once on entering the viewport), `screen-reveal` (phone figures, same mechanism) and `control-feedback` (press scale on rounded buttons and links).
+
+- All motion is gated on `prefers-reduced-motion: no-preference`; `reveal.tsx` does nothing under reduced motion or without IntersectionObserver.
+- Fail open: only below-fold items are hidden, and only after JS adds `reveal-ready`; without JS nothing is hidden, and a 6 s timeout reveals anything still pending.
+- Verified at 390 px: 12/12 reveal items hidden then revealed after scroll; 0 hidden under reduced motion.
+- No horizontal overflow at 320 and 390 px over 26 routes. `compare.py --perf --approved` reports `clean`. Home CLS 0.023, JS unchanged at about 545 KB.

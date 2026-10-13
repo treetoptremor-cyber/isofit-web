@@ -6,6 +6,7 @@ import IsoGrid from "@/components/marketing/iso-grid";
 import JsonLd from "@/components/marketing/json-ld";
 import SiteFooter from "@/components/marketing/site-footer";
 import SiteHeader from "@/components/marketing/site-header";
+import Reveal from "@/components/marketing/reveal";
 import StickyWaitlist from "@/components/marketing/sticky-waitlist";
 import WaitlistForm from "@/components/waitlist-form";
 import { SITE, absoluteUrl } from "@/lib/site";
@@ -39,6 +40,7 @@ export function PageShell({ children, waitlistHref, grid = true, sticky = true }
         {children}
       </main>
       <SiteFooter />
+      <Reveal />
       {sticky ? <StickyWaitlist /> : null}
     </div>
   );
@@ -102,7 +104,7 @@ export function PageHero({
   return (
     <section className={`${CONTAINER} pb-10 pt-8 md:pb-14 md:pt-12`}>
       <Breadcrumbs trail={trail} />
-      <div className={aside ? "mt-6 grid grid-cols-[minmax(0,1fr)] gap-10 lg:grid-cols-[minmax(0,1fr)_22rem] lg:items-start" : "mt-6"}>
+      <div className={aside ? "motion-hero mt-6 grid grid-cols-[minmax(0,1fr)] gap-10 lg:grid-cols-[minmax(0,1fr)_22rem] lg:items-start" : "mt-6"}>
         <div>
           <h1 className="max-w-[22ch] font-display text-[clamp(2.25rem,6vw,4.5rem)] font-extrabold leading-[1.04] tracking-[-0.045em]">
             {withAtlas(title)}
@@ -136,7 +138,7 @@ export function Section({
   const headingId = id ? `${id}-heading` : undefined;
   const Heading = level === 3 ? "h3" : "h2";
   return (
-    <section id={id} aria-labelledby={headingId} className={`${CONTAINER} py-12 md:py-14 ${className}`}>
+    <section id={id} aria-labelledby={headingId} data-reveal="story" className={`${CONTAINER} py-12 md:py-14 ${className}`}>
       {label ? <p className="label">{label}</p> : null}
       <Heading id={headingId} className="mt-2 max-w-[24ch] font-display text-[clamp(1.75rem,3.6vw,2.75rem)] font-bold leading-[1.1] tracking-[-0.035em]">
         {withAtlas(title)}
