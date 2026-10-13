@@ -52,7 +52,6 @@
  ],
  "ids": [
   "page-grid-lines",
-  "_R_94lubtb_",
   "main-content",
   "tiers",
   "tiers-heading",
@@ -66,13 +65,7 @@
   "related-heading",
   "waitlist",
   "waitlist-grid-lines",
-  "waitlist-heading",
-  "_R_2smlubtb_-name",
-  "_R_2smlubtb_-email",
-  "_R_2smlubtb_-email-error",
-  "_R_2smlubtb_-help",
-  "_R_2smlubtb_-status",
-  "_R_"
+  "waitlist-heading"
  ],
  "links": [
   "#main-content",

@@ -75,7 +75,6 @@
  ],
  "ids": [
   "page-grid-lines",
-  "_R_94lubtb_",
   "main-content",
   "support-contact",
   "basics",
@@ -96,13 +95,7 @@
   "related-heading",
   "waitlist",
   "waitlist-grid-lines",
-  "waitlist-heading",
-  "_R_2s6lubtb_-name",
-  "_R_2s6lubtb_-email",
-  "_R_2s6lubtb_-email-error",
-  "_R_2s6lubtb_-help",
-  "_R_2s6lubtb_-status",
-  "_R_"
+  "waitlist-heading"
  ],
  "links": [
   "#main-content",

@@ -1,0 +1,58 @@
+status 200
+content-type: text/markdown; charset=utf-8
+x-robots-tag: noindex, follow
+
+# Isofit vs Strong: which workout app fits how you train?
+
+Source: https://isofit.app/compare/isofit-vs-strong
+Facts last reviewed: 2026-09-23
+
+Strong is a long-established workout tracker for iPhone, Apple Watch and Android focused on fast, structured logging of sets, reps and weight. Isofit is a workout tracker that takes workouts by tap, typed line or voice, shows the muscles your sets reached on a body graph, and includes Atlas, an AI coach that can read your log. Strong is released and established; Isofit is pre-release. Coming soon to iPhone and the web. The short version: pick Strong if you want a focused lifting log with no AI and no social feed; pick Isofit if you want plain-language logging and a coach built into the app.
+
+## Isofit and Strong compared
+
+Strong column: as published by Strong Fitness PTE. LTD., read September 19, 2026.
+
+|  | Isofit | Strong |
+| --- | --- | --- |
+| Platforms | iPhone (iOS 17.6 or later) and web app, both coming soon. No native iPad, Apple Watch or Android apps. | iPhone, iPad, Apple Watch and Android. |
+| How you log | Three ways into one structured log: tap in sets, reps, weight, distance, duration and RPE; type a Quicklog line such as "bench 5x5 225lbs"; or speak the workout and review the parsed draft before saving. | Structured sets, reps and weight with templates, supersets and RPE. Free-text or voice logging is not advertised. |
+| Exercise library | 500+ exercises covering strength training, cardio, yoga, sports and martial arts, plus add unlimited custom exercises with your own muscle mapping. | Cardio and strength exercises with a growing set of animated videos, plus custom exercises. No library size is stated. |
+| Muscle view | A front and back body graph shaded by working sets per muscle over 7, 30 or 90 days or all time, with sets by muscle and most and least worked. It is explicitly not a recovery score. Pro feature. | A muscle heat map is listed as a feature. What it measures is not stated. |
+| AI and coaching | Atlas, an AI coach you talk to in chat. With your permission it reads your training history, and on Pro it writes programs and routines into your log. General fitness guidance, not medical advice. | None advertised. |
+| Community | Bonfire, a members-only feed. A post is tied to a session you logged, limited to one a day, and visible to all members. No follows, groups or direct messages. | Routines and workouts can be shared by link. No feed or follows are advertised. |
+| Apple Health | Optionally reads workouts and daily summaries from Apple Health on every tier. Does not write to Apple Health. | Writes workouts, bodyweight and body fat to Apple Health, and reads bodyweight and body fat. |
+| Activities covered | Logs strength training, cardio, yoga, sports and martial arts. | Strength focused, with cardio and duration exercise types. |
+| Price | Free tier with logging, history and Apple Health import. Pro is planned at $14.99 monthly or $124.99 yearly (USD). | Free version limited to 3 custom routines with unlimited workouts. PRO is listed at $4.99 monthly or $29.99 yearly (USD). |
+| Data export | On-demand JSON export of your training, Atlas, account, health and social records. | CSV export on iOS and Android. |
+
+## Choose Strong if
+
+- You want a focused lifting log with no AI and no social feed.
+- You need Android or an Apple Watch app today.
+- You want your workouts written into Apple Health: Strong writes workouts, bodyweight and body fat to Health.
+- You want built-in plate and warm-up calculators.
+
+## Choose Isofit if
+
+- You want to log in plain language, typed or spoken, and not only by tapping in sets.
+- You want a coach built into the app you log with, one that reads your own training history and stays within training.
+- You train across disciplines, such as lifting plus running, yoga or martial arts, and want one log for all of it.
+- You use an iPhone and do not need a watch, tablet or Android app.
+- You want Apple Health read but never written to.
+
+## How this comparison was made
+
+Facts about Strong come only from each company's own website, help center and store listings, read on September 19, 2026. Where a company does not state something, this page says "Not stated" and does not guess. Apps change and prices vary by region, so check each company's site for current details.
+
+Isofit's column describes the app as built for launch and was reviewed on September 23, 2026. Isofit is not released yet, so you cannot try the two side by side today.
+
+## Frequently asked questions
+
+### Is Isofit a good alternative to Strong?
+
+It depends on what you want from a log. Isofit fits if you want to log in plain language, see sets per muscle on a body graph, and ask an AI coach about your own history, all on iPhone. Strong fits better if you want a focused lifting log with no AI and no social feed.
+
+### Is Isofit available now, like Strong?
+
+No. Strong is available today. Isofit is pre-release. Coming soon to iPhone and the web.

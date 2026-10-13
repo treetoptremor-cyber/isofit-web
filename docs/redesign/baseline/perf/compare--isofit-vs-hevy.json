@@ -1,0 +1,15 @@
+{
+ "route": "/compare/isofit-vs-hevy",
+ "requests": 22,
+ "bytes": {
+  "total": 899763,
+  "script": 544977,
+  "image": 4064,
+  "font": 50892,
+  "stylesheet": 55754
+ },
+ "cls": 0,
+ "lcpMs": 208,
+ "dclMs": 48,
+ "domNodes": 377
+}

@@ -1,0 +1,915 @@
+[
+ {
+  "route": "/",
+  "template": "home",
+  "sourceRef": "src/content/home.ts#HOME_DOC",
+  "blockIds": [
+   "hero",
+   "does",
+   "log",
+   "see",
+   "ask",
+   "bonfire",
+   "different",
+   "free-and-pro",
+   "team",
+   "faq",
+   "waitlist"
+  ],
+  "metadataRef": "docMetadata(HOME_DOC)",
+  "canonicalPath": "",
+  "markdownMirror": true,
+  "motionIds": [
+   "hero-settle",
+   "story-reveal",
+   "screen-reveal",
+   "control-feedback"
+  ],
+  "preservedAnchors": [
+   "hero-heading",
+   "waitlist-form",
+   "glance-heading",
+   "does",
+   "does-heading",
+   "log",
+   "log-heading",
+   "see",
+   "see-heading",
+   "ask",
+   "ask-heading",
+   "bonfire",
+   "bonfire-heading",
+   "different",
+   "different-heading",
+   "free-and-pro",
+   "free-and-pro-heading",
+   "team",
+   "team-grid-lines",
+   "team-heading",
+   "faq",
+   "faq-heading",
+   "waitlist",
+   "waitlist-heading"
+  ]
+ },
+ {
+  "route": "/features",
+  "template": "index",
+  "sourceRef": "src/content/features.ts#FEATURES_DOC",
+  "blockIds": [
+   "feature-pages",
+   "the-four-tabs",
+   "who-for",
+   "everything-else",
+   "not-included",
+   "related",
+   "waitlist"
+  ],
+  "metadataRef": "docMetadata(FEATURES_DOC)",
+  "canonicalPath": "/features",
+  "markdownMirror": true,
+  "motionIds": [
+   "hero-settle",
+   "story-reveal",
+   "screen-reveal",
+   "control-feedback"
+  ],
+  "preservedAnchors": [
+   "feature-pages",
+   "feature-pages-heading",
+   "the-four-tabs",
+   "the-four-tabs-heading",
+   "who-for",
+   "who-for-heading",
+   "everything-else",
+   "everything-else-heading",
+   "not-included",
+   "not-included-heading",
+   "related",
+   "related-heading",
+   "waitlist",
+   "waitlist-heading"
+  ]
+ },
+ {
+  "route": "/features/workout-logging",
+  "template": "feature-detail",
+  "sourceRef": "src/content/features.ts#LOGGING_DOC",
+  "blockIds": [
+   "three-ways",
+   "quicklog",
+   "voice",
+   "what-you-can-record",
+   "library",
+   "routines-history-offline",
+   "faq",
+   "related",
+   "waitlist"
+  ],
+  "metadataRef": "docMetadata(LOGGING_DOC)",
+  "canonicalPath": "/features/workout-logging",
+  "markdownMirror": true,
+  "motionIds": [
+   "hero-settle",
+   "story-reveal",
+   "screen-reveal",
+   "control-feedback"
+  ],
+  "preservedAnchors": [
+   "three-ways",
+   "three-ways-heading",
+   "quicklog",
+   "quicklog-heading",
+   "voice",
+   "voice-heading",
+   "what-you-can-record",
+   "what-you-can-record-heading",
+   "library",
+   "library-heading",
+   "routines-history-offline",
+   "routines-history-offline-heading",
+   "faq",
+   "faq-heading",
+   "related",
+   "related-heading",
+   "waitlist",
+   "waitlist-heading"
+  ]
+ },
+ {
+  "route": "/features/body-graph",
+  "template": "feature-detail",
+  "sourceRef": "src/content/features.ts#BODY_GRAPH_DOC",
+  "blockIds": [
+   "what-you-see",
+   "gaps",
+   "how-it-works",
+   "muscles",
+   "free-vs-pro",
+   "faq",
+   "related",
+   "waitlist"
+  ],
+  "metadataRef": "docMetadata(BODY_GRAPH_DOC)",
+  "canonicalPath": "/features/body-graph",
+  "markdownMirror": true,
+  "motionIds": [
+   "hero-settle",
+   "story-reveal",
+   "screen-reveal",
+   "control-feedback"
+  ],
+  "preservedAnchors": [
+   "what-you-see",
+   "what-you-see-heading",
+   "gaps",
+   "gaps-heading",
+   "how-it-works",
+   "how-it-works-heading",
+   "muscles",
+   "muscles-heading",
+   "free-vs-pro",
+   "free-vs-pro-heading",
+   "faq",
+   "faq-heading",
+   "related",
+   "related-heading",
+   "waitlist",
+   "waitlist-heading"
+  ]
+ },
+ {
+  "route": "/features/atlas",
+  "template": "feature-detail",
+  "sourceRef": "src/content/features.ts#ATLAS_DOC",
+  "blockIds": [
+   "what-atlas-does",
+   "what-atlas-knows",
+   "limits",
+   "privacy",
+   "scope",
+   "faq",
+   "related",
+   "waitlist"
+  ],
+  "metadataRef": "docMetadata(ATLAS_DOC)",
+  "canonicalPath": "/features/atlas",
+  "markdownMirror": true,
+  "motionIds": [
+   "hero-settle",
+   "story-reveal",
+   "screen-reveal",
+   "control-feedback"
+  ],
+  "preservedAnchors": [
+   "what-atlas-does",
+   "what-atlas-does-heading",
+   "what-atlas-knows",
+   "what-atlas-knows-heading",
+   "limits",
+   "limits-heading",
+   "privacy",
+   "privacy-heading",
+   "scope",
+   "scope-heading",
+   "faq",
+   "faq-heading",
+   "related",
+   "related-heading",
+   "waitlist",
+   "waitlist-heading"
+  ]
+ },
+ {
+  "route": "/features/bonfire",
+  "template": "feature-detail",
+  "sourceRef": "src/content/features.ts#BONFIRE_DOC",
+  "blockIds": [
+   "how-it-works",
+   "privacy",
+   "safety",
+   "faq",
+   "related",
+   "waitlist"
+  ],
+  "metadataRef": "docMetadata(BONFIRE_DOC)",
+  "canonicalPath": "/features/bonfire",
+  "markdownMirror": true,
+  "motionIds": [
+   "hero-settle",
+   "story-reveal",
+   "screen-reveal",
+   "control-feedback"
+  ],
+  "preservedAnchors": [
+   "how-it-works",
+   "how-it-works-heading",
+   "privacy",
+   "privacy-heading",
+   "safety",
+   "safety-heading",
+   "faq",
+   "faq-heading",
+   "related",
+   "related-heading",
+   "waitlist",
+   "waitlist-heading"
+  ]
+ },
+ {
+  "route": "/pricing",
+  "template": "pricing",
+  "sourceRef": "src/content/pricing.ts#PRICING_DOC",
+  "blockIds": [
+   "tiers",
+   "billing",
+   "iso",
+   "faq",
+   "related",
+   "waitlist"
+  ],
+  "metadataRef": "docMetadata(PRICING_DOC)",
+  "canonicalPath": "/pricing",
+  "markdownMirror": true,
+  "motionIds": [
+   "hero-settle",
+   "story-reveal",
+   "screen-reveal",
+   "control-feedback"
+  ],
+  "preservedAnchors": [
+   "tiers",
+   "tiers-heading",
+   "billing",
+   "billing-heading",
+   "iso",
+   "iso-heading",
+   "faq",
+   "faq-heading",
+   "related",
+   "related-heading",
+   "waitlist",
+   "waitlist-heading"
+  ]
+ },
+ {
+  "route": "/compare",
+  "template": "comparison-index",
+  "sourceRef": "src/content/compare.ts#COMPARE_DOC",
+  "blockIds": [
+   "head-to-head",
+   "overview",
+   "what-is-different",
+   "where-others-win",
+   "method",
+   "faq",
+   "related",
+   "waitlist"
+  ],
+  "metadataRef": "docMetadata(COMPARE_DOC)",
+  "canonicalPath": "/compare",
+  "markdownMirror": true,
+  "motionIds": [
+   "hero-settle",
+   "story-reveal",
+   "screen-reveal",
+   "control-feedback"
+  ],
+  "preservedAnchors": [
+   "head-to-head",
+   "head-to-head-heading",
+   "overview",
+   "overview-heading",
+   "what-is-different",
+   "what-is-different-heading",
+   "where-others-win",
+   "where-others-win-heading",
+   "method",
+   "method-heading",
+   "faq",
+   "faq-heading",
+   "related",
+   "related-heading",
+   "waitlist",
+   "waitlist-heading"
+  ]
+ },
+ {
+  "route": "/compare/isofit-vs-hevy",
+  "template": "comparison-detail",
+  "sourceRef": "src/content/compare.ts#VERSUS_DOCS (versusDoc)",
+  "blockIds": [
+   "side-by-side",
+   "choose-them",
+   "choose-isofit",
+   "method",
+   "sources",
+   "faq",
+   "related",
+   "waitlist"
+  ],
+  "metadataRef": "docMetadata(VERSUS_DOCS (versusDoc))",
+  "canonicalPath": "/compare/isofit-vs-hevy",
+  "markdownMirror": true,
+  "motionIds": [
+   "hero-settle",
+   "story-reveal",
+   "screen-reveal",
+   "control-feedback"
+  ],
+  "preservedAnchors": [
+   "side-by-side",
+   "side-by-side-heading",
+   "choose-them",
+   "choose-them-heading",
+   "choose-isofit",
+   "choose-isofit-heading",
+   "method",
+   "method-heading",
+   "sources",
+   "sources-heading",
+   "faq",
+   "faq-heading",
+   "related",
+   "related-heading",
+   "waitlist",
+   "waitlist-heading"
+  ]
+ },
+ {
+  "route": "/compare/isofit-vs-strong",
+  "template": "comparison-detail",
+  "sourceRef": "src/content/compare.ts#VERSUS_DOCS (versusDoc)",
+  "blockIds": [
+   "side-by-side",
+   "choose-them",
+   "choose-isofit",
+   "method",
+   "sources",
+   "faq",
+   "related",
+   "waitlist"
+  ],
+  "metadataRef": "docMetadata(VERSUS_DOCS (versusDoc))",
+  "canonicalPath": "/compare/isofit-vs-strong",
+  "markdownMirror": true,
+  "motionIds": [
+   "hero-settle",
+   "story-reveal",
+   "screen-reveal",
+   "control-feedback"
+  ],
+  "preservedAnchors": [
+   "side-by-side",
+   "side-by-side-heading",
+   "choose-them",
+   "choose-them-heading",
+   "choose-isofit",
+   "choose-isofit-heading",
+   "method",
+   "method-heading",
+   "sources",
+   "sources-heading",
+   "faq",
+   "faq-heading",
+   "related",
+   "related-heading",
+   "waitlist",
+   "waitlist-heading"
+  ]
+ },
+ {
+  "route": "/compare/isofit-vs-fitbod",
+  "template": "comparison-detail",
+  "sourceRef": "src/content/compare.ts#VERSUS_DOCS (versusDoc)",
+  "blockIds": [
+   "side-by-side",
+   "choose-them",
+   "choose-isofit",
+   "method",
+   "sources",
+   "faq",
+   "related",
+   "waitlist"
+  ],
+  "metadataRef": "docMetadata(VERSUS_DOCS (versusDoc))",
+  "canonicalPath": "/compare/isofit-vs-fitbod",
+  "markdownMirror": true,
+  "motionIds": [
+   "hero-settle",
+   "story-reveal",
+   "screen-reveal",
+   "control-feedback"
+  ],
+  "preservedAnchors": [
+   "side-by-side",
+   "side-by-side-heading",
+   "choose-them",
+   "choose-them-heading",
+   "choose-isofit",
+   "choose-isofit-heading",
+   "method",
+   "method-heading",
+   "sources",
+   "sources-heading",
+   "faq",
+   "faq-heading",
+   "related",
+   "related-heading",
+   "waitlist",
+   "waitlist-heading"
+  ]
+ },
+ {
+  "route": "/compare/isofit-vs-jefit",
+  "template": "comparison-detail",
+  "sourceRef": "src/content/compare.ts#VERSUS_DOCS (versusDoc)",
+  "blockIds": [
+   "side-by-side",
+   "choose-them",
+   "choose-isofit",
+   "method",
+   "sources",
+   "faq",
+   "related",
+   "waitlist"
+  ],
+  "metadataRef": "docMetadata(VERSUS_DOCS (versusDoc))",
+  "canonicalPath": "/compare/isofit-vs-jefit",
+  "markdownMirror": true,
+  "motionIds": [
+   "hero-settle",
+   "story-reveal",
+   "screen-reveal",
+   "control-feedback"
+  ],
+  "preservedAnchors": [
+   "side-by-side",
+   "side-by-side-heading",
+   "choose-them",
+   "choose-them-heading",
+   "choose-isofit",
+   "choose-isofit-heading",
+   "method",
+   "method-heading",
+   "sources",
+   "sources-heading",
+   "faq",
+   "faq-heading",
+   "related",
+   "related-heading",
+   "waitlist",
+   "waitlist-heading"
+  ]
+ },
+ {
+  "route": "/faq",
+  "template": "faq",
+  "sourceRef": "src/content/faq.ts#FAQ_DOC",
+  "blockIds": [
+   "basics",
+   "logging",
+   "body-graph",
+   "atlas",
+   "bonfire",
+   "pricing",
+   "privacy",
+   "related",
+   "waitlist"
+  ],
+  "metadataRef": "docMetadata(FAQ_DOC)",
+  "canonicalPath": "/faq",
+  "markdownMirror": true,
+  "motionIds": [
+   "hero-settle",
+   "story-reveal",
+   "screen-reveal",
+   "control-feedback"
+  ],
+  "preservedAnchors": [
+   "support-contact",
+   "basics",
+   "basics-heading",
+   "logging",
+   "logging-heading",
+   "body-graph",
+   "body-graph-heading",
+   "atlas",
+   "atlas-heading",
+   "bonfire",
+   "bonfire-heading",
+   "pricing",
+   "pricing-heading",
+   "privacy",
+   "privacy-heading",
+   "related",
+   "related-heading",
+   "waitlist",
+   "waitlist-heading"
+  ]
+ },
+ {
+  "route": "/about",
+  "template": "about",
+  "sourceRef": "src/content/about.ts#ABOUT_DOC",
+  "blockIds": [
+   "founder",
+   "why",
+   "how-it-works",
+   "principles",
+   "key-facts",
+   "name",
+   "faq",
+   "related",
+   "waitlist"
+  ],
+  "metadataRef": "docMetadata(ABOUT_DOC)",
+  "canonicalPath": "/about",
+  "markdownMirror": true,
+  "motionIds": [
+   "hero-settle",
+   "story-reveal",
+   "screen-reveal",
+   "control-feedback"
+  ],
+  "preservedAnchors": [
+   "founder",
+   "founder-heading",
+   "why",
+   "why-heading",
+   "how-it-works",
+   "how-it-works-heading",
+   "principles",
+   "principles-heading",
+   "key-facts",
+   "key-facts-heading",
+   "name",
+   "name-heading",
+   "faq",
+   "faq-heading",
+   "related",
+   "related-heading",
+   "waitlist",
+   "waitlist-heading"
+  ]
+ },
+ {
+  "route": "/terms",
+  "template": "legal",
+  "sourceRef": "src/app/terms/terms-of-service.md",
+  "blockIds": [],
+  "metadataRef": "src/app/layout.tsx defaults",
+  "canonicalPath": "/terms",
+  "markdownMirror": false,
+  "motionIds": [
+   "control-feedback"
+  ],
+  "preservedAnchors": [
+   "1-agreement-to-these-terms",
+   "2-eligibility",
+   "3-your-account",
+   "4-memberships-billing-and-cancellation",
+   "5-atlas-and-ai-generated-content",
+   "51-atlas-is-an-ai-system-not-a-person",
+   "52-ai-content-can-be-wrong",
+   "53-not-medical-advice",
+   "54-no-professional-relationship",
+   "55-training-suggestions-are-starting-points",
+   "56-your-inputs-to-atlas",
+   "6-assumption-of-risk",
+   "7-your-content-and-the-bonfire",
+   "8-iso-and-rewards",
+   "9-acceptable-use",
+   "10-intellectual-property-feedback",
+   "11-third-party-services",
+   "111-using-isofit-through-muse",
+   "112-using-isofit-through-chatgpt",
+   "12-disclaimers-of-warranties",
+   "13-limitation-of-liability",
+   "14-indemnification",
+   "15-termination",
+   "16-changes-to-the-service-and-these-terms",
+   "17-governing-law-and-disputes",
+   "18-contact"
+  ]
+ },
+ {
+  "route": "/privacy",
+  "template": "legal",
+  "sourceRef": "src/app/privacy/privacy-policy.md",
+  "blockIds": [],
+  "metadataRef": "src/app/layout.tsx defaults",
+  "canonicalPath": "/privacy",
+  "markdownMirror": false,
+  "motionIds": [
+   "control-feedback"
+  ],
+  "preservedAnchors": [
+   "1-who-we-are-and-how-to-contact-us",
+   "2-what-personal-data-we-collect",
+   "21-data-you-provide-directly",
+   "22-data-generated-by-your-use-of-the-platform",
+   "23-apple-health-data-optional",
+   "24-limits-on-data-collection-and-storage",
+   "3-how-and-why-we-use-your-data",
+   "4-atlas-ai-and-your-data",
+   "41-what-atlas-receives-about-you",
+   "42-how-atlas-uses-your-data",
+   "43-ai-and-automated-decision-making",
+   "44-withdrawing-consent-for-atlas-personalization",
+   "5-apple-health-and-healthkit-data",
+   "6-who-we-share-your-data-with",
+   "61-other-isofit-members",
+   "62-technology-service-providers",
+   "63-legal-and-regulatory-disclosures",
+   "64-we-do-not-sell-your-data",
+   "65-using-isofit-through-muse-meta",
+   "66-using-isofit-through-chatgpt-openai",
+   "7-your-consent-controls",
+   "8-data-retention",
+   "9-data-security",
+   "10-membership-cancellation-and-account-deletion",
+   "11-childrens-privacy",
+   "12-cookies-and-tracking",
+   "13-your-rights",
+   "14-international-data-transfers",
+   "15-changes-to-this-privacy-policy",
+   "16-contact-us"
+  ]
+ },
+ {
+  "route": "/health-privacy",
+  "template": "legal",
+  "sourceRef": "src/app/health-privacy/consumer-health-data-privacy-policy.md",
+  "blockIds": [],
+  "metadataRef": "src/app/layout.tsx defaults",
+  "canonicalPath": "/health-privacy",
+  "markdownMirror": false,
+  "motionIds": [
+   "control-feedback"
+  ],
+  "preservedAnchors": [
+   "1-what-we-mean-by-consumer-health-data",
+   "2-why-we-collect-it-and-how-we-use-it",
+   "3-where-it-comes-from",
+   "4-who-we-share-it-with",
+   "5-your-rights",
+   "6-security-and-retention",
+   "7-changes-to-this-policy",
+   "8-contact"
+  ]
+ },
+ {
+  "route": "/login",
+  "template": "conversion-state",
+  "sourceRef": "src/app/login/\u2026/page.tsx",
+  "blockIds": [],
+  "metadataRef": "src/app/layout.tsx defaults",
+  "canonicalPath": "/login",
+  "markdownMirror": false,
+  "motionIds": [
+   "control-feedback"
+  ],
+  "preservedAnchors": []
+ },
+ {
+  "route": "/signup",
+  "template": "conversion-state",
+  "sourceRef": "src/app/signup/\u2026/page.tsx",
+  "blockIds": [],
+  "metadataRef": "src/app/layout.tsx defaults",
+  "canonicalPath": "/signup",
+  "markdownMirror": false,
+  "motionIds": [
+   "control-feedback"
+  ],
+  "preservedAnchors": []
+ },
+ {
+  "route": "/join",
+  "template": "conversion-state",
+  "sourceRef": "src/app/join/\u2026/page.tsx",
+  "blockIds": [
+   "waitlist"
+  ],
+  "metadataRef": "src/app/layout.tsx defaults",
+  "canonicalPath": "/join",
+  "markdownMirror": false,
+  "motionIds": [
+   "control-feedback"
+  ],
+  "preservedAnchors": [
+   "waitlist",
+   "waitlist-heading"
+  ]
+ },
+ {
+  "route": "/forgot-password",
+  "template": "conversion-state",
+  "sourceRef": "src/app/forgot-password/\u2026/page.tsx",
+  "blockIds": [],
+  "metadataRef": "src/app/layout.tsx defaults",
+  "canonicalPath": "/forgot-password",
+  "markdownMirror": false,
+  "motionIds": [
+   "control-feedback"
+  ],
+  "preservedAnchors": []
+ },
+ {
+  "route": "/update-password",
+  "template": "conversion-state",
+  "sourceRef": "src/app/update-password/\u2026/page.tsx",
+  "blockIds": [],
+  "metadataRef": "src/app/layout.tsx defaults",
+  "canonicalPath": "/update-password",
+  "markdownMirror": false,
+  "motionIds": [
+   "control-feedback"
+  ],
+  "preservedAnchors": []
+ },
+ {
+  "route": "/waitlist/ok",
+  "template": "conversion-state",
+  "sourceRef": "src/app/waitlist/\u2026/page.tsx",
+  "blockIds": [],
+  "metadataRef": "src/app/layout.tsx defaults",
+  "canonicalPath": "/waitlist/ok",
+  "markdownMirror": false,
+  "motionIds": [
+   "control-feedback"
+  ],
+  "preservedAnchors": []
+ },
+ {
+  "route": "/waitlist/already",
+  "template": "conversion-state",
+  "sourceRef": "src/app/waitlist/\u2026/page.tsx",
+  "blockIds": [],
+  "metadataRef": "src/app/layout.tsx defaults",
+  "canonicalPath": "/waitlist/already",
+  "markdownMirror": false,
+  "motionIds": [
+   "control-feedback"
+  ],
+  "preservedAnchors": []
+ },
+ {
+  "route": "/waitlist/missing",
+  "template": "conversion-state",
+  "sourceRef": "src/app/waitlist/\u2026/page.tsx",
+  "blockIds": [],
+  "metadataRef": "src/app/layout.tsx defaults",
+  "canonicalPath": "/waitlist/missing",
+  "markdownMirror": false,
+  "motionIds": [
+   "control-feedback"
+  ],
+  "preservedAnchors": []
+ },
+ {
+  "route": "/billing",
+  "template": "conversion-state",
+  "sourceRef": "src/app/billing/\u2026/page.tsx",
+  "blockIds": [],
+  "metadataRef": "src/app/layout.tsx defaults",
+  "canonicalPath": "/billing",
+  "markdownMirror": false,
+  "motionIds": [
+   "control-feedback"
+  ],
+  "preservedAnchors": []
+ },
+ {
+  "route": "/billing/return",
+  "template": "conversion-state",
+  "sourceRef": "src/app/billing/\u2026/page.tsx",
+  "blockIds": [],
+  "metadataRef": "src/app/layout.tsx defaults",
+  "canonicalPath": "/billing/return",
+  "markdownMirror": false,
+  "motionIds": [
+   "control-feedback"
+  ],
+  "preservedAnchors": []
+ },
+ {
+  "route": "/billing/success",
+  "template": "conversion-state",
+  "sourceRef": "src/app/billing/\u2026/page.tsx",
+  "blockIds": [],
+  "metadataRef": "src/app/layout.tsx defaults",
+  "canonicalPath": "/billing/success",
+  "markdownMirror": false,
+  "motionIds": [
+   "control-feedback"
+  ],
+  "preservedAnchors": []
+ },
+ {
+  "route": "/billing/cancel",
+  "template": "conversion-state",
+  "sourceRef": "src/app/billing/\u2026/page.tsx",
+  "blockIds": [],
+  "metadataRef": "src/app/layout.tsx defaults",
+  "canonicalPath": "/billing/cancel",
+  "markdownMirror": false,
+  "motionIds": [
+   "control-feedback"
+  ],
+  "preservedAnchors": []
+ },
+ {
+  "route": "/checkout/success",
+  "template": "conversion-state",
+  "sourceRef": "src/app/checkout/\u2026/page.tsx",
+  "blockIds": [],
+  "metadataRef": "src/app/layout.tsx defaults",
+  "canonicalPath": "/checkout/success",
+  "markdownMirror": false,
+  "motionIds": [
+   "control-feedback"
+  ],
+  "preservedAnchors": []
+ },
+ {
+  "route": "/checkout/cancelled",
+  "template": "conversion-state",
+  "sourceRef": "src/app/checkout/\u2026/page.tsx",
+  "blockIds": [],
+  "metadataRef": "src/app/layout.tsx defaults",
+  "canonicalPath": "/checkout/cancelled",
+  "markdownMirror": false,
+  "motionIds": [
+   "control-feedback"
+  ],
+  "preservedAnchors": []
+ },
+ {
+  "route": "/iso-sync/success",
+  "template": "conversion-state",
+  "sourceRef": "src/app/iso-sync/\u2026/page.tsx",
+  "blockIds": [],
+  "metadataRef": "src/app/layout.tsx defaults",
+  "canonicalPath": "/iso-sync/success",
+  "markdownMirror": false,
+  "motionIds": [
+   "control-feedback"
+  ],
+  "preservedAnchors": []
+ },
+ {
+  "route": "/iso-sync/cancel",
+  "template": "conversion-state",
+  "sourceRef": "src/app/iso-sync/\u2026/page.tsx",
+  "blockIds": [],
+  "metadataRef": "src/app/layout.tsx defaults",
+  "canonicalPath": "/iso-sync/cancel",
+  "markdownMirror": false,
+  "motionIds": [
+   "control-feedback"
+  ],
+  "preservedAnchors": []
+ }
+]

@@ -1,0 +1,87 @@
+status 200
+content-type: text/markdown; charset=utf-8
+x-robots-tag: noindex, follow
+
+# Tap it. Type it. Say it.
+
+Source: https://isofit.app/features/workout-logging
+Facts last reviewed: 2026-09-23
+
+Isofit's logger accepts a workout three ways and stores it one way. Tap in sets, reps, weight, distance, time and RPE. Type a Quicklog line such as "bench 5x5 225lbs" and get a finished row. Or hold the microphone, describe the session, and review the draft before it saves. All three produce the same structured log, and logging is free.
+
+## Three ways to get a workout in
+
+| Method | How it works | Good for |
+| --- | --- | --- |
+| Tap | Add an exercise from the library, then set sets, reps, weight, distance, time and RPE on its row. | Logging set by set during a session. |
+| Quicklog (typed) | Type a line like "bench 5x5 225lbs". Separate exercises with commas. Parsed on your phone, no network needed. | Getting a whole session down in seconds. |
+| Voice | Hold the microphone for up to 90 seconds and describe what you did. Isofit drafts the rows for you to review. | Logging with chalk on your hands, or after the fact. |
+
+## What Quicklog understands
+
+Quicklog reads the numbers out of a plain sentence and leaves the rest as the exercise name. It runs entirely on the phone, so it is instant and works with no signal.
+
+- **Sets and reps:** "5x5", "3x12"
+- **Weight:** "225lbs", "100kg"
+- **Distance:** "3mi", "5k", "400m"
+- **Duration:** "25:00", "30min", "1hr"
+- **Effort:** "rpe 8"
+- **Several exercises:** Separate with commas, up to 20 in one line.
+
+## How voice logging works
+
+Hold the microphone button and talk. Speech is transcribed on your iPhone where the device supports it. The transcript is then sent to Isofit's server, where an AI model (OpenAI) turns it into exercise rows. If on-device transcription is not confident, the audio is sent for server transcription instead.
+
+Voice never writes to your log on its own. The parsed rows appear in the logger as a draft for you to check, fix and save. Voice logging is available on every tier and is powered by $ISO, the in-app points you earn by logging: each successfully processed voice entry costs 0.05 $ISO on all plans, is blocked when your balance is zero, and is refunded if processing fails. Usage limits apply.
+
+Units are kept as spoken. Say "squat 100 kilos" and the row records 100 kg even if your account is set to pounds. Isofit never converts a spoken weight.
+
+## What you can record for each set
+
+- **Strength:** Sets, reps and weight in pounds or kilograms. Bodyweight sets count with no weight entered.
+- **Cardio and conditioning:** Distance in miles, kilometers or meters, and duration.
+- **Effort:** RPE, the rating of perceived exertion, per exercise.
+- **Timing:** A set timer and a rest timer on every row, which add up to the session duration.
+- **Warm-ups:** Sets can be marked as warm-ups so they stay out of your working-set counts.
+- **Notes:** A note on any exercise.
+
+## A library for more than lifting
+
+The built-in library has 500+ exercises covering strength training, cardio, yoga, sports and martial arts. You are not limited to it: type a name that is not there and Isofit offers to create it as a custom exercise, then maps it to the muscles it trains so it counts on your body graph.
+
+## Routines, history and offline use
+
+- Save any finished session as a routine, favorite it, and load it next time. There is no cap on routines.
+- History lists every session on every tier. Edit old sets, delete a session, or backdate a workout you forgot.
+- Finish a session with no signal and it is queued on the phone, then synced when you reconnect.
+- Units follow your account setting and can be switched per row.
+
+- **Offline:** The session is queued on the phone, with its date fixed to the day it happened.
+- **Synced:** The queue has drained and the server holds the session.
+- **Needs attention:** Something did not replay. The Log tab says so instead of failing quietly.
+
+## Frequently asked questions
+
+### Can I log a workout by typing a sentence?
+
+Yes. Quicklog takes a line such as "bench 5x5 225lbs, run 5k 25:00 rpe 7" and turns it into structured rows. It reads sets and reps, weight, distance, duration and RPE, and treats the remaining words as the exercise name.
+
+### Can I log a workout with my voice?
+
+Yes. Hold the microphone button, describe the session for up to 90 seconds, and Isofit drafts rows that you review before they are saved. Each voice log costs 0.05 $ISO.
+
+### Does workout logging work offline?
+
+Tap logging and Quicklog work offline, and finished sessions are queued on the phone until you reconnect. Voice logging needs a connection because the transcript is parsed on the server.
+
+### Is workout logging free in Isofit?
+
+Yes. Logging, Quicklog, routines, history and Apple Health import are on the Free tier, with no cap on workouts or routines.
+
+### Does Isofit track personal records?
+
+No. Isofit does not have personal-record tracking. History shows every past session and the sets in it.
+
+### Can I log running, yoga or martial arts, or only lifting?
+
+You can log all of them. The library covers strength training, cardio, yoga, sports and martial arts, and rows adapt to the activity: distance and time for a run, duration for a hold or a class.

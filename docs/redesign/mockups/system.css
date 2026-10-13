@@ -9,7 +9,7 @@
   --heat-0:#cfc3a4;--heat-1:#8f9868;--heat-2:#c2a55e;--heat-3:#d48f56;--heat-4:#b8623a;--heat-5:#9a4527;
   --sans:-apple-system,BlinkMacSystemFont,"SF Pro Text",system-ui,sans-serif;--display:Unbounded,system-ui,sans-serif;--mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
   /* type scale (display = Unbounded) */
-  --t-hero:clamp(2.75rem,8.4vw,6.75rem);--t-statement:clamp(2.1rem,5.4vw,4rem);--t-h2:clamp(1.75rem,3.6vw,2.75rem);--t-h3:clamp(1.25rem,2vw,1.5rem);
+  --t-hero:clamp(2.75rem,8.4vw,6.75rem);--t-statement:clamp(2rem,4.4vw,3.25rem);--t-h2:clamp(1.75rem,3.6vw,2.75rem);--t-h3:clamp(1.25rem,2vw,1.5rem);
   --gutter:clamp(1rem,4vw,2.5rem);--section:clamp(4rem,9vw,8rem);--max:1200px;
   --ease:cubic-bezier(.2,.7,.2,1);
 }
@@ -50,6 +50,15 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
 .hero .hero-h{margin:1.25rem 0 1.5rem}
 .hero .actions{display:flex;flex-wrap:wrap;gap:.75rem;margin:1.75rem 0 1.25rem}
 .hero .heat{margin-top:1.25rem;max-width:20rem}
+/* waitlist form (inline in hero; same fields and copy as the live WaitlistForm) */
+.wl{margin-top:1.25rem;max-width:30rem}.wl label{display:block;margin:0 0 .25rem;font-size:.875rem;font-weight:500;color:var(--ink-2)}
+.wl input{width:100%;min-height:2.75rem;padding:0 .9rem;border:1.5px solid rgb(42 36 32/.35);border-radius:.75rem;background:var(--paper-raised);font:inherit;margin-bottom:.9rem}
+.wl .btn{width:100%;justify-content:center}.wl p{margin:.6rem 0 0;font-size:.875rem;color:var(--ink-3)}
+.legend{display:flex;justify-content:space-between;align-items:center;gap:.75rem;margin-top:1rem}.legend .heat{flex:1;max-width:11rem}
+/* mobile menu: native <details>, works without JS */
+.menu{display:none}.menu summary{list-style:none;min-height:2.75rem;display:inline-flex;align-items:center;padding:0 1rem;border:1.5px solid var(--ink);border-radius:.75rem;font-weight:600;font-size:.9375rem;cursor:pointer}.menu summary::-webkit-details-marker{display:none}
+.menu .panel{position:absolute;left:0;right:0;top:100%;background:var(--paper);border-bottom:1px solid var(--rule);padding:.5rem var(--gutter) 1.25rem;display:grid}
+.menu .panel a{padding:.9rem 0;border-bottom:1px solid var(--rule);color:var(--ink);text-decoration:none;font-size:1.0625rem}
 /* fact strip */
 .facts{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid var(--rule);background:var(--paper-raised)}
 .facts div{padding:1.5rem var(--gutter) 1.5rem 0;border-top:3px solid transparent;position:relative}
@@ -61,7 +70,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
 .chapter .inner{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.8fr);gap:clamp(2rem,6vw,5rem);align-items:center}
 .chapter.flip .inner{grid-template-columns:minmax(0,.8fr) minmax(0,1fr)}.chapter.flip .copy{order:2}
 .chapter .num{font:800 clamp(5rem,16vw,12rem)/.8 var(--display);letter-spacing:-.06em;-webkit-text-fill-color:transparent;-webkit-text-stroke:2px currentColor;margin-bottom:1.25rem}
-.chapter .statement{margin:.75rem 0 0;font-size:clamp(2rem,4.4vw,3.25rem)}
+.chapter .statement{margin:.75rem 0 0}
 .chapter.log{background:var(--paper)}.chapter.log .num{color:var(--blue)}
 .chapter.see{background:var(--ink);color:var(--paper)}.chapter.see .num{color:var(--sky)}.chapter.see .label{color:rgb(243 239 230/.7)}.chapter.see .prose p{color:rgb(243 239 230/.85)}.chapter.see .statement{color:#fff}
 .chapter.ask{background:var(--terra-soft)}.chapter.ask .num{color:var(--terra)}.chapter.ask .label{color:var(--terra)}
@@ -92,12 +101,23 @@ th,td{text-align:left;vertical-align:top;padding:.9rem 1rem;border-top:1px solid
 tbody th{font-family:var(--display);font-weight:600;font-size:.875rem;letter-spacing:-.01em;width:9rem}
 td.isofit{background:var(--forest-soft)}
 .specs{display:grid;grid-template-columns:repeat(2,1fr);gap:0 2rem}.specs div{padding:1rem 0;border-top:1px solid var(--rule)}.specs dt{margin:0}.specs dd{margin:.25rem 0 0;color:var(--ink-2)}
-.choose{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}.choose>div{border-radius:1.5rem;padding:1.5rem 1.75rem;border:1px solid var(--rule);background:var(--paper-raised)}.choose .yes{background:var(--forest-soft)}
+.choose{display:grid;grid-template-columns:minmax(0,1fr);gap:1.25rem}.choose>div{border-radius:1.5rem;padding:1.5rem 1.75rem;border:1px solid var(--rule);background:var(--paper-raised)}.choose .yes{background:var(--forest-soft)}
 .choose ul{margin:.75rem 0 0;padding-left:1.1rem;color:var(--ink-2)}
-@media (max-width:56rem){.hero .grid,.chapter .inner,.chapter.flip .inner,.tiers,.choose,.longform{grid-template-columns:minmax(0,1fr)}.chapter.flip .copy{order:0}.toc{display:none}.facts-inner{grid-template-columns:repeat(2,1fr)}header.top nav{display:none}.specs{grid-template-columns:1fr}table{display:block;overflow-x:auto}}
-/* motion registry: only these IDs. Baseline is fully visible; motion is opt-in via .js and skipped for reduced motion. */
+@media (max-width:56rem){.hero .grid,.chapter .inner,.chapter.flip .inner,.tiers,.choose,.longform{grid-template-columns:minmax(0,1fr)}.chapter.flip .copy{order:0}.toc{display:none}.facts-inner{grid-template-columns:repeat(2,1fr)}header.top nav,header.top .hide-sm{display:none}header.top .wrap{gap:.75rem}.menu{display:block;margin-left:auto}header.top .wrap>.btn-primary{min-height:2.5rem;padding:0 .9rem;white-space:nowrap}.specs{grid-template-columns:1fr}}
+/* motion registry: only these IDs. Pure CSS: baseline is fully visible, motion only adds a one-time settle and is skipped for reduced motion. */
 @media (prefers-reduced-motion:no-preference){
   .hero-settle{animation:settle .6s var(--ease) both}
   @keyframes settle{from{opacity:0;transform:translateY(8px)}}
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition-duration:0s!important;animation:none!important}}
+
+/* Tables stack into cards on phones, same pattern as the live .table-stack in globals.css */
+@media (max-width:47.99rem){
+ .table-stack,.table-stack caption,.table-stack tbody,.table-stack tr,.table-stack th,.table-stack td{display:block}
+ .table-stack thead{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+ .table-stack tr{padding:1rem 1.25rem}
+ .table-stack tbody th{padding:0 0 .5rem;width:auto;font-size:.9375rem}
+ .table-stack td{display:grid;grid-template-columns:5.25rem minmax(0,1fr);gap:.75rem;padding:.3rem 0;border-top:0}
+ .table-stack td::before{content:attr(data-label);padding-top:.2rem;font:.6875rem/1rem var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+ .table-stack td.isofit{background:none}
+}

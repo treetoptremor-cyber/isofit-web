@@ -47,7 +47,6 @@
  ],
  "ids": [
   "page-grid-lines",
-  "_R_4iav5ubtb_",
   "main-content",
   "side-by-side",
   "side-by-side-heading",
@@ -65,13 +64,7 @@
   "related-heading",
   "waitlist",
   "waitlist-grid-lines",
-  "waitlist-heading",
-  "_R_1ebav5ubtb_-name",
-  "_R_1ebav5ubtb_-email",
-  "_R_1ebav5ubtb_-email-error",
-  "_R_1ebav5ubtb_-help",
-  "_R_1ebav5ubtb_-status",
-  "_R_"
+  "waitlist-heading"
  ],
  "links": [
   "#main-content",

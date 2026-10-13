@@ -58,15 +58,9 @@
  ],
  "ids": [
   "page-grid-lines",
-  "_R_i9btb_",
   "main-content",
   "hero-heading",
   "waitlist-form",
-  "_R_cjdbtb_-name",
-  "_R_cjdbtb_-email",
-  "_R_cjdbtb_-email-error",
-  "_R_cjdbtb_-help",
-  "_R_cjdbtb_-status",
   "glance-heading",
   "does",
   "does-heading",
@@ -89,13 +83,7 @@
   "faq-heading",
   "waitlist",
   "waitlist-grid-lines",
-  "waitlist-heading",
-  "_R_5vdbtb_-name",
-  "_R_5vdbtb_-email",
-  "_R_5vdbtb_-email-error",
-  "_R_5vdbtb_-help",
-  "_R_5vdbtb_-status",
-  "_R_"
+  "waitlist-heading"
  ],
  "links": [
   "#main-content",
