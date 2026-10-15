@@ -9,9 +9,9 @@ import { SITE } from "@/lib/site";
 export const HOME_DOC: PageDoc = {
   path: "/",
   name: "Isofit",
-  metaTitle: "Isofit | Workout Tracker & AI Coach — Coming Soon",
+  metaTitle: "Isofit | Workout Tracker & AI Coach for iPhone and Web",
   metaDescription:
-    "Track workouts by tap, text or voice, visualize your training by muscle, and meet Atlas, Isofit’s AI fitness coach. Coming soon to iPhone and the web.",
+    "Track workouts by tap, text or voice, visualize your training by muscle, and meet Atlas, Isofit’s AI fitness coach. Download on the App Store or use the web app.",
   h1: "Put your workouts to work.",
   lede: "Isofit is a workout tracker that helps you make sense of your training. Log by tap, text or voice, and see which muscles you’re working—and which you might be overlooking. Meet Atlas, Isofit’s built-in personal AI fitness coach. With your permission, Atlas reads your workout history to help you review sessions and plan what’s next.",
   sections: [
@@ -21,11 +21,11 @@ export const HOME_DOC: PageDoc = {
       heading: "Isofit at a glance",
       specs: [
         { term: "What it is", value: "A workout logger with a muscle-by-muscle body graph, an AI coach and a members-only community." },
-        { term: "Platform", value: "iPhone (iOS 17.6 or later) and web app, both coming soon." },
-        { term: "Price", value: `Logging is free. Pro is planned at ${PRICING.proMonthly} a month or ${PRICING.proYearly} a year (USD).` },
+        { term: "Platform", value: "iPhone (iOS 17.6 or later) on the App Store, and a web app. Both are available now." },
+        { term: "Price", value: `Logging is free. Pro is ${PRICING.proMonthly} a month or ${PRICING.proYearly} a year (USD).` },
         { term: "Exercise library", value: `500+ exercises across ${ACTIVITY_SCOPE}, plus add unlimited custom exercises.` },
         { term: "Apple Health", value: "Optional and free. Isofit reads from Apple Health and never writes to it." },
-        { term: "Status", value: `Pre-release. ${SITE.launchStatus}` },
+        { term: "Status", value: `Live. ${SITE.launchStatus}` },
       ],
     },
     {
@@ -84,7 +84,7 @@ export const HOME_DOC: PageDoc = {
         },
         {
           term: "Pro",
-          value: `Planned at ${PRICING.proMonthly} a month or ${PRICING.proYearly} a year. Adds the full body graph, ${LIMITS.proAtlasMessages} with deep analysis and saved programs, SITREP (weekly training review), and posting to Bonfire.`,
+          value: `${PRICING.proMonthly} a month or ${PRICING.proYearly} a year. Adds the full body graph, ${LIMITS.proAtlasMessages} with deep analysis and saved programs, SITREP (weekly training review), and posting to Bonfire.`,
         },
       ],
     },
@@ -94,24 +94,24 @@ export const HOME_DOC: PageDoc = {
     {
       question: "What is Isofit?",
       answer: [
-        "Isofit is a workout tracker coming soon to iPhone and the web. You record training by tapping, typing or speaking, and the app shows which muscles that training reached on a front and back body graph. It includes Atlas, a personal AI fitness coach that can read your workout history with your permission, and Bonfire, a members-only community feed.",
+        "Isofit is a workout tracker for iPhone and the web. You record training by tapping, typing or speaking, and the app shows which muscles that training reached on a front and back body graph. It includes Atlas, a personal AI fitness coach that can read your workout history with your permission, and Bonfire, a members-only community feed.",
       ],
     },
     {
       question: "Is Isofit free?",
       answer: [
-        `Logging workouts, routines, history, Apple Health import, data export and ${LIMITS.freeAtlasMessages} are free. Pro is planned at ${PRICING.proMonthly} a month or ${PRICING.proYearly} a year in the US App Store and unlocks the full body graph, higher Atlas limits, Atlas programs and posting to Bonfire.`,
+        `Logging workouts, routines, history, Apple Health import, data export and ${LIMITS.freeAtlasMessages} are free. Pro is ${PRICING.proMonthly} a month or ${PRICING.proYearly} a year in the US App Store and unlocks the full body graph, higher Atlas limits, Atlas programs and posting to Bonfire.`,
       ],
       link: { href: "/pricing", label: "See what each tier includes" },
     },
     {
-      question: "Which platforms is Isofit coming to?",
-      answer: ["Isofit is coming soon to iPhone (iOS 17.6 or later) and the web. Neither app is available yet. There are no native Android, iPad or Apple Watch apps."],
+      question: "Which platforms is Isofit on?",
+      answer: ["Isofit is on the App Store for iPhone (iOS 17.6 or later), and there is a web app at app.isofit.app. There are no native Android, iPad or Apple Watch apps."],
     },
     {
-      question: "When does Isofit launch?",
+      question: "Where can I get Isofit?",
       answer: [
-        `${SITE.launchStatus} Neither app is available yet. Joining the waitlist gets you one email when Isofit launches.`,
+        `${SITE.launchStatus} Download it from the App Store, or open the web app in your browser.`,
       ],
     },
   ],

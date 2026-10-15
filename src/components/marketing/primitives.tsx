@@ -5,15 +5,16 @@ import type { ReactNode } from "react";
 import IsoGrid from "@/components/marketing/iso-grid";
 import JsonLd from "@/components/marketing/json-ld";
 import SiteFooter from "@/components/marketing/site-footer";
+import AppStoreLink from "@/components/marketing/app-store-link";
+import WebAppLink from "@/components/marketing/web-app-link";
 import SiteHeader from "@/components/marketing/site-header";
 import Reveal from "@/components/marketing/reveal";
-import StickyWaitlist from "@/components/marketing/sticky-waitlist";
-import WaitlistForm from "@/components/waitlist-form";
+import StickyAppLink from "@/components/marketing/sticky-app-link";
 import { SITE, absoluteUrl } from "@/lib/site";
 
 export const CONTAINER = "mx-auto w-full max-w-[1120px] px-4 min-[25rem]:px-5 sm:px-6";
 
-export function PageShell({ children, waitlistHref, grid = true, sticky = true }: { children: ReactNode; waitlistHref?: string; grid?: boolean; sticky?: boolean }) {
+export function PageShell({ children, grid = true, sticky = true }: { children: ReactNode; grid?: boolean; sticky?: boolean }) {
   return (
     <div className="relative flex min-h-screen flex-col text-ink">
       {/* The app's base surface: its faint sky grid behind every page, fixed to
@@ -35,13 +36,13 @@ export function PageShell({ children, waitlistHref, grid = true, sticky = true }
           <IsoGrid id="page-grid" />
         </div>
       ) : null}
-      <SiteHeader waitlistHref={waitlistHref} />
+      <SiteHeader />
       <main id="main-content" tabIndex={-1} className="flex-1 outline-none">
         {children}
       </main>
       <SiteFooter />
       <Reveal />
-      {sticky ? <StickyWaitlist /> : null}
+      {sticky ? <StickyAppLink /> : null}
     </div>
   );
 }
@@ -356,7 +357,7 @@ export function FaqList({ faqs, headingLevel = "h3" }: { faqs: Faq[]; headingLev
   );
 }
 
-export function WaitlistBand({ source, id = "waitlist" }: { source: string; id?: string }) {
+export function GetAppBand({ id = "get-app" }: { id?: string }) {
   return (
     <section id={id} aria-labelledby={`${id}-heading`} className={`${CONTAINER} scroll-mt-24 py-10 md:py-16`}>
       <div className="relative overflow-hidden rounded-[1.75rem] bg-ink px-6 py-10 sm:px-10 md:px-14 md:py-14">
@@ -372,13 +373,13 @@ export function WaitlistBand({ source, id = "waitlist" }: { source: string; id?:
               Your workouts, <span className="text-sky">working for you.</span>
             </p>
             <p className="mt-4 max-w-[46ch] text-[1.0625rem] leading-relaxed text-paper/85">
-              Both apps are coming soon. Join the waitlist and we will email you once, when Isofit launches.
+              Download Isofit from the App Store for iPhone, or use the web app in your browser.
             </p>
             <dl className="mt-8 grid max-w-[34rem] grid-cols-2 gap-x-8 gap-y-5 border-t border-paper/20 pt-6 sm:grid-cols-3">
               {[
                 ["For", "Adults, 18 and over"],
                 ["Sign-in", "Apple, Google or email"],
-                ["We ask for", "An email. A first name is optional"],
+                ["Price", "Free to log. Pro is optional"],
               ].map(([term, value]) => (
                 <div key={term}>
                   <dt className="label !text-sky">{term}</dt>
@@ -387,7 +388,10 @@ export function WaitlistBand({ source, id = "waitlist" }: { source: string; id?:
               ))}
             </dl>
           </div>
-          <WaitlistForm dark source={source} label="Join the Isofit waitlist, end of page" />
+          <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
+            <AppStoreLink className="w-full" />
+            <WebAppLink className="w-full !border-paper/30 !bg-transparent !text-white hover:!bg-white/10" />
+          </div>
         </div>
       </div>
     </section>

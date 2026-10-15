@@ -6,10 +6,10 @@ import { SITE } from "@/lib/site";
 
 export const HOME_SOCIAL_HEADLINE = ["Put your workouts", "to work."] as const;
 export const HOME_SOCIAL_IMAGE = {
-  url: "/og/home?v=4",
+  url: "/og/home?v=5",
   width: 1200,
   height: 630,
-  alt: "Isofit: Put your workouts to work. Log by tap, text or voice and meet Atlas, your personal AI fitness coach. Front and back muscle maps show where your working sets go. Coming soon to iPhone and the web.",
+  alt: "Isofit: Put your workouts to work. Log by tap, text or voice and meet Atlas, your personal AI fitness coach. Front and back muscle maps show where your working sets go. Available on the App Store and on the web.",
 };
 
 export function ogSlug(path: string) {

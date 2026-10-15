@@ -100,3 +100,14 @@ Motion is decorative only and limited to the four approved patterns: `hero-settl
 
 - `reveal.tsx`: `threshold` is now 0 so a tall section reveals as soon as its top enters the lower part of the viewport (no blank screen on phones); focus inside a pending item reveals it at once.
 - Standalone account, billing, checkout, sync and password screens (`AuthShell`, `StatusPage`, `ReturnLanding`, `AppShell`) now use the paper/rule/ink tokens, the faint grid, the heat ribbon and the larger Unbounded title. Forms, copy and behavior are unchanged; the `/signup` and billing buttons use the `forest` token (contrast fix).
+
+## App Store launch update (2026-10-14)
+
+Isofit is live on the App Store (https://apps.apple.com/us/app/isofit-workout-log-ai-coach/id6798953719) and the web app is live. This is the single site-wide update deferred in item 4 above.
+
+- `SITE.launchStatus` now reads "Available on the App Store and on the web."; `SITE.heroStatus` is gone and `SITE.appStoreUrl` holds the listing link.
+- Every "Join the waitlist" control (header, mobile menu, sticky phone bar, homepage hero, closing band on every page) is now "Download on the App Store", beside "Try web app". `WaitlistBand` became `GetAppBand`, `StickyWaitlist` became `StickyAppLink`.
+- Copy that said coming soon, pre-release, planned, "neither app is available yet" or "at launch" now describes a live product. The two waitlist FAQ entries are removed. Pro prices are stated as prices rather than plans; the App Store listing remains final.
+- Metadata, JSON-LD (`downloadUrl`/`installUrl` replace the pre-release `releaseNotes`), `llms.txt`, `llms-full.txt`, the markdown mirrors, and the social images ("iPhone + web · On the App Store", cache key `?v=5`) all read from these constants.
+- `/api/waitlist` and the `/waitlist/*` result pages are left in place so old forms and bookmarks still resolve.
+- `baseline/` captures are the pre-redesign site and are intentionally not updated, so `compare.py` will report these copy changes; add them to `approved-changes.json` when you next run it.

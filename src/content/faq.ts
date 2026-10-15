@@ -12,7 +12,7 @@ export const FAQ_GROUPS: FaqGroup[] = [
       {
         question: "What is Isofit?",
         answer: [
-          "Isofit is a workout tracker coming soon to iPhone and the web. You record training by tapping, typing or speaking, a body graph shows which muscles that work reached, and Atlas, a built-in personal AI fitness coach, answers questions about your training. It also has Bonfire, a members-only community feed.",
+          "Isofit is a workout tracker for iPhone and the web. You record training by tapping, typing or speaking, a body graph shows which muscles that work reached, and Atlas, a built-in personal AI fitness coach, answers questions about your training. It also has Bonfire, a members-only community feed.",
         ],
       },
       {
@@ -27,11 +27,11 @@ export const FAQ_GROUPS: FaqGroup[] = [
       },
       {
         question: "What devices does Isofit support?",
-        answer: ["Isofit is coming soon to iPhone (iOS 17.6 or later) and the web. Neither app is available yet. There are no native iPad, Apple Watch or Android apps."],
+        answer: ["Isofit is on the App Store for iPhone (iOS 17.6 or later), and there is a web app at app.isofit.app. There are no native iPad, Apple Watch or Android apps."],
       },
       {
-        question: "When will Isofit launch?",
-        answer: [`${SITE.launchStatus} Neither app is available yet. Join the waitlist for a heads-up when Isofit launches.`],
+        question: "Where can I download Isofit?",
+        answer: [`${SITE.launchStatus} Download it from the App Store, or open the web app in your browser.`],
       },
     ],
   },
@@ -139,18 +139,10 @@ export const FAQ_GROUPS: FaqGroup[] = [
       {
         question: "How much does Isofit cost?",
         answer: [
-          `Logging is free, with no cap on workouts or routines. Pro is planned at ${PRICING.proMonthly} a month or ${PRICING.proYearly} a year in the US App Store and adds the full body graph, ${LIMITS.proAtlasMessages} with deep analysis and saved programs, SITREP (weekly training review), and posting to Bonfire.`,
+          `Logging is free, with no cap on workouts or routines. Pro is ${PRICING.proMonthly} a month or ${PRICING.proYearly} a year in the US App Store and adds the full body graph, ${LIMITS.proAtlasMessages} with deep analysis and saved programs, SITREP (weekly training review), and posting to Bonfire.`,
           "Apple processes payments and RevenueCat manages subscription status, so Isofit never stores your full payment card details.",
         ],
         link: { href: "/pricing", label: "Full Free and Pro comparison" },
-      },
-      {
-        question: "Is joining the waitlist free?",
-        answer: ["Yes. It costs nothing and does not commit you to a subscription."],
-      },
-      {
-        question: "What information do I give when I join the waitlist?",
-        answer: ["An email address, and a first name if you want to give one, used to tell you when Isofit launches. Isofit does not collect phone numbers, and no fitness information is asked for until you create an account in the app."],
       },
       {
         question: "Does cancelling my membership delete my data?",
@@ -220,7 +212,7 @@ export const FAQ_DOC: PageDoc = {
   metaDescription:
     "Direct answers about Isofit: what it is, what it costs, how logging works, what Atlas sees, whether it works with Apple Health, and how your data is handled.",
   h1: "Frequently asked questions about Isofit.",
-  lede: `Isofit is a workout tracker with a muscle-by-muscle body graph and an AI coach called Atlas. ${SITE.launchStatus} Logging is free, and Pro is planned at ${PRICING.proMonthly} a month. The answers below cover the product, pricing, privacy and Apple Health.`,
+  lede: `Isofit is a workout tracker with a muscle-by-muscle body graph and an AI coach called Atlas. ${SITE.launchStatus} Logging is free, and Pro is ${PRICING.proMonthly} a month. The answers below cover the product, pricing, privacy and Apple Health.`,
   sections: [],
   faqs: FAQ_GROUPS.flatMap((group) => group.faqs),
   related: ["/features", "/pricing", "/compare", "/about"],

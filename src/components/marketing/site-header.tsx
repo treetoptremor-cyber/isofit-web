@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import AppStoreLink from "@/components/marketing/app-store-link";
 import MobileMenu from "@/components/marketing/mobile-menu";
 import WebAppLink from "@/components/marketing/web-app-link";
 import { PRIMARY_NAV } from "@/lib/site";
@@ -14,7 +15,7 @@ export function LogoLockup() {
   );
 }
 
-export default function SiteHeader({ waitlistHref = "/#waitlist" }: { waitlistHref?: string }) {
+export default function SiteHeader() {
   return (
     <>
       <a
@@ -35,14 +36,9 @@ export default function SiteHeader({ waitlistHref = "/#waitlist" }: { waitlistHr
           </nav>
           <div className="hidden items-center gap-2 lg:flex">
             <WebAppLink compact />
-            <Link
-              href={waitlistHref}
-              className="inline-flex min-h-11 items-center justify-center rounded-xl bg-forest px-4 text-[0.9375rem] font-semibold text-white transition-colors hover:bg-forest-dark"
-            >
-              Join the waitlist
-            </Link>
+            <AppStoreLink compact />
           </div>
-          <MobileMenu waitlistHref={waitlistHref} />
+          <MobileMenu />
         </div>
       </header>
     </>

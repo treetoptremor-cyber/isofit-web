@@ -8,7 +8,7 @@ export const ABOUT_DOC: PageDoc = {
   name: "About Isofit",
   metaTitle: "About Isofit and founder An Hu | Workout tracker",
   metaDescription:
-    "Isofit is an independent workout tracker, founded in 2026 by An Hu and designed in Queens, New York. Coming soon to iPhone and the web. Meet the founder and learn why it exists.",
+    "Isofit is an independent workout tracker, founded in 2026 by An Hu and designed in Queens, New York. Available on the App Store and on the web. Meet the founder and learn why it exists.",
   h1: "Isofit is an independent workout app, founded by An Hu and designed in Queens, New York.",
   lede: `Isofit is a workout tracker published by ${SITE.company} and designed in ${SITE.madeIn}. It was founded in ${SITE.founded} by ${SITE.founder.name}, who builds it alone. The app exists to make a training log useful after the workout is over: quick to fill in, honest about what you trained, and able to answer questions about it. ${SITE.launchStatus}`,
   sections: [

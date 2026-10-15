@@ -5,12 +5,12 @@ import Link from "next/link";
 import { ReviewedNote, webPageJsonLd } from "@/components/marketing/doc-page";
 import IsoGrid from "@/components/marketing/iso-grid";
 import JsonLd from "@/components/marketing/json-ld";
-import { CONTAINER, Device, FaqList, HeatRibbon, PageShell, Plate, Portrait, ProTag, Section, TextLink, WaitlistBand, faqJsonLd, withAtlas } from "@/components/marketing/primitives";
+import { CONTAINER, Device, FaqList, HeatRibbon, PageShell, Plate, Portrait, ProTag, Section, TextLink, GetAppBand, faqJsonLd, withAtlas } from "@/components/marketing/primitives";
 import { HeatLegend } from "@/components/marketing/quicklog-demo";
 import ScreenCrop from "@/components/marketing/screen-crop";
+import AppStoreLink from "@/components/marketing/app-store-link";
 import WebAppLink from "@/components/marketing/web-app-link";
 import RecoveryRedirect from "@/components/recovery-redirect";
-import WaitlistForm from "@/components/waitlist-form";
 import { HOME_DOC } from "@/content";
 import { PRICING } from "@/content/facts";
 import type { DocSection } from "@/content/types";
@@ -36,8 +36,8 @@ const APP_JSON_LD = {
   operatingSystem: "iOS 17.6 or later",
   availableOnDevice: "iPhone",
   inLanguage: "en",
-  // No publication date or offer availability until the app is released.
-  releaseNotes: `Pre-release. ${SITE.launchStatus}`,
+  downloadUrl: SITE.appStoreUrl,
+  installUrl: SITE.appStoreUrl,
   image: `${SITE.url}/og/home`,
   screenshot: ["log", "body-graph", "atlas"].map((name) => `${SITE.url}/screenshots/${name}.png`),
   featureList: [
@@ -50,7 +50,7 @@ const APP_JSON_LD = {
     "JSON data export and in-app account deletion",
   ],
   publisher: { "@id": `${SITE.url}/#organization` },
-  // No aggregateRating: the app is unreleased and has nothing to rate.
+  // No aggregateRating: none is published here.
   offers: [
     { "@type": "Offer", name: "Free", price: "0", priceCurrency: "USD" },
     { "@type": "Offer", name: "Pro, monthly", price: PRICING.proMonthly.slice(1), priceCurrency: "USD" },
@@ -130,7 +130,7 @@ export default function HomePage() {
   const [before, after] = HOME_DOC.h1.split(HERO_ACCENT);
 
   return (
-    <PageShell waitlistHref="#waitlist-form">
+    <PageShell>
       <RecoveryRedirect />
       <JsonLd data={[APP_JSON_LD, webPageJsonLd(HOME_DOC), faqJsonLd(HOME_DOC.faqs ?? [])]} />
 
@@ -147,13 +147,13 @@ export default function HomePage() {
               {after}
             </h1>
             <p className="motion-hero motion-hero-2 mt-4 max-w-[52ch] text-lg leading-[1.6] text-ink-2">{HOME_DOC.lede}</p>
-            <WebAppLink className="mt-5" />
-            <p className="mt-4 inline-block border-y border-ink/25 py-2.5 font-mono text-[0.8125rem] font-medium leading-6 tracking-[0.02em] text-ink">
-              {SITE.heroStatus}
-            </p>
-            <div className="mt-5 w-full">
-              <WaitlistForm formId="waitlist-form" />
+            <div className="mt-5 flex flex-wrap gap-3">
+              <AppStoreLink />
+              <WebAppLink />
             </div>
+            <p className="mt-4 inline-block border-y border-ink/25 py-2.5 font-mono text-[0.8125rem] font-medium leading-6 tracking-[0.02em] text-ink">
+              {SITE.launchStatus}
+            </p>
             <HeatRibbon className="mt-8 w-full max-w-xs" />
           </div>
           <figure className="motion-hero motion-hero-2 rounded-[2rem] border border-rule bg-paper-raised px-5 pb-5 pt-4 shadow-[0_18px_40px_rgba(42,36,32,0.06)] sm:px-6 sm:pb-6">
@@ -346,7 +346,7 @@ export default function HomePage() {
       </Section>
 
       <ReviewedNote doc={HOME_DOC} />
-      <WaitlistBand source="landing_page_footer" />
+      <GetAppBand />
     </PageShell>
   );
 }
