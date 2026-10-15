@@ -360,6 +360,8 @@ export function FaqList({ faqs, headingLevel = "h3" }: { faqs: Faq[]; headingLev
 export function GetAppBand({ id = "get-app" }: { id?: string }) {
   return (
     <section id={id} aria-labelledby={`${id}-heading`} className={`${CONTAINER} scroll-mt-24 py-10 md:py-16`}>
+      {/* Old /#waitlist links still land on this band. */}
+      <span id="waitlist" aria-hidden="true" className="block scroll-mt-24" />
       <div className="relative overflow-hidden rounded-[1.75rem] bg-ink px-6 py-10 sm:px-10 md:px-14 md:py-14">
         <IsoGrid id={`${id}-grid`} tone="ink" />
         <div aria-hidden="true" className="absolute inset-0" style={{ background: "radial-gradient(80% 120% at 100% 0%, rgba(106,165,238,0.22), transparent 60%)" }} />

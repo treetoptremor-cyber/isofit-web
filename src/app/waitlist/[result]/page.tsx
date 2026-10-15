@@ -34,7 +34,7 @@ export default async function WaitlistResultPage({ params }: { params: Promise<{
         <h1 className="mt-3 max-w-[20ch] font-display text-[clamp(2rem,4.6vw,3.25rem)] font-bold leading-[1.08] tracking-[-0.03em]">{result.title}</h1>
         <p role={result.retry ? "alert" : "status"} className="mt-5 max-w-[56ch] text-lg leading-relaxed text-ink-2">{result.body}</p>
         <Link
-          href={result.retry ? "/#waitlist-form" : "/"}
+          href={result.retry ? "/#get-app" : "/"}
           className="mt-8 inline-flex min-h-12 items-center rounded-xl bg-forest px-5 text-base font-semibold text-white transition-colors hover:bg-forest-dark"
         >
           {result.retry ? "Back to the form" : "Back to Isofit"}

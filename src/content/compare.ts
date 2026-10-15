@@ -26,7 +26,7 @@ function versusDoc(competitor: Competitor): PageDoc {
     metaTitle: `Isofit vs ${name}: an honest workout app comparison`,
     metaDescription: `How Isofit and ${name} differ on logging, muscle tracking, AI coaching, community, Apple Health, platforms and price, with sources, and who should pick which.`,
     h1: `Isofit vs ${name}: which workout app fits how you train?`,
-    lede: `${competitor.summary} Isofit is a workout tracker that takes workouts by tap, typed line or voice, shows the muscles your sets reached on a body graph, and includes Atlas, an AI coach that can read your log. ${name} is released and established, and so is Isofit now. ${SITE.launchStatus} The short version: pick ${name} if ${competitor.chooseThem[0].replace(/^You /, "you ").replace(/\.$/, "")}; pick Isofit if you want plain-language logging and a coach built into the app.`,
+    lede: `${competitor.summary} Isofit is a workout tracker that takes workouts by tap, typed line or voice, shows the muscles your sets reached on a body graph, and includes Atlas, an AI coach that can read your log. ${name} is released and established. Isofit is released too, and newer. ${SITE.launchStatus} The short version: pick ${name} if ${competitor.chooseThem[0].replace(/^You /, "you ").replace(/\.$/, "")}; pick Isofit if you want plain-language logging and a coach built into the app.`,
     sections: [
       {
         id: "side-by-side",
@@ -110,7 +110,7 @@ export const COMPARE_DOC: PageDoc = {
       label: "The other side",
       heading: "Where the other apps are the better choice",
       bullets: [
-        "All four are released, established and available today, and so is Isofit.",
+        "All four are released, established and available today. Isofit is available too, and newer.",
         "All four support Android and a smartwatch. Isofit has an iPhone app and a web app; there are no native Android or smartwatch apps.",
         "Hevy, Strong and Fitbod advertise exercise demonstration animations or videos, and JEFIT lists the largest library at 1,400+ exercises.",
         "Fitbod and JEFIT will generate the workout for you. Isofit records the workout you chose, though Atlas can write a program on Pro.",
