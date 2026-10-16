@@ -91,7 +91,7 @@ function FeatureRow({
         <div className={`grid grid-cols-[minmax(0,1fr)] gap-10 lg:items-center lg:gap-16 ${flip ? "lg:grid-cols-[26rem_minmax(0,1fr)]" : "lg:grid-cols-[minmax(0,1fr)_26rem]"}`}>
           <div data-reveal="story" className={flip ? "lg:order-2" : ""}>
             {numeral ? (
-              <p aria-hidden="true" className={`font-display text-[clamp(5rem,14vw,10rem)] font-extrabold leading-[0.8] tracking-[-0.06em] [-webkit-text-fill-color:transparent] [-webkit-text-stroke:2px_currentColor] ${tone.num}`}>
+              <p aria-hidden="true" className={`px-num font-display text-[clamp(5rem,14vw,10rem)] font-extrabold leading-[0.8] tracking-[-0.06em] [-webkit-text-fill-color:transparent] [-webkit-text-stroke:2px_currentColor] ${tone.num}`}>
                 {numeral}
               </p>
             ) : null}
@@ -156,6 +156,7 @@ export default function HomePage() {
             </p>
             <HeatRibbon className="mt-8 w-full max-w-xs" />
           </div>
+          <div className="px-float">
           <figure className="motion-hero motion-hero-2 rounded-[2rem] border border-rule bg-paper-raised px-5 pb-5 pt-4 shadow-[0_18px_40px_rgba(42,36,32,0.06)] sm:px-6 sm:pb-6">
             <div className="mb-3 flex items-center justify-between gap-3">
               <figcaption className="label">The body graph</figcaption>
@@ -168,6 +169,7 @@ export default function HomePage() {
             />
             <HeatLegend className="mt-5 justify-center" />
           </figure>
+          </div>
         </div>
       </section>
 

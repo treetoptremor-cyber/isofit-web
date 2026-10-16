@@ -111,3 +111,7 @@ Isofit is live on the App Store (https://apps.apple.com/us/app/isofit-workout-lo
 - Metadata, JSON-LD (`downloadUrl`/`installUrl` replace the pre-release `releaseNotes`), `llms.txt`, `llms-full.txt`, the markdown mirrors, and the social images ("iPhone + web · On the App Store", cache key `?v=5`) all read from these constants.
 - `/api/waitlist` and the `/waitlist/*` result pages are left in place so old forms and bookmarks still resolve.
 - `baseline/` captures are the pre-redesign site and are intentionally not updated, so `compare.py` will report these copy changes; add them to `approved-changes.json` when you next run it.
+
+### Scroll-linked depth
+
+Four decorative effects, all CSS scroll-driven animations (no script) inside `@supports (animation-timeline: view())` and `prefers-reduced-motion: no-preference`, animating only the independent `translate`/`scale` properties: `.px-float` (hero product figure lags up to 24 px, home and body-graph), `.px-grid` (page grid drifts slower than the page), `.px-heat` (heat-ramp swatches light up in sequence), `.px-num` (chapter numerals slide against the scroll, 768 px and up). Unsupported browsers and reduced motion show everything static. Text ledger of this commit is identical to its parent.

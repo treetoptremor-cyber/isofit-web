@@ -33,7 +33,9 @@ export function PageShell({ children, grid = true, sticky = true }: { children: 
             maskComposite: "intersect",
           }}
         >
-          <IsoGrid id="page-grid" />
+          <div className="px-grid absolute inset-x-0 top-0 h-[calc(100%+104px)]">
+            <IsoGrid id="page-grid" />
+          </div>
         </div>
       ) : null}
       <SiteHeader />

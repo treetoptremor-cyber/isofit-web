@@ -13,6 +13,7 @@ export default function BodyGraphPage() {
       doc={BODY_GRAPH_DOC}
       trail={[{ href: "/features", label: "Features" }, { href: BODY_GRAPH_DOC.path, label: "Body graph" }]}
       aside={
+        <div className="px-float">
         <figure className="rounded-[1.75rem] border border-rule bg-paper-raised px-6 pb-6 pt-5 shadow-[0_18px_40px_rgba(42,36,32,0.06)]">
           <div className="mb-4 flex items-center justify-between gap-3">
             <figcaption className="label">The body graph</figcaption>
@@ -25,6 +26,7 @@ export default function BodyGraphPage() {
           />
           <HeatLegend className="mt-5 justify-center" />
         </figure>
+        </div>
       }
       // The two kinds of gap the muscle panel labels, picked out in the heat ramp.
       chips={{
