@@ -41,7 +41,7 @@ export const FEATURES_DOC: PageDoc = {
         { term: "SITREP (weekly training review)", value: "On Pro, Atlas writes a Monday review of your training week that you can open and discuss." },
         { term: "Appearance", value: "Light, dark or match the system." },
         { term: "Sign-in", value: "Sign in with Apple, Google, or email and password." },
-        { term: "Your data", value: "On-demand JSON export and in-app account deletion with a seven-day grace period." },
+        { term: "Your data", value: "On-demand JSON export and in-app account deletion with a seven-day grace period you can cancel." },
       ],
     },
     {

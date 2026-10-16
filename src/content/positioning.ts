@@ -95,7 +95,7 @@ export const HOW_IT_WORKS: DocSection = {
     },
     {
       heading: "Upgrade, cancel or leave",
-      body: `Pro is a monthly (${PRICING.proMonthly}) or yearly (${PRICING.proYearly}) App Store subscription with no long-term contract, cancelled any time in your Apple account settings. Cancelling keeps your account and training data. You can export everything as a JSON file, or delete your account from inside the app with a seven-day grace period.`,
+      body: `Pro is a monthly (${PRICING.proMonthly}) or yearly (${PRICING.proYearly}) App Store subscription with no long-term contract, cancelled any time in your Apple account settings. Cancelling keeps your account and training data. You can export everything as a JSON file, or delete your account from inside the app with a seven-day grace period you can cancel.`,
     },
     {
       heading: "Get help",

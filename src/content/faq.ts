@@ -206,7 +206,7 @@ export const FAQ_GROUPS: FaqGroup[] = [
       {
         question: "Can I export or delete my data?",
         answer: [
-          "Yes. From the app you can export a JSON file of your training, Atlas, account, health and social records, and you can delete your account. Deletion is scheduled after a seven-day grace period.",
+          "Yes. From the app you can export a JSON file of your training, Atlas, account, health and social records, and you can delete your account. Deletion is scheduled after a seven-day grace period, and you can cancel it from the same settings screen until processing begins.",
         ],
       },
     ],
