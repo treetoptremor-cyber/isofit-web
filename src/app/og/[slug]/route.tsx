@@ -61,7 +61,7 @@ export async function GET(_request: Request, { params }: { params: Promise<{ slu
             {["#8f9868", "#c2a55e", "#d48f56", "#b8623a", "#9a4527"].map((color) => (
               <div key={color} style={{ width: 34, height: 14, borderRadius: 7, backgroundColor: color }} />
             ))}
-            <div style={{ display: "flex", marginLeft: 12 }}>iPhone + web · Coming soon</div>
+            <div style={{ display: "flex", marginLeft: 12 }}>iPhone + web · On the App Store</div>
           </div>
         </div>
       </div>

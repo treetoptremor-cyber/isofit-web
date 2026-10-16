@@ -5,14 +5,16 @@ import type { ReactNode } from "react";
 import IsoGrid from "@/components/marketing/iso-grid";
 import JsonLd from "@/components/marketing/json-ld";
 import SiteFooter from "@/components/marketing/site-footer";
+import AppStoreLink from "@/components/marketing/app-store-link";
+import WebAppLink from "@/components/marketing/web-app-link";
 import SiteHeader from "@/components/marketing/site-header";
-import StickyWaitlist from "@/components/marketing/sticky-waitlist";
-import WaitlistForm from "@/components/waitlist-form";
+import Reveal from "@/components/marketing/reveal";
+import StickyAppLink from "@/components/marketing/sticky-app-link";
 import { SITE, absoluteUrl } from "@/lib/site";
 
 export const CONTAINER = "mx-auto w-full max-w-[1120px] px-4 min-[25rem]:px-5 sm:px-6";
 
-export function PageShell({ children, waitlistHref, grid = true, sticky = true }: { children: ReactNode; waitlistHref?: string; grid?: boolean; sticky?: boolean }) {
+export function PageShell({ children, grid = true, sticky = true }: { children: ReactNode; grid?: boolean; sticky?: boolean }) {
   return (
     <div className="relative flex min-h-screen flex-col text-ink">
       {/* The app's base surface: its faint sky grid behind every page, fixed to
@@ -31,15 +33,18 @@ export function PageShell({ children, waitlistHref, grid = true, sticky = true }
             maskComposite: "intersect",
           }}
         >
-          <IsoGrid id="page-grid" />
+          <div className="px-grid absolute inset-x-0 top-0 h-[calc(100%+104px)]">
+            <IsoGrid id="page-grid" />
+          </div>
         </div>
       ) : null}
-      <SiteHeader waitlistHref={waitlistHref} />
+      <SiteHeader />
       <main id="main-content" tabIndex={-1} className="flex-1 outline-none">
         {children}
       </main>
       <SiteFooter />
-      {sticky ? <StickyWaitlist /> : null}
+      <Reveal />
+      {sticky ? <StickyAppLink /> : null}
     </div>
   );
 }
@@ -102,12 +107,13 @@ export function PageHero({
   return (
     <section className={`${CONTAINER} pb-10 pt-8 md:pb-14 md:pt-12`}>
       <Breadcrumbs trail={trail} />
-      <div className={aside ? "mt-6 grid gap-10 lg:grid-cols-[minmax(0,1fr)_22rem] lg:items-start" : "mt-6"}>
+      <div className={aside ? "motion-hero mt-6 grid grid-cols-[minmax(0,1fr)] gap-10 lg:grid-cols-[minmax(0,1fr)_22rem] lg:items-start" : "mt-6"}>
         <div>
-          <h1 className="max-w-[24ch] font-display text-[clamp(2rem,4.6vw,3.25rem)] font-bold leading-[1.08] tracking-[-0.03em]">
+          <h1 className="max-w-[22ch] font-display text-[clamp(2.25rem,6vw,4.5rem)] font-extrabold leading-[1.04] tracking-[-0.045em]">
             {withAtlas(title)}
           </h1>
           <p className="mt-5 max-w-[62ch] text-lg leading-relaxed text-ink-2 sm:text-xl sm:leading-relaxed">{lede}</p>
+          <HeatRibbon className="mt-8 w-full max-w-[14rem]" />
         </div>
         {aside}
       </div>
@@ -135,9 +141,9 @@ export function Section({
   const headingId = id ? `${id}-heading` : undefined;
   const Heading = level === 3 ? "h3" : "h2";
   return (
-    <section id={id} aria-labelledby={headingId} className={`${CONTAINER} py-12 md:py-14 ${className}`}>
+    <section id={id} aria-labelledby={headingId} data-reveal="story" className={`${CONTAINER} py-12 md:py-14 ${className}`}>
       {label ? <p className="label">{label}</p> : null}
-      <Heading id={headingId} className="mt-2 max-w-[24ch] font-display text-[clamp(1.5rem,3vw,2.125rem)] font-bold leading-[1.14] tracking-[-0.025em]">
+      <Heading id={headingId} className="mt-2 max-w-[24ch] font-display text-[clamp(1.75rem,3.6vw,2.75rem)] font-bold leading-[1.1] tracking-[-0.035em]">
         {withAtlas(title)}
       </Heading>
       {intro ? <p className="mt-4 max-w-[64ch] text-[1.0625rem] leading-[1.7] text-ink-2">{intro}</p> : null}
@@ -159,6 +165,16 @@ function linkify(value: ReactNode): ReactNode {
 }
 
 // A small tag naming the tier a pictured feature belongs to.
+// The six heat-map roles as a thin ribbon: the site's recurring, ownable motif.
+// Decorative; never recolor the ramp.
+export function HeatRibbon({ className = "" }: { className?: string }) {
+  return (
+    <div aria-hidden="true" className={`flex h-2 overflow-hidden rounded-full ${className}`}>
+      {["bg-heat-0", "bg-heat-1", "bg-heat-2", "bg-heat-3", "bg-heat-4", "bg-heat-5"].map((color) => <i key={color} className={`flex-1 ${color}`} />)}
+    </div>
+  );
+}
+
 export function ProTag({ className = "" }: { className?: string }) {
   return (
     <span className={`inline-flex items-center rounded-full bg-sky-soft px-2.5 py-1 font-mono text-[0.6875rem] font-semibold uppercase leading-none tracking-[0.14em] text-blue ${className}`}>
@@ -343,9 +359,11 @@ export function FaqList({ faqs, headingLevel = "h3" }: { faqs: Faq[]; headingLev
   );
 }
 
-export function WaitlistBand({ source, id = "waitlist" }: { source: string; id?: string }) {
+export function GetAppBand({ id = "get-app" }: { id?: string }) {
   return (
     <section id={id} aria-labelledby={`${id}-heading`} className={`${CONTAINER} scroll-mt-24 py-10 md:py-16`}>
+      {/* Old /#waitlist links still land on this band. */}
+      <span id="waitlist" aria-hidden="true" className="block scroll-mt-24" />
       <div className="relative overflow-hidden rounded-[1.75rem] bg-ink px-6 py-10 sm:px-10 md:px-14 md:py-14">
         <IsoGrid id={`${id}-grid`} tone="ink" />
         <div aria-hidden="true" className="absolute inset-0" style={{ background: "radial-gradient(80% 120% at 100% 0%, rgba(106,165,238,0.22), transparent 60%)" }} />
@@ -359,13 +377,13 @@ export function WaitlistBand({ source, id = "waitlist" }: { source: string; id?:
               Your workouts, <span className="text-sky">working for you.</span>
             </p>
             <p className="mt-4 max-w-[46ch] text-[1.0625rem] leading-relaxed text-paper/85">
-              Both apps are coming soon. Join the waitlist and we will email you once, when Isofit launches.
+              Download Isofit from the App Store for iPhone, or use the web app in your browser.
             </p>
             <dl className="mt-8 grid max-w-[34rem] grid-cols-2 gap-x-8 gap-y-5 border-t border-paper/20 pt-6 sm:grid-cols-3">
               {[
                 ["For", "Adults, 18 and over"],
                 ["Sign-in", "Apple, Google or email"],
-                ["We ask for", "An email. A first name is optional"],
+                ["Price", "Free to log. Pro is optional"],
               ].map(([term, value]) => (
                 <div key={term}>
                   <dt className="label !text-sky">{term}</dt>
@@ -374,7 +392,10 @@ export function WaitlistBand({ source, id = "waitlist" }: { source: string; id?:
               ))}
             </dl>
           </div>
-          <WaitlistForm dark source={source} label="Join the Isofit waitlist, end of page" />
+          <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
+            <AppStoreLink className="w-full" />
+            <WebAppLink className="w-full !border-paper/30 !bg-transparent !text-white hover:!bg-white/10" />
+          </div>
         </div>
       </div>
     </section>

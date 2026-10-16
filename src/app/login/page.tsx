@@ -97,7 +97,7 @@ export default function LoginPage() {
       footer={
         <p>
           Need an account?{" "}
-          <Link href="/signup" className="font-semibold text-[#2d6cb8] hover:text-[#69A5F0]">
+          <Link href="/signup" className="font-semibold text-blue hover:text-blue-dark">
             Create one
           </Link>
         </p>
@@ -113,7 +113,7 @@ export default function LoginPage() {
             value={email}
             disabled={isSubmitting}
             onChange={(event) => setEmail(event.target.value)}
-            className="h-11 w-full rounded-xl border border-[#2a2420]/15 bg-white px-3 outline-none transition-colors focus:border-[#69A5F0]"
+            className="h-11 w-full rounded-xl border border-rule bg-white px-3 outline-none transition-colors focus:border-blue"
           />
         </label>
         <label className="block space-y-1.5">
@@ -121,7 +121,7 @@ export default function LoginPage() {
             <span className="text-sm font-medium">Password</span>
             <Link
               href="/forgot-password"
-              className="text-sm font-medium text-[#2d6cb8] hover:text-[#69A5F0]"
+              className="text-sm font-medium text-blue hover:text-blue-dark"
             >
               Forgot password?
             </Link>
@@ -133,7 +133,7 @@ export default function LoginPage() {
             value={password}
             disabled={isSubmitting}
             onChange={(event) => setPassword(event.target.value)}
-            className="h-11 w-full rounded-xl border border-[#2a2420]/15 bg-white px-3 outline-none transition-colors focus:border-[#69A5F0]"
+            className="h-11 w-full rounded-xl border border-rule bg-white px-3 outline-none transition-colors focus:border-blue"
           />
         </label>
         <button
@@ -145,7 +145,7 @@ export default function LoginPage() {
         </button>
       </form>
 
-      <div className="relative text-center text-xs uppercase tracking-[0.18em] text-[#7a7066]">
+      <div className="relative text-center text-xs uppercase tracking-[0.18em] text-ink-3">
         <span className="bg-white px-2">or continue with</span>
         <div className="absolute left-0 top-1/2 -z-10 h-px w-full -translate-y-1/2 bg-[#2a2420]/10" />
       </div>
@@ -155,7 +155,7 @@ export default function LoginPage() {
           type="button"
           disabled={isSubmitting}
           onClick={() => void handleOAuthSignIn("apple")}
-          className="h-11 rounded-xl border border-[#2a2420]/15 bg-white px-4 text-sm font-semibold transition-colors hover:bg-[#f8f5ee] disabled:cursor-not-allowed disabled:opacity-60"
+          className="h-11 rounded-xl border border-rule bg-white px-4 text-sm font-semibold transition-colors hover:bg-paper-raised disabled:cursor-not-allowed disabled:opacity-60"
         >
           {activeAction === "apple" ? "Connecting..." : "Continue with Apple"}
         </button>
@@ -163,7 +163,7 @@ export default function LoginPage() {
           type="button"
           disabled={isSubmitting}
           onClick={() => void handleOAuthSignIn("google")}
-          className="h-11 rounded-xl border border-[#2a2420]/15 bg-white px-4 text-sm font-semibold transition-colors hover:bg-[#f8f5ee] disabled:cursor-not-allowed disabled:opacity-60"
+          className="h-11 rounded-xl border border-rule bg-white px-4 text-sm font-semibold transition-colors hover:bg-paper-raised disabled:cursor-not-allowed disabled:opacity-60"
         >
           {activeAction === "google" ? "Connecting..." : "Continue with Google"}
         </button>

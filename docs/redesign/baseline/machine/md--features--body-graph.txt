@@ -1,0 +1,70 @@
+status 200
+content-type: text/markdown; charset=utf-8
+x-robots-tag: noindex, follow
+
+# See where your work goes.
+
+Source: https://isofit.app/features/body-graph
+Facts last reviewed: 2026-09-23
+
+The body graph is Isofit's muscle heat map. It shades a front and back figure by the number of working sets (every logged set except warm-ups) you logged for each muscle, over the last 7, 30 or 90 days or your whole history. Muscles with the most credited work read warmest; those with relatively little stay pale. It counts the work you logged. It is not a recovery or soreness score. The full body graph is a Pro feature.
+
+## What the body graph shows
+
+- **Figure:** Front and back views with each muscle region shaded from rest to most worked.
+- **Time windows:** 7 days, 30 days, 90 days, or all time.
+- **Sets by muscle:** A ranked list of muscles with the working sets credited to each.
+- **Stat cards:** Total sets, most worked muscle and least worked muscle for the window.
+- **Muscle detail:** Tap a muscle on the figure to open its detail panel.
+- **History:** The second mode of the Progress tab: every past session, open on every tier.
+
+## Two kinds of gap, and a question for Atlas
+
+A muscle you have not trained at all is a different problem from one you have trained less than usual, so Isofit labels them separately. Tap a muscle and its detail panel says "Not trained in this window" if it has no credited sets, or "Below your usual volume" if it has fallen behind your own typical training frequency. The comparison is with your own history, not with someone else's template.
+
+The same panel hands the number to Atlas. It drafts a question for you along the lines of "My chest got 12 weighted sets over the last 30 days. Is that enough, and what would you change?", so the coach starts from the figure you are looking at.
+
+When a window holds very little training, the whole figure is drawn dimmer. One logged set will not paint a muscle as fully worked; the scale opens to its full range at roughly two solid sessions' worth of sets.
+
+## How the body graph is calculated
+
+The unit is the working set. Each working set you log gives full credit to the exercise's primary muscles and partial credit to its secondary muscles. Warm-up sets are left out. Bodyweight sets count. The graph measures sets, not tonnage, so a heavy single and a light set of twenty each count once.
+
+Totals are taken over a fixed window with no decay, then scaled so the warmest color always marks your most-worked muscle in that window. The in-app note says it directly: resistance volume uses recorded working sets and primary and secondary muscle weights, and this is not a recovery score.
+
+## The muscles Isofit tracks
+
+Exercises are mapped to 25 muscle groups: chest, upper chest, lower chest, front delts, side delts, rear delts, biceps, brachialis, triceps, long head of the triceps, forearms, lats, upper back, traps, lower back, core, obliques, glutes, hip flexors, adductors, quadriceps, hamstrings, calves, soleus and ankles.
+
+Closely related groups are merged for display. Brachialis counts toward biceps, the long head toward triceps, soleus toward calves, and upper and lower chest toward chest. Hip flexors and adductors are tracked in the list but are not drawn on the figure.
+
+## Body graph on Free and Pro
+
+|  | Free | Pro |
+| --- | --- | --- |
+| Body figure | Visible under a locked veil | Full color |
+| Tap a muscle for detail | No | Yes |
+| Sets by muscle, total, most and least worked | No | Yes |
+| Session history | Yes | Yes |
+
+## Frequently asked questions
+
+### What is a body graph in a workout app?
+
+A body graph, also called a muscle heat map, is a drawing of the body colored by how much you trained each muscle. In Isofit the color comes from the number of working sets you logged for that muscle in the chosen time window.
+
+### Does the Isofit body graph show muscle recovery?
+
+No. It shows logged work, not recovery, readiness or soreness. A muscle is warm because you logged many working sets for it in the window, not because Isofit thinks it is fatigued.
+
+### How do I find out which muscles I am neglecting?
+
+Open the body graph, choose the 30 or 90 day window, and look for pale regions. The least-worked stat card names the muscle with the fewest credited sets, and the sets-by-muscle list ranks the rest.
+
+### Is the body graph free?
+
+Free members see a locked preview of the figure. The colored graph, muscle detail and stat cards are part of Pro. Session history is free.
+
+### Do custom exercises count on the body graph?
+
+Yes. When you create a custom exercise, Isofit maps it to primary and secondary muscles so its sets are credited like any library exercise.

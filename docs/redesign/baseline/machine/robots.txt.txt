@@ -1,0 +1,45 @@
+status 200
+content-type: text/plain
+
+User-Agent: *
+Allow: /
+Disallow: /api/
+Disallow: /auth/
+Disallow: /billing
+Disallow: /checkout/
+Disallow: /iso-sync/
+Disallow: /login
+Disallow: /signup
+Disallow: /forgot-password
+Disallow: /update-password
+Disallow: /waitlist/
+
+User-Agent: GPTBot
+User-Agent: OAI-SearchBot
+User-Agent: ChatGPT-User
+User-Agent: ClaudeBot
+User-Agent: Claude-SearchBot
+User-Agent: Claude-User
+User-Agent: PerplexityBot
+User-Agent: Perplexity-User
+User-Agent: Google-Extended
+User-Agent: Applebot-Extended
+User-Agent: Amazonbot
+User-Agent: meta-externalagent
+User-Agent: CCBot
+User-Agent: DuckAssistBot
+User-Agent: MistralAI-User
+Allow: /
+Disallow: /api/
+Disallow: /auth/
+Disallow: /billing
+Disallow: /checkout/
+Disallow: /iso-sync/
+Disallow: /login
+Disallow: /signup
+Disallow: /forgot-password
+Disallow: /update-password
+Disallow: /waitlist/
+
+Host: https://isofit.app
+Sitemap: https://isofit.app/sitemap.xml

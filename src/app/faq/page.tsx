@@ -2,7 +2,7 @@ import Image from "next/image";
 
 import { ReviewedNote, RelatedPages, webPageJsonLd } from "@/components/marketing/doc-page";
 import JsonLd from "@/components/marketing/json-ld";
-import { CONTAINER, FaqList, PageHero, PageShell, Section, WaitlistBand, faqJsonLd } from "@/components/marketing/primitives";
+import { CONTAINER, FaqList, PageHero, PageShell, Section, GetAppBand, faqJsonLd } from "@/components/marketing/primitives";
 import { FAQ_DOC, FAQ_GROUPS } from "@/content/faq";
 import { docMetadata } from "@/lib/metadata";
 import { SITE } from "@/lib/site";
@@ -11,7 +11,7 @@ export const metadata = docMetadata(FAQ_DOC);
 
 export default function FaqPage() {
   return (
-    <PageShell waitlistHref="#waitlist">
+    <PageShell>
       <JsonLd data={[webPageJsonLd(FAQ_DOC), faqJsonLd(FAQ_DOC.faqs ?? [])]} />
       <PageHero
         trail={[{ href: "/faq", label: "FAQ" }]}
@@ -56,7 +56,7 @@ export default function FaqPage() {
       ))}
       {FAQ_DOC.related ? <RelatedPages paths={FAQ_DOC.related} /> : null}
       <ReviewedNote doc={FAQ_DOC} />
-      <WaitlistBand source="faq_page" />
+      <GetAppBand />
     </PageShell>
   );
 }

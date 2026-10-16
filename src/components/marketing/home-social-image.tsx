@@ -48,7 +48,7 @@ export default function HomeSocialImage({ logoSrc, bodyGraphSrc }: { logoSrc: st
           <div style={{ display: "flex" }}>isofit.app</div>
           <svg width="24" height="20" viewBox="0 0 26 22"><path d="M1 11h22M15 3l8 8-8 8" fill="none" stroke="#9a4527" strokeWidth="3" /></svg>
         </div>
-        <div style={{ display: "flex", fontSize: 16, fontWeight: 500, color: "#526b46" }}>iPhone + web · Coming soon</div>
+        <div style={{ display: "flex", fontSize: 16, fontWeight: 500, color: "#526b46" }}>iPhone + web · On the App Store</div>
       </div>
 
       <div style={{ position: "absolute", top: (HEIGHT - FRAME_HEIGHT) / 2, left: COPY_WIDTH + (ART_WIDTH - FRAME_WIDTH) / 2, width: FRAME_WIDTH, height: FRAME_HEIGHT, display: "flex", flexDirection: "column", alignItems: "center", borderRadius: 24, backgroundColor: "#f8f5ee", border: "1px solid rgba(42,36,32,0.2)", boxShadow: "0 16px 32px rgba(42,36,32,0.2)", overflow: "hidden" }}>

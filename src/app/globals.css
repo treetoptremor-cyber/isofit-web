@@ -224,6 +224,106 @@ summary:active {
   box-shadow: 0 0 0 4px #fff;
 }
 
+/* Motion registry (schema section 6): hero-settle, story-reveal, screen-reveal, control-feedback.
+   Baseline above renders everything visible. Motion is opacity/transform only and runs only when
+   the user has not asked for reduced motion. */
+@media (prefers-reduced-motion: no-preference) {
+  /* hero-settle: one short page-load settle for hero title, lede and product visual. */
+  .motion-hero {
+    animation: hero-settle 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+  .motion-hero-2 {
+    animation-delay: 0.08s;
+  }
+  @keyframes hero-settle {
+    from {
+      opacity: 0.4;
+      transform: translateY(8px);
+    }
+  }
+  /* story-reveal / screen-reveal: only elements JS hid below the fold wait for view. */
+  html.reveal-ready [data-reveal][data-reveal-pending]:not([data-revealed]) {
+    opacity: 0;
+  }
+  html.reveal-ready [data-reveal="story"][data-reveal-pending]:not([data-revealed]) {
+    transform: translateY(12px);
+  }
+  html.reveal-ready [data-reveal][data-reveal-pending] {
+    transition:
+      opacity 0.5s ease-out,
+      transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  /* control-feedback: a brief press on rounded buttons; links keep the instant opacity press above. */
+  a[class*="rounded-xl"],
+  button[class*="rounded-xl"] {
+    transition:
+      background-color 0.15s,
+      border-color 0.15s,
+      transform 0.12s;
+  }
+  a[class*="rounded-xl"]:active,
+  button[class*="rounded-xl"]:active {
+    transform: scale(0.985);
+  }
+}
+
+/* Scroll-linked depth (decorative). CSS scroll-driven animations only: no script, and a browser
+   without support, or a reduced-motion preference, simply shows everything static. They animate
+   the independent `translate`/`scale` properties so they never fight the transform-based motion. */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    /* The product figure lags the page by up to 24px as the hero scrolls away. */
+    .px-float {
+      animation: px-float linear both;
+      animation-timeline: scroll(root block);
+      animation-range: 0 90vh;
+    }
+    @keyframes px-float {
+      to {
+        translate: 0 24px;
+      }
+    }
+    /* The faint page grid drifts slower than the page. */
+    .px-grid {
+      animation: px-grid linear both;
+      animation-timeline: scroll(root block);
+    }
+    @keyframes px-grid {
+      to {
+        translate: 0 -104px;
+      }
+    }
+    /* The heat ramp lights up swatch by swatch as its legend scrolls into view. */
+    .px-heat {
+      animation: px-heat linear both;
+      animation-timeline: view();
+      animation-range: entry calc(var(--i, 0) * 7%) entry calc(45% + var(--i, 0) * 7%);
+    }
+    @keyframes px-heat {
+      from {
+        opacity: 0.2;
+        scale: 0.6 1;
+      }
+    }
+    /* Chapter numerals slide against the scroll on wide screens. */
+    @media (min-width: 768px) {
+      .px-num {
+        animation: px-num linear both;
+        animation-timeline: view();
+        animation-range: cover;
+      }
+      @keyframes px-num {
+        from {
+          translate: 0 36px;
+        }
+        to {
+          translate: 0 -36px;
+        }
+      }
+    }
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

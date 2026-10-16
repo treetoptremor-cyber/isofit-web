@@ -1,0 +1,134 @@
+status 200
+content-type: text/markdown; charset=utf-8
+x-robots-tag: noindex, follow
+
+# Frequently asked questions about Isofit.
+
+Source: https://isofit.app/faq
+Facts last reviewed: 2026-09-23
+
+Isofit is a workout tracker with a muscle-by-muscle body graph and an AI coach called Atlas. Coming soon to iPhone and the web. Logging is free, and Pro is planned at $14.99 a month. The answers below cover the product, pricing, privacy and Apple Health.
+
+## Frequently asked questions
+
+### What is Isofit?
+
+Isofit is a workout tracker coming soon to iPhone and the web. You record training by tapping, typing or speaking, a body graph shows which muscles that work reached, and Atlas, a built-in personal AI fitness coach, answers questions about your training. It also has Bonfire, a members-only community feed.
+
+### Who is Isofit for?
+
+Adults aged 18 and over who want a clearer picture of their training. It is not tied to one style: you can log strength training, cardio, yoga, sports and martial arts, or a mix. You do not need to follow an Isofit program.
+
+### What does the name Isofit mean?
+
+It is left open on purpose. Read it as isometric, as "I'm so fit", or as ISO, in search of, fitness. The logo is a cube whose faces spell I, S, O.
+
+### What devices does Isofit support?
+
+Isofit is coming soon to iPhone (iOS 17.6 or later) and the web. Neither app is available yet. There are no native iPad, Apple Watch or Android apps.
+
+### When will Isofit launch?
+
+Coming soon to iPhone and the web. Neither app is available yet. Join the waitlist for a heads-up when Isofit launches.
+
+### How do I log a workout in Isofit?
+
+Tap in sets, reps, weight, distance, time and RPE on each exercise row, type a Quicklog line such as "bench 5x5 225lbs", or hold the microphone and describe the session. A typed line becomes a finished row, and a spoken session becomes a draft you review before it saves.
+
+### Do I have to use Isofit's exercise library?
+
+No. The library has 500+ exercises, and you can type any name and create it as a custom exercise, with no limit on how many. Isofit maps custom exercises to muscles so they count on the body graph.
+
+### Does Isofit work offline?
+
+Tap logging and Quicklog work offline, and finished sessions sync when you reconnect. Voice logging and Atlas need a connection.
+
+### Does Isofit track personal records?
+
+No. There is no personal-record tracking. History shows every past session and the sets in it.
+
+### Does Isofit support kilograms and kilometers?
+
+Yes. Choose metric or imperial for your account and switch units on any row.
+
+### What is the body graph?
+
+A front and back figure shaded by the working sets you logged for each muscle over the last 7, 30 or 90 days or all time. It shows what you train most and what you have been skipping.
+
+### Is the body graph a recovery score?
+
+No. It counts logged working sets. It does not estimate recovery, readiness or soreness.
+
+### What is Atlas?
+
+Atlas is Isofit's AI coach, a chat assistant for training questions. With personalization on, it reads your logged workouts so its answers reflect your own history. On Pro it can write programs and save them to your routines.
+
+### How personalized is Atlas?
+
+With personalization off, the default, Atlas answers as a general coach and does not read your training history. Turning it on lets Atlas read your recent workouts, keep memory items from your conversations such as goals and preferences, and use your Apple Health daily summaries if you have connected Apple Health.
+
+Withdrawing the opt-in in your account settings deletes stored memory items and stops Atlas reading your training history and Apple Health summaries; Atlas keeps working as a general coach, and messages already sent are not deleted.
+
+### Does Atlas replace a personal trainer or medical professional?
+
+No. Atlas is a training and organization tool, not a doctor, physical therapist or substitute for in-person professional care. Injuries, severe pain and symptoms that need diagnosis belong with a qualified healthcare professional.
+
+### Can I use Isofit without Atlas or Bonfire?
+
+Yes. Fast, flexible logging is the foundation. Atlas and Bonfire are optional.
+
+### What is the Bonfire?
+
+Bonfire is Isofit's members-only community feed. A post is tied to a session you logged, with a caption and an optional photo, and members can give kudos and comment. There are no follows, groups or direct messages.
+
+### Will my workouts be shared automatically?
+
+No. Your log is private, and a session appears in Bonfire only if you choose to post it, where all Isofit members can see it.
+
+### How much does Isofit cost?
+
+Logging is free, with no cap on workouts or routines. Pro is planned at $14.99 a month or $124.99 a year in the US App Store and adds the full body graph, 30 Atlas messages a day with deep analysis and saved programs, SITREP (weekly training review), and posting to Bonfire.
+
+Apple processes payments and RevenueCat manages subscription status, so Isofit never stores your full payment card details.
+
+### Is joining the waitlist free?
+
+Yes. It costs nothing and does not commit you to a subscription.
+
+### What information do I give when I join the waitlist?
+
+An email address, and a first name if you want to give one, used to tell you when Isofit launches. Isofit does not collect phone numbers, and no fitness information is asked for until you create an account in the app.
+
+### Does cancelling my membership delete my data?
+
+No. Cancelling keeps your account and data; to delete them, use the option in the app's settings or email privacy@isofit.app, after which Isofit keeps only pseudonymized consent records and records the law requires, and may keep anonymized, aggregated data for platform analytics.
+
+Deleting your Isofit account does not cancel an App Store subscription, so also cancel it with Apple: on iPhone, Settings, then your name, then Subscriptions.
+
+### Does Isofit work with Apple Health?
+
+Yes, optionally and on every tier. Isofit can read workouts and daily summaries such as steps, exercise minutes, sleep and resting heart rate, and you approve each data type in the iOS permission screen. Isofit never writes to Apple Health, and syncing happens while the app is open.
+
+### How does Isofit protect my information?
+
+Isofit uses administrative, technical and organizational safeguards, including encryption in transit and at rest, as described in the Privacy Policy. Workout data is private by default. Isofit does not sell personal information or use your data for advertising.
+
+### Does Isofit store my precise GPS location?
+
+No. Isofit does not store your precise GPS location.
+
+The weather line is optional, and weather providers receive only a coarse location, such as a zip code, your device location if you enable it, or a city inferred from your timezone, and never your identity or health data.
+
+### Can I sign in with Google?
+
+Yes. You can sign in with Apple, Google, or an email and password, and Google Sign-In is optional.
+
+If you choose it, Google processes your sign-in and shares the account information you authorize with Isofit, under Google's own privacy policy.
+
+### Is my fitness data used to train AI models?
+
+No. Isofit's Privacy Policy states that fitness and health data, including anything read from Apple Health, are not used to train AI models. Atlas sends your messages, plus your training context if personalization is on, to its AI provider, OpenAI, to generate replies; processing a request is different from training a model.
+
+### Can I export or delete my data?
+
+Yes. From the app you can export a JSON file of your training, Atlas, account, health and social records, and you can delete your account. Deletion is scheduled after a seven-day grace period.

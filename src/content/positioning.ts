@@ -78,12 +78,12 @@ export const HOW_IT_WORKS: DocSection = {
   heading: "How Isofit works",
   items: [
     {
-      heading: "Join the waitlist",
-      body: `${SITE.launchStatus} Neither app is available yet. Leave an email address, and a first name if you like, and you get one email when Isofit launches. Joining is free and does not commit you to a subscription.`,
+      heading: "Pick your app",
+      body: `${SITE.launchStatus} Download Isofit from the App Store for iPhone, or open the web app at app.isofit.app.`,
     },
     {
       heading: "Download it and sign in",
-      body: "At launch, Isofit is a free download for iPhone on iOS 17.6 or later. Sign in with Apple, Google, or an email and password. Isofit is for adults 18 and over.",
+      body: "Isofit is a free download for iPhone on iOS 17.6 or later. Sign in with Apple, Google, or an email and password. Isofit is for adults 18 and over.",
     },
     {
       heading: "Log your first session",
@@ -162,7 +162,7 @@ export const KEY_FACTS: DocSection = {
   heading: "Key facts about Isofit",
   specs: [
     { term: "Company name", value: `${SITE.company}, publisher of the Isofit app` },
-    { term: "Type", value: "Workout tracker with iPhone and web apps in development" },
+    { term: "Type", value: "Workout tracker with an iPhone app and a web app" },
     { term: "Founded", value: SITE.founded },
     {
       term: "Founder",
@@ -176,11 +176,11 @@ export const KEY_FACTS: DocSection = {
       term: "Features",
       value: "Workout logging by tap, typed Quicklog line or voice; body graph; Atlas AI coach; Bonfire community; read-only Apple Health import; JSON data export",
     },
-    { term: "Platform", value: "iPhone (iOS 17.6 or later) and web app, both coming soon. No native iPad, Apple Watch or Android apps." },
+    { term: "Platform", value: "iPhone (iOS 17.6 or later) on the App Store, and a web app. Both are available now. No native iPad, Apple Watch or Android apps." },
     { term: "Exercise library", value: `500+ exercises across ${ACTIVITY_SCOPE}, plus add unlimited custom exercises` },
-    { term: "Pricing", value: `Free tier for logging. Pro is planned at ${PRICING.proMonthly} a month or ${PRICING.proYearly} a year (USD, US App Store).` },
+    { term: "Pricing", value: `Free tier for logging. Pro is ${PRICING.proMonthly} a month or ${PRICING.proYearly} a year (USD, US App Store).` },
     { term: "Contract terms", value: "Monthly or yearly App Store subscription. No long-term contract; cancel any time in your Apple account settings." },
-    { term: "Status", value: `Pre-release. ${SITE.launchStatus}` },
+    { term: "Status", value: `Live. ${SITE.launchStatus}` },
     { term: "Support", value: `Email ${SITE.supportEmail}, answered ${SITE.supportResponse}. Privacy requests: ${SITE.privacyEmail}.` },
     { term: "Competitors", value: "Hevy, Strong, Fitbod and JEFIT" },
     { term: "Social", value: `Isofit: ${SITE.xHandle} on X. ${SITE.founder.name}: ${SITE.founder.xHandle} on X, and ${SITE.founder.linkedInUrl}` },

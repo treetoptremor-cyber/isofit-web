@@ -1,0 +1,15 @@
+{
+ "route": "/faq",
+ "requests": 19,
+ "bytes": {
+  "total": 949366,
+  "script": 544977,
+  "image": 59214,
+  "font": 50892,
+  "stylesheet": 55754
+ },
+ "cls": 0,
+ "lcpMs": 100,
+ "dclMs": 32,
+ "domNodes": 448
+}

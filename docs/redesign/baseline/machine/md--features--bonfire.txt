@@ -1,0 +1,54 @@
+status 200
+content-type: text/markdown; charset=utf-8
+x-robots-tag: noindex, follow
+
+# Share the work.
+
+Source: https://isofit.app/features/bonfire
+Facts last reviewed: 2026-09-23
+
+Bonfire is the community feed inside Isofit, visible only to Isofit members. A post is a caption, an optional photo and the logged session behind it, and you can make one a day. Others can give kudos and comment. There are no follows, groups or direct messages. Your workout log is private, and nothing appears in Bonfire unless you choose to post that session.
+
+## How Bonfire works
+
+- **Feeds:** Home, the member feed, and Embers, the highlights.
+- **Posts:** A caption, an optional photo, one category and the session you logged. One post a day. Video is not supported.
+- **Reactions:** Kudos is the only reaction. Comments are a single flat thread.
+- **Search:** Find members by handle and posts by tag.
+- **Who can do what:** Every member can read, give kudos, comment and report. Posting is part of Pro.
+- **$ISO:** A kudos costs 0.50 $ISO and a comment costs 0.25 $ISO, shown before you tap, and the post's author collects them. $ISO is in-app points earned by logging and has no cash value.
+
+## What is public and what is private
+
+Your workout log, body graph and Atlas conversations are private to you. Sharing is a deliberate action on a single session, never automatic.
+
+A Bonfire post is public to every Isofit member. There is no private or friends-only post, so treat anything you post as visible to the whole community. Bonfire is not visible to people outside Isofit.
+
+## Moderation and safety tools
+
+- Report any post, comment or avatar.
+- Block a member so neither of you sees the other, or mute them so you stop seeing their posts. Blocked accounts are listed in the You tab.
+- Posts and avatars are screened automatically before they are published, and content that draws repeated reports is hidden pending review.
+- Isofit is for adults aged 18 and over.
+
+## Frequently asked questions
+
+### What is the Bonfire in Isofit?
+
+Bonfire is Isofit's members-only community feed, where a post is tied to a workout the member actually logged. It has kudos and comments, and no follows, groups or direct messages.
+
+### Are my workouts shared automatically?
+
+No. Your log is private. A session only appears in Bonfire if you choose to post it.
+
+### Who can see my Bonfire posts?
+
+Every Isofit member. Posts are not visible outside the app, and there is no private-post option.
+
+### Do I have to use Bonfire?
+
+No. Bonfire is optional and the rest of Isofit works without it.
+
+### Can I post videos to Bonfire?
+
+No. Posts support a caption and an optional photo. Video is not available.

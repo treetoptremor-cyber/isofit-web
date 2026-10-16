@@ -1,0 +1,74 @@
+status 200
+content-type: text/markdown; charset=utf-8
+x-robots-tag: noindex, follow
+
+# How Isofit compares with other workout apps.
+
+Source: https://isofit.app/compare
+Facts last reviewed: 2026-09-23
+
+Workout apps split into three kinds. Trackers such as Hevy and Strong record what you chose to do, set by set. Planners such as Fitbod and JEFIT decide or suggest the workout for you. Isofit is a tracker with two additions: you can log in plain language by typing or speaking, and you can ask Atlas, an AI coach built into the app, about your own history. This page compares Isofit with Hevy, Strong, Fitbod and JEFIT using only what each company publishes about itself.
+
+## Five workout apps at a glance
+
+Competitor columns: as published by each company, read September 19, 2026. Short versions; each head-to-head page has the full detail and sources.
+
+|  | Isofit | Hevy | Strong | Fitbod | JEFIT |
+| --- | --- | --- | --- | --- | --- |
+| How you log | Tap, a typed Quicklog line, or voice. | Structured sets and routines. Typed or voice logging not advertised. | Structured sets and templates. Typed or voice logging not advertised. | Logs against a generated workout. Typed or voice logging not advertised. | Structured sets and instant workouts. Typed or voice logging not advertised. |
+| Muscle view | Body graph over 7, 30 or 90 days or all time (Pro). | Last-7-days heat map and sets per muscle group. | A muscle heat map. What it measures is not stated. | Post-workout heat map and a 0 to 100% recovery figure. | Muscle map, recovery chart and weekly sets per muscle. |
+| AI and coaching | Atlas, an AI coach you chat with. | Algorithmic programs (Pro), plus an AI chat about your Hevy data inside ChatGPT. | None advertised. | Algorithmic workout generation. No AI chat advertised. | AI-powered Adaptive Plan (Elite). AI chat not advertised. |
+| Community | Bonfire: members only, no follows or direct messages. | Feed with follows, comments and leaderboards. | Share by link. No feed advertised. | Share by link or image. No feed advertised. | Follows, comments and the JEFIT feed. |
+| Platforms | iPhone (iOS 17.6 or later) and web app, both coming soon. | iOS, Android, Apple Watch, Wear OS and web. | iPhone, iPad, Apple Watch and Android. | iOS, Android, Apple Watch and Wear OS. | iOS, Android, Apple Watch, Wear OS and a website. |
+| Price | Free. Pro planned at $14.99 a month or $124.99 a year. | Free tier. Pro $2.99 a month, $23.99 a year or $74.99 once. | Free, 3 custom routines. PRO $4.99 a month or $29.99 a year. | $15.99 a month or $95.99 a year after a 7-day trial. | Free Basic. Elite $12.99 a month or $69.99 a year. |
+
+## What makes Isofit different
+
+### Log by typing or talking, not only by tapping
+
+Type "bench 5x5 225lbs, run 5k 25:00 rpe 7" into Quicklog and Isofit logs two finished rows, parsed on your phone so it works with no signal. Or say the session out loud and review the draft before it saves. Hevy, Strong, Fitbod and JEFIT advertise structured set entry, and none of them advertises typed or voice logging.
+
+### An AI coach inside the app you log with
+
+Atlas is a chat coach built into Isofit that, with your permission, reads your training history to review a session, explain a stall or write a program, and its scope is written into its instructions. Free includes 10 Atlas messages a month and Pro includes 30 Atlas messages a day. Hevy offers a chat about your Hevy data, but it runs inside ChatGPT rather than the Hevy app; Strong advertises no coaching, and Fitbod and JEFIT generate workouts without a chat.
+
+### Muscle coverage over 7, 30 or 90 days, or all time
+
+The body graph, a Pro feature, counts every working set you logged against the muscles it trains, over the last 7, 30 or 90 days or your whole history. Hevy's heat map covers the last 7 days. Fitbod shows a 0 to 100% recovery estimate per muscle group; Isofit counts only the work you logged and does not guess recovery.
+
+### One log for five kinds of training
+
+Isofit's library of 500+ exercises covers strength training, cardio, yoga, sports and martial arts, so a week of lifting, running and yoga lives in one log and one body graph. Hevy, Strong, Fitbod and JEFIT each describe themselves as strength-first or strength-focused. JEFIT's library is larger, at 1,400+ exercises, but it is built around strength training.
+
+### A community without followers or leaderboards
+
+Bonfire is a members-only feed where every post is tied to a session you logged, capped at one post a day, with no follows, groups or direct messages. Your log stays private unless you post. Hevy's home tab is a follow-based feed with leaderboards, and JEFIT lets you follow friends and share to its feed.
+
+## Where the other apps are the better choice
+
+- All four are released, established and available today. Isofit is pre-release.
+- All four support Android and a smartwatch. Isofit's iPhone and web apps are coming soon; there are no native Android or smartwatch apps.
+- Hevy, Strong and Fitbod advertise exercise demonstration animations or videos, and JEFIT lists the largest library at 1,400+ exercises.
+- Fitbod and JEFIT will generate the workout for you. Isofit records the workout you chose, though Atlas can write a program on Pro.
+- Hevy and Strong list lower prices than Isofit Pro, and Hevy lists a one-time lifetime price.
+- Strong and Fitbod write workouts to Apple Health. Isofit does not.
+
+## How these comparisons were made
+
+Facts about other apps come only from each company's own website, help center and store listings, read on September 19, 2026. Where a company does not state something, this page says "Not stated" and does not guess. Apps change and prices vary by region, so check each company's site for current details.
+
+If something here is out of date, email support@isofit.app and it will be corrected.
+
+## Frequently asked questions
+
+### Which workout app lets you log by typing or speaking?
+
+Isofit does: Quicklog parses a typed line such as "bench 5x5 225lbs", and voice logging drafts rows from what you say. As of September 19, 2026, Hevy, Strong, Fitbod and JEFIT do not advertise free-text or voice logging on their own sites or store listings.
+
+### Which workout app has an AI coach you can chat with?
+
+Isofit includes Atlas, a chat-based AI coach built into the app that can read your training log. Hevy offers an AI chat too, as a Hevy app inside ChatGPT that reads your Hevy history, so the chat happens in ChatGPT rather than in Hevy. Strong advertises no coaching, and Fitbod and JEFIT describe workout generation without a chat.
+
+### Which of these apps work on Android?
+
+Hevy, Strong, Fitbod and JEFIT all list Android support. Isofit has no native Android app; its iPhone and web apps are both coming soon.

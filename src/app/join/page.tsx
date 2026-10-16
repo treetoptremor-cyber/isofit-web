@@ -3,7 +3,7 @@ import { Suspense } from "react";
 import Link from "next/link";
 
 import JoinReferral from "@/components/join-referral";
-import { CONTAINER, PageShell, WaitlistBand } from "@/components/marketing/primitives";
+import { CONTAINER, PageShell, GetAppBand } from "@/components/marketing/primitives";
 import { SITE } from "@/lib/site";
 
 // Referral landing. Every link generate_referral_link mints points here
@@ -27,8 +27,7 @@ export default function JoinPage() {
           Isofit is a workout tracker: a fast set-by-set logger, a body
           graph that shows where your training actually lands, and Atlas, a
           personal AI fitness coach that reads your workout history with your permission.{" "}
-          {SITE.launchStatus} Join the waitlist below and we will email you
-          once, when Isofit launches.
+          {SITE.launchStatus} Download it from the App Store below.
         </p>
         <Suspense fallback={null}>
           <JoinReferral />
@@ -41,7 +40,7 @@ export default function JoinPage() {
           .
         </p>
       </section>
-      <WaitlistBand source="join_page" />
+      <GetAppBand />
     </PageShell>
   );
 }

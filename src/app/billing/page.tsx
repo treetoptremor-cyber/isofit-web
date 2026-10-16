@@ -106,7 +106,7 @@ export default function BillingPage() {
       actions={
         <Link
           href="/"
-          className="rounded-xl border border-[#2a2420]/15 bg-white px-4 py-2 text-sm font-semibold transition-colors hover:bg-[#f8f5ee]"
+          className="rounded-xl border border-rule bg-white px-4 py-2 text-sm font-semibold transition-colors hover:bg-paper-raised"
         >
           Back to home
         </Link>
@@ -121,12 +121,12 @@ export default function BillingPage() {
               className={`rounded-3xl border p-5 shadow-[0_14px_30px_rgba(42,36,32,0.07)] ${plan.colorClass}`}
             >
               <p className="font-display text-2xl font-bold tracking-[-0.01em]">{plan.name}</p>
-              <p className="mt-1 text-sm text-[#4a423b]">{plan.price}</p>
+              <p className="mt-1 text-sm text-ink-2">{plan.price}</p>
               <button
                 type="button"
                 disabled={envMissing || loadingTier !== null}
                 onClick={() => void handleUpgrade(plan.tier)}
-                className="mt-5 h-11 w-full rounded-xl bg-[#67835a] font-display text-sm font-semibold text-white transition-colors hover:bg-[#5a7350] disabled:cursor-not-allowed disabled:opacity-60"
+                className="mt-5 h-11 w-full rounded-xl bg-forest font-display text-sm font-semibold text-white transition-colors hover:bg-forest-dark disabled:cursor-not-allowed disabled:opacity-60"
               >
                 {isLoading ? "Redirecting..." : `Upgrade to ${plan.name}`}
               </button>

@@ -1,0 +1,117 @@
+status 200
+content-type: text/markdown; charset=utf-8
+x-robots-tag: noindex, follow
+
+# Isofit is an independent workout app, founded by An Hu and designed in Queens, New York.
+
+Source: https://isofit.app/about
+Facts last reviewed: 2026-09-23
+
+Isofit is a workout tracker published by Isofit ltd. and designed in Queens, New York. It was founded in 2026 by An Hu, who builds it alone. The app exists to make a training log useful after the workout is over: quick to fill in, honest about what you trained, and able to answer questions about it. Coming soon to iPhone and the web.
+
+## Meet An Hu, Isofit's founder
+
+*Founder, designer and developer*
+
+> I founded Isofit in 2026 to make workout logging easy and useful beyond the workout. I design and build the app myself, working between New York City and Philadelphia.
+>
+> I’ve been strength training for over 15 years and spent much of that time researching training principles and writing my own programs. But my workout history lived in pages of the Notes app that I rarely reopened. I was recording the work without getting anything back from it. I wanted to see my progress, understand where my effort was going, and know whether my program was actually working.
+>
+> In early 2026, I was negotiating to buy an independent gym and began scoping its membership software as a CRM. When the deal fell through, I realized I didn’t need to own a gym to build something useful for the people in it. The workout log became the focus.
+>
+> That’s what drives Isofit: quick logging, useful visualizations, and a clearer connection between the work you put in and what you do next. Atlas, Isofit’s AI coach, brings guidance into that same space, with the ability to help you make sense of your own training history (if you opt in). It gives general guidance without personalization.
+>
+> Before Isofit, I spent eight years in New York fine dining as a senior server and captain at Jungsik, Loring Place, and Pastis. Preparation, timing, and the habit of learning from each service still shape how I build. I hold degrees from Parsons School of Design and Baruch College’s Zicklin School of Business.
+>
+> As of 2025 I’m also a new father. Isofit was conceived and built during nap time.
+>
+> — An Hu, founder of Isofit
+
+![Illustrated black-and-white portrait of An Hu, founder of Isofit, under a string of bare bulbs.](https://isofit.app/team/an-hu-portrait.jpg)
+
+- [LinkedIn](https://www.linkedin.com/in/an-hu/)
+- [X (@treetoptremor)](https://x.com/treetoptremor)
+
+> "I wanted to see my progress, understand where my effort was going, and know whether my program was actually working."
+
+## Why Isofit exists
+
+Most workout logs remember everything and tell you nothing. You write down sets for months and end up with a long list. Isofit starts from the question that list cannot answer on its own: what does all this work add up to?
+
+So the app does three things in order. It makes logging fast enough that you keep doing it, by accepting taps, a typed line or your voice. It turns the log into a picture, the body graph, that shows which muscles your sets reached. And it gives you Atlas, a coach you can ask about your own history.
+
+## How Isofit works
+
+### Join the waitlist
+
+Coming soon to iPhone and the web. Neither app is available yet. Leave an email address, and a first name if you like, and you get one email when Isofit launches. Joining is free and does not commit you to a subscription.
+
+### Download it and sign in
+
+At launch, Isofit is a free download for iPhone on iOS 17.6 or later. Sign in with Apple, Google, or an email and password. Isofit is for adults 18 and over.
+
+### Log your first session
+
+Tap in sets, type a Quicklog line or speak the session, then finish it to save it to your history. Save any finished session as a routine to start from next time.
+
+### Turn on only what you want
+
+Apple Health access and Atlas personalization are both off until you turn them on, and you can turn either off later. You choose which Apple Health data types Isofit may read in the iOS permission screen.
+
+### Upgrade, cancel or leave
+
+Pro is a monthly ($14.99) or yearly ($124.99) App Store subscription with no long-term contract, cancelled any time in your Apple account settings. Cancelling keeps your account and training data. You can export everything as a JSON file, or delete your account from inside the app with a seven-day grace period.
+
+### Get help
+
+Support is by email at support@isofit.app, with a reply within 2 business days. Privacy requests go to privacy@isofit.app, and if a fact on this site is out of date, email support and it will be corrected.
+
+## How Isofit is built
+
+- The log is yours. Export it as a file or delete your account from inside the app.
+- No data sales and no advertising. Isofit does not sell personal information or let advertisers near it.
+- No training on your data. Fitness and health data is not used to train AI models.
+- Opt-in by default. Atlas personalization and Apple Health access are off until you turn them on.
+- Say what it is. The body graph counts logged sets and says plainly that it is not a recovery score. Atlas says plainly that it can be wrong.
+- Adults only. Isofit is for people aged 18 and over.
+
+## Key facts about Isofit
+
+- **Company name:** Isofit ltd., publisher of the Isofit app
+- **Type:** Workout tracker with iPhone and web apps in development
+- **Founded:** 2026
+- **Founder:** An Hu: strength athlete of 15+ years; eight years as a senior server and captain in New York fine dining (Jungsik, Loring Place, Pastis); degrees from Parsons School of Design and Baruch Zicklin School of Business. https://www.linkedin.com/in/an-hu/
+- **Headquarters:** Isofit ltd. is domiciled in Pennsylvania. The app is designed in Queens, New York.
+- **Team:** One developer, the founder
+- **Website:** https://isofit.app
+- **Core offering:** A workout logger with a muscle-by-muscle body graph, an AI coach and a members-only community
+- **Features:** Workout logging by tap, typed Quicklog line or voice; body graph; Atlas AI coach; Bonfire community; read-only Apple Health import; JSON data export
+- **Platform:** iPhone (iOS 17.6 or later) and web app, both coming soon. No native iPad, Apple Watch or Android apps.
+- **Exercise library:** 500+ exercises across strength training, cardio, yoga, sports and martial arts, plus add unlimited custom exercises
+- **Pricing:** Free tier for logging. Pro is planned at $14.99 a month or $124.99 a year (USD, US App Store).
+- **Contract terms:** Monthly or yearly App Store subscription. No long-term contract; cancel any time in your Apple account settings.
+- **Status:** Pre-release. Coming soon to iPhone and the web.
+- **Support:** Email support@isofit.app, answered within 2 business days. Privacy requests: privacy@isofit.app.
+- **Competitors:** Hevy, Strong, Fitbod and JEFIT
+- **Social:** Isofit: @isofit_app on X. An Hu: @treetoptremor on X, and https://www.linkedin.com/in/an-hu/
+- **Facts last reviewed:** September 23, 2026
+
+## About the name
+
+The name is left open on purpose. Read it as isometric, as "I'm so fit", or as ISO, in search of, fitness. All three are fair.
+
+The logo is a cube whose three visible faces carry the letters I, S and O, and the same cube marks $ISO, the in-app points. Whatever you hear in the name, the app is a general training log for strength training, cardio, yoga, sports and martial arts. Inside it, Atlas is the AI coach, marked by a cairn of stacked stones, and Bonfire is the community feed.
+
+## Frequently asked questions
+
+### Who makes Isofit?
+
+Isofit was founded in 2026 by An Hu, who builds it alone in Queens, New York. It is published by Isofit ltd., a company domiciled in Pennsylvania.
+
+### What does the name Isofit mean?
+
+It is left open on purpose: isometric, "I'm so fit", or ISO, in search of, fitness. The logo is a cube whose faces spell I, S, O.
+
+### How do I contact Isofit?
+
+Email support@isofit.app for help, and expect a reply within 2 business days. Privacy requests go to privacy@isofit.app.

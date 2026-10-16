@@ -1,0 +1,108 @@
+status 200
+content-type: text/markdown; charset=utf-8
+x-robots-tag: noindex, follow
+
+# Put your workouts to work.
+
+Source: https://isofit.app
+Facts last reviewed: 2026-09-23
+
+Isofit is a workout tracker that helps you make sense of your training. Log by tap, text or voice, and see which muscles you’re working—and which you might be overlooking. Meet Atlas, Isofit’s built-in personal AI fitness coach. With your permission, Atlas reads your workout history to help you review sessions and plan what’s next.
+
+## Isofit at a glance
+
+- **What it is:** A workout logger with a muscle-by-muscle body graph, an AI coach and a members-only community.
+- **Platform:** iPhone (iOS 17.6 or later) and web app, both coming soon.
+- **Price:** Logging is free. Pro is planned at $14.99 a month or $124.99 a year (USD).
+- **Exercise library:** 500+ exercises across strength training, cardio, yoga, sports and martial arts, plus add unlimited custom exercises.
+- **Apple Health:** Optional and free. Isofit reads from Apple Health and never writes to it.
+- **Status:** Pre-release. Coming soon to iPhone and the web.
+
+## What Isofit does
+
+Isofit has four parts, one per tab in the app: a logger that takes taps, typed lines or your voice; a body graph of the muscles your sets reached; Atlas, an AI coach; and Bonfire, a members-only community feed.
+
+### Log a workout by tapping, typing or talking
+
+Every exercise is a row with the numbers that fit it: sets, reps and weight, distance and time, or a hold, plus RPE. Type one Quicklog line such as "bench 5x5 225lbs" and get finished rows, parsed on your phone with no signal needed. Or say the session and review the draft before it saves.
+
+### See which muscles your training actually reaches
+
+Every working set you log counts toward the muscles it trains, and the body graph shades a front and back figure by that count over 7, 30 or 90 days or all time. The muscles with the most credited work read warmest; those with relatively little stay pale. It counts logged work, not recovery. The full graph is part of Pro.
+
+### Ask Atlas, an AI coach that can read your log
+
+Atlas is a chat coach inside Isofit. Ask it to review a session, explain a stalled lift or plan next week. Turn on personalization and it answers from your own training history; leave it off and it gives general guidance. It does not give medical advice.
+
+### Share a session at the Bonfire, or never post at all
+
+Bonfire is a members-only feed where every post is a session you logged, one a day, with no follows, groups or direct messages. Your log stays private unless you choose to post it.
+
+## What makes Isofit different
+
+Compared with Hevy, Strong, Fitbod and JEFIT as each describes itself, read September 19, 2026. Those four are released, run on Android and a watch, and most cost less.
+
+### Log by typing or talking
+
+Type "bench 5x5 225lbs" or say the session. None of the four advertises typed or voice logging.
+
+### A coach inside the app
+
+Atlas is a chat coach built into Isofit. Hevy's chat runs inside ChatGPT; Strong, Fitbod and JEFIT advertise no chat.
+
+### Any time window
+
+The body graph looks back 7, 30 or 90 days or all time. Hevy's heat map covers the last 7 days.
+
+### One log for five kinds of training
+
+500+ exercises across lifting, cardio, yoga, sports and martial arts, plus add unlimited custom exercises. The four describe themselves as strength-first or strength-focused.
+
+### No followers or leaderboards
+
+Bonfire posts are tied to logged sessions, one a day. Hevy's home feed is built on follows and leaderboards.
+
+## What is free and what is Pro
+
+- **Free:** Unlimited logging by tap and Quicklog, routines, full history, Apple Health import, data export and 10 Atlas messages a month. Voice logging uses earned $ISO.
+- **Pro:** Planned at $14.99 a month or $124.99 a year. Adds the full body graph, 30 Atlas messages a day with deep analysis and saved programs, SITREP (weekly training review), and posting to Bonfire.
+
+## Why I built Isofit.
+
+*Founder, designer & developer*
+
+> I founded Isofit to make workout logs useful beyond the workout. I design and build the app myself, working between New York City and Philadelphia.
+>
+> I’m also a new father. Most of Isofit was built during nap time.
+>
+> — An Hu, founder of Isofit
+
+![Illustrated black-and-white portrait of An Hu, founder of Isofit, under a string of bare bulbs.](https://isofit.app/team/an-hu-portrait.jpg)
+
+### Ask about your training.
+
+Review a session or plan your next week. With your permission, Atlas can use your workout history.
+
+### Your training stays yours.
+
+Your log is private by default. You choose what to share and can export your data.
+
+> "I wanted to see my progress, understand where my effort was going, and know whether my program was actually working."
+
+## Frequently asked questions
+
+### What is Isofit?
+
+Isofit is a workout tracker coming soon to iPhone and the web. You record training by tapping, typing or speaking, and the app shows which muscles that training reached on a front and back body graph. It includes Atlas, a personal AI fitness coach that can read your workout history with your permission, and Bonfire, a members-only community feed.
+
+### Is Isofit free?
+
+Logging workouts, routines, history, Apple Health import, data export and 10 Atlas messages a month are free. Pro is planned at $14.99 a month or $124.99 a year in the US App Store and unlocks the full body graph, higher Atlas limits, Atlas programs and posting to Bonfire.
+
+### Which platforms is Isofit coming to?
+
+Isofit is coming soon to iPhone (iOS 17.6 or later) and the web. Neither app is available yet. There are no native Android, iPad or Apple Watch apps.
+
+### When does Isofit launch?
+
+Coming soon to iPhone and the web. Neither app is available yet. Joining the waitlist gets you one email when Isofit launches.

@@ -8,7 +8,7 @@ import { SITE } from "@/lib/site";
 // Where a waitlist submission lands when JavaScript is off. With it on, the
 // form reports its result in place and nobody sees these pages.
 const RESULTS: Record<string, { title: string; body: string; retry: boolean }> = {
-  ok: { title: "You are on the list.", body: `We will email you once, when Isofit launches. ${SITE.launchStatus}`, retry: false },
+  ok: { title: "You are on the list.", body: `Isofit has launched, so there is no launch email to wait for. ${SITE.launchStatus}`, retry: false },
   already: { title: "You are already on the list.", body: "That email address has already joined. There is nothing more to do.", retry: false },
   missing: { title: "We need an email address.", body: "Please go back and enter your email address.", retry: true },
   invalid: { title: "That email address does not look right.", body: "Please go back and check it.", retry: true },
@@ -34,7 +34,7 @@ export default async function WaitlistResultPage({ params }: { params: Promise<{
         <h1 className="mt-3 max-w-[20ch] font-display text-[clamp(2rem,4.6vw,3.25rem)] font-bold leading-[1.08] tracking-[-0.03em]">{result.title}</h1>
         <p role={result.retry ? "alert" : "status"} className="mt-5 max-w-[56ch] text-lg leading-relaxed text-ink-2">{result.body}</p>
         <Link
-          href={result.retry ? "/#waitlist-form" : "/"}
+          href={result.retry ? "/#get-app" : "/"}
           className="mt-8 inline-flex min-h-12 items-center rounded-xl bg-forest px-5 text-base font-semibold text-white transition-colors hover:bg-forest-dark"
         >
           {result.retry ? "Back to the form" : "Back to Isofit"}

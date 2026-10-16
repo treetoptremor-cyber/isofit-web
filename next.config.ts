@@ -1,6 +1,11 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // Product screenshots change rarely: smaller AVIF/WebP and a long optimizer cache cut repeat-visit transfer.
+  images: {
+    formats: ["image/avif", "image/webp"],
+    minimumCacheTTL: 60 * 60 * 24 * 30,
+  },
   // Pages from the pre-rebuild site that search results still list.
   async redirects() {
     return [

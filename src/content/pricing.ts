@@ -20,7 +20,7 @@ export const TIER_CARDS = [
     name: "Pro",
     price: PRICING.proMonthly,
     per: "/ month",
-    note: `or ${PRICING.proYearly} a year. Planned US prices.`,
+    note: `or ${PRICING.proYearly} a year. US prices.`,
     items: [
       "Everything in Free, plus the full body graph",
       "Atlas: 30 messages a day, 100 deep-analysis requests a month, saved programs and SITREP (weekly training review)",
@@ -34,9 +34,9 @@ export const PRICING_DOC: PageDoc = {
   name: "Pricing",
   metaTitle: "Isofit pricing: free workout logging, Pro at $14.99 a month",
   metaDescription:
-    "Isofit is free for workout logging, routines, history and Apple Health import. Pro is planned at $14.99 a month or $124.99 a year and adds the full body graph, more Atlas and Bonfire posting.",
+    "Isofit is free for workout logging, routines, history and Apple Health import. Pro is $14.99 a month or $124.99 a year and adds the full body graph, more Atlas and Bonfire posting.",
   h1: "Logging is free. Pro is $14.99 a month.",
-  lede: `Isofit has two tiers. Free includes unlimited workout logging, Quicklog, routines, full history, Apple Health import, data export and ${LIMITS.freeAtlasMessages}. Pro is planned at ${PRICING.proMonthly} a month or ${PRICING.proYearly} a year in the US App Store, and adds the full body graph, higher Atlas limits with deep analysis and saved programs, SITREP (weekly training review), and posting to Bonfire. Isofit is not released yet, so these prices are planned and the App Store listing will be final.`,
+  lede: `Isofit has two tiers. Free includes unlimited workout logging, Quicklog, routines, full history, Apple Health import, data export and ${LIMITS.freeAtlasMessages}. Pro is ${PRICING.proMonthly} a month or ${PRICING.proYearly} a year in the US App Store, and adds the full body graph, higher Atlas limits with deep analysis and saved programs, SITREP (weekly training review), and posting to Bonfire. Prices vary by region, and the App Store listing is final.`,
   sections: [
     {
       id: "tiers",
@@ -82,10 +82,10 @@ export const PRICING_DOC: PageDoc = {
       heading: "What $ISO is",
       body: [
         "$ISO is Isofit's in-app points. You earn it by logging workouts and spend it on small actions inside the app. It is not money: it has no cash value and exists only inside Isofit.",
-        "These are the rates at launch. They are set on Isofit's servers and can change. Backdated sessions never earn $ISO, and every member gets one streak freeze a month, applied automatically before a streak breaks.",
+        "These are the current rates. They are set on Isofit's servers and can change. Backdated sessions never earn $ISO, and every member gets one streak freeze a month, applied automatically before a streak breaks.",
       ],
       table: {
-        caption: "$ISO earned and spent, at launch",
+        caption: "$ISO earned and spent",
         head: ["Action", "$ISO"],
         rows: [
           ["Earn: Free, first log of the day", "+0.36"],
@@ -105,7 +105,7 @@ export const PRICING_DOC: PageDoc = {
     {
       question: "How much does Isofit cost?",
       answer: [
-        `Isofit is free to log with. Pro is planned at ${PRICING.proMonthly} a month or ${PRICING.proYearly} a year in the US App Store. Prices vary by region and the App Store listing is final.`,
+        `Isofit is free to log with. Pro is ${PRICING.proMonthly} a month or ${PRICING.proYearly} a year in the US App Store. Prices vary by region and the App Store listing is final.`,
       ],
     },
     {
@@ -136,8 +136,8 @@ export const PRICING_DOC: PageDoc = {
       link: { href: "/terms#4-memberships-billing-and-cancellation", label: "Terms: memberships, billing and cancellation" },
     },
     {
-      question: "Can I buy Isofit today?",
-      answer: [`Not yet. ${SITE.launchStatus} Joining the waitlist is free and carries no obligation to subscribe.`],
+      question: "Can I get Isofit today?",
+      answer: [`Yes. ${SITE.launchStatus} Download it from the App Store; logging is free, and Pro is optional.`],
     },
   ],
   related: ["/features", "/features/body-graph", "/features/atlas", "/compare", "/faq"],

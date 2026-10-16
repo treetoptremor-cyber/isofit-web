@@ -50,7 +50,7 @@ export const FEATURES_DOC: PageDoc = {
       heading: "What Isofit does not have",
       body: ["Knowing what an app lacks is as useful as knowing what it has. As of this page's review date, Isofit has:"],
       bullets: [
-        "No native Android, iPad or Apple Watch apps. The iPhone and web apps are both coming soon.",
+        "No native Android, iPad or Apple Watch apps. The iPhone app is on the App Store, and the web app is available in your browser.",
         "No writing to Apple Health.",
         "No home-screen widgets.",
         "No personal-record tracking.",

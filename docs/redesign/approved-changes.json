@@ -1,0 +1,13 @@
+{
+ "_note": "Copy and id changes the user explicitly approved. Each entry is a rendered line (case-insensitive) allowed to disappear or appear. Remove entries as they stop applying.",
+ "copy": [
+  "Web app",
+  "Try web app",
+  "Coming soon to iPhone and the web.",
+  "Coming soon to iOS."
+ ],
+ "ids": [
+  "see-grid-lines", "shell-grid-lines",
+  "ask-grid-lines"
+ ]
+}

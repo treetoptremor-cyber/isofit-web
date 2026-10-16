@@ -1,0 +1,4 @@
+status 200
+content-type: image/png
+sha256 dd036bed97b2e69de9d9340e953caba04c98ce707c12bc35e7451345bab99b7b
+bytes 55519

@@ -7,6 +7,24 @@ import type { DocSection, DocTable } from "@/content/types";
 // winner's badge.
 const HIGHLIGHT = new Set(["Isofit", "Pro"]);
 
+// Highlights phrases that already sit in a paragraph, with a heat-colored dot.
+// The text is unchanged (no copy is added or repeated); the dot is decorative.
+function withChips(paragraph: string, chips: Chip[]) {
+  const pattern = new RegExp(`(${chips.map((chip) => chip.text.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|")})`);
+  return paragraph.split(pattern).map((part, index) => {
+    const chip = chips.find((candidate) => candidate.text === part);
+    if (!chip) return part;
+    return (
+      <span key={index} className="whitespace-nowrap rounded-full border border-rule bg-paper-raised px-2.5 py-0.5 font-medium text-ink">
+        <span aria-hidden="true" className={`mr-1.5 inline-block h-2 w-5 rounded-full align-middle ${chip.dot}`} />
+        {part}
+      </span>
+    );
+  });
+}
+
+export type Chip = { text: string; dot: string };
+
 // One table in the DOM. From md up it is a normal table; below that the CSS in
 // globals.css stacks each row into a card, labelling cells from data-label.
 // The explicit roles keep table semantics once the elements are display:block.
@@ -49,6 +67,7 @@ export default function DocSections({
   media = {},
   wide = {},
   replace = {},
+  chips = {},
 }: {
   sections: DocSection[];
   media?: Record<string, ReactNode>;
@@ -56,6 +75,8 @@ export default function DocSections({
   wide?: Record<string, ReactNode>;
   // A page's own rendering of a section, used in place of the default one.
   replace?: Record<string, ReactNode>;
+  // Phrases to highlight inside a section's paragraphs, keyed by section id.
+  chips?: Record<string, Chip[]>;
 }) {
   let mediaCount = 0;
   return (
@@ -66,7 +87,7 @@ export default function DocSections({
         const flip = figure ? mediaCount++ % 2 === 1 : false;
         const copy = (
           <div className="prose-iso max-w-[66ch]">
-            {section.body?.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+            {section.body?.map((paragraph) => <p key={paragraph}>{chips[section.id] ? withChips(paragraph, chips[section.id]) : paragraph}</p>)}
             {section.bullets ? (
               <ul>
                 {section.bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}

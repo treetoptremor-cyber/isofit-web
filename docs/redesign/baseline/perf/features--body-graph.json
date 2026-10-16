@@ -1,0 +1,15 @@
+{
+ "route": "/features/body-graph",
+ "requests": 25,
+ "bytes": {
+  "total": 1049749,
+  "script": 544977,
+  "image": 146304,
+  "font": 50892,
+  "stylesheet": 55754
+ },
+ "cls": 0,
+ "lcpMs": 120,
+ "dclMs": 96,
+ "domNodes": 411
+}

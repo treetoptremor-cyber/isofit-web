@@ -6,7 +6,7 @@ import type { CompetitorRowKey, HubRowKey } from "@/content/competitors";
 // absent from the site.
 
 export const PRICING = {
-  // Planned US App Store prices. The App Store listing is the authority.
+  // US App Store prices. The App Store listing is the authority.
   proMonthly: "$14.99",
   proYearly: "$124.99",
   currencyNote: "USD, US App Store. Prices vary by region and the App Store listing is final.",
@@ -25,12 +25,12 @@ export const ISOFIT_BRIEF: Record<HubRowKey, string> = {
   muscles: "Body graph over 7, 30 or 90 days or all time (Pro).",
   coaching: "Atlas, an AI coach you chat with.",
   social: "Bonfire: members only, no follows or direct messages.",
-  platforms: "iPhone (iOS 17.6 or later) and web app, both coming soon.",
-  price: `Free. Pro planned at ${PRICING.proMonthly} a month or ${PRICING.proYearly} a year.`,
+  platforms: "iPhone (iOS 17.6 or later) on the App Store, and a web app. Both are available now.",
+  price: `Free. Pro is ${PRICING.proMonthly} a month or ${PRICING.proYearly} a year.`,
 };
 
 export const ISOFIT_ROWS: Record<CompetitorRowKey, string> = {
-  platforms: "iPhone (iOS 17.6 or later) and web app, both coming soon. No native iPad, Apple Watch or Android apps.",
+  platforms: "iPhone (iOS 17.6 or later) on the App Store, and a web app. Both are available now. No native iPad, Apple Watch or Android apps.",
   logging:
     "Three ways into one structured log: tap in sets, reps, weight, distance, duration and RPE; type a Quicklog line such as \"bench 5x5 225lbs\"; or speak the workout and review the parsed draft before saving.",
   library: `500+ exercises covering ${ACTIVITY_SCOPE}, plus add unlimited custom exercises with your own muscle mapping.`,
@@ -42,6 +42,6 @@ export const ISOFIT_ROWS: Record<CompetitorRowKey, string> = {
     "Bonfire, a members-only feed. A post is tied to a session you logged, limited to one a day, and visible to all members. No follows, groups or direct messages.",
   health: "Optionally reads workouts and daily summaries from Apple Health on every tier. Does not write to Apple Health.",
   scope: `Logs ${ACTIVITY_SCOPE}.`,
-  price: `Free tier with logging, history and Apple Health import. Pro is planned at ${PRICING.proMonthly} monthly or ${PRICING.proYearly} yearly (USD).`,
+  price: `Free tier with logging, history and Apple Health import. Pro is ${PRICING.proMonthly} monthly or ${PRICING.proYearly} yearly (USD).`,
   export: "On-demand JSON export of your training, Atlas, account, health and social records.",
 };

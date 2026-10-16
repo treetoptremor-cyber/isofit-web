@@ -1,0 +1,15 @@
+{
+ "route": "/",
+ "requests": 19,
+ "bytes": {
+  "total": 963031,
+  "script": 544977,
+  "image": 80996,
+  "font": 50892,
+  "stylesheet": 55754
+ },
+ "cls": 0,
+ "lcpMs": 140,
+ "dclMs": 37,
+ "domNodes": 481
+}

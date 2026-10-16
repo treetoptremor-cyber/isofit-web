@@ -4,12 +4,13 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useId, useRef, useState } from "react";
 
+import AppStoreLink from "@/components/marketing/app-store-link";
 import WebAppLink from "@/components/marketing/web-app-link";
 import { PRIMARY_NAV, SITE } from "@/lib/site";
 
-// The phone menu: navigation rows and app/waitlist buttons. It closes on a
+// The phone menu: navigation rows and app buttons. It closes on a
 // tap outside, on Escape, and when the route changes.
-export default function MobileMenu({ waitlistHref }: { waitlistHref: string }) {
+export default function MobileMenu() {
   const panelId = useId();
   const root = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
@@ -69,9 +70,7 @@ export default function MobileMenu({ waitlistHref }: { waitlistHref: string }) {
           ))}
         </ul>
         <WebAppLink className="mt-3 w-full" />
-        <Link href={waitlistHref} className="mt-3 flex min-h-12 items-center justify-center rounded-xl bg-forest px-3 font-semibold text-white">
-          Join the waitlist
-        </Link>
+        <AppStoreLink className="mt-3 w-full" />
         <p className="label pt-3">{SITE.launchStatus}</p>
       </nav>
     </div>

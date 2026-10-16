@@ -41,11 +41,11 @@ const HEAT = ["bg-heat-0", "bg-heat-1", "bg-heat-2", "bg-heat-3", "bg-heat-4", "
 
 export function HeatLegend({ className = "" }: { className?: string }) {
   return (
-    <div className={`flex items-center gap-3 ${className}`}>
+    <div className={`flex flex-wrap items-center gap-x-3 gap-y-1 ${className}`}>
       <span className="label">Rest</span>
       <span aria-hidden="true" className="flex gap-1">
-        {HEAT.map((color) => (
-          <span key={color} className={`h-2.5 w-7 rounded-full ${color}`} />
+        {HEAT.map((color, index) => (
+          <span key={color} style={{ "--i": index } as React.CSSProperties} className={`px-heat h-2.5 w-7 rounded-full ${color}`} />
         ))}
       </span>
       <span className="label">Most worked</span>
