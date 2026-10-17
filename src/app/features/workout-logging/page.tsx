@@ -18,11 +18,12 @@ export default function WorkoutLoggingPage() {
         "what-you-can-record": (
           <Plate id="logging-log-grid" caption="Today's session in the Log tab, with the Quicklog bar and microphone at the bottom.">
             <Device
-              overlay={{ top: 0.212, height: 0.292, node: <SessionBoard mode="loop" alt="Back Squat, Overhead Press and Incline Bench rows typing themselves in on a loop." /> }}
               priority
               src="/screenshots/log.png"
               alt="Isofit's Log tab showing today's session with back squat, overhead press and incline bench rows, each with sets, reps, pounds and RPE, start and rest timers, a Finish session button, and a Quicklog text bar beside a microphone button."
-            />
+            >
+              <SessionBoard mode="loop" band={{ top: 0.212, height: 0.292 }} alt="Back Squat, Overhead Press and Incline Bench rows typing themselves in on a loop." />
+            </Device>
           </Plate>
         ),
       }}

@@ -215,14 +215,14 @@ export function Device({
   alt,
   priority = false,
   className = "",
-  overlay,
+  children,
 }: {
   src: string;
   alt: string;
   priority?: boolean;
   className?: string;
-  // Drawn over a band of the screenshot, as fractions of its height.
-  overlay?: { top: number; height: number; node: ReactNode };
+  /** Laid over the screenshot, inside the screen's rounded corners. */
+  children?: React.ReactNode;
 }) {
   return (
     <div className={`app-device mx-auto ${className}`}>
@@ -237,11 +237,7 @@ export function Device({
           fetchPriority={priority ? "high" : "auto"}
           className="h-auto w-full"
         />
-        {overlay ? (
-          <div className="absolute inset-x-0" style={{ top: `${overlay.top * 100}%`, height: `${overlay.height * 100}%` }}>
-            {overlay.node}
-          </div>
-        ) : null}
+        {children}
       </div>
       <Image
         src="/mockups/iphone-frame.png"

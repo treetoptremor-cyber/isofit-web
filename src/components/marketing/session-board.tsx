@@ -115,7 +115,9 @@ function TimerIcon() {
 const rule = "border-rule";
 const label = "font-mono text-[2cqw] uppercase tracking-[0.18em] text-ink-3";
 
-export default function SessionBoard({ mode, alt }: { mode: "scroll" | "loop"; alt: string }) {
+// `band` places the board over a strip of a screenshot, as fractions of that screenshot's height and
+// within a positioned parent such as a Device screen. Without it the board fills its parent.
+export default function SessionBoard({ mode, alt, band }: { mode: "scroll" | "loop"; alt: string; band?: { top: number; height: number } }) {
   const root = useRef<HTMLDivElement>(null);
   const [cycle, setCycle] = useState(0);
   const [visible, setVisible] = useState(mode === "scroll");
@@ -188,7 +190,7 @@ export default function SessionBoard({ mode, alt }: { mode: "scroll" | "loop"; a
     return () => window.clearInterval(timer);
   }, [mode, visible]);
 
-  return (
+  const board = (
     <div
       ref={root}
       data-mode={mode}
@@ -282,5 +284,13 @@ export default function SessionBoard({ mode, alt }: { mode: "scroll" | "loop"; a
         </div>
       </div>
     </div>
+  );
+
+  return band ? (
+    <div className="absolute inset-x-0" style={{ top: `${band.top * 100}%`, height: `${band.height * 100}%` }}>
+      {board}
+    </div>
+  ) : (
+    board
   );
 }
