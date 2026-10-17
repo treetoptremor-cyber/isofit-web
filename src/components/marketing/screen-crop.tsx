@@ -16,6 +16,7 @@ export default function ScreenCrop({
   priority = false,
   tone,
   context = true,
+  slices,
 }: {
   src: string;
   alt: string;
@@ -27,6 +28,9 @@ export default function ScreenCrop({
   tone?: "atlas";
   // false drops the context phone at every width: just the enlarged band.
   context?: boolean;
+  // Where a chat's messages split, as fractions of the band's height. The band is drawn as one
+  // slice per message, each fading and rising in turn as the figure scrolls into view.
+  slices?: number[];
 }) {
   const atlas = tone === "atlas";
   const shift = (top * (SOURCE_H / SOURCE_W) * 100).toFixed(2);
@@ -61,16 +65,45 @@ export default function ScreenCrop({
           className={`order-1 overflow-hidden rounded-[1.25rem] border-2 shadow-[0_18px_40px_rgba(42,36,32,0.10)] md:order-2 ${atlas ? "border-terra/50 bg-terra-soft" : "border-sky/70 bg-paper-raised"}`}
           style={{ aspectRatio: `${SOURCE_W} / ${Math.round(height * SOURCE_H)}` }}
         >
-          <Image
-            src={src}
-            alt={alt}
-            width={SOURCE_W}
-            height={SOURCE_H}
-            sizes="(max-width: 767px) 100vw, 736px"
-            loading={priority ? "eager" : "lazy"}
-            className="h-auto w-full max-w-none"
-            style={{ marginTop: `-${shift}%` }}
-          />
+          {slices ? (
+            <div data-reveal="chat" className="relative" style={{ aspectRatio: `${SOURCE_W} / ${Math.round(height * SOURCE_H)}` }}>
+              {[0, ...slices].map((from, index) => {
+                const to = slices[index] ?? 1;
+                return (
+                  <div
+                    key={from}
+                    aria-hidden={index ? "true" : undefined}
+                    className="absolute inset-0"
+                    style={{ clipPath: `inset(${(from * 100).toFixed(2)}% 0 ${((1 - to) * 100).toFixed(2)}% 0)` }}
+                  >
+                    <div className={`chat-slice h-full ${index % 2 ? "origin-top-left" : "origin-top-right"}`} style={{ "--i": index } as React.CSSProperties}>
+                      <Image
+                        src={src}
+                        alt={index ? "" : alt}
+                        width={SOURCE_W}
+                        height={SOURCE_H}
+                        sizes="(max-width: 767px) 100vw, 736px"
+                        loading={priority ? "eager" : "lazy"}
+                        className="h-auto w-full max-w-none"
+                        style={{ marginTop: `-${shift}%` }}
+                      />
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          ) : (
+            <Image
+              src={src}
+              alt={alt}
+              width={SOURCE_W}
+              height={SOURCE_H}
+              sizes="(max-width: 767px) 100vw, 736px"
+              loading={priority ? "eager" : "lazy"}
+              className="h-auto w-full max-w-none"
+              style={{ marginTop: `-${shift}%` }}
+            />
+          )}
         </div>
       </div>
       <figcaption className="caption mt-4">

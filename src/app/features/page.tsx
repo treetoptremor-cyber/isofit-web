@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import DocPage from "@/components/marketing/doc-page";
+import ScrollLogo from "@/components/marketing/scroll-logo";
 import { Section } from "@/components/marketing/primitives";
 import { DOCS_BY_PATH } from "@/content";
 import { FEATURES_DOC } from "@/content/features";
@@ -11,6 +12,8 @@ export const metadata = docMetadata(FEATURES_DOC);
 
 export default function FeaturesPage() {
   return (
+    <>
+    <ScrollLogo />
     <DocPage
       doc={FEATURES_DOC}
       trail={[{ href: "/features", label: "Features" }]}
@@ -33,5 +36,6 @@ export default function FeaturesPage() {
         </Section>
       }
     />
+    </>
   );
 }
