@@ -78,7 +78,7 @@ export const LOGGING_DOC: PageDoc = {
     {
       id: "three-ways",
       label: "Input",
-      heading: "Three ways to get a workout in",
+      heading: "Three ways to log your workout",
       table: {
         head: ["Method", "How it works", "Good for"],
         rows: [
