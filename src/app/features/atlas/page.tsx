@@ -1,5 +1,6 @@
 import Image from "next/image";
 
+import AtlasSquat from "@/components/marketing/atlas-squat";
 import DocPage from "@/components/marketing/doc-page";
 import ScreenCrop from "@/components/marketing/screen-crop";
 import { ATLAS_DOC } from "@/content/features";
@@ -30,6 +31,7 @@ export default function AtlasPage() {
       }
       wide={{
         "what-atlas-does": (
+          <>
           <ScreenCrop
             priority
             tone="atlas"
@@ -39,6 +41,10 @@ export default function AtlasPage() {
             alt="An Atlas conversation. The member says they just logged a session of lat pulldowns, seated cable rows, barbell curls and shoulder presses, and asks what to change next time. Atlas replies to put the incline dumbbell press before the pulling work, calls five sets at RPE 6 reasonable, suggests reducing back volume slightly, and says to keep the shoulder press light and strictly pain-free."
             caption="A question about the session just logged, answered against that session."
           />
+          <div className="mt-16" role="img" aria-label="Atlas, drawn as a coach, doing a barbell back squat as you scroll.">
+            <AtlasSquat />
+          </div>
+          </>
         ),
       }}
     />

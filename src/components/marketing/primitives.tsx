@@ -33,7 +33,7 @@ export function PageShell({ children, grid = true, sticky = true }: { children: 
             maskComposite: "intersect",
           }}
         >
-          <div className="px-grid absolute inset-x-0 top-0 h-[calc(100%+104px)]">
+          <div className="px-grid absolute inset-x-0 top-0 h-[calc(100%+208px)]">
             <IsoGrid id="page-grid" />
           </div>
         </div>
@@ -44,6 +44,7 @@ export function PageShell({ children, grid = true, sticky = true }: { children: 
       </main>
       <SiteFooter />
       <Reveal />
+      <div aria-hidden="true" className="px-progress hidden pointer-events-none fixed inset-x-0 top-0 z-[60] h-[3px] origin-left bg-gradient-to-r from-heat-0 via-heat-3 to-heat-5" />
       {sticky ? <StickyAppLink /> : null}
     </div>
   );
@@ -169,7 +170,7 @@ function linkify(value: ReactNode): ReactNode {
 // Decorative; never recolor the ramp.
 export function HeatRibbon({ className = "" }: { className?: string }) {
   return (
-    <div aria-hidden="true" className={`flex h-2 overflow-hidden rounded-full ${className}`}>
+    <div aria-hidden="true" className={`px-ribbon flex h-2 origin-left overflow-hidden rounded-full ${className}`}>
       {["bg-heat-0", "bg-heat-1", "bg-heat-2", "bg-heat-3", "bg-heat-4", "bg-heat-5"].map((color) => <i key={color} className={`flex-1 ${color}`} />)}
     </div>
   );

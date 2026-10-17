@@ -115,3 +115,8 @@ Isofit is live on the App Store (https://apps.apple.com/us/app/isofit-workout-lo
 ### Scroll-linked depth
 
 Four decorative effects, all CSS scroll-driven animations (no script) inside `@supports (animation-timeline: view())` and `prefers-reduced-motion: no-preference`, animating only the independent `translate`/`scale` properties: `.px-float` (hero product figure lags up to 24 px, home and body-graph), `.px-grid` (page grid drifts slower than the page), `.px-heat` (heat-ramp swatches light up in sequence), `.px-num` (chapter numerals slide against the scroll, 768 px and up). Unsupported browsers and reduced motion show everything static. Text ledger of this commit is identical to its parent.
+
+### Scroll-scrubbed Atlas squat and stronger depth
+
+- `/features/atlas` plays Atlas's 18-frame squat from the iOS app as you scroll (`atlas-squat.tsx`): a sticky stage, 3 reps over the scroll, frames drawn to a canvas. The frames are cropped (the app's "Tap repeatedly" prompt removed), resized to 540 px wide AVIF in `public/atlas/squat/` (411 KB total, cached 30 days) and fetched only when the stage is within 1200 px of the screen. The first frame is plain markup, so no JS, reduced motion, Save-Data / 2G connections and failed loads all show a still.
+- Stronger CSS scroll-driven depth: hero figure lag 64 px, hero copy climbs 48 px, grid drift doubled, chapter numerals and phone screens drift 110 / 56 px, heat ribbon draws in, a thin heat-colored progress line across the top of every page, and bigger reveals (32 px rise, screens scale in).

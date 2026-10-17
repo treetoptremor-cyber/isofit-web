@@ -246,12 +246,16 @@ summary:active {
     opacity: 0;
   }
   html.reveal-ready [data-reveal="story"][data-reveal-pending]:not([data-revealed]) {
-    transform: translateY(12px);
+    transform: translateY(32px);
+  }
+  html.reveal-ready [data-reveal="screen"][data-reveal-pending]:not([data-revealed]) {
+    scale: 0.92;
   }
   html.reveal-ready [data-reveal][data-reveal-pending] {
     transition:
-      opacity 0.5s ease-out,
-      transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
+      opacity 0.7s ease-out,
+      transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1),
+      scale 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
   }
   /* control-feedback: a brief press on rounded buttons; links keep the instant opacity press above. */
   a[class*="rounded-xl"],
@@ -276,11 +280,11 @@ summary:active {
     .px-float {
       animation: px-float linear both;
       animation-timeline: scroll(root block);
-      animation-range: 0 90vh;
+      animation-range: 0 100vh;
     }
     @keyframes px-float {
       to {
-        translate: 0 24px;
+        translate: 0 64px;
       }
     }
     /* The faint page grid drifts slower than the page. */
@@ -290,7 +294,7 @@ summary:active {
     }
     @keyframes px-grid {
       to {
-        translate: 0 -104px;
+        translate: 0 -208px;
       }
     }
     /* The heat ramp lights up swatch by swatch as its legend scrolls into view. */
@@ -305,6 +309,53 @@ summary:active {
         scale: 0.6 1;
       }
     }
+    /* The hero copy climbs away faster than the figure lags, so the two pull apart. */
+    .px-lift {
+      animation: px-lift linear both;
+      animation-timeline: scroll(root block);
+      animation-range: 0 80vh;
+    }
+    @keyframes px-lift {
+      to {
+        translate: 0 -48px;
+      }
+    }
+    /* Chapter phone screens drift through their chapter. */
+    .px-screen {
+      animation: px-screen linear both;
+      animation-timeline: view();
+      animation-range: cover;
+    }
+    @keyframes px-screen {
+      from {
+        translate: 0 56px;
+      }
+      to {
+        translate: 0 -56px;
+      }
+    }
+    /* The heat ribbon draws itself in as it enters. */
+    .px-ribbon {
+      animation: px-ribbon linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 80%;
+    }
+    @keyframes px-ribbon {
+      from {
+        scale: 0 1;
+      }
+    }
+    /* A thin heat-colored read-progress line across the top of every page. */
+    .px-progress {
+      display: block;
+      animation: px-progress linear both;
+      animation-timeline: scroll(root block);
+    }
+    @keyframes px-progress {
+      from {
+        scale: 0 1;
+      }
+    }
     /* Chapter numerals slide against the scroll on wide screens. */
     @media (min-width: 768px) {
       .px-num {
@@ -314,10 +365,10 @@ summary:active {
       }
       @keyframes px-num {
         from {
-          translate: 0 36px;
+          translate: 0 110px;
         }
         to {
-          translate: 0 -36px;
+          translate: 0 -110px;
         }
       }
     }
