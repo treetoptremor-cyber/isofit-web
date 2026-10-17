@@ -49,7 +49,7 @@ export const FAQ_GROUPS: FaqGroup[] = [
       {
         question: "Do I have to use Isofit's exercise library?",
         answer: [
-          "No. The library has 500+ exercises, and you can type any name and create it as a custom exercise, with no limit on how many. Isofit maps custom exercises to muscles so they count on the body graph.",
+          "No. The library has nearly 500 exercises, and you can type any name and create it as a custom exercise, with no limit on how many. Isofit maps custom exercises to muscles so they count on the body graph.",
         ],
       },
       {
@@ -121,7 +121,7 @@ export const FAQ_GROUPS: FaqGroup[] = [
       {
         question: "What is the Bonfire?",
         answer: [
-          "Bonfire is Isofit's members-only community feed. A post is tied to a session you logged, with a caption and an optional photo, and members can give kudos and comment. There are no follows, groups or direct messages.",
+          "Bonfire is Isofit's members-only community feed. A post is a caption, an optional photo and the kind of training it is about, one a day, and members can give kudos and comment. There are no follows, groups or direct messages.",
         ],
         link: { href: "/features/bonfire", label: "How Bonfire works" },
       },
