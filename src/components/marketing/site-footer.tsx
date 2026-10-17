@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import { FEATURE_LINKS, LEGAL_LINKS, SITE } from "@/lib/site";
-import { LogoLockup } from "@/components/marketing/site-header";
+import LogoLockup from "@/components/marketing/logo-lockup";
 
 const COLUMNS = [
   {
