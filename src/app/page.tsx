@@ -8,6 +8,7 @@ import JsonLd from "@/components/marketing/json-ld";
 import { CONTAINER, Device, FaqList, HeatRibbon, PageShell, Plate, Portrait, ProTag, Section, TextLink, GetAppBand, faqJsonLd, withAtlas } from "@/components/marketing/primitives";
 import { HeatLegend } from "@/components/marketing/quicklog-demo";
 import ScreenCrop from "@/components/marketing/screen-crop";
+import SessionBoard from "@/components/marketing/session-board";
 import AppStoreLink from "@/components/marketing/app-store-link";
 import WebAppLink from "@/components/marketing/web-app-link";
 import RecoveryRedirect from "@/components/recovery-redirect";
@@ -197,6 +198,7 @@ export default function HomePage() {
         figure={
           <Plate id="log-grid" caption="Today's session in the Log tab, with the Quicklog bar and microphone at the bottom.">
             <Device
+              overlay={{ top: 0.212, height: 0.292, node: <SessionBoard mode="loop" alt="Back Squat, Overhead Press and Incline Bench rows typing themselves in on a loop." /> }}
               src="/screenshots/log.png"
               alt="Isofit's Log tab showing today's session with back squat, overhead press and incline bench rows, each with sets, reps, pounds and RPE, start and rest timers, a Finish session button, and a Quicklog text bar beside a microphone button."
             />

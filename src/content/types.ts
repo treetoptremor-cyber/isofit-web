@@ -51,6 +51,8 @@ export type PageDoc = {
   // Short name for breadcrumbs, the sitemap and llms.txt.
   name: string;
   h1: string;
+  // A phrase inside the h1 set in brand blue.
+  h1Accent?: string;
   // The answer-first paragraph under the h1.
   lede: string;
   sections: DocSection[];
