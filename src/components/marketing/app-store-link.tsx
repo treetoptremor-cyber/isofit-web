@@ -14,7 +14,7 @@ export default function AppStoreLink({
 }) {
   const height = compact ? 40 : 48;
   return (
-    <a href={SITE.appStoreUrl} className={`inline-flex shrink-0 items-center rounded-[9px] ${className}`}>
+    <a href={SITE.appStoreUrl} className={`badge-shine inline-flex shrink-0 items-center rounded-[9px] ${className}`}>
       {/* eslint-disable-next-line @next/next/no-img-element -- a fixed-size SVG needs no optimizer */}
       <img
         src={BADGE.src}

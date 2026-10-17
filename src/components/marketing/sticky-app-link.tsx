@@ -6,7 +6,9 @@ import AppStoreLink from "@/components/marketing/app-store-link";
 
 // A phone-only "Download on the App Store" bar along the bottom edge. It shows
 // once the first screen has scrolled away, and stays out of the way whenever the
-// footer is in view, an input has the keyboard up, or the menu is open.
+// footer is in view, an input has the keyboard up, or the menu is open. It also
+// steps aside while you scroll down, so it never sits over what you are reading,
+// and comes back when you scroll up or pause.
 export default function StickyAppLink() {
   const [show, setShow] = useState(false);
 
@@ -17,7 +19,10 @@ export default function StickyAppLink() {
     let scrolled = window.scrollY > 480;
     let keyboard = false;
     let menu = document.body.dataset.menuOpen === "true";
-    const update = () => setShow(scrolled && inView.size === 0 && !keyboard && !menu);
+    let reading = false;
+    let lastY = window.scrollY;
+    let pause = 0;
+    const update = () => setShow(scrolled && !reading && inView.size === 0 && !keyboard && !menu);
 
     const io = new IntersectionObserver((entries) => {
       for (const entry of entries) {
@@ -29,11 +34,18 @@ export default function StickyAppLink() {
     document.querySelectorAll("footer").forEach((element) => io.observe(element));
 
     const onScroll = () => {
-      const next = window.scrollY > 480;
-      if (next !== scrolled) {
-        scrolled = next;
-        update();
+      const y = window.scrollY;
+      scrolled = y > 480;
+      if (Math.abs(y - lastY) > 4) {
+        reading = y > lastY;
+        lastY = y;
       }
+      window.clearTimeout(pause);
+      pause = window.setTimeout(() => {
+        reading = false;
+        update();
+      }, 700);
+      update();
     };
     const isField = (target: EventTarget | null) => target instanceof HTMLElement && /^(INPUT|TEXTAREA|SELECT)$/.test(target.tagName);
     const onFocusIn = (event: FocusEvent) => {
@@ -62,6 +74,7 @@ export default function StickyAppLink() {
     return () => {
       io.disconnect();
       menuWatch.disconnect();
+      window.clearTimeout(pause);
       window.removeEventListener("scroll", onScroll);
       document.removeEventListener("focusin", onFocusIn);
       document.removeEventListener("focusout", onFocusOut);

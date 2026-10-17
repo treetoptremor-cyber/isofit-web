@@ -9,6 +9,7 @@ import AppStoreLink from "@/components/marketing/app-store-link";
 import WebAppLink from "@/components/marketing/web-app-link";
 import SiteHeader from "@/components/marketing/site-header";
 import Reveal from "@/components/marketing/reveal";
+import ScrollShine from "@/components/marketing/scroll-shine";
 import StickyAppLink from "@/components/marketing/sticky-app-link";
 import { SITE, absoluteUrl } from "@/lib/site";
 
@@ -44,6 +45,7 @@ export function PageShell({ children, grid = true, sticky = true }: { children: 
       </main>
       <SiteFooter />
       <Reveal />
+      <ScrollShine />
       <div aria-hidden="true" className="px-progress hidden pointer-events-none fixed inset-x-0 top-0 z-[60] h-[3px] origin-left bg-gradient-to-r from-heat-0 via-heat-3 to-heat-5" />
       {sticky ? <StickyAppLink /> : null}
     </div>
