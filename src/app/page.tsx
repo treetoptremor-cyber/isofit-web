@@ -3,6 +3,8 @@ import type { ReactNode } from "react";
 import Link from "next/link";
 
 import { ReviewedNote, webPageJsonLd } from "@/components/marketing/doc-page";
+import { SETS_BY_MUSCLE_BARS } from "@/components/marketing/sets-bars";
+import BodyGraphScreenLoop from "@/components/marketing/body-graph-screen-loop";
 import IsoGrid from "@/components/marketing/iso-grid";
 import JsonLd from "@/components/marketing/json-ld";
 import { CONTAINER, Device, FaqList, HeatRibbon, PageShell, Plate, Portrait, ProTag, Section, TextLink, GetAppBand, faqJsonLd, withAtlas } from "@/components/marketing/primitives";
@@ -166,7 +168,9 @@ export default function HomePage() {
               src="/screenshots/body-graph.png"
               alt="Isofit's body graph: front and back body figures with each muscle shaded from pale to terracotta by working sets logged, above a sets-by-muscle list and 7, 30, 90 day and all-time filters."
               priority
-            />
+            >
+              <BodyGraphScreenLoop />
+            </Device>
             <HeatLegend className="mt-5 justify-center" />
           </figure>
           </div>
@@ -215,6 +219,7 @@ export default function HomePage() {
             src="/screenshots/sets-by-muscle.png"
             top={0.555}
             height={0.29}
+            bars={SETS_BY_MUSCLE_BARS}
             alt="The lower half of Isofit's body graph. A Sets by muscle list reads Side Delts 11, Triceps 10, Glutes 9, Biceps 8, Front Delts 8. Beside it a 7D, 30D, 90D and ALL filter sits above cards for Total sets 45, Most worked Side Delts and Least worked Upper Back."
             caption="Your logged sets, grouped by muscle, with the most and least worked."
           />
