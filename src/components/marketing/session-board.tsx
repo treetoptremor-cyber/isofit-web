@@ -4,8 +4,8 @@ import { useEffect, useRef, useState } from "react";
 
 // The three rows of the Log tab's session board, drawn as text so they can be typed. Back Squat is
 // always filled in; Overhead Press and Incline Bench type themselves one row at a time. "scroll"
-// plays that through the page's own scroll (CSS scroll-driven, never pins or holds the page);
-// "loop" plays it on a timer. Without support, or for reduced motion, every row simply shows
+// plays that through the page's own scroll (a passive listener, never pins or holds the page);
+// "loop" plays it on a timer. For reduced motion, or before script runs, every row simply shows
 // complete. It sits over the screenshot band it replaces, so it carries the same aspect ratio.
 const ROWS = [
   { name: "Back Squat", sets: "3", reps: "8", lbs: "185", rpe: "7", window: null },
@@ -37,13 +37,23 @@ function segments(row: (typeof ROWS)[number], mode: "scroll" | "loop"): Record<"
 
 function Typed({ segment, text, mode }: { segment?: Segment; text: string; mode: "scroll" | "loop" }) {
   if (!segment) return <>{text}</>;
-  const style = {
-    "--n": text.length,
-    "--from": segment.from.toFixed(2),
-    "--to": segment.to.toFixed(2),
-  } as React.CSSProperties;
+  if (mode === "scroll") {
+    return (
+      <span className="tb-type" data-tb-scroll="" data-from={segment.from} data-to={segment.to}>
+        {text}
+      </span>
+    );
+  }
+  // Inline values rather than calc() on custom properties, so every engine reads them the same.
+  const style: React.CSSProperties = {
+    animationName: "tb-type",
+    animationTimingFunction: `steps(${text.length}, end)`,
+    animationDuration: `${Math.round(((segment.to - segment.from) * CYCLE_MS) / 100)}ms`,
+    animationDelay: `${Math.round((segment.from * CYCLE_MS) / 100)}ms`,
+    animationFillMode: "both",
+  };
   return (
-    <span className={`tb-type ${mode === "scroll" ? "tb-on-scroll" : "tb-on-loop"}`} style={style}>
+    <span className="tb-type tb-on-loop" style={style}>
       {text}
     </span>
   );
@@ -64,6 +74,44 @@ export default function SessionBoard({ mode, alt }: { mode: "scroll" | "loop"; a
     return () => observer.disconnect();
   }, [mode]);
 
+  // Scroll mode is driven from a passive scroll listener, not CSS scroll timelines, so it plays in
+  // Safari and Firefox as well. Progress is how far the figure has travelled through the viewport.
+  useEffect(() => {
+    const board = root.current;
+    if (mode !== "scroll" || !board || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const figure = board.closest("figure") ?? board;
+    const parts = Array.from(board.querySelectorAll<HTMLElement>("[data-tb-scroll]")).map((el) => ({
+      el,
+      from: Number(el.dataset.from),
+      to: Number(el.dataset.to),
+      n: el.textContent?.length ?? 1,
+      shown: -1,
+    }));
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const rect = figure.getBoundingClientRect();
+      const progress = ((window.innerHeight - rect.top) / (window.innerHeight + rect.height)) * 100;
+      for (const part of parts) {
+        const typed = Math.floor(Math.min(1, Math.max(0, (progress - part.from) / (part.to - part.from))) * part.n);
+        if (typed === part.shown) continue;
+        part.shown = typed;
+        part.el.style.clipPath = `inset(0 ${100 - (typed / part.n) * 100}% 0 0)`;
+      }
+    };
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      cancelAnimationFrame(frame);
+    };
+  }, [mode]);
+
   useEffect(() => {
     if (mode !== "loop" || !visible) return;
     const timer = window.setInterval(() => setCycle((value) => value + 1), CYCLE_MS);
@@ -78,7 +126,6 @@ export default function SessionBoard({ mode, alt }: { mode: "scroll" | "loop"; a
       data-mode={mode}
       data-paused={mode === "loop" && !visible ? "true" : undefined}
       className="tb-board absolute inset-0 overflow-clip bg-paper-raised [container-type:inline-size]"
-      style={{ "--cycle": `${CYCLE_MS}ms` } as React.CSSProperties}
     >
       <div key={cycle} aria-hidden="true" className="absolute inset-0 text-ink">
         <div className={`absolute inset-x-0 top-0 h-[12%] border-b-2 ${rule} ${label}`}>
