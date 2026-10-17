@@ -6,6 +6,9 @@ const nextConfig: NextConfig = {
     formats: ["image/avif", "image/webp"],
     minimumCacheTTL: 60 * 60 * 24 * 30,
   },
+  async headers() {
+    return [{ source: "/atlas/squat/:file*", headers: [{ key: "Cache-Control", value: "public, max-age=2592000" }] }];
+  },
   // Pages from the pre-rebuild site that search results still list.
   async redirects() {
     return [

@@ -1,5 +1,6 @@
 import Image from "next/image";
 
+import AtlasSquat from "@/components/marketing/atlas-squat";
 import DocPage from "@/components/marketing/doc-page";
 import ScreenCrop from "@/components/marketing/screen-crop";
 import { ATLAS_DOC } from "@/content/features";
@@ -9,6 +10,8 @@ export const metadata = docMetadata(ATLAS_DOC);
 
 export default function AtlasPage() {
   return (
+    <>
+    <AtlasSquat />
     <DocPage
       doc={ATLAS_DOC}
       trail={[{ href: "/features", label: "Features" }, { href: ATLAS_DOC.path, label: "Atlas" }]}
@@ -25,7 +28,6 @@ export default function AtlasPage() {
               className="h-auto w-full"
             />
           </div>
-          <figcaption className="caption mt-3">Atlas, as the app draws it. The real conversation is below.</figcaption>
         </figure>
       }
       wide={{
@@ -42,5 +44,6 @@ export default function AtlasPage() {
         ),
       }}
     />
+    </>
   );
 }
