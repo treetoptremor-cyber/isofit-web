@@ -1,3 +1,4 @@
+import BodyGraphBloom from "@/components/marketing/body-graph-bloom";
 import DocPage from "@/components/marketing/doc-page";
 import { Device, ProTag } from "@/components/marketing/primitives";
 import { HeatLegend } from "@/components/marketing/quicklog-demo";
@@ -9,6 +10,8 @@ export const metadata = docMetadata(BODY_GRAPH_DOC);
 
 export default function BodyGraphPage() {
   return (
+    <>
+    <BodyGraphBloom />
     <DocPage
       doc={BODY_GRAPH_DOC}
       trail={[{ href: "/features", label: "Features" }, { href: BODY_GRAPH_DOC.path, label: "Body graph" }]}
@@ -56,5 +59,6 @@ export default function BodyGraphPage() {
         ),
       }}
     />
+    </>
   );
 }
