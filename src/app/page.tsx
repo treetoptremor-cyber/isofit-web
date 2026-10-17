@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import Link from "next/link";
 
 import { ReviewedNote, webPageJsonLd } from "@/components/marketing/doc-page";
+import BodyGraphScreenLoop from "@/components/marketing/body-graph-screen-loop";
 import IsoGrid from "@/components/marketing/iso-grid";
 import JsonLd from "@/components/marketing/json-ld";
 import { CONTAINER, Device, FaqList, HeatRibbon, PageShell, Plate, Portrait, ProTag, Section, TextLink, GetAppBand, faqJsonLd, withAtlas } from "@/components/marketing/primitives";
@@ -166,7 +167,9 @@ export default function HomePage() {
               src="/screenshots/body-graph.png"
               alt="Isofit's body graph: front and back body figures with each muscle shaded from pale to terracotta by working sets logged, above a sets-by-muscle list and 7, 30, 90 day and all-time filters."
               priority
-            />
+            >
+              <BodyGraphScreenLoop />
+            </Device>
             <HeatLegend className="mt-5 justify-center" />
           </figure>
           </div>
