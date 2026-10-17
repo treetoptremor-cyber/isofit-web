@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import Link from "next/link";
 
 import { ReviewedNote, webPageJsonLd } from "@/components/marketing/doc-page";
+import { SETS_BY_MUSCLE_BARS } from "@/components/marketing/sets-bars";
 import BodyGraphScreenLoop from "@/components/marketing/body-graph-screen-loop";
 import IsoGrid from "@/components/marketing/iso-grid";
 import JsonLd from "@/components/marketing/json-ld";
@@ -218,6 +219,7 @@ export default function HomePage() {
             src="/screenshots/sets-by-muscle.png"
             top={0.555}
             height={0.29}
+            bars={SETS_BY_MUSCLE_BARS}
             alt="The lower half of Isofit's body graph. A Sets by muscle list reads Side Delts 11, Triceps 10, Glutes 9, Biceps 8, Front Delts 8. Beside it a 7D, 30D, 90D and ALL filter sits above cards for Total sets 45, Most worked Side Delts and Least worked Upper Back."
             caption="Your logged sets, grouped by muscle, with the most and least worked."
           />
