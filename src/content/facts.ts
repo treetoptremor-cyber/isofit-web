@@ -1,7 +1,7 @@
 import type { CompetitorRowKey, HubRowKey } from "@/content/competitors";
 
 // Product facts reused across pages. Each was checked against the iOS app
-// source (build 9) on SITE.factsReviewed. Things that could not be confirmed
+// source (version 1.1, build 12) on SITE.factsReviewed. Things that could not be confirmed
 // there (form check, notifications, a free trial, PR tracking) are deliberately
 // absent from the site.
 
@@ -33,13 +33,13 @@ export const ISOFIT_ROWS: Record<CompetitorRowKey, string> = {
   platforms: "iPhone (iOS 17.6 or later) on the App Store, and a web app. Both are available now. No native iPad, Apple Watch or Android apps.",
   logging:
     "Three ways into one structured log: tap in sets, reps, weight, distance, duration and RPE; type a Quicklog line such as \"bench 5x5 225lbs\"; or speak the workout and review the parsed draft before saving.",
-  library: `500+ exercises covering ${ACTIVITY_SCOPE}, plus add unlimited custom exercises with your own muscle mapping.`,
+  library: `Nearly 500 exercises covering ${ACTIVITY_SCOPE}, plus add unlimited custom exercises with your own muscle mapping.`,
   muscles:
     "A front and back body graph shaded by working sets per muscle over 7, 30 or 90 days or all time, with sets by muscle and most and least worked. It is explicitly not a recovery score. Pro feature.",
   coaching:
     "Atlas, an AI coach you talk to in chat. With your permission it reads your training history, and on Pro it writes programs and routines into your log. General fitness guidance, not medical advice.",
   social:
-    "Bonfire, a members-only feed. A post is tied to a session you logged, limited to one a day, and visible to all members. No follows, groups or direct messages.",
+    "Bonfire, a members-only feed. A post needs a caption and an exercise category, is limited to one a day, and visible to all members. No follows, groups or direct messages.",
   health: "Optionally reads workouts and daily summaries from Apple Health on every tier. Does not write to Apple Health.",
   scope: `Logs ${ACTIVITY_SCOPE}.`,
   price: `Free tier with logging, history and Apple Health import. Pro is ${PRICING.proMonthly} monthly or ${PRICING.proYearly} yearly (USD).`,
