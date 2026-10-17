@@ -10,7 +10,7 @@ import { useEffect, useRef, useState } from "react";
 const ROWS = [
   { name: "Back Squat", sets: "3", reps: "8", lbs: "185", rpe: "7", window: null },
   { name: "Overhead Press", sets: "3", reps: "10", lbs: "95", rpe: "7", window: { scroll: [27, 45], loop: [6, 44] } },
-  { name: "Incline Bench…", sets: "3", reps: "8", lbs: "50", rpe: "7", window: { scroll: [43, 61], loop: [42, 80] } },
+  { name: "Incline Bench", sets: "3", reps: "8", lbs: "50", rpe: "7", window: { scroll: [43, 61], loop: [42, 80] } },
 ] as const;
 
 // Share of each row's window spent typing the name, then the four figures in turn.
@@ -59,6 +59,58 @@ function Typed({ segment, text, mode }: { segment?: Segment; text: string; mode:
   );
 }
 
+const NOTES = {
+  exercise: {
+    title: "Exercise",
+    body: "Add an exercise from the library of 500+, or type a name that is not there and Isofit offers to create it as a custom exercise. Hold a row for more actions.",
+  },
+  metrics: {
+    title: "Metrics",
+    body: "Sets, reps and weight in pounds or kilograms. Bodyweight sets count with no weight entered. Cardio uses distance and duration, and every row has Start and Rest timers that add up to the session duration.",
+  },
+  rpe: {
+    title: "RPE",
+    body: "Rate of perceived exertion: how hard the exercise felt, recorded for each exercise.",
+  },
+} as const;
+type NoteKey = keyof typeof NOTES;
+
+function InfoIcon() {
+  return (
+    <svg viewBox="0 0 16 16" className="size-full" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round">
+      <circle cx="8" cy="8" r="6.4" />
+      <path d="M8 7.2v4" />
+      <circle cx="8" cy="4.9" r="0.35" fill="currentColor" />
+    </svg>
+  );
+}
+
+function PlusIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="size-full" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
+      <circle cx="12" cy="12" r="10" />
+      <path d="M12 7.5v9M7.5 12h9" />
+    </svg>
+  );
+}
+
+function PlayIcon() {
+  return (
+    <svg viewBox="0 0 10 10" className="size-[1.9cqw] shrink-0" fill="currentColor">
+      <path d="M2 1.2v7.6L8.6 5z" />
+    </svg>
+  );
+}
+
+function TimerIcon() {
+  return (
+    <svg viewBox="0 0 16 16" className="size-[2.4cqw] shrink-0" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="8" cy="9" r="5.2" />
+      <path d="M8 9V6.2M6.4 1.8h3.2" />
+    </svg>
+  );
+}
+
 const rule = "border-rule";
 const label = "font-mono text-[2cqw] uppercase tracking-[0.18em] text-ink-3";
 
@@ -66,6 +118,8 @@ export default function SessionBoard({ mode, alt }: { mode: "scroll" | "loop"; a
   const root = useRef<HTMLDivElement>(null);
   const [cycle, setCycle] = useState(0);
   const [visible, setVisible] = useState(mode === "scroll");
+  const [note, setNote] = useState<NoteKey | null>(null);
+  const info = mode === "scroll";
 
   useEffect(() => {
     if (mode !== "loop" || !root.current) return;
@@ -113,6 +167,19 @@ export default function SessionBoard({ mode, alt }: { mode: "scroll" | "loop"; a
   }, [mode]);
 
   useEffect(() => {
+    if (!note) return;
+    const close = (event: KeyboardEvent | MouseEvent) => {
+      if (event instanceof KeyboardEvent ? event.key === "Escape" : !(event.target as HTMLElement).closest("[data-tb-info]")) setNote(null);
+    };
+    window.addEventListener("keydown", close);
+    window.addEventListener("mousedown", close);
+    return () => {
+      window.removeEventListener("keydown", close);
+      window.removeEventListener("mousedown", close);
+    };
+  }, [note]);
+
+  useEffect(() => {
     if (mode !== "loop" || !visible) return;
     const timer = window.setInterval(() => setCycle((value) => value + 1), CYCLE_MS);
     return () => window.clearInterval(timer);
@@ -121,20 +188,54 @@ export default function SessionBoard({ mode, alt }: { mode: "scroll" | "loop"; a
   return (
     <div
       ref={root}
-      role="img"
-      aria-label={alt}
       data-mode={mode}
       data-paused={mode === "loop" && !visible ? "true" : undefined}
       className="tb-board absolute inset-0 overflow-clip bg-paper-raised [container-type:inline-size]"
     >
-      <div key={cycle} aria-hidden="true" className="absolute inset-0 text-ink">
-        <div className={`absolute inset-x-0 top-0 h-[12%] border-b-2 ${rule} ${label}`}>
-          <span className="absolute left-[11.2%] top-1/2 -translate-y-1/2">Exercise</span>
-          <span className="absolute left-[53.7%] top-1/2 -translate-y-1/2">Metrics</span>
-          <span className="absolute left-[86.8%] top-1/2 -translate-y-1/2">RPE</span>
+      <p className="sr-only">{alt}</p>
+      <div key={cycle} className="absolute inset-0 text-ink">
+        <div className={`absolute inset-x-0 top-0 z-10 h-[12%] border-b-2 ${rule} ${label}`}>
+          {(
+            [
+              ["exercise", "11.2%"],
+              ["metrics", "53.7%"],
+              ["rpe", "86.8%"],
+            ] as const
+          ).map(([key, left]) => (
+            <span key={key} className="absolute top-1/2 flex -translate-y-1/2 items-center gap-[1.2cqw]" style={{ left }}>
+              {NOTES[key].title}
+              {info ? (
+                <button
+                  type="button"
+                  data-tb-info=""
+                  aria-label={`About ${NOTES[key].title}`}
+                  aria-expanded={note === key}
+                  onClick={() => setNote(note === key ? null : key)}
+                  className="relative size-[2.8cqw] cursor-pointer rounded-full text-ink-3 before:absolute before:-inset-2 before:content-[''] hover:text-blue focus-visible:text-blue aria-expanded:text-blue"
+                >
+                  <InfoIcon />
+                </button>
+              ) : (
+                <span aria-hidden="true" className="block size-[2.8cqw] text-ink-3">
+                  <InfoIcon />
+                </span>
+              )}
+            </span>
+          ))}
         </div>
+        {info && note ? (
+          <div
+            data-tb-info=""
+            role="note"
+            className="absolute inset-x-[3%] top-[13.5%] z-20 rounded-[1.6cqw] border-[0.3cqw] border-sky bg-paper-raised p-[2.4cqw] shadow-[0_1.5cqw_4cqw_rgba(42,36,32,0.18)]"
+          >
+            <p className="font-mono text-[2.1cqw] uppercase tracking-[0.18em] text-blue">{NOTES[note].title}</p>
+            <p className="mt-[1cqw] font-sans text-[2.7cqw] leading-snug text-ink-2">{NOTES[note].body}</p>
+          </div>
+        ) : null}
         <span className={`absolute bottom-0 top-0 left-[50.5%] border-l ${rule}`} />
         <span className={`absolute bottom-0 top-0 left-[86%] border-l ${rule}`} />
+        <div aria-hidden="true" className="absolute inset-0">
         {ROWS.map((row, index) => {
           const parts = segments(row, mode);
           return (
@@ -143,17 +244,19 @@ export default function SessionBoard({ mode, alt }: { mode: "scroll" | "loop"; a
               className={`absolute inset-x-0 h-[28.9%] ${index < 2 ? `border-b-2 ${rule}` : ""}`}
               style={{ top: `${12 + index * 28.9}%` }}
             >
-              <span className="absolute left-[3.4%] top-[50%] grid size-[3.9cqw] -translate-y-1/2 place-items-center rounded-full border-[0.4cqw] border-sky font-mono text-[3cqw] leading-none text-sky">
-                +
+              <span className="absolute left-[3.4%] top-[50%] size-[3.9cqw] -translate-y-1/2 text-sky">
+                <PlusIcon />
               </span>
               <span className="absolute left-[11.2%] top-[10%] whitespace-nowrap font-mono text-[3.9cqw] leading-[1.4] tracking-[0.04em]">
                 <Typed text={row.name} segment={parts?.name} mode={mode} />
               </span>
-              <span className="absolute left-[11.2%] top-[50%] h-[38%] w-[13.6%] rounded-[1.4cqw] border-[0.3cqw] border-sky bg-sky-soft/60 text-center font-mono text-[2.1cqw] leading-[2.2] tracking-[0.12em] text-blue">
-                ▶ START
+              <span className="absolute left-[11.2%] top-[52%] flex h-[34%] w-[13.8%] items-center justify-center gap-[0.8cqw] rounded-[1.5cqw] border-[0.3cqw] border-sky bg-sky-soft font-mono text-[2.2cqw] font-semibold tracking-[0.12em] text-blue">
+                <PlayIcon />
+                START
               </span>
-              <span className="absolute left-[26%] top-[50%] h-[38%] w-[13.6%] rounded-[1.4cqw] border-[0.3cqw] border-heat-0 text-center font-mono text-[2.1cqw] leading-[2.2] tracking-[0.12em] text-ink-2">
-                ◔ REST
+              <span className="absolute left-[26.2%] top-[52%] flex h-[34%] w-[13.8%] items-center justify-center gap-[0.8cqw] rounded-[1.5cqw] border-[0.3cqw] border-heat-0 bg-paper font-mono text-[2.2cqw] font-semibold tracking-[0.12em] text-ink-2">
+                <TimerIcon />
+                REST
               </span>
               {(
                 [
@@ -173,6 +276,7 @@ export default function SessionBoard({ mode, alt }: { mode: "scroll" | "loop"; a
             </div>
           );
         })}
+        </div>
       </div>
     </div>
   );
