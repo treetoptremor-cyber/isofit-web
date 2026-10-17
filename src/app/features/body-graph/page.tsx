@@ -1,4 +1,5 @@
 import BodyGraphBloom from "@/components/marketing/body-graph-bloom";
+import BodyGraphScreenLoop from "@/components/marketing/body-graph-screen-loop";
 import DocPage from "@/components/marketing/doc-page";
 import { Device, ProTag } from "@/components/marketing/primitives";
 import { HeatLegend } from "@/components/marketing/quicklog-demo";
@@ -26,7 +27,9 @@ export default function BodyGraphPage() {
             priority
             src="/screenshots/body-graph.png"
             alt="Isofit's body graph: front and back body figures with each muscle shaded from pale to terracotta by working sets logged, above a sets-by-muscle list and 7, 30, 90 day and all-time filters."
-          />
+          >
+            <BodyGraphScreenLoop />
+          </Device>
           <HeatLegend className="mt-5 justify-center" />
         </figure>
         </div>

@@ -3,6 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 
+import { bloomAllowed, drawBloom, loadBloomFrames } from "./body-graph-frames";
+
 // The Isofit body graph filling itself in behind the page, played by the page's own scroll. The
 // frames are pre-rendered from the app's own figure (front and back, heat ramp and all), so the page
 // ships pictures of the bloom, not the figure's drawing. Each muscle blooms from the middle of its
@@ -10,44 +12,23 @@ import { createPortal } from "react-dom";
 // arriving last. Scroll position picks a pair of frames and they are cross-faded, so 20 frames
 // read as continuous. Like AtlasSquat it is a fixed, faded layer behind the content that never pins
 // or holds the scroll, and it only loads after the page has settled, and not at all for reduced
-// motion or Save-Data / 2G connections.
-const FRAMES = 20;
-const frameSrc = (index: number) => `/body-graph/bloom-${String(index + 1).padStart(2, "0")}.avif`;
-
+// motion or Save-Data / 2G connections. It is pushed right until the viewport edge falls through
+// the middle of the back figure, so the front figure shows whole and the back figure half. On phones it sits above the sticky download bar, a little
+// smaller and fainter, and without the blend mode, which is costly to repaint while scrolling.
 export default function BodyGraphBloom() {
   const canvas = useRef<HTMLCanvasElement>(null);
   const [frames, setFrames] = useState<HTMLImageElement[] | null>(null);
 
   useEffect(() => {
-    const connection = (navigator as Navigator & { connection?: { saveData?: boolean; effectiveType?: string } }).connection;
-    if (
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
-      connection?.saveData ||
-      /(^|-)2g$/.test(connection?.effectiveType ?? "")
-    ) {
-      return;
-    }
+    if (!bloomAllowed()) return;
     let cancelled = false;
-    const load = () =>
-      Promise.all(
-        Array.from({ length: FRAMES }, (_, index) => {
-          const image = new Image();
-          image.decoding = "async";
-          image.src = frameSrc(index);
-          return image.decode().then(() => image);
-        }),
-      )
-        .then((loaded) => {
-          if (!cancelled) setFrames(loaded);
-        })
-        .catch(() => {});
-    // Start once the page has settled, so the frames never compete with it.
-    const start = () => (window.requestIdleCallback ? window.requestIdleCallback(() => void load(), { timeout: 3000 }) : window.setTimeout(() => void load(), 1500));
-    if (document.readyState === "complete") start();
-    else window.addEventListener("load", start, { once: true });
+    loadBloomFrames()
+      .then((loaded) => {
+        if (!cancelled) setFrames(loaded);
+      })
+      .catch(() => {});
     return () => {
       cancelled = true;
-      window.removeEventListener("load", start);
     };
   }, []);
 
@@ -64,19 +45,7 @@ export default function BodyGraphBloom() {
       raf = 0;
       const span = document.documentElement.scrollHeight - window.innerHeight;
       const progress = span > 0 ? Math.min(1, Math.max(0, window.scrollY / span)) : 0;
-      const position = progress * (FRAMES - 1);
-      const base = Math.min(FRAMES - 2, Math.floor(position));
-      const blend = Math.round((position - base) * 16) / 16;
-      const key = base + blend;
-      if (key === shown) return;
-      shown = key;
-      ctx.clearRect(0, 0, el.width, el.height);
-      ctx.drawImage(frames[base], 0, 0, el.width, el.height);
-      if (blend > 0) {
-        ctx.globalAlpha = blend;
-        ctx.drawImage(frames[base + 1], 0, 0, el.width, el.height);
-        ctx.globalAlpha = 1;
-      }
+      shown = drawBloom(ctx, frames, progress, shown);
     };
     const schedule = () => {
       if (!raf) raf = requestAnimationFrame(paint);
@@ -96,11 +65,11 @@ export default function BodyGraphBloom() {
   return createPortal(
     <div
       aria-hidden="true"
-      className="pointer-events-none fixed inset-x-0 bottom-0 -z-10 flex justify-center lg:justify-end lg:pr-[2vw]"
+      className="pointer-events-none fixed inset-x-0 bottom-[4.75rem] -z-10 flex justify-end overflow-hidden md:bottom-0"
     >
       <canvas
         ref={canvas}
-        className="aspect-[220/255] h-[min(84svh,calc(92vw*1.159))] max-w-none shrink-0 opacity-[.2] mix-blend-multiply md:opacity-35 lg:opacity-50"
+        className="aspect-[220/255] h-[min(66svh,calc(130vw*1.159))] max-w-none shrink-0 translate-x-[23%] opacity-[.15] md:h-[min(84svh,calc(92vw*1.159))] md:opacity-35 md:mix-blend-multiply lg:opacity-50"
         style={{ WebkitMaskImage: mask, maskImage: mask }}
       />
     </div>,
