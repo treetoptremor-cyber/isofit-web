@@ -9,8 +9,8 @@ import { useEffect, useRef, useState } from "react";
 // complete. It sits over the screenshot band it replaces, so it carries the same aspect ratio.
 const ROWS = [
   { name: "Back Squat", sets: "3", reps: "8", lbs: "185", rpe: "7", window: null },
-  { name: "Overhead Press", sets: "3", reps: "10", lbs: "95", rpe: "7", window: { scroll: [27, 45], loop: [6, 44] } },
-  { name: "Incline Bench", sets: "3", reps: "8", lbs: "50", rpe: "7", window: { scroll: [43, 61], loop: [42, 80] } },
+  { name: "Overhead Press", sets: "3", reps: "10", lbs: "95", rpe: "7", window: { scroll: [6, 50], loop: [6, 44] } },
+  { name: "Incline Bench", sets: "3", reps: "8", lbs: "50", rpe: "7", window: { scroll: [46, 92], loop: [42, 80] } },
 ] as const;
 
 // Share of each row's window spent typing the name, then the four figures in turn.
@@ -146,7 +146,9 @@ export default function SessionBoard({ mode, alt }: { mode: "scroll" | "loop"; a
     const update = () => {
       frame = 0;
       const rect = figure.getBoundingClientRect();
-      const progress = ((window.innerHeight - rect.top) / (window.innerHeight + rect.height)) * 100;
+      // 0 as the figure's top edge rises into the bottom of the screen, 100 once it has climbed to a
+      // quarter of the way down, so the rows finish typing while the whole board is still readable.
+      const progress = ((window.innerHeight * 0.95 - rect.top) / (window.innerHeight * 0.7)) * 100;
       for (const part of parts) {
         const typed = Math.floor(Math.min(1, Math.max(0, (progress - part.from) / (part.to - part.from))) * part.n);
         if (typed === part.shown) continue;
@@ -212,12 +214,12 @@ export default function SessionBoard({ mode, alt }: { mode: "scroll" | "loop"; a
                   aria-label={`About ${key === "exercise" ? "Exercise" : key === "metrics" ? "Metrics" : "RPE"}`}
                   aria-expanded={note === key}
                   onClick={() => setNote(note === key ? null : key)}
-                  className="relative size-[2.8cqw] cursor-pointer rounded-full text-ink-3 before:absolute before:-inset-2 before:content-[''] hover:text-blue focus-visible:text-blue aria-expanded:text-blue"
+                  className="relative size-[max(2.8cqw,11px)] cursor-pointer rounded-full text-ink-3 before:absolute before:-inset-3 before:content-[''] hover:text-blue focus-visible:text-blue aria-expanded:text-blue"
                 >
                   <InfoIcon />
                 </button>
               ) : (
-                <span aria-hidden="true" className="block size-[2.8cqw] text-ink-3">
+                <span aria-hidden="true" className="block size-[max(2.8cqw,11px)] text-ink-3">
                   <InfoIcon />
                 </span>
               )}
@@ -230,8 +232,8 @@ export default function SessionBoard({ mode, alt }: { mode: "scroll" | "loop"; a
             role="note"
             className="absolute inset-x-[3%] top-[13.5%] z-20 rounded-[1.6cqw] border-[0.3cqw] border-sky bg-paper-raised p-[2.4cqw] shadow-[0_1.5cqw_4cqw_rgba(42,36,32,0.18)]"
           >
-            <p className="font-mono text-[2.1cqw] uppercase tracking-[0.18em] text-blue">{NOTES[note].title}</p>
-            <p className="mt-[1cqw] font-sans text-[2.7cqw] leading-snug text-ink-2">{NOTES[note].body}</p>
+            <p className="font-mono text-[max(2.1cqw,9px)] uppercase tracking-[0.18em] text-blue">{NOTES[note].title}</p>
+            <p className="mt-[1cqw] font-sans text-[max(2.7cqw,11px)] leading-snug text-ink-2">{NOTES[note].body}</p>
           </div>
         ) : null}
         <span className={`absolute bottom-0 top-0 left-[50.5%] border-l ${rule}`} />
