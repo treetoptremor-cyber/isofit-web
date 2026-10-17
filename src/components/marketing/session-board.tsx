@@ -59,18 +59,19 @@ function Typed({ segment, text, mode }: { segment?: Segment; text: string; mode:
   );
 }
 
+// The app's own header explainers. The web app's "Tap ⋯ on a row" reads "Hold a row" on iOS.
 const NOTES = {
   exercise: {
-    title: "Exercise",
-    body: "Add an exercise from the library of 500+, or type a name that is not there and Isofit offers to create it as a custom exercise. Hold a row for more actions.",
+    title: "Exercises",
+    body: "Type a name and pick a match from the suggestions. START runs a 3-2-1 countdown, then clocks the set; REST clocks the break. Hold a row for notes, measurements, or to delete it.",
   },
   metrics: {
-    title: "Metrics",
-    body: "Sets, reps and weight in pounds or kilograms. Bodyweight sets count with no weight entered. Cardio uses distance and duration, and every row has Start and Rest timers that add up to the session duration.",
+    title: "Metrics & units",
+    body: "Tap a number to edit it — tap a unit to change it. Distance units cycle miles, kilometers, and meters (MI · KM · M); weight units switch pounds and kilograms (LBS · KGS). “--” means bodyweight — it shows when no weight is set. Hold a row to add or remove a measurement.",
   },
   rpe: {
-    title: "RPE",
-    body: "Rate of perceived exertion: how hard the exercise felt, recorded for each exercise.",
+    title: "RPE — Rate of Perceived Exertion",
+    body: "How hard the work felt, from 1 (very easy) to 10 (nothing left). It's your effort rating.",
   },
 } as const;
 type NoteKey = keyof typeof NOTES;
@@ -203,12 +204,12 @@ export default function SessionBoard({ mode, alt }: { mode: "scroll" | "loop"; a
             ] as const
           ).map(([key, left]) => (
             <span key={key} className="absolute top-1/2 flex -translate-y-1/2 items-center gap-[1.2cqw]" style={{ left }}>
-              {NOTES[key].title}
+              {key === "exercise" ? "Exercise" : key === "metrics" ? "Metrics" : "RPE"}
               {info ? (
                 <button
                   type="button"
                   data-tb-info=""
-                  aria-label={`About ${NOTES[key].title}`}
+                  aria-label={`About ${key === "exercise" ? "Exercise" : key === "metrics" ? "Metrics" : "RPE"}`}
                   aria-expanded={note === key}
                   onClick={() => setNote(note === key ? null : key)}
                   className="relative size-[2.8cqw] cursor-pointer rounded-full text-ink-3 before:absolute before:-inset-2 before:content-[''] hover:text-blue focus-visible:text-blue aria-expanded:text-blue"
