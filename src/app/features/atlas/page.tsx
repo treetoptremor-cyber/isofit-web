@@ -17,7 +17,7 @@ export default function AtlasPage() {
       trail={[{ href: "/features", label: "Features" }, { href: ATLAS_DOC.path, label: "Atlas" }]}
       aside={
         <figure className="mx-auto w-56 lg:w-full">
-          <div className="overflow-hidden rounded-[1.75rem] border border-terra/20 bg-terra-soft shadow-[0_18px_40px_rgba(42,36,32,0.06)]">
+          <div className="overflow-hidden rounded-[1.75rem] border border-sky/40 bg-sky shadow-[0_18px_40px_rgba(42,36,32,0.06)]">
             <Image
               src="/atlas/coach-hello.png"
               alt="Illustration of Atlas, Isofit's AI coach, drawn as a coach in a white polo with the blue ISO cube mark, one hand open in welcome."
