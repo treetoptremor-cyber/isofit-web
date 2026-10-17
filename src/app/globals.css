@@ -375,6 +375,43 @@ summary:active {
   }
 }
 
+/* The session board types its Overhead Press and Incline Bench rows. Each figure is revealed left to
+   right one character at a time (steps), either by the page's scroll or on a timer. Shown complete
+   when unsupported or for reduced motion. */
+@keyframes tb-type {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+.tb-type {
+  display: inline-block;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .tb-on-loop {
+    animation: tb-type steps(var(--n), end) both;
+    animation-duration: calc((var(--to) - var(--from)) * var(--cycle) / 100);
+    animation-delay: calc(var(--from) * var(--cycle) / 100);
+  }
+  .tb-board[data-paused] .tb-on-loop {
+    animation-play-state: paused;
+  }
+  @supports (animation-timeline: view()) {
+    /* On the figure, not the board: the board sits inside an overflow:hidden crop, which would
+       otherwise become its scroller. */
+    figure:has(.tb-board[data-mode="scroll"]) {
+      view-timeline: --tb block;
+    }
+    .tb-on-scroll {
+      animation: tb-type steps(var(--n), end) both;
+      animation-timeline: --tb;
+      animation-range: cover calc(var(--from) * 1%) cover calc(var(--to) * 1%);
+    }
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

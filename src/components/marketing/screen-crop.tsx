@@ -16,6 +16,7 @@ export default function ScreenCrop({
   priority = false,
   tone,
   context = true,
+  overlay,
 }: {
   src: string;
   alt: string;
@@ -27,6 +28,8 @@ export default function ScreenCrop({
   tone?: "atlas";
   // false drops the context phone at every width: just the enlarged band.
   context?: boolean;
+  // Drawn over the enlarged band in place of the screenshot's own pixels.
+  overlay?: ReactNode;
 }) {
   const atlas = tone === "atlas";
   const shift = (top * (SOURCE_H / SOURCE_W) * 100).toFixed(2);
@@ -58,7 +61,7 @@ export default function ScreenCrop({
         </div>
         ) : null}
         <div
-          className={`order-1 overflow-hidden rounded-[1.25rem] border-2 shadow-[0_18px_40px_rgba(42,36,32,0.10)] md:order-2 ${atlas ? "border-terra/50 bg-terra-soft" : "border-sky/70 bg-paper-raised"}`}
+          className={`relative order-1 overflow-hidden rounded-[1.25rem] border-2 shadow-[0_18px_40px_rgba(42,36,32,0.10)] md:order-2 ${atlas ? "border-terra/50 bg-terra-soft" : "border-sky/70 bg-paper-raised"}`}
           style={{ aspectRatio: `${SOURCE_W} / ${Math.round(height * SOURCE_H)}` }}
         >
           <Image
@@ -71,6 +74,7 @@ export default function ScreenCrop({
             className="h-auto w-full max-w-none"
             style={{ marginTop: `-${shift}%` }}
           />
+          {overlay}
         </div>
       </div>
       <figcaption className="caption mt-4">
