@@ -1,5 +1,10 @@
 import { SITE } from "@/lib/site";
 
+// Apple's official black "Download on the App Store" badge, unmodified, from
+// developer.apple.com/app-store/marketing/guidelines. Apple asks that it is
+// never shown shorter than 40px, so compact stays at that minimum.
+const BADGE = { src: "/badges/download-on-the-app-store.svg", width: 119.66407, height: 40 };
+
 export default function AppStoreLink({
   compact = false,
   className = "",
@@ -7,13 +12,18 @@ export default function AppStoreLink({
   compact?: boolean;
   className?: string;
 }) {
+  const height = compact ? 40 : 48;
   return (
-    <a
-      href={SITE.appStoreUrl}
-      className={`inline-flex shrink-0 items-center justify-center gap-2 rounded-xl bg-forest font-semibold text-white transition-colors hover:bg-forest-dark ${compact ? "min-h-11 px-4 text-[0.9375rem]" : "min-h-12 px-5 text-base"} ${className}`}
-    >
-      Download on the App Store
-      <span aria-hidden="true" className="font-normal">→</span>
+    <a href={SITE.appStoreUrl} className={`inline-flex shrink-0 items-center rounded-[9px] ${className}`}>
+      {/* eslint-disable-next-line @next/next/no-img-element -- a fixed-size SVG needs no optimizer */}
+      <img
+        src={BADGE.src}
+        alt="Download on the App Store"
+        width={Math.round((BADGE.width * height) / BADGE.height)}
+        height={height}
+        className="block"
+        style={{ height, width: "auto" }}
+      />
     </a>
   );
 }

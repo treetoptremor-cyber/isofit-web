@@ -393,9 +393,9 @@ export function GetAppBand({ id = "get-app" }: { id?: string }) {
               ))}
             </dl>
           </div>
-          <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
-            <AppStoreLink className="w-full" />
-            <WebAppLink className="w-full !border-paper/30 !bg-transparent !text-white hover:!bg-white/10" />
+          <div className="flex flex-col items-start gap-3 sm:flex-row sm:items-center lg:flex-col lg:items-start">
+            <AppStoreLink />
+            <WebAppLink className="!border-paper/30 !bg-transparent !text-white hover:!bg-white/10" />
           </div>
         </div>
       </div>

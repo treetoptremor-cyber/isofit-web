@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-import { SITE } from "@/lib/site";
+import AppStoreLink from "@/components/marketing/app-store-link";
 
 // A phone-only "Download on the App Store" bar along the bottom edge. It shows
 // once the first screen has scrolled away, and stays out of the way whenever the
@@ -72,10 +72,9 @@ export default function StickyAppLink() {
   return (
     <div className="fixed inset-x-0 bottom-0 z-[110] md:hidden">
       <div className="border-t border-rule bg-paper/95 px-4 pt-3 backdrop-blur" style={{ paddingBottom: "calc(0.75rem + env(safe-area-inset-bottom))" }}>
-        <a href={SITE.appStoreUrl} className="flex min-h-12 items-center justify-center gap-2 rounded-xl bg-forest text-base font-semibold text-white hover:bg-forest-dark">
-          Download on the App Store
-          <span aria-hidden="true">→</span>
-        </a>
+        <div className="flex justify-center">
+          <AppStoreLink />
+        </div>
       </div>
     </div>
   );
