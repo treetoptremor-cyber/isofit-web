@@ -26,7 +26,6 @@ export default function AtlasPage() {
               className="h-auto w-full"
             />
           </div>
-          <figcaption className="caption mt-3">Atlas, as the app draws it. The real conversation is below.</figcaption>
         </figure>
       }
       wide={{
