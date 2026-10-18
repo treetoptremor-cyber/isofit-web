@@ -117,7 +117,21 @@ function FeatureRow({
               )}
             </div>
           </div>
-          <div data-reveal="screen" className={`px-screen ${flip ? "lg:order-1" : ""} ${tone.figure}`}>{figure}</div>
+          <div data-reveal="screen" className={`px-screen ${flip ? "lg:order-1" : ""} ${tone.figure}`}>
+            {/* The whole figure links to the feature page for pointer and touch users. Keyboard and
+                screen reader users have the text link beside the copy, so this one stays out of the
+                tab order rather than repeating it. */}
+            <div className="group relative transition-transform duration-300 hover:-translate-y-1">
+              {figure}
+              <Link href={href} tabIndex={-1} aria-hidden="true" className="absolute inset-0 z-10 rounded-[1.75rem]" />
+              <span
+                aria-hidden="true"
+                className="pointer-events-none absolute right-3 top-3 z-20 flex size-9 items-center justify-center rounded-full bg-white/90 text-lg text-ink opacity-0 shadow-[0_6px_18px_rgba(42,36,32,0.18)] transition-opacity duration-200 group-hover:opacity-100"
+              >
+                →
+              </span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
