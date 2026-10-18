@@ -1,6 +1,9 @@
 import Image from "next/image";
 import type { ReactNode } from "react";
 
+import BarsReveal from "./bars-reveal";
+import type { Bar } from "./sets-bars";
+
 const SOURCE_W = 1206;
 const SOURCE_H = 2622;
 
@@ -17,6 +20,7 @@ export default function ScreenCrop({
   tone,
   context = true,
   overlay,
+  bars,
 }: {
   src: string;
   alt: string;
@@ -30,6 +34,8 @@ export default function ScreenCrop({
   context?: boolean;
   // Drawn over the enlarged band in place of the screenshot's own pixels.
   overlay?: ReactNode;
+  // Bars in the screenshot (source pixels) that load up left to right as it scrolls into view.
+  bars?: Bar[];
 }) {
   const atlas = tone === "atlas";
   const shift = (top * (SOURCE_H / SOURCE_W) * 100).toFixed(2);
@@ -61,7 +67,7 @@ export default function ScreenCrop({
         </div>
         ) : null}
         <div
-          className={`relative order-1 overflow-hidden rounded-[1.25rem] border-2 shadow-[0_18px_40px_rgba(42,36,32,0.10)] md:order-2 ${atlas ? "border-terra/50 bg-terra-soft" : "border-sky/70 bg-paper-raised"}`}
+          className={`order-1 overflow-hidden relative rounded-[1.25rem] border-2 shadow-[0_18px_40px_rgba(42,36,32,0.10)] md:order-2 ${atlas ? "border-terra/50 bg-terra-soft" : "border-sky/70 bg-paper-raised"}`}
           style={{ aspectRatio: `${SOURCE_W} / ${Math.round(height * SOURCE_H)}` }}
         >
           <Image
@@ -75,6 +81,7 @@ export default function ScreenCrop({
             style={{ marginTop: `-${shift}%` }}
           />
           {overlay}
+          {bars ? <BarsReveal bars={bars} top={top} height={height} /> : null}
         </div>
       </div>
       <figcaption className="caption mt-4">

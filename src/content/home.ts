@@ -23,7 +23,7 @@ export const HOME_DOC: PageDoc = {
         { term: "What it is", value: "A workout logger with a muscle-by-muscle body graph, an AI coach and a members-only community." },
         { term: "Platform", value: "iPhone (iOS 17.6 or later) on the App Store, and a web app. Both are available now." },
         { term: "Price", value: `Logging is free. Pro is ${PRICING.proMonthly} a month or ${PRICING.proYearly} a year (USD).` },
-        { term: "Exercise library", value: `500+ exercises across ${ACTIVITY_SCOPE}, plus add unlimited custom exercises.` },
+        { term: "Exercise library", value: `Nearly 500 exercises across ${ACTIVITY_SCOPE}, plus add unlimited custom exercises.` },
         { term: "Apple Health", value: "Optional and free. Isofit reads from Apple Health and never writes to it." },
         { term: "Status", value: `Live. ${SITE.launchStatus}` },
       ],
@@ -69,7 +69,7 @@ export const HOME_DOC: PageDoc = {
       label: "04 · Bonfire",
       heading: "Share a session at the Bonfire, or never post at all",
       body: [
-        "Bonfire is a members-only feed where every post is a session you logged, one a day, with no follows, groups or direct messages. Your log stays private unless you choose to post it.",
+        "Bonfire is a members-only feed with one post a day per member, with no follows, groups or direct messages. Your log stays private unless you choose to post it.",
       ],
     },
     DIFFERENTIATORS_BRIEF,
