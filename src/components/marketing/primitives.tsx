@@ -9,6 +9,7 @@ import AppStoreLink from "@/components/marketing/app-store-link";
 import WebAppLink from "@/components/marketing/web-app-link";
 import SiteHeader from "@/components/marketing/site-header";
 import Reveal from "@/components/marketing/reveal";
+import ScrollShine from "@/components/marketing/scroll-shine";
 import StickyAppLink from "@/components/marketing/sticky-app-link";
 import { SITE, absoluteUrl } from "@/lib/site";
 
@@ -44,6 +45,7 @@ export function PageShell({ children, grid = true, sticky = true }: { children: 
       </main>
       <SiteFooter />
       <Reveal />
+      <ScrollShine />
       <div aria-hidden="true" className="px-progress hidden pointer-events-none fixed inset-x-0 top-0 z-[60] h-[3px] origin-left bg-gradient-to-r from-heat-0 via-heat-3 to-heat-5" />
       {sticky ? <StickyAppLink /> : null}
     </div>
@@ -97,11 +99,14 @@ export function withAtlas(text: ReactNode): ReactNode {
 export function PageHero({
   trail,
   title,
+  accent,
   lede,
   aside,
 }: {
   trail: Crumb[];
   title: ReactNode;
+  // A phrase inside a string title, set in blue.
+  accent?: string;
   lede: ReactNode;
   aside?: ReactNode;
 }) {
@@ -111,7 +116,15 @@ export function PageHero({
       <div className={aside ? "motion-hero mt-6 grid grid-cols-[minmax(0,1fr)] gap-10 lg:grid-cols-[minmax(0,1fr)_22rem] lg:items-start" : "mt-6"}>
         <div>
           <h1 className="max-w-[22ch] font-display text-[clamp(2.25rem,6vw,4.5rem)] font-extrabold leading-[1.04] tracking-[-0.045em]">
-            {withAtlas(title)}
+            {typeof title === "string" && accent && title.includes(accent) ? (
+              <>
+                {title.slice(0, title.indexOf(accent))}
+                <span className="text-blue-heading">{accent}</span>
+                {title.slice(title.indexOf(accent) + accent.length)}
+              </>
+            ) : (
+              withAtlas(title)
+            )}
           </h1>
           <p className="mt-5 max-w-[62ch] text-lg leading-relaxed text-ink-2 sm:text-xl sm:leading-relaxed">{lede}</p>
           <HeatRibbon className="mt-8 w-full max-w-[14rem]" />
@@ -204,11 +217,14 @@ export function Device({
   alt,
   priority = false,
   className = "",
+  children,
 }: {
   src: string;
   alt: string;
   priority?: boolean;
   className?: string;
+  /** Laid over the screenshot, inside the screen's rounded corners. */
+  children?: React.ReactNode;
 }) {
   return (
     <div className={`app-device mx-auto ${className}`}>
@@ -223,6 +239,7 @@ export function Device({
           fetchPriority={priority ? "high" : "auto"}
           className="h-auto w-full"
         />
+        {children}
       </div>
       <Image
         src="/mockups/iphone-frame.png"
@@ -393,9 +410,9 @@ export function GetAppBand({ id = "get-app" }: { id?: string }) {
               ))}
             </dl>
           </div>
-          <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
-            <AppStoreLink className="w-full" />
-            <WebAppLink className="w-full !border-paper/30 !bg-transparent !text-white hover:!bg-white/10" />
+          <div className="flex flex-col items-start gap-3 sm:flex-row sm:items-center lg:flex-col lg:items-start">
+            <AppStoreLink />
+            <WebAppLink className="!border-paper/30 !bg-transparent !text-white hover:!bg-white/10" />
           </div>
         </div>
       </div>

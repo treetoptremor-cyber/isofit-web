@@ -385,6 +385,29 @@ summary:active {
   }
 }
 
+/* The session board types its Overhead Press and Incline Bench rows, one character at a time. The
+   scroll version is set from script (session-board.tsx); the loop version plays this keyframe on a
+   timer. Shown complete for reduced motion. */
+@keyframes tb-type {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+.tb-type {
+  display: inline-block;
+}
+@media (prefers-reduced-motion: reduce) {
+  .tb-on-loop {
+    animation: none !important;
+  }
+}
+.tb-board[data-paused] .tb-on-loop {
+  animation-play-state: paused !important;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -396,5 +419,41 @@ summary:active {
     transition-duration: 0s !important;
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
+  }
+}
+
+/* App Store badge shine. Apple's badge must stay unaltered, so the light
+   sweeps through a soft glow behind it rather than across the artwork. */
+.badge-shine {
+  position: relative;
+  isolation: isolate;
+}
+.badge-shine::before {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  z-index: -1;
+  border-radius: 14px;
+  background: linear-gradient(105deg, transparent 38%, rgba(106, 165, 238, 0.75) 47%, rgba(255, 255, 255, 0.9) 50%, rgba(106, 165, 238, 0.75) 53%, transparent 62%);
+  background-size: 320% 100%;
+  background-position: calc(100% - var(--shine, 0) * 100%) 0;
+  filter: blur(6px);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+html[data-shine="on"] .badge-shine::before {
+  opacity: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  .badge-shine::before {
+    display: none;
+  }
+}
+
+/* Keep focused and anchored content clear of the phone App Store bar. */
+@media (max-width: 767px) {
+  html {
+    scroll-padding-bottom: calc(5.5rem + env(safe-area-inset-bottom));
   }
 }
