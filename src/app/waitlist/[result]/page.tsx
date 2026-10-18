@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import AppStoreLink from "@/components/marketing/app-store-link";
 import { CONTAINER, PageShell } from "@/components/marketing/primitives";
 import { SITE } from "@/lib/site";
 
@@ -33,12 +34,15 @@ export default async function WaitlistResultPage({ params }: { params: Promise<{
         <p className="label">Isofit waitlist</p>
         <h1 className="mt-3 max-w-[20ch] font-display text-[clamp(2rem,4.6vw,3.25rem)] font-bold leading-[1.08] tracking-[-0.03em]">{result.title}</h1>
         <p role={result.retry ? "alert" : "status"} className="mt-5 max-w-[56ch] text-lg leading-relaxed text-ink-2">{result.body}</p>
+        <div className="mt-8 flex flex-wrap items-center gap-3">
+        {!result.retry && <AppStoreLink />}
         <Link
           href={result.retry ? "/#get-app" : "/"}
-          className="mt-8 inline-flex min-h-12 items-center rounded-xl bg-forest px-5 text-base font-semibold text-white transition-colors hover:bg-forest-dark"
+          className="inline-flex min-h-12 items-center rounded-xl bg-forest px-5 text-base font-semibold text-white transition-colors hover:bg-forest-dark"
         >
           {result.retry ? "Back to the form" : "Back to Isofit"}
         </Link>
+        </div>
       </section>
     </PageShell>
   );

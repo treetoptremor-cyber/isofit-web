@@ -22,7 +22,7 @@ export const FEATURES_DOC: PageDoc = {
           ["Workout logging", "Record any session by tapping in sets, typing a Quicklog line or speaking. Routines, timers, history, offline queue.", "Free"],
           ["Body graph", "Front and back figure shaded by working sets per muscle over 7, 30 or 90 days or all time.", "Pro (locked preview on Free)"],
           ["Atlas AI coach", "Chat-based coaching that can read your log, review sessions and write programs.", `Free: ${LIMITS.freeAtlasMessages}. Pro: higher limits and programs`],
-          ["Bonfire community", "Members-only feed of posts tied to logged sessions, with kudos and comments.", "Free to read and react. Pro to post"],
+          ["Bonfire community", "Members-only feed of workout posts, one a day, with kudos and comments.", "Free to read and react. Pro to post"],
         ],
       },
     },
@@ -32,7 +32,7 @@ export const FEATURES_DOC: PageDoc = {
       label: "Also included",
       heading: "What else ships in the app",
       specs: [
-        { term: "Exercise library", value: `500+ exercises across ${ACTIVITY_SCOPE}, plus add unlimited custom exercises. Create one for anything missing and Isofit maps it to muscles.` },
+        { term: "Exercise library", value: `Nearly 500 exercises across ${ACTIVITY_SCOPE}, plus add unlimited custom exercises. Create one for anything missing and Isofit maps it to muscles.` },
         { term: "Apple Health import", value: "Optional and free. Imports workouts, and shows daily steps, exercise minutes, sleep, resting heart rate and distance. Read-only: Isofit never writes to Apple Health." },
         { term: "Routines", value: "Save a finished session as a routine, favorite it, and load it onto the board next time. Programs Atlas writes land in the same list." },
         { term: "History", value: "Every past session, open on every tier. Edit old sets, delete a session, or backdate one you forgot to log." },
@@ -131,7 +131,7 @@ export const LOGGING_DOC: PageDoc = {
       label: "Exercises",
       heading: "A library for more than lifting",
       body: [
-        `The built-in library has 500+ exercises covering ${ACTIVITY_SCOPE}. You are not limited to it: type a name that is not there and Isofit offers to create it as a custom exercise, then maps it to the muscles it trains so it counts on your body graph.`,
+        `The built-in library has nearly 500 exercises covering ${ACTIVITY_SCOPE}. You are not limited to it: type a name that is not there and Isofit offers to create it as a custom exercise, then maps it to the muscles it trains so it counts on your body graph.`,
       ],
     },
     {
@@ -419,10 +419,10 @@ export const BONFIRE_DOC: PageDoc = {
   name: "Bonfire community",
   metaTitle: "Bonfire: a members-only workout community | Isofit",
   metaDescription:
-    "Bonfire is Isofit's members-only community feed. One post a day, each tied to a session you actually logged, with kudos and comments. No follows, no DMs, and your log stays private unless you post.",
+    "Bonfire is Isofit's members-only community feed. One post a day, each tagged with the kind of training it is about, with kudos and comments. No follows, no DMs, and your log stays private unless you post.",
   h1: "Share the work.",
   lede:
-    "Bonfire is the community feed inside Isofit, visible only to Isofit members. A post is a caption, an optional photo and the logged session behind it, and you can make one a day. Others can give kudos and comment. There are no follows, groups or direct messages. Your workout log is private, and nothing appears in Bonfire unless you choose to post that session.",
+    "Bonfire is the community feed inside Isofit, visible only to Isofit members. A post is a caption, an optional photo and the kind of training it is about, and you can make one a day. After you log a session, Isofit offers to start a post from it. Others can give kudos and comment. There are no follows, groups or direct messages. Your workout log is private, and nothing appears in Bonfire unless you choose to post.",
   sections: [
     {
       id: "how-it-works",
@@ -430,7 +430,7 @@ export const BONFIRE_DOC: PageDoc = {
       heading: "How Bonfire works",
       specs: [
         { term: "Feeds", value: "Home, the member feed, and Embers, the highlights." },
-        { term: "Posts", value: "A caption, an optional photo, one category and the session you logged. One post a day. Video is not supported." },
+        { term: "Posts", value: "A caption, an optional photo and one exercise category. One post a day. Video is not supported." },
         { term: "Reactions", value: "Kudos is the only reaction. Comments are a single flat thread." },
         { term: "Search", value: "Find members by handle and posts by tag." },
         { term: "Who can do what", value: "Every member can read, give kudos, comment and report. Posting is part of Pro." },
@@ -461,7 +461,7 @@ export const BONFIRE_DOC: PageDoc = {
   faqs: [
     {
       question: "What is the Bonfire in Isofit?",
-      answer: ["Bonfire is Isofit's members-only community feed, where a post is tied to a workout the member actually logged. It has kudos and comments, and no follows, groups or direct messages."],
+      answer: ["Bonfire is Isofit's members-only community feed, with one post a day per member. It has kudos and comments, and no follows, groups or direct messages."],
     },
     {
       question: "Are my workouts shared automatically?",

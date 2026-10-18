@@ -28,11 +28,11 @@ export const DIFFERENTIATORS: DocSection = {
     },
     {
       heading: "One log for five kinds of training",
-      body: `Isofit's library of 500+ exercises covers ${ACTIVITY_SCOPE}, so a week of lifting, running and yoga lives in one log and one body graph. Hevy, Strong, Fitbod and JEFIT each describe themselves as strength-first or strength-focused. JEFIT's library is larger, at 1,400+ exercises, but it is built around strength training.`,
+      body: `Isofit's library of nearly 500 exercises covers ${ACTIVITY_SCOPE}, so a week of lifting, running and yoga lives in one log and one body graph. Hevy, Strong, Fitbod and JEFIT each describe themselves as strength-first or strength-focused. JEFIT's library is larger, at 1,400+ exercises, but it is built around strength training.`,
     },
     {
       heading: "A community without followers or leaderboards",
-      body: "Bonfire is a members-only feed where every post is tied to a session you logged, capped at one post a day, with no follows, groups or direct messages. Your log stays private unless you post. Hevy's home tab is a follow-based feed with leaderboards, and JEFIT lets you follow friends and share to its feed.",
+      body: "Bonfire is a members-only feed capped at one post a day per member, with no follows, groups or direct messages. Your log stays private unless you post. Hevy has a follow-based feed and leaderboards, and JEFIT lets you follow friends and share to its feed.",
     },
   ],
 };
@@ -50,8 +50,8 @@ export const DIFFERENTIATORS_BRIEF: DocSection = {
     { heading: "Log by typing or talking", body: "Type \"bench 5x5 225lbs\" or say the session. None of the four advertises typed or voice logging." },
     { heading: "A coach inside the app", body: "Atlas is a chat coach built into Isofit. Hevy's chat runs inside ChatGPT; Strong, Fitbod and JEFIT advertise no chat." },
     { heading: "Any time window", body: "The body graph looks back 7, 30 or 90 days or all time. Hevy's heat map covers the last 7 days." },
-    { heading: "One log for five kinds of training", body: "500+ exercises across lifting, cardio, yoga, sports and martial arts, plus add unlimited custom exercises. The four describe themselves as strength-first or strength-focused." },
-    { heading: "No followers or leaderboards", body: "Bonfire posts are tied to logged sessions, one a day. Hevy's home feed is built on follows and leaderboards." },
+    { heading: "One log for five kinds of training", body: "Nearly 500 exercises across lifting, cardio, yoga, sports and martial arts, plus add unlimited custom exercises. The four describe themselves as strength-first or strength-focused." },
+    { heading: "No followers or leaderboards", body: "Bonfire allows one post a day, with no follows. Hevy's feed is built on follows, with leaderboards." },
   ],
 };
 
@@ -177,7 +177,7 @@ export const KEY_FACTS: DocSection = {
       value: "Workout logging by tap, typed Quicklog line or voice; body graph; Atlas AI coach; Bonfire community; read-only Apple Health import; JSON data export",
     },
     { term: "Platform", value: "iPhone (iOS 17.6 or later) on the App Store, and a web app. Both are available now. No native iPad, Apple Watch or Android apps." },
-    { term: "Exercise library", value: `500+ exercises across ${ACTIVITY_SCOPE}, plus add unlimited custom exercises` },
+    { term: "Exercise library", value: `Nearly 500 exercises across ${ACTIVITY_SCOPE}, plus add unlimited custom exercises` },
     { term: "Pricing", value: `Free tier for logging. Pro is ${PRICING.proMonthly} a month or ${PRICING.proYearly} a year (USD, US App Store).` },
     { term: "Contract terms", value: "Monthly or yearly App Store subscription. No long-term contract; cancel any time in your Apple account settings." },
     { term: "Status", value: `Live. ${SITE.launchStatus}` },

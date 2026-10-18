@@ -9,6 +9,7 @@ import AppStoreLink from "@/components/marketing/app-store-link";
 import WebAppLink from "@/components/marketing/web-app-link";
 import SiteHeader from "@/components/marketing/site-header";
 import Reveal from "@/components/marketing/reveal";
+import ScrollShine from "@/components/marketing/scroll-shine";
 import StickyAppLink from "@/components/marketing/sticky-app-link";
 import { SITE, absoluteUrl } from "@/lib/site";
 
@@ -44,6 +45,7 @@ export function PageShell({ children, grid = true, sticky = true }: { children: 
       </main>
       <SiteFooter />
       <Reveal />
+      <ScrollShine />
       <div aria-hidden="true" className="px-progress hidden pointer-events-none fixed inset-x-0 top-0 z-[60] h-[3px] origin-left bg-gradient-to-r from-heat-0 via-heat-3 to-heat-5" />
       {sticky ? <StickyAppLink /> : null}
     </div>
@@ -393,9 +395,9 @@ export function GetAppBand({ id = "get-app" }: { id?: string }) {
               ))}
             </dl>
           </div>
-          <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
-            <AppStoreLink className="w-full" />
-            <WebAppLink className="w-full !border-paper/30 !bg-transparent !text-white hover:!bg-white/10" />
+          <div className="flex flex-col items-start gap-3 sm:flex-row sm:items-center lg:flex-col lg:items-start">
+            <AppStoreLink />
+            <WebAppLink className="!border-paper/30 !bg-transparent !text-white hover:!bg-white/10" />
           </div>
         </div>
       </div>
