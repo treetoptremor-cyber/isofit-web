@@ -70,7 +70,9 @@ export default function MobileMenu() {
           ))}
         </ul>
         <WebAppLink className="mt-3 w-full" />
-        <AppStoreLink className="mt-3 w-full" />
+        <div className="mt-3 flex justify-center">
+          <AppStoreLink />
+        </div>
         <p className="label pt-3">{SITE.launchStatus}</p>
       </nav>
     </div>

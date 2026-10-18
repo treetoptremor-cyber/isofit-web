@@ -26,8 +26,8 @@ export const SITE = {
   appStoreUrl: "https://apps.apple.com/us/app/isofit-workout-log-ai-coach/id6798953719",
   launchStatus: "Available on the App Store and on the web.",
   // Bump when product facts on the marketing pages are re-verified.
-  factsReviewed: "2026-10-14",
-  factsReviewedLong: "October 14, 2026",
+  factsReviewed: "2026-10-17",
+  factsReviewedLong: "October 17, 2026",
 } as const;
 
 export const FEATURE_LINKS = [

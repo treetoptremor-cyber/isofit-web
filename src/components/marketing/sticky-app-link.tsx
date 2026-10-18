@@ -2,11 +2,13 @@
 
 import { useEffect, useState } from "react";
 
-import { SITE } from "@/lib/site";
+import AppStoreLink from "@/components/marketing/app-store-link";
 
 // A phone-only "Download on the App Store" bar along the bottom edge. It shows
 // once the first screen has scrolled away, and stays out of the way whenever the
-// footer is in view, an input has the keyboard up, or the menu is open.
+// footer is in view, an input has the keyboard up, or the menu is open. It also
+// steps aside while you scroll down, so it never sits over what you are reading,
+// and comes back when you scroll up or pause.
 export default function StickyAppLink() {
   const [show, setShow] = useState(false);
 
@@ -17,7 +19,10 @@ export default function StickyAppLink() {
     let scrolled = window.scrollY > 480;
     let keyboard = false;
     let menu = document.body.dataset.menuOpen === "true";
-    const update = () => setShow(scrolled && inView.size === 0 && !keyboard && !menu);
+    let reading = false;
+    let lastY = window.scrollY;
+    let pause = 0;
+    const update = () => setShow(scrolled && !reading && inView.size === 0 && !keyboard && !menu);
 
     const io = new IntersectionObserver((entries) => {
       for (const entry of entries) {
@@ -29,11 +34,18 @@ export default function StickyAppLink() {
     document.querySelectorAll("footer").forEach((element) => io.observe(element));
 
     const onScroll = () => {
-      const next = window.scrollY > 480;
-      if (next !== scrolled) {
-        scrolled = next;
-        update();
+      const y = window.scrollY;
+      scrolled = y > 480;
+      if (Math.abs(y - lastY) > 4) {
+        reading = y > lastY;
+        lastY = y;
       }
+      window.clearTimeout(pause);
+      pause = window.setTimeout(() => {
+        reading = false;
+        update();
+      }, 700);
+      update();
     };
     const isField = (target: EventTarget | null) => target instanceof HTMLElement && /^(INPUT|TEXTAREA|SELECT)$/.test(target.tagName);
     const onFocusIn = (event: FocusEvent) => {
@@ -62,6 +74,7 @@ export default function StickyAppLink() {
     return () => {
       io.disconnect();
       menuWatch.disconnect();
+      window.clearTimeout(pause);
       window.removeEventListener("scroll", onScroll);
       document.removeEventListener("focusin", onFocusIn);
       document.removeEventListener("focusout", onFocusOut);
@@ -72,10 +85,9 @@ export default function StickyAppLink() {
   return (
     <div className="fixed inset-x-0 bottom-0 z-[110] md:hidden">
       <div className="border-t border-rule bg-paper/95 px-4 pt-3 backdrop-blur" style={{ paddingBottom: "calc(0.75rem + env(safe-area-inset-bottom))" }}>
-        <a href={SITE.appStoreUrl} className="flex min-h-12 items-center justify-center gap-2 rounded-xl bg-forest text-base font-semibold text-white hover:bg-forest-dark">
-          Download on the App Store
-          <span aria-hidden="true">→</span>
-        </a>
+        <div className="flex justify-center">
+          <AppStoreLink />
+        </div>
       </div>
     </div>
   );
