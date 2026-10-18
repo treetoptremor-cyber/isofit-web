@@ -292,7 +292,7 @@ export const ATLAS_DOC: PageDoc = {
     "Atlas is the AI coach inside Isofit. With your permission it reads your workout history to review sessions, answer training questions and write programs. General fitness guidance, not medical advice.",
   h1: "Ask Atlas about your training.",
   lede:
-    "Atlas is the chat-based AI coach built into Isofit. Ask it to review a session, explain a plateau or plan a training week. If you turn personalization on, Atlas reads your logged workouts, so its answers are about your training and not a generic template. On Pro it can write a program and save it into your routines. Atlas gives general fitness guidance and is not a source of medical advice.",
+    "Atlas is the chat-based AI coach built into Isofit. Ask it to review a session, explain a plateau or plan a training week. If you turn personalization on, Atlas reads your logged workouts, so its answers are about your training and not a generic template. On Pro it can write a program and save it into your routines. Atlas's knowledge is based on proven, foundational strength and fitness principles. Atlas gives general fitness guidance and is not a source of medical advice.",
   sections: [
     {
       id: "what-atlas-does",

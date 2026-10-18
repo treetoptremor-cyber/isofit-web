@@ -66,8 +66,8 @@ const APP_JSON_LD = {
 const CHAPTER_SURFACE = {
   paper: { wrap: "", label: "", heading: "", prose: "", figure: "", num: "text-blue", link: "" },
   ink: { wrap: "bg-ink text-paper", label: "!text-paper/70", heading: "text-white", prose: "[&_p]:!text-paper/85 [&_li]:!text-paper/85", figure: "[&_.caption]:!text-paper/75", num: "text-sky", link: "!text-sky !decoration-sky/40 hover:!text-white" },
-  terra: { wrap: "bg-terra-soft", label: "!text-terra", heading: "", prose: "", figure: "", num: "text-terra", link: "!text-terra !decoration-terra/40 hover:!text-terra" },
-  forest: { wrap: "bg-forest-soft", label: "", heading: "", prose: "", figure: "", num: "text-forest-dark", link: "" },
+  terra: { wrap: "", wash: "bg-terra-soft", label: "!text-terra", heading: "", prose: "", figure: "", num: "text-terra", link: "!text-terra !decoration-terra/40 hover:!text-terra" },
+  forest: { wrap: "", wash: "bg-forest-soft", label: "", heading: "", prose: "", figure: "", num: "text-forest-dark", link: "" },
 } as const;
 
 function FeatureRow({
@@ -90,6 +90,9 @@ function FeatureRow({
   return (
     <section id={doc.id} aria-labelledby={`${doc.id}-heading`} className={`relative overflow-hidden ${tone.wrap}`}>
       {surface === "ink" ? <IsoGrid id={`${doc.id}-grid`} tone="ink" /> : null}
+      {/* Tinted chapters paint their color beneath the page grid (-z-20, under its -z-10), so the
+          same lines run unbroken across them instead of stopping at the band edge. */}
+      {"wash" in tone ? <div aria-hidden="true" className={`absolute inset-0 -z-20 ${tone.wash}`} /> : null}
       <div className={`${CONTAINER} relative py-16 md:py-24`}>
         <div className={`grid grid-cols-[minmax(0,1fr)] gap-10 lg:items-center lg:gap-16 ${flip ? "lg:grid-cols-[26rem_minmax(0,1fr)]" : "lg:grid-cols-[minmax(0,1fr)_26rem]"}`}>
           <div data-reveal="story" className={flip ? "lg:order-2" : ""}>
@@ -117,7 +120,21 @@ function FeatureRow({
               )}
             </div>
           </div>
-          <div data-reveal="screen" className={`px-screen ${flip ? "lg:order-1" : ""} ${tone.figure}`}>{figure}</div>
+          <div data-reveal="screen" className={`px-screen ${flip ? "lg:order-1" : ""} ${tone.figure}`}>
+            {/* The whole figure links to the feature page for pointer and touch users. Keyboard and
+                screen reader users have the text link beside the copy, so this one stays out of the
+                tab order rather than repeating it. */}
+            <div className="group relative transition-transform duration-300 hover:-translate-y-1">
+              {figure}
+              <Link href={href} tabIndex={-1} aria-hidden="true" className="absolute inset-0 z-10 rounded-[1.75rem]" />
+              <span
+                aria-hidden="true"
+                className="pointer-events-none absolute right-3 top-3 z-20 flex size-9 items-center justify-center rounded-full bg-white/90 text-lg text-ink opacity-0 shadow-[0_6px_18px_rgba(42,36,32,0.18)] transition-opacity duration-200 group-hover:opacity-100"
+              >
+                →
+              </span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -240,6 +257,7 @@ export default function HomePage() {
             src="/screenshots/atlas.png"
             top={0.182}
             height={0.585}
+            slices={[0.3145]}
             alt="An Atlas conversation. The member says they just logged a session of lat pulldowns, seated cable rows, barbell curls and shoulder presses, and asks what to change next time. Atlas replies to put the incline dumbbell press before the pulling work, calls five sets at RPE 6 reasonable, suggests reducing back volume slightly, and says to keep the shoulder press light and strictly pain-free."
             caption="A question about the session just logged, answered against that session."
           />

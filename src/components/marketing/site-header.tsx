@@ -1,19 +1,10 @@
-import Image from "next/image";
 import Link from "next/link";
 
 import AppStoreLink from "@/components/marketing/app-store-link";
+import LogoLockup from "@/components/marketing/logo-lockup";
 import MobileMenu from "@/components/marketing/mobile-menu";
 import WebAppLink from "@/components/marketing/web-app-link";
 import { PRIMARY_NAV } from "@/lib/site";
-
-export function LogoLockup() {
-  return (
-    <Link href="/" aria-label="Isofit home" className="flex min-h-11 items-center gap-2.5">
-      <Image src="/iso-logo.png" alt="" width={34} height={34} loading="eager" className="shrink-0" />
-      <span className="font-display text-xl font-bold leading-none tracking-tight text-sky">Isofit</span>
-    </Link>
-  );
-}
 
 export default function SiteHeader() {
   return (
