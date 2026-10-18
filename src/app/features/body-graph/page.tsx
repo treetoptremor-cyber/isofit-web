@@ -1,3 +1,6 @@
+import BodyGraphBloom from "@/components/marketing/body-graph-bloom";
+import { SETS_BY_MUSCLE_BARS } from "@/components/marketing/sets-bars";
+import BodyGraphScreenLoop from "@/components/marketing/body-graph-screen-loop";
 import DocPage from "@/components/marketing/doc-page";
 import { Device, ProTag } from "@/components/marketing/primitives";
 import { HeatLegend } from "@/components/marketing/quicklog-demo";
@@ -9,6 +12,8 @@ export const metadata = docMetadata(BODY_GRAPH_DOC);
 
 export default function BodyGraphPage() {
   return (
+    <>
+    <BodyGraphBloom />
     <DocPage
       doc={BODY_GRAPH_DOC}
       trail={[{ href: "/features", label: "Features" }, { href: BODY_GRAPH_DOC.path, label: "Body graph" }]}
@@ -23,7 +28,9 @@ export default function BodyGraphPage() {
             priority
             src="/screenshots/body-graph.png"
             alt="Isofit's body graph: front and back body figures with each muscle shaded from pale to terracotta by working sets logged, above a sets-by-muscle list and 7, 30, 90 day and all-time filters."
-          />
+          >
+            <BodyGraphScreenLoop />
+          </Device>
           <HeatLegend className="mt-5 justify-center" />
         </figure>
         </div>
@@ -50,11 +57,13 @@ export default function BodyGraphPage() {
             src="/screenshots/sets-by-muscle.png"
             top={0.555}
             height={0.29}
+            bars={SETS_BY_MUSCLE_BARS}
             alt="The lower half of Isofit's body graph. A Sets by muscle list reads Side Delts 11, Triceps 10, Glutes 9, Biceps 8, Front Delts 8. Beside it a 7D, 30D, 90D and ALL filter sits above cards for Total sets 45, Most worked Side Delts and Least worked Upper Back."
             caption="Sets by muscle, the four time windows, and the most and least worked muscle."
           />
         ),
       }}
     />
+    </>
   );
 }

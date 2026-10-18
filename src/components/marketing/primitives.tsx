@@ -206,11 +206,14 @@ export function Device({
   alt,
   priority = false,
   className = "",
+  children,
 }: {
   src: string;
   alt: string;
   priority?: boolean;
   className?: string;
+  /** Laid over the screenshot, inside the screen's rounded corners. */
+  children?: React.ReactNode;
 }) {
   return (
     <div className={`app-device mx-auto ${className}`}>
@@ -225,6 +228,7 @@ export function Device({
           fetchPriority={priority ? "high" : "auto"}
           className="h-auto w-full"
         />
+        {children}
       </div>
       <Image
         src="/mockups/iphone-frame.png"
