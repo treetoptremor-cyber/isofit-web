@@ -1,6 +1,7 @@
 import DocPage from "@/components/marketing/doc-page";
 import { Device, Plate } from "@/components/marketing/primitives";
 import QuicklogDemo from "@/components/marketing/quicklog-demo";
+import SessionBoard from "@/components/marketing/session-board";
 import ScreenCrop from "@/components/marketing/screen-crop";
 import { LOGGING_DOC } from "@/content/features";
 import { docMetadata } from "@/lib/metadata";
@@ -20,7 +21,9 @@ export default function WorkoutLoggingPage() {
               priority
               src="/screenshots/log.png"
               alt="Isofit's Log tab showing today's session with back squat, overhead press and incline bench rows, each with sets, reps, pounds and RPE, start and rest timers, a Finish session button, and a Quicklog text bar beside a microphone button."
-            />
+            >
+              <SessionBoard mode="loop" band={{ top: 0.212, height: 0.292 }} alt="Back Squat, Overhead Press and Incline Bench rows typing themselves in on a loop." />
+            </Device>
           </Plate>
         ),
       }}
@@ -30,6 +33,7 @@ export default function WorkoutLoggingPage() {
             src="/screenshots/log.png"
             top={0.212}
             height={0.292}
+            overlay={<SessionBoard mode="scroll" alt="Back Squat, Overhead Press and Incline Bench rows typing themselves in as you scroll." />}
             alt="Three exercise rows in Isofit's logger. Back Squat: 3 sets, 8 reps, 185 lbs, RPE 7. Overhead Press: 3 sets, 10 reps, 95 lbs, RPE 7. Incline Bench: 3 sets, 8 reps, 50 lbs, RPE 7. Each row has a Start button and a Rest button."
             caption="Three rows on the session board. Every exercise carries its own Start and Rest timers."
           />

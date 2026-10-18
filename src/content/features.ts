@@ -70,14 +70,15 @@ export const LOGGING_DOC: PageDoc = {
   metaTitle: "Workout logging by tap, text or voice | Isofit",
   metaDescription:
     "Log workouts in Isofit three ways: tap in sets, reps and weight, type a Quicklog line like \"bench 5x5 225lbs\", or speak the session. Free on iPhone; tap and Quicklog work offline, voice needs a connection.",
-  h1: "Tap it. Type it. Say it.",
+  h1: "Tap it, type it, or say it.",
+  h1Accent: "say it",
   lede:
     "Isofit's logger accepts a workout three ways and stores it one way. Tap in sets, reps, weight, distance, time and RPE. Type a Quicklog line such as \"bench 5x5 225lbs\" and get a finished row. Or hold the microphone, describe the session, and review the draft before it saves. All three produce the same structured log, and logging is free.",
   sections: [
     {
       id: "three-ways",
       label: "Input",
-      heading: "Three ways to get a workout in",
+      heading: "Three ways to log your workout",
       table: {
         head: ["Method", "How it works", "Good for"],
         rows: [

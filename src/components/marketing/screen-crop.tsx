@@ -19,6 +19,7 @@ export default function ScreenCrop({
   priority = false,
   tone,
   context = true,
+  overlay,
   bars,
 }: {
   src: string;
@@ -31,6 +32,8 @@ export default function ScreenCrop({
   tone?: "atlas";
   // false drops the context phone at every width: just the enlarged band.
   context?: boolean;
+  // Drawn over the enlarged band in place of the screenshot's own pixels.
+  overlay?: ReactNode;
   // Bars in the screenshot (source pixels) that load up left to right as it scrolls into view.
   bars?: Bar[];
 }) {
@@ -77,6 +80,7 @@ export default function ScreenCrop({
             className="h-auto w-full max-w-none"
             style={{ marginTop: `-${shift}%` }}
           />
+          {overlay}
           {bars ? <BarsReveal bars={bars} top={top} height={height} /> : null}
         </div>
       </div>

@@ -375,6 +375,29 @@ summary:active {
   }
 }
 
+/* The session board types its Overhead Press and Incline Bench rows, one character at a time. The
+   scroll version is set from script (session-board.tsx); the loop version plays this keyframe on a
+   timer. Shown complete for reduced motion. */
+@keyframes tb-type {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+.tb-type {
+  display: inline-block;
+}
+@media (prefers-reduced-motion: reduce) {
+  .tb-on-loop {
+    animation: none !important;
+  }
+}
+.tb-board[data-paused] .tb-on-loop {
+  animation-play-state: paused !important;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

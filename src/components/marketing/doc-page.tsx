@@ -82,7 +82,7 @@ export default function DocPage({
   return (
     <PageShell>
       <JsonLd data={[webPageJsonLd(doc), ...(doc.faqs?.length ? [faqJsonLd(doc.faqs)] : []), ...extraJsonLd]} />
-      <PageHero trail={trail} title={doc.h1} lede={doc.lede} aside={aside} />
+      <PageHero trail={trail} title={doc.h1} accent={doc.h1Accent} lede={doc.lede} aside={aside} />
       {lead}
       <DocSections sections={doc.sections} media={media} wide={wide} replace={replace} chips={chips} />
       {children}
