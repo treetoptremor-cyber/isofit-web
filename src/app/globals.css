@@ -311,7 +311,7 @@ summary:active {
     .px-heat {
       animation: px-heat linear both;
       animation-timeline: view();
-      animation-range: entry calc(var(--i, 0) * 7%) entry calc(45% + var(--i, 0) * 7%);
+      animation-range: entry calc(var(--i, 0) * 9%) entry calc(64% + var(--i, 0) * 9%);
     }
     @keyframes px-heat {
       from {
@@ -349,6 +349,12 @@ summary:active {
       animation: px-ribbon linear both;
       animation-timeline: view();
       animation-range: entry 0% entry 80%;
+    }
+    /* On phones the ribbon draws in half as fast. */
+    @media (max-width: 767px) {
+      .px-ribbon {
+        animation-range: entry 0% entry 160%;
+      }
     }
     @keyframes px-ribbon {
       from {

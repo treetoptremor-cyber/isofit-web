@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 import AppStoreLink from "@/components/marketing/app-store-link";
 
-// A phone-only "Download on the App Store" bar along the bottom edge. It shows
+// A phone-only "Download on the App Store" badge at the bottom right, on no backdrop. It shows
 // once the first screen has scrolled away, and stays out of the way whenever the
 // footer is in view, an input has the keyboard up, or the menu is open. It also
 // steps aside while you scroll down, so it never sits over what you are reading,
@@ -83,9 +83,9 @@ export default function StickyAppLink() {
 
   if (!show) return null;
   return (
-    <div className="fixed inset-x-0 bottom-0 z-[110] md:hidden">
-      <div className="border-t border-rule bg-paper/95 px-4 pt-3 backdrop-blur" style={{ paddingBottom: "calc(0.75rem + env(safe-area-inset-bottom))" }}>
-        <div className="flex justify-center">
+    <div className="pointer-events-none fixed inset-x-0 bottom-0 z-[110] md:hidden">
+      <div className="px-4 pt-3" style={{ paddingBottom: "calc(0.75rem + env(safe-area-inset-bottom))" }}>
+        <div className="pointer-events-auto flex justify-end">
           <AppStoreLink />
         </div>
       </div>

@@ -5,7 +5,7 @@ import { useEffect } from "react";
 // Drives the light that sweeps behind every App Store badge while the page
 // scrolls. It writes one custom property per frame, so it works the same in
 // every browser, and does nothing for people who ask for reduced motion.
-const SWEEP_PX = 900;
+const SWEEP_PX = 450;
 
 export default function ScrollShine() {
   useEffect(() => {
