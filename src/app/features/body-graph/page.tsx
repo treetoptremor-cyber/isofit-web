@@ -1,5 +1,6 @@
 import BodyGraphBloom from "@/components/marketing/body-graph-bloom";
-import { SETS_BY_MUSCLE_BARS } from "@/components/marketing/sets-bars";
+import BarsReveal from "@/components/marketing/bars-reveal";
+import { BODY_GRAPH_BARS, SETS_BY_MUSCLE_BARS } from "@/components/marketing/sets-bars";
 import BodyGraphScreenLoop from "@/components/marketing/body-graph-screen-loop";
 import DocPage from "@/components/marketing/doc-page";
 import { Device, ProTag } from "@/components/marketing/primitives";
@@ -30,6 +31,7 @@ export default function BodyGraphPage() {
             alt="Isofit's body graph: front and back body figures with each muscle shaded from pale to terracotta by working sets logged, above a sets-by-muscle list and 7, 30, 90 day and all-time filters."
           >
             <BodyGraphScreenLoop />
+            <BarsReveal bars={BODY_GRAPH_BARS} top={0} height={1} />
           </Device>
           <HeatLegend className="mt-5 justify-center" />
         </figure>

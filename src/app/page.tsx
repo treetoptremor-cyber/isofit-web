@@ -3,7 +3,8 @@ import type { ReactNode } from "react";
 import Link from "next/link";
 
 import { ReviewedNote, webPageJsonLd } from "@/components/marketing/doc-page";
-import { SETS_BY_MUSCLE_BARS } from "@/components/marketing/sets-bars";
+import BarsReveal from "@/components/marketing/bars-reveal";
+import { BODY_GRAPH_BARS, SETS_BY_MUSCLE_BARS } from "@/components/marketing/sets-bars";
 import BodyGraphScreenLoop from "@/components/marketing/body-graph-screen-loop";
 import IsoGrid from "@/components/marketing/iso-grid";
 import JsonLd from "@/components/marketing/json-ld";
@@ -191,6 +192,7 @@ export default function HomePage() {
               priority
             >
               <BodyGraphScreenLoop />
+            <BarsReveal bars={BODY_GRAPH_BARS} top={0} height={1} />
             </Device>
             <HeatLegend className="mt-5 justify-center" />
           </figure>
