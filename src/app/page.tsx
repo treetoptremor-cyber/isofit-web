@@ -7,7 +7,7 @@ import { SETS_BY_MUSCLE_BARS } from "@/components/marketing/sets-bars";
 import BodyGraphScreenLoop from "@/components/marketing/body-graph-screen-loop";
 import IsoGrid from "@/components/marketing/iso-grid";
 import JsonLd from "@/components/marketing/json-ld";
-import { CONTAINER, Device, FaqList, HeatRibbon, PageShell, Plate, Portrait, ProTag, Section, TextLink, GetAppBand, faqJsonLd, withAtlas } from "@/components/marketing/primitives";
+import { CONTAINER, Device, FaqList, HeatRibbon, PageShell, Plate, Portrait, ProTag, Section, TextLink, GetAppBand, faqJsonLd, withAccent, withAtlas } from "@/components/marketing/primitives";
 import { HeatLegend } from "@/components/marketing/quicklog-demo";
 import ScreenCrop from "@/components/marketing/screen-crop";
 import SessionBoard from "@/components/marketing/session-board";
@@ -77,6 +77,7 @@ function FeatureRow({
   figure,
   surface = "paper",
   flip = false,
+  accent,
 }: {
   doc: DocSection;
   href: string;
@@ -84,6 +85,8 @@ function FeatureRow({
   figure: ReactNode;
   surface?: keyof typeof CHAPTER_SURFACE;
   flip?: boolean;
+  // The words of the heading set in blue (sky on the ink chapter, where the deeper blue is too dim).
+  accent?: string;
 }) {
   const tone = CHAPTER_SURFACE[surface];
   const numeral = doc.label?.split(" ")[0];
@@ -103,7 +106,7 @@ function FeatureRow({
             ) : null}
             <p className={`label mt-6 ${tone.label}`}>{doc.label}</p>
             <h3 id={`${doc.id}-heading`} className={`mt-3 max-w-[20ch] font-display text-[clamp(2rem,4.4vw,3.25rem)] font-bold leading-[1.08] tracking-[-0.04em] ${tone.heading}`}>
-              {withAtlas(doc.heading)}
+              {accent ? withAccent(doc.heading, accent, surface === "ink" ? "text-sky" : "text-blue-heading") : withAtlas(doc.heading)}
             </h3>
             <div className={`prose-iso mt-6 max-w-[60ch] ${tone.prose}`}>
               {doc.body?.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
@@ -214,6 +217,7 @@ export default function HomePage() {
 
       <FeatureRow
         doc={section("log")}
+        accent="Log a workout"
         href="/features/workout-logging"
         linkLabel="How workout logging works"
         figure={
@@ -231,6 +235,7 @@ export default function HomePage() {
         flip
         surface="ink"
         doc={section("see")}
+        accent="See which muscles"
         href="/features/body-graph"
         linkLabel="How the body graph is calculated"
         figure={
@@ -267,6 +272,7 @@ export default function HomePage() {
         flip
         surface="forest"
         doc={section("bonfire")}
+        accent="Share a session"
         href="/features/bonfire"
         linkLabel="How Bonfire works"
         figure={
@@ -293,7 +299,7 @@ export default function HomePage() {
         </div>
       </Section>
 
-      <Section id={tiers.id} label={tiers.label} title={tiers.heading}>
+      <Section id={tiers.id} label={tiers.label} title={withAccent(tiers.heading, "Pro")}>
         <dl className="grid gap-5 md:grid-cols-2">
           {tiers.specs?.map((spec, index) => {
             const pro = index === 1;
@@ -311,14 +317,14 @@ export default function HomePage() {
       </Section>
 
       {/* The founder panel: An's words on ink, with the Atlas and data cards.
-          "built Isofit." takes sky, which reads at 6:1 on ink. */}
+          "Isofit." takes sky, which reads at 6:1 on ink. */}
       <section id={team.id} aria-labelledby={`${team.id}-heading`} className={`${CONTAINER} py-12 md:py-14`}>
         <div className="relative overflow-hidden rounded-[1.75rem] bg-ink px-6 py-8 text-paper sm:px-8 md:px-12 md:py-12">
           <IsoGrid id="team-grid" tone="ink" />
           <div className="relative">
             <p className="label !text-paper/70">{team.label}</p>
             <h2 id={`${team.id}-heading`} className="mt-3 font-display text-[clamp(1.75rem,4vw,2.75rem)] font-bold leading-[1.08] tracking-[-0.03em] text-white">
-              {team.heading.split(" ").slice(0, 2).join(" ")} <span className="text-sky">{team.heading.split(" ").slice(2).join(" ")}</span>
+              {team.heading.split(" ").slice(0, 3).join(" ")} <span className="text-sky">{team.heading.split(" ").slice(3).join(" ")}</span>
             </h2>
             <div className="mt-8 grid gap-8 md:grid-cols-[minmax(0,2fr)_minmax(0,5fr)] md:gap-12">
               <div className="flex items-center gap-5 md:block">

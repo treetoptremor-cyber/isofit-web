@@ -9,6 +9,7 @@ export const FEATURES_DOC: PageDoc = {
   metaDescription:
     "Everything Isofit does: workout logging by tap, text or voice, a muscle-by-muscle body graph, the Atlas AI coach, the Bonfire community, Apple Health import and data export.",
   h1: "Everything Isofit does, in one place.",
+  h1Accent: "Isofit",
   lede:
     "Isofit has four parts, one per tab: a workout logger you can tap, type or talk to; a body graph of the muscles your logged sets reached; Atlas, an AI coach; and Bonfire, a members-only community feed.",
   sections: [
@@ -194,6 +195,7 @@ export const BODY_GRAPH_DOC: PageDoc = {
   metaDescription:
     "Isofit's body graph shades a front and back figure by the working sets you logged for each muscle over 7, 30 or 90 days or all time, so you can see what you train and what you skip.",
   h1: "See where your work goes.",
+  h1Accent: "See",
   lede:
     "The body graph is Isofit's muscle heat map. It shades a front and back figure by the number of working sets (every logged set except warm-ups) you logged for each muscle, over the last 7, 30 or 90 days or your whole history. Muscles with the most credited work read warmest; those with relatively little stay pale. It counts the work you logged. It is not a recovery or soreness score. The full body graph is a Pro feature.",
   sections: [
@@ -422,6 +424,7 @@ export const BONFIRE_DOC: PageDoc = {
   metaDescription:
     "Bonfire is Isofit's members-only community feed. One post a day, each tagged with the kind of training it is about, with kudos and comments. No follows, no DMs, and your log stays private unless you post.",
   h1: "Share the work.",
+  h1Accent: "Share",
   lede:
     "Bonfire is the community feed inside Isofit, visible only to Isofit members. A post is a caption, an optional photo and the kind of training it is about, and you can make one a day. After you log a session, Isofit offers to start a post from it. Others can give kudos and comment. There are no follows, groups or direct messages. Your workout log is private, and nothing appears in Bonfire unless you choose to post.",
   sections: [

@@ -89,6 +89,19 @@ export function Breadcrumbs({ trail }: { trail: Crumb[] }) {
 }
 
 // Headings name Atlas in terra, its color role, wherever the word appears.
+// Sets one phrase of a heading in a color class; the heading reads unchanged without it.
+export function withAccent(text: string, phrase: string, className = "text-blue-heading"): ReactNode {
+  const at = text.indexOf(phrase);
+  if (at < 0) return text;
+  return (
+    <>
+      {text.slice(0, at)}
+      <span className={className}>{phrase}</span>
+      {text.slice(at + phrase.length)}
+    </>
+  );
+}
+
 export function withAtlas(text: ReactNode): ReactNode {
   if (typeof text !== "string" || !text.includes("Atlas")) return text;
   return text.split(/(\bAtlas\b)/).map((part, index) => (part === "Atlas" ? <span key={index} className="text-terra">Atlas</span> : part));
