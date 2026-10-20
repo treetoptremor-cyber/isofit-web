@@ -9,3 +9,9 @@ export const SETS_BY_MUSCLE_BARS: Bar[] = [
   { x0: 90, x1: 418, y0: 2010, y1: 2030 },
   { x0: 90, x1: 418, y0: 2123, y1: 2143 },
 ];
+
+// The two bars of that card showing above the tab bar in body-graph.png, the screen in the phones.
+export const BODY_GRAPH_BARS: Bar[] = [
+  { x0: 90, x1: 541, y0: 2202, y1: 2222 },
+  { x0: 90, x1: 477, y0: 2315, y1: 2335 },
+];

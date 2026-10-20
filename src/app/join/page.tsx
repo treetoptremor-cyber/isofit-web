@@ -21,7 +21,7 @@ export default function JoinPage() {
       <section className={`${CONTAINER} py-16 md:py-24`}>
         <p className="label">You were invited</p>
         <h1 className="mt-3 max-w-[22ch] font-display text-[clamp(2rem,4.6vw,3.25rem)] font-bold leading-[1.08] tracking-[-0.03em]">
-          A friend wants you training on Isofit.
+          A friend wants you training on Isofit
         </h1>
         <p className="mt-5 max-w-[56ch] text-lg leading-relaxed text-ink-2">
           Isofit is a workout tracker: a fast set-by-set logger, a body

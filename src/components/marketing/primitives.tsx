@@ -89,7 +89,26 @@ export function Breadcrumbs({ trail }: { trail: Crumb[] }) {
 }
 
 // Headings name Atlas in terra, its color role, wherever the word appears.
+// Sets one phrase of a heading in a color class; the heading reads unchanged without it.
+export function withAccent(text: string, phrase: string, className = "text-blue-heading"): ReactNode {
+  const at = text.indexOf(phrase);
+  if (at < 0) return text;
+  return (
+    <>
+      {text.slice(0, at)}
+      <span className={className}>{phrase}</span>
+      {text.slice(at + phrase.length)}
+    </>
+  );
+}
+
+// Headlines run without a closing period; sentences inside the line keep theirs.
+export function noEndPeriod(text: string): string {
+  return text.endsWith(".") && !text.endsWith("..") ? text.slice(0, -1) : text;
+}
+
 export function withAtlas(text: ReactNode): ReactNode {
+  if (typeof text === "string") text = noEndPeriod(text);
   if (typeof text !== "string" || !text.includes("Atlas")) return text;
   return text.split(/(\bAtlas\b)/).map((part, index) => (part === "Atlas" ? <span key={index} className="text-terra">Atlas</span> : part));
 }
@@ -120,7 +139,7 @@ export function PageHero({
               <>
                 {title.slice(0, title.indexOf(accent))}
                 <span className="text-blue-heading">{accent}</span>
-                {title.slice(title.indexOf(accent) + accent.length)}
+                {noEndPeriod(title.slice(title.indexOf(accent) + accent.length))}
               </>
             ) : (
               withAtlas(title)
