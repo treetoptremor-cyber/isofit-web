@@ -102,7 +102,13 @@ export function withAccent(text: string, phrase: string, className = "text-blue-
   );
 }
 
+// Headlines run without a closing period; sentences inside the line keep theirs.
+export function noEndPeriod(text: string): string {
+  return text.endsWith(".") && !text.endsWith("..") ? text.slice(0, -1) : text;
+}
+
 export function withAtlas(text: ReactNode): ReactNode {
+  if (typeof text === "string") text = noEndPeriod(text);
   if (typeof text !== "string" || !text.includes("Atlas")) return text;
   return text.split(/(\bAtlas\b)/).map((part, index) => (part === "Atlas" ? <span key={index} className="text-terra">Atlas</span> : part));
 }
@@ -133,7 +139,7 @@ export function PageHero({
               <>
                 {title.slice(0, title.indexOf(accent))}
                 <span className="text-blue-heading">{accent}</span>
-                {title.slice(title.indexOf(accent) + accent.length)}
+                {noEndPeriod(title.slice(title.indexOf(accent) + accent.length))}
               </>
             ) : (
               withAtlas(title)

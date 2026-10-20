@@ -8,7 +8,7 @@ import { BODY_GRAPH_BARS, SETS_BY_MUSCLE_BARS } from "@/components/marketing/set
 import BodyGraphScreenLoop from "@/components/marketing/body-graph-screen-loop";
 import IsoGrid from "@/components/marketing/iso-grid";
 import JsonLd from "@/components/marketing/json-ld";
-import { CONTAINER, Device, FaqList, HeatRibbon, PageShell, Plate, Portrait, ProTag, Section, TextLink, GetAppBand, faqJsonLd, withAccent, withAtlas } from "@/components/marketing/primitives";
+import { CONTAINER, Device, FaqList, HeatRibbon, PageShell, Plate, Portrait, ProTag, Section, TextLink, GetAppBand, faqJsonLd, noEndPeriod, withAccent, withAtlas } from "@/components/marketing/primitives";
 import { HeatLegend } from "@/components/marketing/quicklog-demo";
 import ScreenCrop from "@/components/marketing/screen-crop";
 import SessionBoard from "@/components/marketing/session-board";
@@ -107,7 +107,7 @@ function FeatureRow({
             ) : null}
             <p className={`label mt-6 ${tone.label}`}>{doc.label}</p>
             <h3 id={`${doc.id}-heading`} className={`mt-3 max-w-[20ch] font-display text-[clamp(2rem,4.4vw,3.25rem)] font-bold leading-[1.08] tracking-[-0.04em] ${tone.heading}`}>
-              {accent ? withAccent(doc.heading, accent, surface === "ink" ? "text-sky" : "text-blue-heading") : withAtlas(doc.heading)}
+              {accent ? withAccent(noEndPeriod(doc.heading), accent, surface === "ink" ? "text-sky" : "text-blue-heading") : withAtlas(doc.heading)}
             </h3>
             <div className={`prose-iso mt-6 max-w-[60ch] ${tone.prose}`}>
               {doc.body?.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
@@ -168,7 +168,7 @@ export default function HomePage() {
             <h1 id="hero-heading" className="motion-hero mt-4 min-h-[3.06em] max-w-[12ch] font-display text-[clamp(2.25rem,8.4vw,6.5rem)] font-extrabold leading-[1.02] tracking-[-0.045em]">
               {before}
               <span className="text-blue-heading">{HERO_ACCENT}</span>
-              {after}
+              {noEndPeriod(after)}
             </h1>
             <p className="motion-hero motion-hero-2 mt-4 max-w-[52ch] text-lg leading-[1.6] text-ink-2">{HOME_DOC.lede}</p>
             <div className="mt-5 flex flex-wrap gap-3">
@@ -326,7 +326,7 @@ export default function HomePage() {
           <div className="relative">
             <p className="label !text-paper/70">{team.label}</p>
             <h2 id={`${team.id}-heading`} className="mt-3 font-display text-[clamp(1.75rem,4vw,2.75rem)] font-bold leading-[1.08] tracking-[-0.03em] text-white">
-              {team.heading.split(" ").slice(0, 3).join(" ")} <span className="text-sky">{team.heading.split(" ").slice(3).join(" ")}</span>
+              {noEndPeriod(team.heading).split(" ").slice(0, 3).join(" ")} <span className="text-sky">{noEndPeriod(team.heading).split(" ").slice(3).join(" ")}</span>
             </h2>
             <div className="mt-8 grid gap-8 md:grid-cols-[minmax(0,2fr)_minmax(0,5fr)] md:gap-12">
               <div className="flex items-center gap-5 md:block">
@@ -360,7 +360,7 @@ export default function HomePage() {
                 return (
                   <li key={item.heading} className={`rounded-[1.5rem] p-6 sm:p-7 ${atlas ? "bg-terra-ink" : "bg-forest-ink"}`}>
                     <p className={`label ${atlas ? "!text-terra-light" : "!text-sage-light"}`}>{item.label}</p>
-                    <h3 className={`mt-3 font-display text-xl font-bold leading-snug tracking-[-0.02em] ${atlas ? "text-terra-light" : "text-sage-light"}`}>{item.heading}</h3>
+                    <h3 className={`mt-3 font-display text-xl font-bold leading-snug tracking-[-0.02em] ${atlas ? "text-terra-light" : "text-sage-light"}`}>{noEndPeriod(item.heading)}</h3>
                     <p className="mt-3 text-[1.0625rem] leading-relaxed text-paper/85">{item.body}</p>
                     <Link href={atlas ? "/features/atlas" : "/privacy"} className="mt-4 inline-flex min-h-11 items-center gap-1.5 text-[0.9375rem] font-medium text-paper/80 underline decoration-paper/30 underline-offset-4 hover:text-white">
                       {atlas ? "What Atlas does and what it sees" : "Privacy Policy"}
