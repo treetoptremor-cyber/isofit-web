@@ -195,4 +195,4 @@ Before filing any claim, please contact us at support@isofit.app — most concer
 
 ---
 
-*End of Terms of Service | Isofit | v1.1 | September 16, 2026*
+*End of Terms of Service | Isofit | v1.2 | October 7, 2026*
