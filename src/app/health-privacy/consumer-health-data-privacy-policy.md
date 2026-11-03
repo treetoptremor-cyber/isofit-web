@@ -1,7 +1,7 @@
 # Isofit Consumer Health Data Privacy Policy
 
-**Version:** 1.2
-**Effective Date:** September 24, 2026
+**Version:** 1.3
+**Effective Date:** November 2, 2026
 **Applies to:** Everyone who uses Isofit. This policy is written to meet the Washington My Health My Data Act and Nevada's consumer health data law (SB 370), and it supplements our [Privacy Policy](/privacy).
 **Contact:** privacy@isofit.app
 
@@ -78,7 +78,7 @@ We do not share consumer health data with any other third party, except:
 You can:
 
 - **Confirm and access.** Ask whether we collect, share, or sell your consumer health data, and get a copy of it, including a list of every third party and affiliate with whom we have shared it and a way to contact each of them.
-- **Withdraw consent.** Withdraw your consent to our collection or sharing of consumer health data at any time. The controls live in the app: disconnect Apple Health or withdraw your Atlas personalization opt-in (which deletes Atlas's memory items). Withdrawal applies going forward.
+- **Withdraw consent.** Withdraw your consent to our collection or sharing of consumer health data at any time. The controls live in the app: turn off Atlas and voice logging under You → Privacy & Terms (which stops sending your health data to our AI providers), disconnect Apple Health, or withdraw your Atlas personalization opt-in (which deletes Atlas's memory items). Withdrawal applies going forward.
 - **Delete.** Ask us to delete your consumer health data. We delete it from our systems, including backups on their normal cycle, and instruct our service providers to do the same. Deleting your account from the app does this for everything at once. Pseudonymized consent records are retained as described in Section 8 of our Privacy Policy.
 - **Not be discriminated against** for exercising any of these rights.
 
@@ -108,4 +108,4 @@ We will update this policy when our practices change and update the effective da
 
 ---
 
-*End of Consumer Health Data Privacy Policy | Isofit | v1.2 | September 24, 2026*
+*End of Consumer Health Data Privacy Policy | Isofit | v1.3 | November 2, 2026*

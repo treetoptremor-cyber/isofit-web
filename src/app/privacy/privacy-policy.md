@@ -95,14 +95,15 @@ We process your data only where we have a valid basis. The purposes are as follo
 
 If you select a country in the EU, EEA or UK, we rely on these legal bases:
 
-- **Your account, workout logging, Atlas coaching, Bonfire and membership:** Necessary to provide the service you asked for (contract).
+- **Your account, workout logging, Bonfire and membership:** Necessary to provide the service you asked for (contract).
 - **Health and fitness data, including workouts, injuries or limitations you share, and Apple Health data:** Your explicit consent, which you give with a separate tick box in the app and can withdraw at any time.
+- **Atlas coaching and voice logging, which send health data to our AI providers:** Your explicit consent, given with its own optional tick box in the app. Isofit works without it, and you can turn it off at any time (Section 7).
 - **Atlas personalization and Atlas memory:** Your consent, through the personalization opt-in.
 - **Security, fraud and abuse prevention, and automated Bonfire screening:** Our legitimate interests in keeping members and the service safe.
 - **Usage analytics:** Your consent. You choose Allow or Don't allow when you sign up, and Isofit works the same either way. You can change your choice at any time (Section 7).
 - **Billing, tax and consent records, and responses to lawful requests:** Compliance with our legal obligations, and our legitimate interest in being able to demonstrate compliance.
 
-Providing account details and agreeing to the health-data processing described in the app are needed to use Isofit, because the service runs on them. You are not otherwise legally required to give us personal data. Optional features such as Apple Health, voice logging and Atlas personalization can be left off.
+Providing account details and agreeing to the health-data processing described in the app are needed to use Isofit, because the service runs on them. You are not otherwise legally required to give us personal data. Optional features such as Atlas, voice logging, Apple Health and Atlas personalization can be left off.
 
 ---
 
@@ -211,6 +212,7 @@ This policy continues to govern the information Isofit itself receives through t
 Isofit provides granular consent controls accessible in your account settings:
 
 - **Operational consent** (on by default): Required for the app to function. Covers core workout logging, $ISO economy, and account management.
+- **Atlas and voice logging** (EU, EEA and UK: off unless you tick it; elsewhere: on when you agree to the health-data consent; off anytime): Controls whether Atlas coaching, Atlas reviews and voice logging send your health data to our AI providers. Turn it off under Privacy & Terms in your account settings and they stop immediately, and Atlas and the voice button are hidden.
 - **Atlas personalization opt-in** (off by default): Controls whether Atlas AI receives your profile details, training insights, and workout history, builds and retains persistent memory items from your conversations, and uses your Apple Health daily summaries if connected. Without this opt-in, Atlas still works as a general coach but does not receive that data or retain persistent memory items between sessions.
 - **Usage analytics** (EU, EEA and UK: off unless you allow it; elsewhere: on after you accept this policy; off anytime): Controls the in-app product analytics described in Section 2.2 (screens viewed, features used). Turn it off under Privacy & Terms in your account settings and collection stops immediately.
 
