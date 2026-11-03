@@ -176,7 +176,7 @@ export const FAQ_GROUPS: FaqGroup[] = [
         question: "Does Isofit store my precise GPS location?",
         answer: [
           "No. Isofit does not store your precise GPS location.",
-          "The weather line is optional, and weather providers receive only a coarse location, such as a zip code, your device location if you enable it, or a city inferred from your timezone, and never your identity or health data.",
+          "The weather line is optional, and weather providers receive only a coarse location, such as a zip code, postcode or city name, your device location if you enable it, or a city inferred from your timezone, and never your identity or health data.",
         ],
         link: { href: "/privacy#62-technology-service-providers", label: "Privacy Policy: weather providers" },
       },
@@ -198,7 +198,7 @@ export const FAQ_GROUPS: FaqGroup[] = [
       {
         question: "Can I export or delete my data?",
         answer: [
-          "Yes. From the app you can export a JSON file of your training, Atlas, account, health and social records, and you can delete your account. Deletion is scheduled after a seven-day grace period.",
+          "Yes. From the app you can export a JSON file of your training, Atlas, account, health and social records, and you can delete your account. We email you a link to confirm, and once you do, your account is deleted, usually within minutes.",
         ],
       },
     ],
